@@ -82,56 +82,24 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li class="menu-megamenu-li">
-                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
-                                    <ul class="menu-megamenu">
-                                        <li class="row">
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 1</div>
-                                                <ul>
-                                                    <li><a href="event-1.html">Event Style 1</a></li>
-                                                    <li><a href="event-2.html">Event Style 2</a></li>
-                                                    <li><a href="event-3.html">Event Style 3</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 2</div>
-                                                <ul>
-                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
-                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
-                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
-                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
-                                                    <li><a href="404.html">404 Page Not Found</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="megamenu-ttl">Link 3</div>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="theme-img">
-                                                    <img src="uploads/service-5.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </li> 
+                                <li>
+                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Về chúng tôi</a></li>
+                                        <li><a href="contact.jsp">Liên hệ</a></li>
+                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
 								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Blog Details 1</a></li>
-                                        <li><a href="blog.jsp">Blog Details 2</a></li>
+                                        <li><a href="blog.jsp">Tin tức 1</a></li>
+                                        <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
@@ -165,222 +133,27 @@
                         <div class="col-md-6">
                             <div class="theme-block theme-block-hover">
                                 <div class="theme-block-picture">
-                                    <img src="uploads/doctor-1.jpg" alt="">
+                                    <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                 </div>
                                 <div class="doctor-name">
-                                    <h4><a>Daniel Barnes</a></h4>
+                                    <h4><a>Bác sĩ 1</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>Orthologist</p>
+                                        <p>Khoa 1</p>
                                     </div>
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
                                             <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
                                             <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 8</p>
-                                            <p><i class="fa fa-star"></i>Experience: 17 year</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 8</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 17 year</p>
                                         </div>
                                     </div>
                                     <div class="doctor-social">
                                         <ul class="social-list social-list-bordered social-list-rounded">
                                             <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
                                             <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-2.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Melissa Bates</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Gynocologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>C00s</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 5</p>
-                                            <p><i class="fa fa-star"></i>Experience: 9 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-3.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Cheri Aria</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Dermatologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Intern</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 12</p>
-                                            <p><i class="fa fa-star"></i>Experience: 6 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-4.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Steve Soeren</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Orthologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Senior Resident</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 21</p>
-                                            <p><i class="fa fa-star"></i>Experience: 14 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-5.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Theodore Bennett</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Anesthesiologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Senior Resident</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 12</p>
-                                            <p><i class="fa fa-star"></i>Experience: 9 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-6.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Barbara Baker</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Surgeon</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>S.R.</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 13</p>
-                                            <p><i class="fa fa-star"></i>Experience: 17 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-7.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Linda Adams</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Gynocologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Senior Resident</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 7</p>
-                                            <p><i class="fa fa-star"></i>Experience: 16 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -392,27 +165,24 @@
                                     <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                 </div>
                                 <div class="doctor-name">
-                                    <h4><a href = "doctor.jsp">Janet Collins</a></h4>
+                                    <h4><a>Bác sĩ 2</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>OB/GYN</p>
+                                        <p>Khoa 2</p>
                                     </div>
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Intern</p>
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
                                             <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 2</p>
-                                            <p><i class="fa fa-star"></i>Experience: 5 year</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 9</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 20 year</p>
                                         </div>
                                     </div>
                                     <div class="doctor-social">
                                         <ul class="social-list social-list-bordered social-list-rounded">
                                             <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
                                             <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -421,62 +191,27 @@
                         <div class="col-md-6">
                             <div class="theme-block theme-block-hover">
                                 <div class="theme-block-picture">
-                                    <img src="uploads/doctor-9.jpg" alt="">
+                                   <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                 </div>
                                 <div class="doctor-name">
-                                    <h4><a>Vedhraj Jain</a></h4>
+                                    <h4><a>Bác sĩ 3</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>BAMS</p>
+                                        <p>Khoa 3</p>
                                     </div>
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Head of Department</p>
-                                            <p><i class="fa fa-mortar-board"></i>B.A.M.S.</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 28</p>
-                                            <p><i class="fa fa-star"></i>Experience: 32 year</p>
-                                        </div>
-                                    </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="theme-block theme-block-hover">
-                                <div class="theme-block-picture">
-                                    <img src="uploads/doctor-10.jpg" alt="">
-                                </div>
-                                <div class="doctor-name">
-                                    <h4><a>Emily Rasberry</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Pathologist</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Resident</p>
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
                                             <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 4</p>
-                                            <p><i class="fa fa-star"></i>Experience: 8 year</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 5</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 11 year</p>
                                         </div>
                                     </div>
                                     <div class="doctor-social">
                                         <ul class="social-list social-list-bordered social-list-rounded">
                                             <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
                                             <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -485,30 +220,27 @@
                         <div class="col-md-6">
                             <div class="theme-block theme-block-hover">
                                 <div class="theme-block-picture">
-                                    <img src="uploads/doctor-11.jpg" alt="">
+                                    <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                 </div>
                                 <div class="doctor-name">
-                                    <h4><a>Nancy Allen</a></h4>
+                                    <h4><a>Bác sĩ 4</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>Gynocologist</p>
+                                        <p>Khoa 4</p>
                                     </div>
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Resident</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MS</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 2</p>
-                                            <p><i class="fa fa-star"></i>Experience: 7 year</p>
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 6</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 15 year</p>
                                         </div>
                                     </div>
                                     <div class="doctor-social">
                                         <ul class="social-list social-list-bordered social-list-rounded">
                                             <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
                                             <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -517,36 +249,235 @@
                         <div class="col-md-6">
                             <div class="theme-block theme-block-hover">
                                 <div class="theme-block-picture">
-                                    <img src="uploads/doctor-12.jpg" alt="">
+                                    <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                 </div>
                                 <div class="doctor-name">
-                                    <h4><a>Jean Lopat</a></h4>
+                                    <h4><a>Bác sĩ 5</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>Pathology</p>
+                                        <p>Khoa 5</p>
                                     </div>
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
-                                            <p><i class="fa fa-shield"></i>Senior Resident</p>
-                                            <p><i class="fa fa-mortar-board"></i>MBBS, MS</p>
-                                            <p><i class="fa fa-trophy"></i>Awards: 2</p>
-                                            <p><i class="fa fa-star"></i>Experience: 7 year</p>
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 4</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 9 year</p>
                                         </div>
                                     </div>
                                     <div class="doctor-social">
                                         <ul class="social-list social-list-bordered social-list-rounded">
                                             <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
                                             <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                    <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 6</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 6</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 6</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 15 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                    <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 7</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 7</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 4</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 9 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                   <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 8</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 8</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 3</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 7 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+									<img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 9</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 9</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 6</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 10 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                   <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 10</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 10</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 8</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 11 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                   <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 11</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 11</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 9</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 12 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="theme-block theme-block-hover">
+                                <div class="theme-block-picture">
+                                   <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                </div>
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 12</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 12</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <div class="doctor-details-extra-3">
+                                            <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                            <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                            <p><i class="fa fa-trophy"></i>Giải thưởng: 5</p>
+                                            <p><i class="fa fa-star"></i>Kinh nghiệm : 13 year</p>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-social">
+                                        <ul class="social-list social-list-bordered social-list-rounded">
+                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
                     <ul class="theme-pagination">
                         <li><a href="#" class="active">1</a></li>
                         <li><a href="#">2</a></li>
@@ -561,107 +492,54 @@
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
                             <input class="mdl-textfield__input" type="text" id="sidebar-search">
-                            <label class="mdl-textfield__label" for="sidebar-search">Enter Any Keyword</label>
+                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên bác sĩ</label>
                             <button class="fa fa-search search-button"></button>
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Our Services</div>
+                        <div class="sub-ttl">Dịch vụ</div>
                         <div class="flexslider theme-flexslider">
                             <ul class="slides">
                                 <li>
                                     <div class="theme-flexslider-container">
-                                        <img src="uploads/service-3.jpg" alt="" />
-                                        <h4>Cardiovascular centre</h4>
-                                        <a href="#" class="anchor-icon pull-right">Read More <i class="fa fa-arrow-right"></i></a>
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
+                                        <h4>Dịch vụ 1</h4>
+                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="theme-flexslider-container">
-                                        <img src="uploads/service-4.jpg" alt="" />
-                                        <h4>Childbirth Center</h4>
-                                        <a href="#" class="anchor-icon pull-right">Read More <i class="fa fa-arrow-right"></i></a>
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
+                                        <h4>Dịch vụ 2</h4>
+                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="theme-flexslider-container">
-                                        <img src="uploads/service-8.jpg" alt="" />
-                                        <h4>Cardiology</h4>
-                                        <a href="#" class="anchor-icon pull-right">Read More <i class="fa fa-arrow-right"></i></a>
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
+                                        <h4>Dịch vụ 3</h4>
+                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="theme-flexslider-container">
-                                        <img src="uploads/service-5.jpg" alt="" />
-                                        <h4>Laboratory Services</h4>
-                                        <a href="#" class="anchor-icon pull-right">Read More <i class="fa fa-arrow-right"></i></a>
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
+                                        <h4>Dịch vụ 4</h4>
+                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="theme-material-card text-center">
-                        <div class="sub-ttl">Make An Appointment</div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-user-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="sideapnt-name">
-                            <label class="mdl-textfield__label" for="sideapnt-name">Name</label>
-                            <span class="mdl-textfield__error">Please Enter Valid Name!</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-envelope-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="sideapnt-email">
-                            <label class="mdl-textfield__label" for="sideapnt-email">Email</label>
-                            <span class="mdl-textfield__error">Please Enter Valid Email!</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-phone"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="sideapnt-mobile">
-                            <label class="mdl-textfield__label" for="sideapnt-mobile">Mobile Number</label>
-                            <span class="mdl-textfield__error">Please Enter Valid Mobile Number!</span>
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                            <i class="fa fa-hospital-o"></i>
-                            <select class="mdl-selectfield__select" id="sideapnt-department">
-                                <option value=""></option>
-                                <option value="Gynaecology">Gynaecology</option>
-                                <option value="Orthology">Orthology</option>
-                                <option value="Dermatologist">Dermatologist</option>
-                                <option value="Anaesthesia">Anaesthesia</option>
-                                <option value="Ayurvedic">Ayurvedic</option>
-                            </select>
-                            <label class="mdl-selectfield__label" for="sideapnt-department">Choose Department</label>
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                            <i class="fa fa-user-md"></i>
-                            <select class="mdl-selectfield__select" id="sideapnt-doctor">
-                                <option value=""></option>
-                                <option value="Daniel Barnes">Dr. Daniel Barnes</option>
-                                <option value="Steve Soeren">Dr. Steve Soeren</option>
-                                <option value="Barbara Baker">Dr. Barbara Baker</option>
-                                <option value="Melissa Bates">Dr. Melissa Bates</option>
-                                <option value="Linda Adams">Dr. Linda Adams</option>
-                            </select>
-                            <label class="mdl-selectfield__label" for="sideapnt-doctor">Choose Doctor</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-calendar-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="sideapnt-date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                            <label class="mdl-textfield__label" for="sideapnt-date">Date</label>
-                            <span class="mdl-textfield__error">Please Enter Valid Mobile Number!</span>
-                        </div>
-                        <div class="side-error"></div>
-                        <button class="btn button-primary button-lg side-appointment" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Processing">Submit</button>
-                    </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Recent Post</div>
+                        <div class="sub-ttl">Tin mới nhất</div>
                         <a href="#" class="row blog-recent">
                             <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-1.jpg" alt="">
+                                <img class="img-responsive img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
-                                <h4>Why Food Poisoning happened and How To</h4>
-                                <p>08 Jun 2017</p>
+                                <h4>Tin 1</h4>
+                                <p>8 tháng 5 2023</p>
                             </div>
                         </a>
                         <a href="#" class="row blog-recent">
@@ -669,17 +547,8 @@
                                 <img class="img-responsive img-thumbnail" src="uploads/recent-2.jpg" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
-                                <h4>Which Healthy Food Fads Should You Follow?</h4>
-                                <p>27 Apr 2017</p>
-                            </div>
-                        </a>
-                        <a href="#" class="row blog-recent">
-                            <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-3.jpg" alt="">
-                            </div>
-                            <div class="col-8 blog-recent-post">
-                                <h4>A Broken Heart Can Hurt More Than You Think</h4>
-                                <p>29 Jan 2017</p>
+                                <h4>Tin 2</h4>
+                                <p>27 tháng 4 2023</p>
                             </div>
                         </a>
                         <a href="#" class="row blog-recent">
@@ -687,8 +556,8 @@
                                 <img class="img-responsive img-thumbnail" src="uploads/recent-4.jpg" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
-                                <h4>Keep it Clean: Make Sure Your Fruits and Veggies</h4>
-                                <p>24 Jan 2017</p>
+                                <h4>Tin 3</h4>
+                                <p>24 tháng 4 2023</p>
                             </div>
                         </a>
                         <a href="#" class="row blog-recent">
@@ -696,21 +565,21 @@
                                 <img class="img-responsive img-thumbnail" src="uploads/recent-5.jpg" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
-                                <h4>Should I bring my child in for a routine physical?</h4>
-                                <p>15 Jan 2017</p>
+                                <h4>Tin 4</h4>
+                                <p>15 tháng 4 2023</p>
                             </div>
                         </a>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Time Table</div>
+                        <div class="sub-ttl">Thời gian làm việc</div>
                         <ul class="timetable">
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Mon</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Tue</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Wed</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Fri</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Sat</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Sun</a><a class="pull-right">Holiday</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 2</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 3</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 4</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 5</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 6</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 7</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -722,15 +591,15 @@
         <div class="layer-stretch">
             <div class="layer-wrapper layer-bottom-10">
                 <div class="layer-ttl layer-ttl-white">
-                    <h3>Our Department </h3>
+                    <h3>Khoa</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Gynaecology</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
+                                <h5>Phụ khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa phụ khoa</p>
                             </div>
                         </div>
                     </div>
@@ -738,8 +607,8 @@
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Orthology</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
+                                <h5>Y học nhiệt đới</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa y học nhiệt đới</p>
                             </div>
                         </div>
                     </div>
@@ -747,8 +616,8 @@
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Dermatologist</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
+                                <h5>Tim mạch</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tim mạch</p>
                             </div>
                         </div>
                     </div>
@@ -756,8 +625,8 @@
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Anaesthesia</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
+                                <h5>Đa khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa đa khoa</p>
                             </div>
                         </div>
                     </div>
@@ -765,17 +634,17 @@
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Ayurvedic</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
-                            </div>
+                                <h5>Mắt</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa mắt</p>
                         </div>
+                    </div>
                     </div>
                     <div class="col-md-4">
                         <div class="department-block">
                             <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
                             <div class="tbl-cell department-detail">
-                                <h5>Pathology</h5>
-                                <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum. Suam denique cuique naturam esse ad vivendum ducem. Sed tu istuc dixti bene Latine, parum plane.</p>
+                                <h5>Tiêu hóa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tiêu hóa</p>
                             </div>
                         </div>
                     </div>

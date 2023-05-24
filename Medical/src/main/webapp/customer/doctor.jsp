@@ -82,60 +82,28 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li class="menu-megamenu-li">
-                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
-                                    <ul class="menu-megamenu">
-                                        <li class="row">
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 1</div>
-                                                <ul>
-                                                    <li><a href="event-1.html">Event Style 1</a></li>
-                                                    <li><a href="event-2.html">Event Style 2</a></li>
-                                                    <li><a href="event-3.html">Event Style 3</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 2</div>
-                                                <ul>
-                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
-                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
-                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
-                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
-                                                    <li><a href="404.html">404 Page Not Found</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="megamenu-ttl">Link 3</div>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="theme-img">
-                                                    <img src="uploads/service-5.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </li> 
+                                <li>
+                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Về chúng tôi</a></li>
+                                        <li><a href="contact.jsp">Liên hệ</a></li>
+                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
 								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Blog Details 1</a></li>
-                                        <li><a href="blog.jsp">Blog Details 2</a></li>
+                                        <li><a href="blog.jsp">Tin tức 1</a></li>
+                                        <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
-                                <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
+                                <li><a href="chat.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn sức khỏe</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -168,18 +136,14 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="doctorp-name">
-                            <h3>Dr. Daniel Barnes</h3>
-                            <span class="badge badge-primary">Head of Department</span>
-                            <p>Orthologist Specilist</p>
+                            <h3>Bác sĩ 1</h3>
+                            <span class="badge badge-primary">Chức vụ</span>
+                            <p>Chuyên gia não bộ</p>
                             <div class="doctorp-social">
                                 <ul class="social-list social-list-bordered">
                                     <li>
                                         <a href="#" id="sample-facebook-6" class="fa fa-facebook rounded"></a>
                                         <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-facebook-6">Facebook</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" id="sample-twitter-6" class="fa fa-twitter rounded"></a>
-                                        <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-twitter-6">Twitter</span>
                                     </li>
                                     <li>
                                         <a href="#" id="sample-instagram-6" class="fa fa-instagram rounded"></a>
@@ -189,129 +153,125 @@
                                         <a href="#" id="sample-youtube-6" class="fa fa-youtube rounded"></a>
                                         <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-youtube-6">Youtube</span>
                                     </li>
-                                    <li>
-                                        <a href="#" id="sample-linkedin-6" class="fa fa-linkedin rounded"></a>
-                                        <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-linkedin-6">Linkedin</span>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="doctor-details-extra text-left p-0 pt-4">
                             <p class="text-center"><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                            <p class="text-center"><i class="fa fa-trophy"></i>8 Awards</p>
-                            <p class="text-center"><i class="fa fa-star"></i>17 year Experience</p>
-                            <p class="text-center"><i class="fa fa-money"></i>Charges: $100</p>
+                            <p class="text-center"><i class="fa fa-trophy"></i>8 giải thưởng</p>
+                            <p class="text-center"><i class="fa fa-star"></i>17 năm kinh nghiệm</p>
+                            <p class="text-center"><i class="fa fa-money"></i>Phí trung bình: $100</p>
                         </div>
-                        <p class="text-muted p-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit minus, modi adipisci nesciunt, illum atque temporibus cupiditate blanditiis quo illo cumque doloribus laborum rem neque dolorum, ipsa officiis fugiat expedita.Perspiciatis facere magnam reiciendis modi ratione asperiores fugit minus dolores dignissimos cum.</p>
+                        <p class="text-muted p-2">Thông tin bác sĩ</p>
                     </div>
                     <div class="col-md-8">
-                        <div class="sub-ttl font-20 pt-4">Skill & Achievments</div>
+                        <div class="sub-ttl font-20 pt-4">Kỹ năng và thành tựu</div>
                         <div class="doctor-skills">
-                            <p class="font-14">Brain Surgery <span class="badge badge-primary float-right">75%</span></p>
+                            <p class="font-14">Não bộ<span class="badge badge-primary float-right">75%</span></p>
                             <div class="progress progress-md mb-4">
                                 <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="doctor-skills">
-                            <p class="font-14">Heart Surgery <span class="badge badge-danger float-right">65%</span></p>
+                            <p class="font-14">Tim mạch<span class="badge badge-danger float-right">65%</span></p>
                             <div class="progress progress-md mb-4">
                                 <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="doctor-skills">
-                            <p class="font-14">Trauma Surgery <span class="badge badge-success float-right">80%</span></p>
+                            <p class="font-14">Tiêu hóa<span class="badge badge-success float-right">80%</span></p>
                             <div class="progress progress-md mb-4">
                                 <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="doctor-skills">
-                            <p class="font-14">General Surgery <span class="badge badge-warning float-right">87%</span></p>
+                            <p class="font-14">Đa khoa<span class="badge badge-warning float-right">87%</span></p>
                             <div class="progress progress-md mb-4">
                                 <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="doctor-skills">
-                            <p class="font-14">Weekly Consultancy <span class="badge badge-primary float-right">55%</span></p>
+                            <p class="font-14">Thần kinh<span class="badge badge-primary float-right">55%</span></p>
                             <div class="progress progress-md mb-4">
                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="sub-ttl font-20 pt-4">Services</div>
+                        <div class="sub-ttl font-20 pt-4">Dịch vụ</div>
                         <ul class="category-list p-3 pl-6">
-                            <li><a href="#"><i class="fa fa-stethoscope"></i>Cardiovascular centre</a></li>
-                            <li><a href="#"><i class="fa fa-child"></i>Childbirth Center</a></li>
-                            <li><a href="#"><i class="fa fa-heartbeat"></i>Cardiology</a></li>
-                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Skin Care</a></li>
+                            <li><a href="#"><i class="fa fa-stethoscope"></i>Tim mạch</a></li>
+                            <li><a href="#"><i class="fa fa-child"></i>Hộ sinh</a></li>
+                            <li><a href="#"><i class="fa fa-heartbeat"></i>Thần kinh</a></li>
+                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Chăm sóc da</a></li>
                             <li><a href="#"><i class="fa fa-flask"></i>Laboratory Services</a></li>
-                            <li><a href="#"><i class="fa fa-certificate"></i>Mammography</a></li>
-                            <li><a href="#"><i class="fa fa-h-square"></i>Dermatologist</a></li>
+                            <li><a href="#"><i class="fa fa-certificate"></i>Chụp phim</a></li>
+                            <li><a href="#"><i class="fa fa-h-square"></i>Tiêu hóa</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-8">
-                        <div class="sub-ttl pt-4 font-20">Academic Training</div>
+                        <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
                         <table class="table table-hover">
                             <thead>
                                 <tr class="table-primary-head">
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Degree</th>
-                                    <th>Date</th>
+                                    <th>Tên bằng</th>
+                                    <th>Trường</th>
+                                    <th>Ngày</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Universty of world for Medicine</td>
-                                    <td>Bachelor of Medicine(BM)</td>
-                                    <td><span class="badge badge-danger badge-pill">Dec 1991</span></td>
+                                    <td>Bằng 1</td>
+                                    <td>Trường 1</td>
+                                    <td><span class="badge badge-danger badge-pill">2001</span></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Medical School for Surgeon</td>
-                                    <td>Bachelor of Surgery(BS)</td>
-                                    <td><span class="badge badge-warning badge-pill">Aug 1994</span></td>
+                                    <td>Bằng 2</td>
+                                    <td>Trường 2</td>
+                                    <td><span class="badge badge-warning badge-pill">2004</span></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>University for Science and Medical</td>
-                                    <td>Doctor of Medicine(MD)</td>
-                                    <td><span class="badge badge-info badge-pill">Apr 1996</span></td>
+                                    <td>Bằng 3</td>
+                                    <td>Trường 3</td>
+                                    <td><span class="badge badge-info badge-pill">2006</span></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Institue of Science</td>
-                                    <td>Doctor of Osteopathic Medicine</td>
-                                    <td><span class="badge badge-success badge-pill">Oct 1998</span></td>
+                                    <td>Bằng 4</td>
+                                    <td>Trường 4</td>
+                                    <td><span class="badge badge-success badge-pill">2008</span></td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>Institue of Science and Medicine</td>
-                                    <td>Master of Surgery</td>
-                                    <td><span class="badge badge-danger badge-pill">May 2001</span></td>
+                                    <td>Bằng 5</td>
+                                    <td>Trường 5</td>
+                                    <td><span class="badge badge-danger badge-pill">2011</span></td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>Institue of Science and Medicine</td>
-                                    <td>Doctor of Clinical Surgery</td>
-                                    <td><span class="badge badge-warning badge-pill">Feb 2004</span></td>
+                                    <td>Bằng 6</td>
+                                    <td>Trường 6</td>
+                                    <td><span class="badge badge-warning badge-pill">2014</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm-4">
-                        <div class="sub-ttl pt-4 font-20">Time Table</div>
+                        <div class="sub-ttl pt-4 font-20">Thời gian làm việc</div>
                         <div class="card mb-5">
                             <div class="card-body">
                                 <ul class="timetable">
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Mon</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Tue</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Wed</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Fri</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Sat</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Sun</a><a class="pull-right">Holiday</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ hai</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ ba</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ tư</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ năm</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ sáu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ bảy</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
                                 </ul>
                             </div>
                         </div>

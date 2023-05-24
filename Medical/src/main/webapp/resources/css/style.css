@@ -474,14 +474,6 @@ blockquote {
     width: 100%;
     height: 100%; }
 
-.parallax-background-1 {
-  background-image: url(../uploads/background-1.jpg); }
-
-.parallax-background-2 {
-  background-image: url(../uploads/background-2.jpg); }
-
-.parallax-background-3 {
-  background-image: url(../uploads/background-3.jpg); }
 
 .layer-ttl {
   text-align: center;
@@ -1628,8 +1620,7 @@ blockquote {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(../uploads/background-1.jpg); }
+  background-size: cover; }
   .page-ttl::before {
     content: '';
     position: absolute;

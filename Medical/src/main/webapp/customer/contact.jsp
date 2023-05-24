@@ -115,54 +115,65 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start Page Title Section -->
+     <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đăng ký</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Đăng ký</span></p>
+                <h1>Liên hệ</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Liên hệ</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
-    <!-- Start Register Section -->
-    <div class="layer-stretch">
+    <!-- Start Contact Detail Section -->
+    <div id="contact-page" class="layer-stretch">
         <div class="layer-wrapper">
-            <div class="form-container">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-user-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="register-name">
-                    <label class="mdl-textfield__label" for="register-name">Tên <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+            <div class="row text-center">
+                <div class="col-md-6 col-lg-3 contact-info-block">
+                    <div class="contact-info-inner">
+                        <i class="fa fa-plus-square-o"></i>
+                        <span>Đặt cuộc hẹn</span>
+                        <p class="paragraph-medium paragraph-black">+ 0123.456.789</p>
+                        <p>Rainie123@medical.com </p>
+                    </div>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email">
-                    <label class="mdl-textfield__label" for="register-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                <div class="col-md-6 col-lg-3 contact-info-block">
+                    <div class="contact-info-inner">
+                        <i class="fa fa-phone"></i>
+                        <span>Gọi cho chúng tôi</span>
+                        <p class="paragraph-medium paragraph-black">+ 0123.456.789</p>
+                        <p>+ 0123.456.789 </p>
+                    </div>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="register-password">
-                    <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
+                <div class="col-md-6 col-lg-3 contact-info-block">
+                    <div class="contact-info-inner">
+                        <i class="fa fa-envelope"></i>
+                        <span>Gửi mail cho chúng tôi</span>
+                        <p class="paragraph-medium paragraph-black">Rainie000@medical.com</p>
+                        <p>Rainie456@medical.com </p>
+                    </div>
                 </div>
-                <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="terms-conditions.jsp">điều khoản &#38; điều kiện</a></div>
-                <div class="form-submit">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="or-using">Hoặc đăng nhập bằng</div>
-                <div class="social-login">
-                    <a href="#" class="social-facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                    <a href="#" class="social-google"><i class="fa fa-google"></i>Google</a>
-                </div>
-                <div class="login-link">
-                    <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
+                <div class="col-md-6 col-lg-3 contact-info-block">
+                    <div class="contact-info-inner">
+                        <i class="fa fa-map-marker"></i>
+                        <span>Địa chỉ</span>
+                        <p class="paragraph-medium paragraph-black">Ngô Thì Nhâm, Hòa Khánh Nam, Liên Chiểu</p>
+                        <p class="paragraph-medium paragraph-black">Đà Nẵng, Việt Nam</p>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div><!-- End Register Section -->
+    </div><!-- End Contact Detail Section -->
+    <!-- Start Google Map Section -->
+    <div id="map">
+        <div class="map-wrapper">
+            <div id="map-container"></div>
+        </div>
+        <div class="map-address">
+            <div class="map-icon"><i class="fa fa-map-marker"></i></div>
+            <div class="map-address-ttl">Địa chỉ của chúng tôi</div>
+            <div class="paragraph-medium paragraph-black">Ngô Thì Nhậm,Hòa Khánh Nam, Liên Chiểu, Đà Nẵng, Việt Nam</div>
+        </div>
+    </div><!-- End Google Map Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -179,7 +190,8 @@
                 </div>
             </div>
         </div>
-    </div><!-- End Emergency Section -->    <!-- Start Make an Appointment Modal -->
+    </div><!-- End Emergency Section -->
+    <!-- Start Make an Appointment Modal -->
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

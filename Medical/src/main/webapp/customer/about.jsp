@@ -115,54 +115,277 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start Page Title Section -->
+     <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đăng ký</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Đăng ký</span></p>
+                <h1>Về chúng tôi</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Về chúng tôi</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
-    <!-- Start Register Section -->
+    <!-- Start About First Section  -->
     <div class="layer-stretch">
         <div class="layer-wrapper">
-            <div class="form-container">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-user-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="register-name">
-                    <label class="mdl-textfield__label" for="register-name">Tên <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+            <div class="layer-container row">
+                <div class="col-md-5 hm-service-left">
+                    <img class="" src="<c:url value="/resources/images/test.jpg" />" alt="">
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email">
-                    <label class="mdl-textfield__label" for="register-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="register-password">
-                    <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                </div>
-                <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="terms-conditions.jsp">điều khoản &#38; điều kiện</a></div>
-                <div class="form-submit">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="or-using">Hoặc đăng nhập bằng</div>
-                <div class="social-login">
-                    <a href="#" class="social-facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                    <a href="#" class="social-google"><i class="fa fa-google"></i>Google</a>
-                </div>
-                <div class="login-link">
-                    <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
+                <div class="col-md-7 hm-service-right">
+                    <p class="paragraph-medium paragraph-black">
+                        
+                    </p>
+                    <p class="paragraph-medium paragraph-black">
+                        * Lấy hoạt động khám chữa bệnh phục vụ cộng đồng là mũi nhọn, bên cạnh thương hiệu y tế hàng đầu, 
+                        chúng tôi đã được định hướng phát triển mô hình hoạt động với đa dạng các lĩnh vực như: 
+                        Y tế, Dược phẩm, Trang thiết bị, Văn hóa, Công nghệ và Dịch vụ y tế số, Công nghệ và Dịch vụ, 
+                        Công ty Cổ phần Dịch vụ Chẩn đoán hình ảnh.
+                    </p>
+                    <p class="paragraph-medium paragraph-black">
+                        * Với đội ngũ y bác sĩ cùng hệ thống nhân viên chuyên nghiệp và giàu kinh nghiệm
+                        chúng tôi tin rằng sẽ đem lại cho quý khách hàng những trải nghiệm tốt nhất ở mọi lĩnh vực được may mắn làm 
+                        việc với quý khách.
+                    </p>
+                    <p class="paragraph-medium paragraph-black">
+                        * Số năm kinh nghiệm hoạt động lên đến hàng chục năm và làm việc với hàng trăm bác sĩ và hàng nghìn bệnh nhân
+                        Kinh nghiệm của chúng tôi ngày càng được mài dũa và tích lũy hằng ngày, hầu hết mọi người đến với phòng khám của chúng tôi
+                        đều đánh giá hài lòng - đây là điều vinh hạnh cũng như minh chứng rõ nhất cho chất lượng phục vụ của chúng tôi.
+                    </p>
+                    <p class="paragraph-medium paragraph-black">
+                        * Công nghệ luôn được cập nhật hằng ngày về phần cứng cũng như phần mềm, mọi thứ chúng tôi đem đến hệ thống bệnh viện đều là tốt nhất trong phạm vi của chúng tôi
+                        Với các y thiết bị hiện đại, đầy đủ và chất lượng, chúng tôi không dám nói đây là những thứ tốt nhất những chắc chắn sẽ là những điều tốt nhất mà chúng tôi
+                        có thể đem lại cho quý khách hàng.
+                    </p>
+                    <p class="paragraph-medium paragraph-black">
+                        * Hệ thống thuốc men và các vật tư y tế đầy đủ, quý khách hàng có thể yên tâm về những đơn thuốc mà chúng tôi mang lại, ở đây có cả thuốc kê đơn và không kê đơn 
+                        cho những trường hợp quý khách hàng không tìm thấy thuốc yêu cầu của mình.
+                    </p>
+                    <ul class="theme-list">
+                        <li><i class="fa fa-arrow-right primary-color"></i>Hệ thống chăm sóc khách hàng chuyên nghiệp</li>
+                        <li><i class="fa fa-arrow-right primary-color"></i>Cấp cứ 24/7</li>
+                        <li><i class="fa fa-arrow-right primary-color"></i>Hệ thống y bác sĩ chuyên nghiệp</li>
+                        <li><i class="fa fa-arrow-right primary-color"></i>Công nghệ hiện đại</li>
+                        <li><i class="fa fa-arrow-right primary-color"></i>Hệ thống thuốc men đầy đủ</li>
+                        <li><i class="fa fa-arrow-right primary-color"></i>Tư vấn hỗ trợ y tế bằng AI</li>
+                    </ul>
                 </div>
             </div>
-
         </div>
-    </div><!-- End Register Section -->
+    </div><!-- End About First Page  -->
+    <!-- Start About Second Section  -->
+    <div class="parallax-background parallax-background-2">
+        <div class="layer-stretch">
+            <div class="layer-wrapper">
+                <div class="layer-ttl layer-ttl-white">
+                    <h3>Chúng tôi là ai?</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="hm-about-block">
+                            <div class="tbl-cell hm-about-icon"><i class="fa fa-user-md"></i></div>
+                            <div class="tbl-cell hm-about-number">
+                                <span class="counter">54</span>
+                                <p>Bác sĩ</p>
+                            </div>
+                        </div>
+                        <div class="hm-about-block">
+                            <div class="tbl-cell hm-about-icon"><i class="fa fa-ambulance"></i></div>
+                            <div class="tbl-cell hm-about-number">
+                                <span class="counter">130</span>
+                                <p>Phòng</p>
+                            </div>
+                        </div>
+                        <div class="hm-about-block">
+                            <div class="tbl-cell hm-about-icon"><i class="fa fa-calendar"></i></div>
+                            <div class="tbl-cell hm-about-number">
+                                <span class="counter">51</span>
+                                <p>Năm kinh nghiệm</p>
+                            </div>
+                        </div>
+                        <div class="hm-about-block">
+                            <div class="tbl-cell hm-about-icon"><i class="fa fa-clock-o"></i></div>
+                            <div class="tbl-cell hm-about-number">
+                                <span class="counter">168</span>
+                                <p>Giờ mở cửa 1 tuần</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                    </div>
+                    <div class="row about-mission-vission text-center">
+                        <div class="col-md-6 about-mission">
+                            <span>Sứ mệnh</span>
+                            <p class="paragraph-medium paragraph-white">Đem đến cho quý khách hàng trải nghiệm tuyệt vời nhất</p>
+                        </div>
+                        <div class="col-md-6 about-vission">
+                            <span>Tầm nhìn</span>
+                            <p class="paragraph-medium paragraph-white">Trở thành bệnh viện hàng đầu miền trung nói riêng và toàn quốc nói chung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End About Second Section  -->
+    <!-- Start Doctor Section -->
+    <div class="layer-stretch">
+        <div class="layer-wrapper layer-bottom-10 text-center">
+            <div class="layer-ttl">
+                <h3>Đội ngũ của chúng tôi</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="theme-block theme-block-hover">
+                        <div class="theme-block-picture">
+                           <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            </div>
+                            <div class="doctor-name doctor-name-2">
+                                <h4><a>Bác sĩ 1</a></h4>
+                            </div>
+                            <div class="theme-block-hidden">
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 1</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 1</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
+                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 8</p>
+                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 17 năm</p>
+                                    </div>
+                                </div>
+                                <div class="doctor-social">
+                                    <ul class="social-list social-list-bordered social-list-rounded">
+                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="theme-block theme-block-hover">
+                        <div class="theme-block-picture">
+                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            </div>
+                            <div class="doctor-name doctor-name-2">
+                                <h4><a>Bác sĩ 2</a></h4>
+                            </div>
+                            <div class="theme-block-hidden">
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 2</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 2</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <p><i class="fa fa-shield"></i>C00s</p>
+                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 5</p>
+                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 9 năm</p>
+                                    </div>
+                                </div>
+                                <div class="doctor-social">
+                                    <ul class="social-list social-list-bordered social-list-rounded">
+                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="theme-block theme-block-hover">
+                        <div class="theme-block-picture">
+                           <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            </div>
+                            <div class="doctor-name doctor-name-2">
+                                <h4><a>Bác sĩ 3</a></h4>
+                            </div>
+                            <div class="theme-block-hidden">
+                                <div class="doctor-name">
+                                    <h4><a>Bác sĩ 3</a></h4>
+                                </div>
+                                <div class="doctor-details">
+                                    <div class="doctor-specility">
+                                        <p>Khoa 3</p>
+                                    </div>
+                                    <div class="doctor-details-extra">
+                                        <p><i class="fa fa-shield"></i>Intern</p>
+                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
+                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 12</p>
+                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 6 năm</p>
+                                    </div>
+                                </div>
+                                <div class="doctor-social">
+                                    <ul class="social-list social-list-bordered social-list-rounded">
+                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
+                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Doctor List Section -->
+    <!-- Start Testimonial Section -->  
+    <div id="testimonial" class="parallax-background parallax-background-2">
+        <div class="layer-stretch">
+            <div class="layer-wrapper">
+                <div class="layer-ttl layer-ttl-white">
+                    <h3>Bình luận của mọi người</h3>
+                </div>
+                <div class="layer-container">
+                    <div id="testimonial-slider" class="owl-carousel owl-theme theme-owl-dot">
+                        <div class="testimonial-block">  
+                            <div class="paragraph-medium paragraph-white">
+                                <i class="fa fa-quote-left"></i>
+                                Bình luận 1
+                            </div>
+                            <a>Tác giả 1</a>
+                        </div>
+                        <div class="testimonial-block">
+                            <div class="paragraph-medium paragraph-white">
+                                <i class="fa fa-quote-left"></i>
+                                Bình luận 2
+                            </div>
+                            <a>Tác giả 2</a>
+                        </div>
+                        <div class="testimonial-block">
+                            <div class="paragraph-medium paragraph-white">
+                                <i class="fa fa-quote-left"></i>
+                                Bình luận 3
+                            </div>
+                            <a>Tác giả 3</a>
+                        </div>
+                        <div class="testimonial-block">
+                             <div class="paragraph-medium paragraph-white">
+                                <i class="fa fa-quote-left"></i>
+                                Bình luận 4
+                            </div>
+                            <a>Tác giả 4</a>
+                        </div>
+                        <div class="testimonial-block">
+                            <div class="paragraph-medium paragraph-white">
+                                <i class="fa fa-quote-left"></i>
+                                Bình luận 5
+                            </div>
+                            <a>Tác giả 5</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Testimonial Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -179,7 +402,8 @@
                 </div>
             </div>
         </div>
-    </div><!-- End Emergency Section -->    <!-- Start Make an Appointment Modal -->
+    </div><!-- End Emergency Section -->
+    <!-- Start Make an Appointment Modal -->
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

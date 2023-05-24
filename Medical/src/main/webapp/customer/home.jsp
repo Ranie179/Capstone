@@ -10,6 +10,8 @@
     <title>Medical Support</title>
     <!-- Meta Description Tag -->
     <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <!-- Favicon Icon -->
+    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -80,56 +82,24 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li class="menu-megamenu-li">
-                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
-                                    <ul class="menu-megamenu">
-                                        <li class="row">
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 1</div>
-                                                <ul>
-                                                    <li><a href="event-1.html">Event Style 1</a></li>
-                                                    <li><a href="event-2.html">Event Style 2</a></li>
-                                                    <li><a href="event-3.html">Event Style 3</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 2</div>
-                                                <ul>
-                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
-                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
-                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
-                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
-                                                    <li><a href="404.html">404 Page Not Found</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="megamenu-ttl">Link 3</div>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="theme-img">
-                                                    <img src="uploads/service-5.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </li> 
+                                <li>
+                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Về chúng tôi</a></li>
+                                        <li><a href="contact.jsp">Liên hệ</a></li>
+                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
                                     </ul>
                                 </li>
-								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
+								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Blog Details 1</a></li>
-                                        <li><a href="blog.jsp">Blog Details 2</a></li>
+                                        <li><a href="blog.jsp">Tin tức 1</a></li>
+                                        <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
@@ -151,35 +121,35 @@
             <ul class="slides">     
                 <li>
                     <div class="slider-info">
-                        <h1 class="animated fadeInDown">55+ Page Tamplates and Much More</h1>
-                        <p class="animated fadeInDown">We have created 55+ Pages, 200+ Components or Shortcodes, Popup for this template and more in future. #twitterhash, @facebooktag</p>
+                        <h1 class="animated fadeInDown">Trang web hỗ trợ y tế</h1>
+                        <p class="animated fadeInDown">Ở đây cung cấp các dịch vụ và hỗ trợ y tế</p>
                     </div>
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-1.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button slider-appointment">
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Make An Appointment<i class="fa fa-flag-checkered"></i></a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đặt lịch hẹn<i class="fa fa-flag-checkered"></i></a>
                     </div>
                 </li>
                 <li>
                     <div class="slider-info">
-                        <h2>Your Identity. Our Responsibility</h2>
-                        <p>This is tag line ipsum dolor sit amet, consectetur Nihil cupiditate. mollitia maiores temp fugit! Lorem ipsum dolor sit amet, consectetur adipisicing elit#twitterhash, @facebooktag</p>
+                        <h2>Hệ thống y tế chuyên nghiệp</h2>
+                        <p>Với đội ngũ y tế chuyên nghiệp khắp các khoa và các bác sĩ với nhiều năm kinh nghiệm</p>
                     </div>
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-2.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button">
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Read More<i class="fa fa-external-link"></i></a>
+                        <a href = "doctorlist.jsp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đọc thêm<i class="fa fa-external-link"></i></a>
                     </div>
                 </li>
                 <li>
                     <div class="slider-info">
-                        <h2>24/7 Support Services</h2>
-                        <p>Do not hesitate to contact us on our dedicated support forum. mollitia maiores temp fugit! Lorem ipsum dolor sit amet, consectetur adipisicing elit #twitterhash, @facebooktag</p>
+                        <h2>Hỗ trợ 24/7</h2>
+                        <p>Hệ thống có thể được sử dụng bởi tất cả mọi người, tư vấn y tế miễn phí bằng trí tuệ nhân tạo</p>
                     </div>
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-3.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button">
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">About Us<i class="fa fa-eye"></i></a>
+                        <a href = "about.jsp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Về chúng tôi<i class="fa fa-eye"></i></a>
                     </div>
                 </li>
             </ul>
@@ -189,38 +159,38 @@
     <div id="hm-service" class="layer-stretch">
         <div class="layer-wrapper">
             <div class="layer-ttl">
-                <h3>What We Do</h3>
+                <h3>Tại sao nên chọn chúng tôi?</h3>
             </div>
             <div class="layer-container">
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-phone"></i></div>
-                    <span>Emergency Departments</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Chăm sóc khách hàng</span>
+                    <p class="paragraph-small paragraph-white">Luôn có nhân viên chăm sóc khách hàng và đội ngũ bác sĩ túc trực luôn sẵn sàng giải quyết thắc mắc của quý khác </p>
                 </div>
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-calendar"></i></div>
-                    <span>24 hour Service</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Dịch vụ 24/7</span>
+                    <p class="paragraph-small paragraph-white">Ở chúng tôi có dịch vụ hỗ trợ y tế bằng AI và hệ thống trò chuyện trực tuyến giữa bác sĩ và người dùng liên tục 24/24</p>
                 </div>
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-cloud"></i></div>
-                    <span>Advanced Technology</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Công nghệ hiện đại</span>
+                    <p class="paragraph-small paragraph-white">Với những thiết bị phần cứng và phần mềm hiện đại nhất, chúng tôi tự tin rằng sẽ phục vụ quý khách một cách chu đáo</p>
                 </div>
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-ambulance"></i></div>
-                    <span>Ambulance</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Cấp cứu</span>
+                    <p class="paragraph-small paragraph-white">Khoa cấp cứu làm việc 24/7 với đội ngũ chuyên nghiệp và tận tình</p>
                 </div>
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-stethoscope"></i></div>
-                    <span>Primary health care</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Đội ngũ chăm sóc tận tình</span>
+                    <p class="paragraph-small paragraph-white">Ngoài các bác sĩ, các nhân viên, y tá, điều dưỡng sẽ đều đón tiếp và chăm sóc quý khách tận tình nhất có thể để mọi người có trải nghiệm tớt nhất </p>
                 </div>
                 <div class="feature-block feature-block-dark">
                     <div class="feature-icon"><i class="fa fa-shopping-bag"></i></div>
-                    <span>Pharmacies and drug stores</span>
-                    <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <span>Hệ thống thuốc men hiện đại, đầy đủ</span>
+                    <p class="paragraph-small paragraph-white">Với hệ thống tiệm thuốc hiện đại, đầy đủ các loại thuốc trên toàn quốc và ngoại quốc, có bán thuốc kê đơn lẫn không kê đơn, sẽ khiến cho mọi người yên tâm về chất lượng</p>
                 </div>
             </div>
         </div>
@@ -230,7 +200,7 @@
         <div class="layer-stretch">
             <div class="layer-wrapper">
                 <div class="layer-ttl layer-ttl-white">
-                    <h3>Who We Are</h3>
+                    <h3>Đội ngũ của chúng tôi</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-7">
@@ -238,38 +208,43 @@
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-user-md"></i></div>
                             <div class="tbl-cell hm-about-number">
                                 <span class="counter">54</span>
-                                <p>Doctor(s)</p>
+                                <p>Bác sĩ</p>
                             </div>
                         </div>
                         <div class="hm-about-block">
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-ambulance"></i></div>
                             <div class="tbl-cell hm-about-number">
                                 <span class="counter">130</span>
-                                <p>Room(s)</p>
+                                <p>Phòng</p>
                             </div>
                         </div>
                         <div class="hm-about-block">
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-calendar"></i></div>
                             <div class="tbl-cell hm-about-number">
                                 <span class="counter">51</span>
-                                <p>Year of Experience(s)</p>
+                                <p>Năm kinh nghiệm</p>
                             </div>
                         </div>
                         <div class="hm-about-block">
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-clock-o"></i></div>
                             <div class="tbl-cell hm-about-number">
                                 <span class="counter">168</span>
-                                <p>Opening Hours per Week</p>
+                                <p>Giờ mở cửa hàng tuần</p>
                             </div>
                         </div>
                         <div class="hm-about-paragraph">
                             <p class="paragraph-medium paragraph-white">
-                                <span class="theme-dropcap color-white">K</span>Reque errem oblique sed et, an fugit omnes impetus qui. Mea et ludus choro, wisi mnesarchum no vim, no aliquip laoreet his. Mutat sapientem similique usu ex, novum docendi inimicus at vis, te sit persecuti philosophia delicatissimi. Mei civibus eloquentiam cu. Unum invidunt adipiscing sea et, corrumpit torquatos pri cu. Malis nihil menandri ea vel, stet possit usu cu. Nec autem graeco ea, ne ferri reque est.No est liber eloquentiam, mei an adhuc dicunt meliore. Purto volutpat vix ut, qui ad sint utinam nominavi. Ea option recusabo eos, no est vide eleifend gloriatur. Atqui timeam omnesque nec te.
+                                <span class="theme-dropcap color-white">V</span>ới đội ngũ bác sĩ, y tá và nhân viên chuyên nghiệp.
+                                Kết hợp với công nghệ hiện đại từ phần cứng đến phần mềm, chúng tôi tự tin rằng sẽ mang đến trải 
+                                nghiệm tốt nhất cho quý khách. Dù là trực tiếp hay trực tuyến, chúng tôi sẽ cố gắng hết sức mình để
+                                mang đến cho qúy khách những giây phút thật yên tâm. Không những có các bác sĩ túc trực 24/7 để lắng
+                                nghe yêu cầu của quý khách, chúng tôi còn có hệ thống trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh để mọi
+                                người được có thêm thông tin về tình trạng của bản thân
                             </p> 
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <img class="img-thumbnail" src="uploads/hm-about.jpg" alt="">
+                        <img class="img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
                     </div>
                 </div>
             </div>
@@ -279,15 +254,15 @@
     <div id="hm-feature" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-10">
             <div class="layer-ttl">
-                <h3>Why Choose Us</h3>
+                <h3>Chúng tôi nổi bật ở lĩnh vực nào?</h3>
             </div>
             <div class="row text-left">
                 <div class="col-md-4">
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Gynaecology</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Phụ khoa</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin phụ khoa</p>
                         </div>
                     </div>
                 </div>
@@ -295,8 +270,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Orthology</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Y học nhiệt đới</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin y học nhiệt đới</p>
                         </div>
                     </div>
                 </div>
@@ -304,8 +279,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Dermatologist</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Da liễu</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin da liễu</p>
                         </div>
                     </div>
                 </div>
@@ -313,8 +288,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Anaesthesia</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Phẫu thuật</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin phẫu thuật</p>
                         </div>
                     </div>
                 </div>
@@ -322,8 +297,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Ayurvedic</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Mắt</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin mắt</p>
                         </div>
                     </div>
                 </div>
@@ -331,8 +306,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Pathology</h5>
-                            <p class="paragraph-small paragraph-white">Restinguet citius, si ardentem acceper it. Non est enim vitium in oratione sol um, sed etiam in moribus. In scholade sinis. An haec ab eo non dicuntur?Lon gum est enim ad omnia respondereq uaeatedicta sunt. Cetera illa adhibeba t, quibus demptis negat se Epicurus intellegere quid sit bonum.</p>
+                            <h5>Tiêu hóa</h5>
+                            <p class="paragraph-small paragraph-white">Thông tin tiêu hóa</p>
                         </div>
                     </div>
                 </div>
@@ -344,49 +319,49 @@
         <div class="layer-stretch">
             <div class="layer-wrapper">
                 <div class="layer-ttl layer-ttl-white">
-                    <h3>Our Team</h3>
+                    <h3>Đội ngũ bác sĩ của chúng tôi</h3>
                 </div>
                 <div class="layer-container">
                     <div id="hm-doctor-slider" class="owl-carousel owl-theme theme-owl-dot">
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-1.jpg" alt="">
-                            <h6>Dr. Daniel Barnes</h6>
-                            <p>Orthologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 1</h6>
+                            <p>Khoa 1</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-2.jpg" alt="">
-                            <h6>Dr. Melisa bates</h6>
-                            <p>Gynocologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 2</h6>
+                            <p>Khoa 2</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-3.jpg" alt="">
-                            <h6>Dr. Cheri Aria</h6>
-                            <p>Dermatologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 3</h6>
+                            <p>Khoa 3</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-4.jpg" alt="">
-                            <h6>Steve Soeren</h6>
-                            <p>Orthologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 4</h6>
+                            <p>Khoa 4</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-5.jpg" alt="">
-                            <h6>Barbara Baker</h6>
-                            <p>Surgeon</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 5</h6>
+                            <p>Khoa 5</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-6.jpg" alt="">
-                            <h6>Linda Adams</h6>
-                            <p>Gynocologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 6</h6>
+                            <p>Khoa 6</p>
+                        </div>
+                       <div class="hm-doctor">
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 7</h6>
+                            <p>Khoa 7</p>
                         </div>
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-7.jpg" alt="">
-                            <h6>Emily Rasberry</h6>
-                            <p>Pathologist</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="uploads/slide-doctor-8.jpg" alt="">
-                            <h6>Nancy Allen</h6>
-                            <p>Gynocologist</p>
+                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <h6>Bác sĩ 8</h6>
+                            <p>Khoa 8</p>
                         </div>
                     </div>
                 </div>
@@ -397,105 +372,100 @@
     <div id="hm-blog" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-10 text-center">
             <div class="layer-ttl">
-                <h3>Latest Posts</h3>
+                <h3>Tin mới nhất</h3>
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
-                            <div class="blog-card-date">08 Jun 2017</div>
-                            <img src="uploads/blog-1.jpg" alt="">
+                            <div class="blog-card-date">08 tháng 05 2023</div>
+                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                         </div>
                         <div class="blog-card-ttl">
-                            <h3><a href="#">Why Food Poisoning happened and How To  – Home Remedy</a></h3>
+                            <h3><a href="#">Tin tức 1</a></h3>
                         </div>
                         <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Daniel Barnes</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a></p>
+                            <p><i class="fa fa-user"></i>Tác giả 2</p>
+                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
-                            <div class="blog-card-date">05 Jun 2017</div>
-                            <img src="uploads/blog-2.jpg" alt="">
+                            <div class="blog-card-date">10 tháng 05 2023</div>
+                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                         </div>
                         <div class="blog-card-ttl">
-                            <h3><a href="#">All you need to know about Chinese Food, Is it good or bad?</a></h3>
+                            <h3><a href="#">Tin tức 2</a></h3>
                         </div>
                         <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Melissa Bates</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a></p>
+                            <p><i class="fa fa-user"></i>Tác giả 2</p>
+                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
-                            <div class="blog-card-date">27 Apr 2017</div>
-                            <img src="uploads/blog-3.jpg" alt="">
+                            <div class="blog-card-date">18 tháng 05 2023</div>
+                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                         </div>
                         <div class="blog-card-ttl">
-                            <h3><a href="#">Keep it Clean: Make Sure Your Fruits and Veggies Are Safe and Healthy</a></h3>
+                            <h3><a href="#">Tin tức 3</a></h3>
                         </div>
                         <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Micheal</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a></p>
+                            <p><i class="fa fa-user"></i>Tác giả 3</p>
+                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div><!-- End Blog Section -->
-    <!-- Start Testimonial Section -->
-    <div id="testimonial" class="parallax-background parallax-background-3">
+       <!-- Start Testimonial Section -->
+    <div id="testimonial" class="colored-background">
         <div class="layer-stretch">
             <div class="layer-wrapper">
                 <div class="layer-ttl layer-ttl-white">
-                    <h3>What People Say</h3>
+                    <h3>Bình luận của mọi người</h3>
                 </div>
                 <div class="layer-container">
                     <div id="testimonial-slider" class="owl-carousel owl-theme theme-owl-dot">
-                        <div class="testimonial-block">
-                            <img class="img-responsive" src="uploads/testimonial-1.jpg" alt="">
+                        <div class="testimonial-block">  
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Thank you for the remedy. I feel it has been working on a deeper subtle level. An inner seeing. I have had the feeling of a melting inside and great sense of peace and rightness. I experienced this before with your perception and treatment so thank you very much.
+                                Bình luận 1
                             </div>
-                            <a>Reuben Snow</a>
+                            <a>Tác giả 1</a>
                         </div>
                         <div class="testimonial-block">
-                            <img class="img-responsive" src="uploads/testimonial-2.jpg" alt="">
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                This was my second visit here I loved it first visit but love it more on my second visit. I loved thier facility and online system. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam veniam sit nemo eveniet recusandae nihil nesciunt rerum alias.
+                                Bình luận 2
                             </div>
-                            <a>Julien Cain</a>
+                            <a>Tác giả 2</a>
                         </div>
                         <div class="testimonial-block">
-                            <img class="img-responsive" src="uploads/testimonial-3.jpg" alt="">
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Thank you for the remedy. I feel it has been working on a deeper subtle level. An inner seeing. I have had the feeling of a melting inside and great sense of peace and rightness. I experienced this before with your perception and treatment so thank you very much.
+                                Bình luận 3
                             </div>
-                            <a>Naum Gabo</a>
+                            <a>Tác giả 3</a>
                         </div>
                         <div class="testimonial-block">
-                            <img class="img-responsive" src="uploads/testimonial-4.jpg" alt="">
-                            <div class="paragraph-medium paragraph-white">
+                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias corporis ad veniam, illo expedita aut quaerat voluptatem, magni voluptas necessitatibus omnis error quia deserunt asperiores beatae fugiat quisquam magnam mollitia!
+                                Bình luận 4
                             </div>
-                            <a>Winceton Logo</a>
+                            <a>Tác giả 4</a>
                         </div>
                         <div class="testimonial-block">
-                            <img class="img-responsive" src="uploads/testimonial-5.jpg" alt="">
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias corporis ad veniam, illo expedita aut quaerat voluptatem, magni voluptas necessitatibus omnis error quia deserunt asperiores beatae fugiat quisquam magnam mollitia!
+                                Bình luận 5
                             </div>
-                            <a>Robert Bratheon</a>
+                            <a>Tác giả 5</a>
                         </div>
                     </div>
                 </div>

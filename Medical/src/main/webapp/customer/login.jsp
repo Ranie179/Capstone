@@ -82,56 +82,24 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li class="menu-megamenu-li">
-                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
-                                    <ul class="menu-megamenu">
-                                        <li class="row">
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 1</div>
-                                                <ul>
-                                                    <li><a href="event-1.html">Event Style 1</a></li>
-                                                    <li><a href="event-2.html">Event Style 2</a></li>
-                                                    <li><a href="event-3.html">Event Style 3</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 2</div>
-                                                <ul>
-                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
-                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
-                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
-                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
-                                                    <li><a href="404.html">404 Page Not Found</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="megamenu-ttl">Link 3</div>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="theme-img">
-                                                    <img src="uploads/service-5.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </li> 
+                                <li>
+                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Về chúng tôi</a></li>
+                                        <li><a href="contact.jsp">Liên hệ</a></li>
+                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
                                     </ul>
                                 </li>
-								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
+								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Blog Details 1</a></li>
-                                        <li><a href="blog.jsp">Blog Details 2</a></li>
+                                        <li><a href="blog.jsp">Tin tức 1</a></li>
+                                        <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>

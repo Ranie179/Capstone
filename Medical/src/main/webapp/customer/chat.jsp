@@ -92,7 +92,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
@@ -115,54 +115,55 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start Page Title Section -->
+    <!-- Start page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đăng ký</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Đăng ký</span></p>
+                <h1>Tư vấn miễn phí</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Tư vấn miễn phí</span></p>
             </div>
         </div>
-    </div><!-- End Page Title Section -->
-    <!-- Start Register Section -->
-    <div class="layer-stretch">
-        <div class="layer-wrapper">
-            <div class="form-container">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-user-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="register-name">
-                    <label class="mdl-textfield__label" for="register-name">Tên <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email">
-                    <label class="mdl-textfield__label" for="register-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="register-password">
-                    <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                </div>
-                <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="terms-conditions.jsp">điều khoản &#38; điều kiện</a></div>
-                <div class="form-submit">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="or-using">Hoặc đăng nhập bằng</div>
-                <div class="social-login">
-                    <a href="#" class="social-facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                    <a href="#" class="social-google"><i class="fa fa-google"></i>Google</a>
-                </div>
-                <div class="login-link">
-                    <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
-                </div>
-            </div>
+    </div><!-- End page Title Section -->
+   <!-- partial:index.partial.html -->
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        ROBO-DOC
+      </div>
+    </header>
 
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">Robo-Doc</div>
+          </div>
+          <div class="msg-text">
+             Hello, my name is RoboDoc, and I will be happy to help diagnose your disease. 
+          </div>
         </div>
-    </div><!-- End Register Section -->
+      </div>
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">Robo-Doc</div>
+          </div>
+          <div class="msg-text">
+            To start, we need to ask some basic questions, tap OK to continue ! 
+          </div>
+        </div>
+      </div>
+    </main>
+      
+
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+     </section>
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -179,7 +180,8 @@
                 </div>
             </div>
         </div>
-    </div><!-- End Emergency Section -->    <!-- Start Make an Appointment Modal -->
+    </div><!-- End Emergency Section -->
+    <!-- Start Make an Appointment Modal -->
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -389,5 +391,6 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+   
 </body>
 </html>

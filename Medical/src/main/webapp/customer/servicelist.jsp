@@ -82,56 +82,24 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li class="menu-megamenu-li">
-                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
-                                    <ul class="menu-megamenu">
-                                        <li class="row">
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 1</div>
-                                                <ul>
-                                                    <li><a href="event-1.html">Event Style 1</a></li>
-                                                    <li><a href="event-2.html">Event Style 2</a></li>
-                                                    <li><a href="event-3.html">Event Style 3</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="megamenu-ttl">Link 2</div>
-                                                <ul>
-                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
-                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
-                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
-                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
-                                                    <li><a href="404.html">404 Page Not Found</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="megamenu-ttl">Link 3</div>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="theme-img">
-                                                    <img src="uploads/service-5.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </li> 
+                                <li>
+                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Về chúng tôi</a></li>
+                                        <li><a href="contact.jsp">Liên hệ</a></li>
+                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
 								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Blog Details 1</a></li>
-                                        <li><a href="blog.jsp">Blog Details 2</a></li>
+                                        <li><a href="blog.jsp">Tin tức 1</a></li>
+                                        <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
@@ -147,7 +115,7 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start page Title Section -->
+   <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
@@ -155,7 +123,7 @@
                 <p><a href="#">Trang chủ</a> &#8594; <span>Dịch vụ</span></p>
             </div>
         </div>
-    </div><!-- End page Title Section -->
+    </div><!-- End Page Title Section -->
     <!-- Start Service List Section -->
     <div  id="service-page" class="layer-stretch">
         <div class="layer-wrapper text-center">
@@ -165,22 +133,22 @@
                         <div class="theme-accordion-container">
                             <div class="theme-accordion">
                                 <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-stethoscope"></i> Cardiovascular centre</h4>
+                                    <h4><i class="fa fa-stethoscope"></i>Khám sức khỏe tổng quát và chi tiết</h4>
                                     <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
                                 </div>
                                 <div class="theme-accordion-bdy">
                                     <div class="row service-accordian">
                                         <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                            <img class="img-responsive img-thumbnail" src="uploads/service-1.jpg" alt="">
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="paragraph-small paragraph-black">
                                                 <i class="fa fa-stethoscope theme-dropcap"></i>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptatum amet molestiae, sint consequatur, quam. Vero enim fugit provident labore qui, autem, cum numquam ipsa repudiandae asperiores saepe mollitia, voluptatibus! Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.
+                                                Khám sức khỏe
                                             </p>
                                             <div class="pull-right">
                                                 <a href="#" class="button-icon">
-                                                    <span>Read More</span>
+                                                    <span>Đọc thêm</span>
                                                     <i class="fa fa-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -190,7 +158,7 @@
                             </div>
                             <div class="theme-accordion">
                                 <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-child"></i> Childbirth Center</h4>
+                                    <h4><i class="fa fa-child"></i>Chăm sóc giữ trẻ</h4>
                                     <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
                                 </div>
                                 <div class="theme-accordion-bdy">
@@ -199,13 +167,13 @@
                                             <img class="img-responsive img-thumbnail" src="uploads/service-2.jpg" alt="">
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
+                                        <p class="paragraph-small paragraph-black">
                                                 <i class="fa fa-child theme-dropcap"></i>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptatum amet molestiae, sint consequatur, quam. Vero enim fugit provident labore qui, autem, cum numquam ipsa repudiandae asperiores saepe mollitia, voluptatibus! Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.
+                                                Chăm sóc trẻ
                                             </p>
                                             <div class="pull-right">
                                                 <a href="#" class="button-icon">
-                                                    <span>Read More</span>
+                                                    <span>Đọc thêm</span>
                                                     <i class="fa fa-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -215,7 +183,7 @@
                             </div>
                             <div class="theme-accordion">
                                 <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-heartbeat"></i> Cardiology</h4>
+                                    <h4><i class="fa fa-heartbeat"></i>Điều trị tim mạch</h4>
                                     <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
                                 </div>
                                 <div class="theme-accordion-bdy">
@@ -226,7 +194,7 @@
                                         <div class="col-sm-9">
                                             <p class="paragraph-small paragraph-black">
                                                 <i class="fa fa-heartbeat theme-dropcap"></i>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptatum amet molestiae, sint consequatur, quam. Vero enim fugit provident labore qui, autem, cum numquam ipsa repudiandae asperiores saepe mollitia, voluptatibus! Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.
+                                                Điều trị tim mạch
                                             </p>
                                             <div class="pull-right">
                                                 <a href="#" class="button-icon">
@@ -762,6 +730,30 @@
 
     <!-- **********Included Scripts*********** -->
 
+    <!-- Jquery Library 2.1 JavaScript-->
+    <script src='<c:url value="/resources/js/jquery-2.1.4.min.js" />'></script>
+    <!-- Popper JavaScript-->
+    <script src='<c:url value="/resources/js/popper.min.js" />'></script>
+    <!-- Bootstrap Core JavaScript-->
+    <script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
+    <!-- Material Design Lite JavaScript-->
+    <script src='<c:url value="/resources/js/material.min.js" />'></script>
+    <!-- Material Select Field Script -->
+    <script src='<c:url value="/resources/js/mdl-selectfield.min.js" />'></script>
+    <!-- Flexslider Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/jquery.flexslider.min.js" />'></script>
+    <!-- Owl Carousel Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/owl.carousel.min.js" />'></script>
+    <!-- Scrolltofixed Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/jquery-scrolltofixed.min.js" />'></script>
+    <!-- Magnific Popup Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/jquery.magnific-popup.min.js" />'></script>
+    <!-- WayPoint Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/jquery.waypoints.min.js" />'></script>
+    <!-- CounterUp Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/jquery.counterup.js" />'></script>
+    <!-- SmoothScroll Plugin JavaScript-->
+    <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
 </body>
