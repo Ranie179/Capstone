@@ -61,9 +61,8 @@
                         <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
                             <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            <li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            <li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            <li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                            <li class="mdl-menu__item"><a href="register.jsp"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            <li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,7 +91,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
@@ -115,270 +114,192 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-   <!-- Start Page Title Section -->
+      <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Dịch vụ</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Dịch vụ</span></p>
+                <h1>Dịch vụ 1</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Dịch vụ</a> &#8594; <span>Dịch vụ 1</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
-    <!-- Start Service List Section -->
-    <div  id="service-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
-            <div class="row">
-                <div class="col-lg-8">
+    <!-- Start Service Section -->
+    <div id="service-page-1">
+        <div class="layer-stretch">
+            <div class="row layer-wrapper">
+                <div class="col-lg-8 text-center">
                     <div class="theme-material-card">
-                        <div class="theme-accordion-container">
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-stethoscope"></i>Khám sức khỏe tổng quát và chi tiết</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
+                        <div class="theme-img theme-img-scalerotate"><img src="<c:url value="/resources/images/test.jpg" />" alt=""></div>
+                        <div class="service-post">
+                            <p class="paragraph-medium paragraph-black text-left">Giới thiệu.</p>
+                           <p class="paragraph-medium paragraph-black text-left">Mô tả 1 </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ol class="theme-list">
+                                        <li>1. ưu điểm 1</li>
+                                        <li>2. ưu điểm 2</li>
+                                        <li>3. ưu điểm 3</li>
+                                        <li>4. ưu điểm 4</li>
+                                        <li>5. ưu điểm 5</li>
+                                        <li>6. ưu điểm 6</li>
+                                    </ol>
                                 </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-1.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-stethoscope theme-dropcap"></i>
-                                                Khám sức khỏe
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="service.jsp" class="button-icon">
-                                                    <span>Đọc thêm</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="theme-img theme-img-scalerotate">
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-child"></i>Chăm sóc giữ trẻ</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
+                            <p></p>
+                            <p class="paragraph-medium paragraph-black text-left">Mô tả 2 </p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="theme-img theme-img-scalerotate">
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                    </div>
                                 </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-2.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                        <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-child theme-dropcap"></i>
-                                                Chăm sóc trẻ
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Đọc thêm</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="theme-img theme-img-scalerotate">
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="theme-img theme-img-scalerotate">
+                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-heartbeat"></i>Điều trị tim mạch</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-3.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-heartbeat theme-dropcap"></i>
-                                                Điều trị tim mạch
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-eye"></i> Khám mắt</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-10.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-eye theme-dropcap"></i>
-                                                Khám mắt
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-bullhorn"></i> Lấy mẫu xét nghiệm</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-11.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-bullhorn theme-dropcap"></i>
-                                                Lấy mẫu xét nghiệm
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p></p>
+                            <p class="paragraph-medium paragraph-black text-left">Mô tả 3 </p>
+                            <ul class="theme-list text-left">
+                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
+                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
+                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
+                            </ul>
+                            <p></p>
+                            <div class="theme-quote theme-quote-colored">
+                                <i class="fa fa-quote-left"></i> Câu kết thúc </div>
                         </div>
                     </div>
-                    <ul class="theme-pagination">
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">10</a></li>
-                    </ul>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Reviews (9)</div>
+                        <ul class="comment-list">
+                            <li>
+                                <div class="row">
+                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
+                                        <div class="theme-img">
+                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-10 comment-detail text-left">
+                                        <div class="comment-meta">
+                                            <span>Tác giả 1</span>
+                                            <span>22 tháng 5 2023</span>
+                                        </div>
+                                        <div class="comment-post">
+                                            Comment 1
+                                        </div>                      
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
+                                        <div class="theme-img">
+                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-10 comment-detail text-left">
+                                        <div class="comment-meta">
+                                            <span>Tác giả 2</span>
+                                            <span>22 tháng 5 2023</span>
+                                        </div>
+                                        <div class="comment-post">
+                                            Comment 2
+                                        </div>                      
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
+                                        <div class="theme-img">
+                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-10 comment-detail text-left">
+                                        <div class="col-10 comment-detail text-left">
+                                        <div class="comment-meta">
+                                            <span>Tác giả 3</span>
+                                            <span>22 tháng 5 2023</span>
+                                        </div>
+                                        <div class="comment-post">
+                                            Comment 3
+                                        </div>                      
+                                    </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl layer-ttl-white">Viết bình luận</div>
+                        <div class="row comment-form">
+                            <div class="col-sm-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="comment-name">
+                                    <label class="mdl-textfield__label" for="comment-name">Tên <em> *</em></label>
+                                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="comment-email">
+                                    <label class="mdl-textfield__label" for="comment-email">Email <em> *</em></label>
+                                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="mdl-textfield mdl-js-textfield form-input">
+                                    <textarea class="mdl-textfield__input" rows="4" id="comment-message" ></textarea>
+                                    <label class="mdl-textfield__label" for="comment-message">Bình luận ...</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-submit">
+                                    <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Bình luận</button>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="theme-material-card text-center">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                            <input class="mdl-textfield__input" type="text" id="sidebar-search">
-                            <label class="mdl-textfield__label" for="sidebar-search">Enter Any Keyword</label>
-                            <button class="fa fa-search search-button"></button>
-                        </div>
-                    </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Our Team</div>
-                        <div class="flexslider theme-flexslider">
-                            <ul class="slides">
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-1.jpg" alt="" />
-                                        <h4>Dr. Daniel Barnes</h4>
-                                        <p>Orthologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-2.jpg" alt="" />
-                                        <h4>Dr. Melissa Bates</h4>
-                                        <p>Gynocologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-4.jpg" alt="" />
-                                        <h4>Dr. Cheri Aria</h4>
-                                        <p>Dermatologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-3.jpg" alt="" />
-                                        <h4>Dr. Steve Soeren</h4>
-                                        <p>Orthologist</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="theme-material-card">
-                        <div class="sub-ttl">Time Table</div>
-                        <ul class="timetable">
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Mon</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Tue</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Wed</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Fri</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Sat</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 AM - 5:00 PM</a></li>
-                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Sun</a><a class="pull-right">Holiday</a></li>
+                        <div class="sub-ttl">Dịch vụ của chúng tôi</div>
+                        <ul class="category-list">
+                            <li><a href="#"><i class="fa fa-stethoscope"></i>Dịch vụ 1</a></li>
+                            <li><a href="#"><i class="fa fa-child"></i>Dịch vụ 2</a></li>
+                            <li><a href="#"><i class="fa fa-heartbeat"></i>Dịch vụ 3</a></li>
+                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Dịch vụ 4</a></li>
+                            <li><a href="#"><i class="fa fa-flask"></i>Dịch vụ 5</a></li>
                         </ul>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </div><!-- End Service List Section -->
-    <!-- Start Feature List Section -->
-    <div class="parallax-background parallax-background-1">
-        <div class="layer-stretch">
-            <div class="layer-wrapper layer-bottom-10 text-center">
-                <div class="layer-ttl layer-ttl-white">
-                    <h3>Why Choose Us</h3>
-                </div>
-                <div class="layer-container">
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-phone"></i></div>
-                        <span>Emergency Departments</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
                     </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-calendar"></i></div>
-                        <span>24 hour Service</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-cloud"></i></div>
-                        <span>Advanced Technology</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-ambulance"></i></div>
-                        <span>Ambulance</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-stethoscope"></i></div>
-                        <span>Primary health care</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-shopping-bag"></i></div>
-                        <span>Pharmacies and drug stores</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-hospital-o"></i></div>
-                        <span>Laboratory and research</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
-                    </div>
-                    <div class="feature-block">
-                        <div class="feature-icon"><i class="fa fa-user-md"></i></div>
-                        <span>Medical nursing home</span>
-                        <p class="paragraph-small paragraph-white">Mel in hinc veri admodum, copiosae epicurei mea ei. Cum at nisl soleat. Eam insolens referrentur efficiantur an. Nibh deleniti ad vix, quodsi aliquam legendos pri in.</p>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Thời gian làm việc</div>
+                        <ul class="timetable">
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ hai</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ ba</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ tư</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ năm</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ sáu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ bảy</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- End Feature List Section -->
+    </div><!-- End Service Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
