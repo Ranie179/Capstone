@@ -101,7 +101,7 @@
                                         <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
-								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
+								<li><a href="customer/myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
                                 <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
                                 <li>
                                 </li>
@@ -118,8 +118,8 @@
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Dịch vụ 1</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Dịch vụ</a> &#8594; <span>Dịch vụ 1</span></p>
+                <h1><c:out value="${serviceInfo.name}" /></h1>
+                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Dịch vụ</a> &#8594; <span><c:out value="${serviceInfo.name}" /></span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
@@ -129,56 +129,46 @@
             <div class="row layer-wrapper">
                 <div class="col-lg-8 text-center">
                     <div class="theme-material-card">
-                        <div class="theme-img theme-img-scalerotate"><img src="<c:url value="/resources/images/test.jpg" />" alt=""></div>
+                        <div class="theme-img theme-img-scalerotate"><img src="<c:url value="https://drive.google.com/uc?id=1Lli1GZMPTBY24JsE7LXTbWmlaZUck31k" />" alt=""></div>
                         <div class="service-post">
-                            <p class="paragraph-medium paragraph-black text-left">Giới thiệu.</p>
-                           <p class="paragraph-medium paragraph-black text-left">Mô tả 1 </p>
+                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.intro}" /></p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <ol class="theme-list">
-                                        <li>1. ưu điểm 1</li>
-                                        <li>2. ưu điểm 2</li>
-                                        <li>3. ưu điểm 3</li>
-                                        <li>4. ưu điểm 4</li>
-                                        <li>5. ưu điểm 5</li>
-                                        <li>6. ưu điểm 6</li>
-                                    </ol>
+                                    <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description1}" /></p>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        <img src="<c:out value="${serviceInfo.image2}" />" alt="">
                                     </div>
                                 </div>
                             </div>
                             <p></p>
-                            <p class="paragraph-medium paragraph-black text-left">Mô tả 2 </p>
+                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description2}" /></p>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        <img src="<c:out value="${serviceInfo.image3}" />" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        <img src="<c:out value="${serviceInfo.image4}" />" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                        <img src="<c:out value="${serviceInfo.image5}" />" alt="">
                                     </div>
                                 </div>
                             </div>
                             <p></p>
-                            <p class="paragraph-medium paragraph-black text-left">Mô tả 3 </p>
+                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description3}" /></p>
                             <ul class="theme-list text-left">
-                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
-                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
-                                <li><i class="fa fa-dot-circle-o color-blue"></i>Ưu điểm hệ thống</li>
+                                <li><i class="fa fa-dot-circle-o color-blue"></i><c:out value="${serviceInfo.advantage}" /></li>
                             </ul>
                             <p></p>
                             <div class="theme-quote theme-quote-colored">
-                                <i class="fa fa-quote-left"></i> Câu kết thúc </div>
+                                <i class="fa fa-quote-left"></i><c:out value="${serviceInfo.endline}" /> </div>
                         </div>
                     </div>
                     <div class="theme-material-card">
@@ -277,11 +267,9 @@
                     <div class="theme-material-card">
                         <div class="sub-ttl">Dịch vụ của chúng tôi</div>
                         <ul class="category-list">
-                            <li><a href="#"><i class="fa fa-stethoscope"></i>Dịch vụ 1</a></li>
-                            <li><a href="#"><i class="fa fa-child"></i>Dịch vụ 2</a></li>
-                            <li><a href="#"><i class="fa fa-heartbeat"></i>Dịch vụ 3</a></li>
-                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Dịch vụ 4</a></li>
-                            <li><a href="#"><i class="fa fa-flask"></i>Dịch vụ 5</a></li>
+                        <c:forEach items="${service}" var="item">
+                            <li><a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}"><i class="<c:out value="${serviceInfo.icon}" />"></i><c:out value="${item.name}" /></a></li>
+                             </c:forEach>
                         </ul>
                     </div>
                     <div class="theme-material-card">

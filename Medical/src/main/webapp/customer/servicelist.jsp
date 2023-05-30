@@ -131,23 +131,24 @@
                 <div class="col-lg-8">
                     <div class="theme-material-card">
                         <div class="theme-accordion-container">
+                        <c:forEach items="${service}" var="item">
                             <div class="theme-accordion">
                                 <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-stethoscope"></i>Khám sức khỏe tổng quát và chi tiết</h4>
+                                    <h4><i class="<c:out value="${item.icon}" />"></i><c:out value="${item.name}" /></h4>
                                     <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
                                 </div>
                                 <div class="theme-accordion-bdy">
                                     <div class="row service-accordian">
                                         <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-1.jpg" alt="">
+                                            <img class="img-responsive img-thumbnail" src="<c:out value="${item.image1}" />" alt="">
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-stethoscope theme-dropcap"></i>
-                                                Khám sức khỏe
+                                                <i class="<c:out value="${item.icon}" /> theme-dropcap"></i>
+                                                <c:out value="${item.intro}" />
                                             </p>
                                             <div class="pull-right">
-                                                <a href="service.jsp" class="button-icon">
+                                                <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="button-icon">
                                                     <span>Đọc thêm</span>
                                                     <i class="fa fa-arrow-right"></i>
                                                 </a>
@@ -156,106 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-child"></i>Chăm sóc giữ trẻ</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-2.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                        <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-child theme-dropcap"></i>
-                                                Chăm sóc trẻ
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Đọc thêm</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-heartbeat"></i>Điều trị tim mạch</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-3.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-heartbeat theme-dropcap"></i>
-                                                Điều trị tim mạch
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-eye"></i> Khám mắt</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-10.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-eye theme-dropcap"></i>
-                                                Khám mắt
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="fa fa-bullhorn"></i> Lấy mẫu xét nghiệm</h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="uploads/service-11.jpg" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="fa fa-bullhorn theme-dropcap"></i>
-                                                Lấy mẫu xét nghiệm
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="#" class="button-icon">
-                                                    <span>Read More</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                     <ul class="theme-pagination">
