@@ -119,8 +119,8 @@
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Thông tin bác sĩ</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Danh sách bác sĩ</a> &#8594; <span>Thông tin bác sĩ</span></p>
+                <h1><c:out value="${doctorInfo.doctorName}" /></h1>
+                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Danh sách bác sĩ</a> &#8594; <span><c:out value="${doctorInfo.doctorName}" /></span></p>
             </div>
         </div>
     </div><!-- End page Title Section -->
@@ -136,131 +136,39 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="doctorp-name">
-                            <h3>Bác sĩ 1</h3>
-                            <span class="badge badge-primary">Chức vụ</span>
-                            <p>Chuyên gia não bộ</p>
-                            <div class="doctorp-social">
-                                <ul class="social-list social-list-bordered">
-                                    <li>
-                                        <a href="#" id="sample-facebook-6" class="fa fa-facebook rounded"></a>
-                                        <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-facebook-6">Facebook</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" id="sample-instagram-6" class="fa fa-instagram rounded"></a>
-                                        <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-instagram-6">Instagram</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" id="sample-youtube-6" class="fa fa-youtube rounded"></a>
-                                        <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="sample-youtube-6">Youtube</span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <h3><c:out value="${doctorInfo.doctorName}" /></h3>
+                            <span class="badge badge-primary"><c:out value="${doctorInfo.position.positionName}" /></span>
+                            <p><c:out value="${doctorInfo.department.departmentName}" /></p>
                         </div>
                         <div class="doctor-details-extra text-left p-0 pt-4">
-                            <p class="text-center"><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                            <p class="text-center"><i class="fa fa-trophy"></i>8 giải thưởng</p>
-                            <p class="text-center"><i class="fa fa-star"></i>17 năm kinh nghiệm</p>
-                            <p class="text-center"><i class="fa fa-money"></i>Phí trung bình: $100</p>
+                            <p class="text-center"><i class="fa fa-mortar-board"></i><c:out value="${doctorInfo.graduate}" /></p>
+                            <p class="text-center"><i class="fa fa-star"></i><c:out value="${doctorInfo.expYear}" /> năm kinh nghiệm</p>
+                            <p class="text-center"><i class="fa fa-briefcase"></i><c:out value="${doctorInfo.workYear}" /> năm làm việc với chúng tôi</p>
                         </div>
-                        <p class="text-muted p-2">Thông tin bác sĩ</p>
+                        <p class="text-muted p-2"><c:out value="${doctorInfo.information}" /></p>
                     </div>
-                    <div class="col-md-8">
-                        <div class="sub-ttl font-20 pt-4">Kỹ năng và thành tựu</div>
-                        <div class="doctor-skills">
-                            <p class="font-14">Não bộ<span class="badge badge-primary float-right">75%</span></p>
-                            <div class="progress progress-md mb-4">
-                                <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="doctor-skills">
-                            <p class="font-14">Tim mạch<span class="badge badge-danger float-right">65%</span></p>
-                            <div class="progress progress-md mb-4">
-                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="doctor-skills">
-                            <p class="font-14">Tiêu hóa<span class="badge badge-success float-right">80%</span></p>
-                            <div class="progress progress-md mb-4">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="doctor-skills">
-                            <p class="font-14">Đa khoa<span class="badge badge-warning float-right">87%</span></p>
-                            <div class="progress progress-md mb-4">
-                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="doctor-skills">
-                            <p class="font-14">Thần kinh<span class="badge badge-primary float-right">55%</span></p>
-                            <div class="progress progress-md mb-4">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="sub-ttl font-20 pt-4">Dịch vụ</div>
-                        <ul class="category-list p-3 pl-6">
-                            <li><a href="#"><i class="fa fa-stethoscope"></i>Tim mạch</a></li>
-                            <li><a href="#"><i class="fa fa-child"></i>Hộ sinh</a></li>
-                            <li><a href="#"><i class="fa fa-heartbeat"></i>Thần kinh</a></li>
-                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Chăm sóc da</a></li>
-                            <li><a href="#"><i class="fa fa-flask"></i>Laboratory Services</a></li>
-                            <li><a href="#"><i class="fa fa-certificate"></i>Chụp phim</a></li>
-                            <li><a href="#"><i class="fa fa-h-square"></i>Tiêu hóa</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-12">
                         <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
                         <table class="table table-hover">
                             <thead>
-                                <tr class="table-primary-head">
-                                    <th>#</th>
+                                <tr style = "text-align: center;" class="table-primary-head">
                                     <th>Tên bằng</th>
                                     <th>Trường</th>
                                     <th>Ngày</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${degree}" var="item">
                                 <tr>
-                                    <td>1</td>
-                                    <td>Bằng 1</td>
-                                    <td>Trường 1</td>
-                                    <td><span class="badge badge-danger badge-pill">2001</span></td>
+                                    <td style = "text-align: center;"><c:out value="${item.degreeName}" /></td>
+                                    <td style = "text-align: center;"><c:out value="${item.college}" /></td>
+                                    <td style = "text-align: center;" ><span class="badge badge-success badge-pill"><c:out value="${item.year}" /></span></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Bằng 2</td>
-                                    <td>Trường 2</td>
-                                    <td><span class="badge badge-warning badge-pill">2004</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Bằng 3</td>
-                                    <td>Trường 3</td>
-                                    <td><span class="badge badge-info badge-pill">2006</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Bằng 4</td>
-                                    <td>Trường 4</td>
-                                    <td><span class="badge badge-success badge-pill">2008</span></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Bằng 5</td>
-                                    <td>Trường 5</td>
-                                    <td><span class="badge badge-danger badge-pill">2011</span></td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Bằng 6</td>
-                                    <td>Trường 6</td>
-                                    <td><span class="badge badge-warning badge-pill">2014</span></td>
-                                </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-4">
+                     <div class="col-sm-6">
                         <div class="sub-ttl pt-4 font-20">Thời gian làm việc</div>
                         <div class="card mb-5">
                             <div class="card-body">
@@ -276,116 +184,54 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-
+                    <div class="col-md-6">
+                        <div class="sub-ttl font-20 pt-4">Dịch vụ</div>
+                        <ul class="category-list p-3 pl-6">
+                            <li><a href="#"><i class="fa fa-stethoscope"></i>Tim mạch</a></li>
+                            <li><a href="#"><i class="fa fa-child"></i>Hộ sinh</a></li>
+                            <li><a href="#"><i class="fa fa-heartbeat"></i>Thần kinh</a></li>
+                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>Chăm sóc da</a></li>
+                            <li><a href="#"><i class="fa fa-flask"></i>Laboratory Services</a></li>
+                            <li><a href="#"><i class="fa fa-certificate"></i>Chụp phim</a></li>
+                            <li><a href="#"><i class="fa fa-h-square"></i>Tiêu hóa</a></li>
+                        </ul>
+                    </div>
                     </div>
                 </div>
             </div>
             <div class="theme-material-card">
                 <div class="sub-ttl">Bác sĩ khác</div>
                 <div class="row">
+                <c:forEach items="${doctorBonus}" var="item">
                     <div class="col-sm-6 col-md-4">
                         <div class="theme-block">
                             <div class="theme-block-picture doctor-picture-2">
-                                <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                <img src="<c:url value="${item.imageUrl }" />" alt="">
                             </div>
                             <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 1</a></h4>
+                                <h4><a>${item.doctorName }</a></h4>
                             </div>
                             <div class="theme-block-hidden">
                                 <div class="doctor-name">
-                                    <h4><a>Bác sĩ 1</a></h4>
+                                    <h4><a href="<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}">${item.doctorName }</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>Khoa 1</p>
+                                        <p>${item.department.departmentName }</p>
                                     </div>
                                     <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 8</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 17 năm</p>
+                                        <p><i class="fa fa-shield"></i>${item.position.positionName }</p>
+                                        <p><i class="fa fa-mortar-board"></i>${item.graduate }</p>
+                                        <p><i class="fa fa-briefcase"></i>${item.workYear } năm là việc với chúng tôi</p>
+                                        <p><i class="fa fa-star"></i>Kinh nghiệm: ${item.expYear } năm</p>
                                     </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="theme-block">
-                            <div class="theme-block-picture doctor-picture-2">
-                                <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            </div>
-                            <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 2</a></h4>
-                            </div>
-                            <div class="theme-block-hidden">
-                                <div class="doctor-name">
-                                    <h4><a>Bác sĩ 2</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Khoa 2</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>C00s</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 5</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 9 năm</p>
-                                    </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="theme-block">
-                            <div class="theme-block-picture doctor-picture-2">
-                                <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            </div>
-                            <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 3</a></h4>
-                            </div>
-                            <div class="theme-block-hidden">
-                                <div class="doctor-name">
-                                    <h4><a>Bác sĩ 3</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Khoa 3</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>Intern</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 12</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 6 năm</p>
-                                    </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
-        </div>
     </div><!-- End Doctor List Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
