@@ -12,13 +12,21 @@ public class ServiceService {
 	@Autowired
 	private ServiceRepository serviceRepository;
 	
-	public List<Services> showAllService ()
+	public List<Services> showMoreService ()
 	{
-		return serviceRepository.showAllService();
+		return serviceRepository.showMoreService();
 	}
 
 	public List<Services> showServiceInfo(int id) {
 		return serviceRepository.showServiceInfo(id);
+	}
+	
+	public int getTotalServiceCount() {
+		return serviceRepository.getTotalServiceCount();
+	}
+
+	public List<Services> getServicesByPage(int page, int pageSize) {
+		return serviceRepository.getServicesByPage(page, pageSize);
 	}
 	
 }

@@ -150,67 +150,65 @@
                                             <p><i class="fa fa-star"></i>Kinh nghiệm : ${item.expYear } năm</p>
                                         </div>
                                     </div>
-                                    <div class="doctor-social">
-                                        <ul class="social-list social-list-bordered social-list-rounded">
-                                            <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                            <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                               </c:forEach>
                         </div>
 					</div>
-                    <ul class="theme-pagination">
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">10</a></li>
-                    </ul>
+				 <ul class="theme-pagination">
+				        <c:choose>
+				            <c:when test="${currentPage > 1}">
+				                <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}">&laquo; Previous</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>&laquo; Previous</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				
+				        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+				            <c:choose>
+				                <c:when test="${loop.index == currentPage}">
+				                    <li class="active"><span>${loop.index}</span></li>
+				                </c:when>
+				                <c:otherwise>
+				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${loop.index}">${loop.index}</a></li>
+				                </c:otherwise>
+				            </c:choose>
+				        </c:forEach>
+				
+				        <c:choose>
+				            <c:when test="${currentPage < totalPages}">
+				                <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}">Next &raquo;</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>Next &raquo;</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				    </ul>
                 </div>
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                            <input class="mdl-textfield__input" type="text" id="sidebar-search">
-                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên bác sĩ</label>
-                            <button class="fa fa-search search-button"></button>
+                           <form class="searchform" action ="<%=request.getContextPath()%>/searchDoctorByName">
+	                            <input class="mdl-textfield__input" type="search" id="searchDoctor" name = "searchDoctor">
+	                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên bác sĩ</label>
+	                            <button type = "submit" class="fa fa-search search-button"></button>
+                            </form>
                         </div>
                     </div>
                     <div class="theme-material-card">
                         <div class="sub-ttl">Dịch vụ</div>
                         <div class="flexslider theme-flexslider">
                             <ul class="slides">
+                            <c:forEach items="${service}" var="item">
                                 <li>
                                     <div class="theme-flexslider-container">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
-                                        <h4>Dịch vụ 1</h4>
-                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
+                                        <img src="<c:url value="${item.image1}" />" alt="" />
+                                        <h4>${item.name}</h4>
+                                        <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
-                                        <h4>Dịch vụ 2</h4>
-                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
-                                        <h4>Dịch vụ 3</h4>
-                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="<c:url value="/resources/images/test.jpg" />" alt="" />
-                                        <h4>Dịch vụ 4</h4>
-                                        <a href="#" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                </li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>

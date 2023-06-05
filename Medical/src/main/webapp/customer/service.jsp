@@ -268,7 +268,7 @@
                         <div class="sub-ttl">Dịch vụ của chúng tôi</div>
                         <ul class="category-list">
                         <c:forEach items="${service}" var="item">
-                            <li><a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}"><i class="<c:out value="${serviceInfo.icon}" />"></i><c:out value="${item.name}" /></a></li>
+                            <li><a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}"><i class="fa fa-medkit"></i><c:out value="${item.name}" /></a></li>
                              </c:forEach>
                         </ul>
                     </div>

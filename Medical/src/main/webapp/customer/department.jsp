@@ -115,94 +115,16 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-      <!-- Start Page Title Section -->
+    <!-- Start page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Khoa</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Khoa</span></p>
+                <h1>Khoa 1</h1>
+               <p><a href="#">Trang chủ</a> &#8594; <a href="#">Khoa</a> &#8594; <span>Khoa 1</span></p>
             </div>
         </div>
-    </div><!-- End Page Title Section -->
-    <!-- Start Doctor List Section -->
-    <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper layer-bottom-10">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 1</h4>
-                            <p class="text-muted">Thông tin khoa 1</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 2</h4>
-                            <p class="text-muted">Thông tin khoa 2</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 3</h4>
-                            <p class="text-muted">Thông tin khoa 3</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 4</h4>
-                            <p class="text-muted">Thông tin khoa 4</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 5</h4>
-                            <p class="text-muted">Thông tin khoa 5</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-               <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 6</h4>
-                            <p class="text-muted">Thông tin khoa 6</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!-- End Doctor List Section -->
+    </div><!-- End page Title Section -->
+    <h1 style ="text-align:center;">Khoa 1</h1>
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">

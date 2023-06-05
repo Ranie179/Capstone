@@ -125,51 +125,74 @@
         </div>
     </div><!-- End Page Title Section -->
     <!-- Start Service List Section -->
+	                       
     <div  id="service-page" class="layer-stretch">
         <div class="layer-wrapper text-center">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="theme-material-card">
-                        <div class="theme-accordion-container">
-                        <c:forEach items="${service}" var="item">
-                            <div class="theme-accordion">
-                                <div class="theme-accordion-hdr">
-                                    <h4><i class="<c:out value="${item.icon}" />"></i><c:out value="${item.name}" /></h4>
-                                    <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
-                                </div>
-                                <div class="theme-accordion-bdy">
-                                    <div class="row service-accordian">
-                                        <div class="col-sm-3 theme-accordian-img text-center">
-                                            <img class="img-responsive img-thumbnail" src="<c:out value="${item.image1}" />" alt="">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <p class="paragraph-small paragraph-black">
-                                                <i class="<c:out value="${item.icon}" /> theme-dropcap"></i>
-                                                <c:out value="${item.intro}" />
-                                            </p>
-                                            <div class="pull-right">
-                                                <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="button-icon">
-                                                    <span>Đọc thêm</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                    <ul class="theme-pagination">
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">10</a></li>
-                    </ul>
-                </div>
+				    <div class="theme-material-card">
+				        <div class="theme-accordion-container">
+				            <div class="theme-accordion">
+				                <c:forEach items="${service}" var="item">
+				                    <div class="theme-accordion-hdr">
+				                        <h4 class="color-green"><i class="fa fa-medkit"></i><c:out value="${item.name}" /></h4>
+				                        <div class="theme-accordion-control"><i class="fa fa-plus"></i></div>
+				                    </div>
+				                    <div class="theme-accordion-bdy">
+				                        <div class="row service-accordian">
+				                            <div class="col-sm-3 theme-accordian-img text-center">
+				                                <img class="img-responsive img-thumbnail" src="<c:out value="${item.image1}" />" alt="">
+				                            </div>
+				                            <div class="col-sm-9">
+				                                <p class="paragraph-small paragraph-black">
+				                                    <span class="theme-dropcap color-green"><c:out value="${item.intro.charAt(0)}" /></span>
+				                                    <c:out value="${item.intro}" />
+				                                </p>
+				                                <div class="pull-right">
+				                                    <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="button-icon">
+				                                        <span>Đọc thêm</span>
+				                                    </a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </c:forEach>
+				            </div>
+				        </div>
+				    </div>
+				
+				    <ul class="theme-pagination">
+				        <c:choose>
+				            <c:when test="${currentPage > 1}">
+				                <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage - 1}">&laquo; Previous</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>&laquo; Previous</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				
+				        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+				            <c:choose>
+				                <c:when test="${loop.index == currentPage}">
+				                    <li class="active"><span>${loop.index}</span></li>
+				                </c:when>
+				                <c:otherwise>
+				                    <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}">${loop.index}</a></li>
+				                </c:otherwise>
+				            </c:choose>
+				        </c:forEach>
+				
+				        <c:choose>
+				            <c:when test="${currentPage < totalPages}">
+				                <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}">Next &raquo;</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>Next &raquo;</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				    </ul>
+				</div>
+
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
@@ -182,35 +205,18 @@
                         <div class="sub-ttl">Our Team</div>
                         <div class="flexslider theme-flexslider">
                             <ul class="slides">
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-1.jpg" alt="" />
-                                        <h4>Dr. Daniel Barnes</h4>
-                                        <p>Orthologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-2.jpg" alt="" />
-                                        <h4>Dr. Melissa Bates</h4>
-                                        <p>Gynocologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-4.jpg" alt="" />
-                                        <h4>Dr. Cheri Aria</h4>
-                                        <p>Dermatologist</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="theme-flexslider-container">
-                                        <img src="uploads/doctor-3.jpg" alt="" />
-                                        <h4>Dr. Steve Soeren</h4>
-                                        <p>Orthologist</p>
-                                    </div>
-                                </li>
-                            </ul>
+							  <c:forEach items="${doctor}" var="item" varStatus="loop">
+							    <c:if test="${loop.index < 5}">
+							      <li>
+							        <div class="theme-flexslider-container">
+							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
+							          <h4><c:out value="${item.doctorName}" /></h4>
+							          <p><c:out value="${item.department.departmentName}" /></p>
+							        </div>
+							      </li>
+							    </c:if>
+							  </c:forEach>
+							</ul>
                         </div>
                     </div>
                     <div class="theme-material-card">

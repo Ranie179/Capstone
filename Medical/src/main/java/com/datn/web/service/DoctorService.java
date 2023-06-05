@@ -12,8 +12,8 @@ public class DoctorService {
 	@Autowired
 	private DoctorRepository doctorRepository;
 
-	public List<Doctors> showAllDoctor() {
-		return doctorRepository.showAllDoctor();
+	public List<Doctors> showAllDoctor(int page, int pageSize) {
+		return doctorRepository.showAllDoctor(page, pageSize);
 	}
 
 	public List<Doctors> showDoctorInfo(int idDoctor) {
@@ -23,5 +23,11 @@ public class DoctorService {
 	public List<Doctors> doctorBonus(int idDepartment) {
 		return doctorRepository.doctorBonus(idDepartment);
 	}
-	
+	public int getTotalDoctorCount() {
+		return doctorRepository.getTotalDoctorCount();
+	}
+
+	public List<Doctors> searchDoctorByName(String search) {
+		return doctorRepository.searchDoctorByName(search);
+	}
 }

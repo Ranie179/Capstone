@@ -92,7 +92,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
@@ -103,7 +103,7 @@
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
-                                <li><a href="chat.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn sức khỏe</a></li>
+                                <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -115,119 +115,93 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start page Title Section -->
+      <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1><c:out value="${doctorInfo.doctorName}" /></h1>
-                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Danh sách bác sĩ</a> &#8594; <span><c:out value="${doctorInfo.doctorName}" /></span></p>
+                <h1>Khoa</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Khoa</span></p>
             </div>
         </div>
-    </div><!-- End page Title Section -->
-     <!-- Start Doctor List Section -->
+    </div><!-- End Page Title Section -->
+    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-10">
-            <div class="theme-material-card">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="theme-img theme-img-scalerotate">
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 1</h4>
+                            <p class="text-muted">Thông tin khoa 1</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <div class="doctorp-name">
-                            <h3><c:out value="${doctorInfo.doctorName}" /></h3>
-                            <span class="badge badge-primary"><c:out value="${doctorInfo.position.positionName}" /></span>
-                            <p><c:out value="${doctorInfo.department.departmentName}" /></p>
+                </div>
+                <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
                         </div>
-                        <div class="doctor-details-extra text-left p-0 pt-4">
-                            <p class="text-center"><i class="fa fa-mortar-board"></i><c:out value="${doctorInfo.graduate}" /></p>
-                            <p class="text-center"><i class="fa fa-star"></i><c:out value="${doctorInfo.expYear}" /> năm kinh nghiệm</p>
-                            <p class="text-center"><i class="fa fa-briefcase"></i><c:out value="${doctorInfo.workYear}" /> năm làm việc với chúng tôi</p>
-                        </div>
-                        <p class="text-muted p-2"><c:out value="${doctorInfo.information}" /></p>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr style = "text-align: center;" class="table-primary-head">
-                                    <th>Tên bằng</th>
-                                    <th>Trường</th>
-                                    <th>Năm</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${degree}" var="item">
-                                <tr>
-                                    <td style = "text-align: center;"><c:out value="${item.degreeName}" /></td>
-                                    <td style = "text-align: center;"><c:out value="${item.college}" /></td>
-                                    <td style = "text-align: center;" ><span class="badge badge-success badge-pill"><c:out value="${item.year}" /></span></td>
-                                </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                     <div class="col-sm-6">
-                        <div class="sub-ttl pt-4 font-20">Thời gian làm việc</div>
-                        <div class="card mb-5">
-                            <div class="card-body">
-                                <ul class="timetable">
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ hai</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ ba</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ tư</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ năm</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ sáu</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ bảy</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
-                                    <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
-                                </ul>
-                            </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 2</h4>
+                            <p class="text-muted">Thông tin khoa 2</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="sub-ttl font-20 pt-4">Dịch vụ</div>
-                        <ul class="category-list p-3 pl-6">
-                            <c:forEach items="${serviceBonus}" var="item">            
-                            <li><a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}"><i class="fa fa-medkit"></i>${item.name }</a></li>
-                            </c:forEach>
-                        </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 3</h4>
+                            <p class="text-muted">Thông tin khoa 3</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
+                        </div>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 4</h4>
+                            <p class="text-muted">Thông tin khoa 4</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 5</h4>
+                            <p class="text-muted">Thông tin khoa 5</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-4">
+                    <div class="theme-block theme-block-hover text-left">
+                        <div class="theme-block-picture">
+                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Khoa 6</h4>
+                            <p class="text-muted">Thông tin khoa 6</p>
+                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="theme-material-card">
-                <div class="sub-ttl">Bác sĩ khác</div>
-                <div class="row">
-                <c:forEach items="${doctorBonus}" var="item">
-                    <div class="col-sm-6 col-md-4">
-                        <div class="theme-block">
-                            <div class="theme-block-picture doctor-picture-2">
-                                <img src="<c:url value="${item.imageUrl }" />" alt="">
-                            </div>
-                            <div class="doctor-name doctor-name-2">
-                                <h4><a>${item.doctorName }</a></h4>
-                            </div>
-                            <div class="theme-block-hidden">
-                                <div class="doctor-name">
-                                    <h4><a href="<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}">${item.doctorName }</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>${item.department.departmentName }</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>${item.position.positionName }</p>
-                                        <p><i class="fa fa-mortar-board"></i>${item.graduate }</p>
-                                        <p><i class="fa fa-briefcase"></i>${item.workYear } năm là việc với chúng tôi</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: ${item.expYear } năm</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </c:forEach>
-                </div>
-            </div>
+        </div>
     </div><!-- End Doctor List Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
@@ -380,7 +354,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 footer-block">
+                 <div class="col-md-4 footer-block">
                     <div class="footer-ttl"><p>Truy cập nhanh</p></div>
                     <div class="footer-container footer-b">
                         <div class="tbl">

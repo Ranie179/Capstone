@@ -36,15 +36,31 @@ public class ServiceRepository {
         }
     }
 	
-	public List<Services> showAllService() {
-		String sql = "SELECT * FROM service";
-		return jdbcTemplate.query(sql, new ServiceRowMapper());
+	public List<Services> showMoreService() {
+	    String sql = "SELECT * FROM service LIMIT 7";
+	    return jdbcTemplate.query(sql, new ServiceRowMapper());
 	}
+
 
 	public List<Services> showServiceInfo(int id) {
 		String sql = "SELECT * FROM service WHERE id = ?";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}
+	
+	public List<Services> getServicesByPage(int page, int pageSize) {
+	    int offset = (page - 1) * pageSize;
+	    String sql = "SELECT * FROM service LIMIT ? OFFSET ?";
+	    Object[] params = new Object[]{pageSize, offset};
+	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+
+
+	
+	public int getTotalServiceCount() {
+	    String sql = "SELECT COUNT(*) FROM service";
+	    return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+
 
 }

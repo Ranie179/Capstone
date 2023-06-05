@@ -40,12 +40,14 @@ public class DoctorRepository {
             return doctor;
         }
     }
-	public List<Doctors> showAllDoctor() {
+	public List<Doctors> showAllDoctor(int page, int pageSize) {
+		int offset = (page - 1) * pageSize;
+		Object[] params = new Object[]{pageSize, offset};
 		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc\r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
-				+ "join departments as d ON doc.ID_Department = d.ID_Department";
-		return jdbcTemplate.query(sql, new DoctorRowMapper());
+				+ "join departments as d ON doc.ID_Department = d.ID_Department LIMIT ? OFFSET ?";
+		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
 	public List<Doctors> showDoctorInfo(int idDoctor) {
@@ -68,6 +70,21 @@ public class DoctorRepository {
 		Object[] params = new Object[] {idDepartment};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
+	
+	public int getTotalDoctorCount() {
+		String sql = "SELECT COUNT(*) FROM doctors";
+	    return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	public List<Doctors> searchDoctorByName(String search) {
+		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+				+ "from doctors as doc \r\n"
+				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
+				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "WHERE Doctor_Name LIKE '%?%'";
+		Object[] params  = new Object[] {search};
+	    return jdbcTemplate.query(sql, params, new DoctorRowMapper());
+	}
+
 
 
 }
