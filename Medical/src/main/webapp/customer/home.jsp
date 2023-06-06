@@ -102,7 +102,7 @@
                                         <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
-								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
+								<li><a href="customer/myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
                                 <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
                                 <li>
                                 </li>

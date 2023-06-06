@@ -63,4 +63,12 @@ public class ServiceRepository {
 	}
 
 
+	public List<Services> searchServiceByName(String search) {
+	    String sql = "SELECT * FROM service WHERE UPPER(name) LIKE UPPER(?)";
+	    Object[] params = new Object[]{"%" + search + "%"};
+	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+
+
+
 }

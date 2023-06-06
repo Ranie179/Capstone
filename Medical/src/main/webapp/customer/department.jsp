@@ -32,6 +32,7 @@
     <link href='<c:url value="/resources/css/flexslider.css" />' rel="stylesheet" type="text/css">
     <!-- Custom Main Stylesheet CSS -->
     <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet" type="text/css">
+    <link href='<c:url value="/resources/css/aaa.css" />' rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Start Header -->
@@ -125,6 +126,15 @@
         </div>
     </div><!-- End page Title Section -->
     <h1 style ="text-align:center;">Khoa 1</h1>
+    <div class="image-with-text">
+  <img src="path-to-your-image.jpg" alt="Description of the image">
+  <div class="text-overlay">
+  
+    <h2>Title</h2>
+    <p>Some text description</p>
+  </div>
+</div>
+    
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">

@@ -8,11 +8,29 @@
   <name>ZooManagement Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-    <dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>
-		<version>2.5</version>
-		<scope>provided</scope>
+	  <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>6.0.9</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>6.0.9</version>
+	</dependency>
+   <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>3.0-alpha-1</version>
+	    <scope>provided</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-jpa</artifactId>
+	    <version>3.1.0</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -23,6 +41,18 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
 		<version>6.0.6</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+	<dependency>
+	    <groupId>commons-fileupload</groupId>
+	    <artifactId>commons-fileupload</artifactId>
+	    <version>1.5</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.12.0</version>
 	</dependency>
 	<dependency>
 		<groupId>jstl</groupId>
@@ -51,6 +81,11 @@
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.32</version>
+	</dependency>
+	<dependency>
+		<groupId>fa.intern.mock</groupId>
+		<artifactId>ZooManagement</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
   </dependencies>
   <build>

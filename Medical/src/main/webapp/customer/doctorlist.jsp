@@ -130,6 +130,9 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
+                    <c:if test="${empty doctorlist}">
+						    <p>Không tìm thấy kết quả phù hợp với từ khóa "${searchKeyword}"</p>
+						</c:if>
                         <div class="col-md-12">
                          <c:forEach items="${doctorlist}" var="item">
                             <div class="theme-block theme-block-hover">

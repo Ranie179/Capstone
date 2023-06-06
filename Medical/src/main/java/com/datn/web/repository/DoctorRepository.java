@@ -80,10 +80,11 @@ public class DoctorRepository {
 				+ "from doctors as doc \r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
-				+ "WHERE Doctor_Name LIKE '%?%'";
-		Object[] params  = new Object[] {search};
+				+ "WHERE UPPER(Doctor_Name) LIKE UPPER(?)";
+		Object[] params = new Object[]{"%" + search + "%"};
 	    return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
+
 
 
 

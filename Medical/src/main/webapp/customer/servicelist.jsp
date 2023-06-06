@@ -132,6 +132,9 @@
                 <div class="col-lg-8">
 				    <div class="theme-material-card">
 				        <div class="theme-accordion-container">
+				        <c:if test="${empty service}">
+						    <p>Không tìm thấy kết quả phù hợp với từ khóa "${searchKeyword}"</p>
+						</c:if>
 				            <div class="theme-accordion">
 				                <c:forEach items="${service}" var="item">
 				                    <div class="theme-accordion-hdr">
@@ -196,9 +199,11 @@
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                            <input class="mdl-textfield__input" type="text" id="sidebar-search">
-                            <label class="mdl-textfield__label" for="sidebar-search">Enter Any Keyword</label>
-                            <button class="fa fa-search search-button"></button>
+                         <form class="searchform" action ="<%=request.getContextPath()%>/searchServiceByName">
+                            <input class="mdl-textfield__input" type="text" id="sidebar-search" name = "search">
+                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên dịch vụ</label>
+                            <button class="fa fa-search search-button" type = "submit"></button>
+                            </form>
                         </div>
                     </div>
                     <div class="theme-material-card">

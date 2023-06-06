@@ -55,7 +55,8 @@ public class DoctorController {
 	@RequestMapping(value = "searchDoctorByName",method = RequestMethod.GET)
 	public String searchDoctorByName(@RequestParam("searchDoctor") String search, Model model) {
 		List<Doctors> doctors = doctorService.searchDoctorByName(search);
-		model.addAttribute("doctor", doctors);
+		model.addAttribute("doctorlist", doctors);
+		 model.addAttribute("searchKeyword", search);
 		return "customer/doctorlist";
 	}
 	

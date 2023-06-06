@@ -28,5 +28,9 @@ public class ServiceService {
 	public List<Services> getServicesByPage(int page, int pageSize) {
 		return serviceRepository.getServicesByPage(page, pageSize);
 	}
+
+	public List<Services> searchServiceByName(String search) {
+		return serviceRepository.searchServiceByName(search);
+	}
 	
 }

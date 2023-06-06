@@ -43,5 +43,14 @@ public class ServiceController {
 	    model.addAttribute("service", services);
 		return "customer/service";
 	}
+	
+	@RequestMapping(value = "searchServiceByName", method = RequestMethod.GET)
+	public String searchServiceByName(@RequestParam("search") String search, Model model) {
+	    List<Services> services = serviceService.searchServiceByName(search);
+	    model.addAttribute("service", services);
+	    model.addAttribute("searchKeyword", search);
+	    return "customer/servicelist";
+	}
+
 
 }
