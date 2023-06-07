@@ -82,11 +82,6 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.32</version>
 	</dependency>
-	<dependency>
-		<groupId>fa.intern.mock</groupId>
-		<artifactId>ZooManagement</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
   </dependencies>
   <build>
     <finalName>Medical</finalName>
