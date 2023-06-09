@@ -34,7 +34,6 @@ public class ImageController {
                 String destinationPath = "C:\\Users\\Asus\\Downloads\\Github\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
                 File destinationFile = new File(destinationPath);
                 Path destination = destinationFile.toPath();
-                System.out.print(destination);
                 InputStream inputStream = file.getInputStream();
                 Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
                 

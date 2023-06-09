@@ -11,7 +11,7 @@
     <!-- Meta Description Tag -->
     <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href="<c:url value="/resources/images/favicon.png" />" rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -82,24 +82,56 @@
                             <!-- Start Menu Section -->
                             <ul class="menu">
                              	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
-                                <li>
-                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
-                                    </a>
-                                    <ul class="menu-dropdown">
-                                        <li><a href="about.jsp">Về chúng tôi</a></li>
-                                        <li><a href="contact.jsp">Liên hệ</a></li>
-                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
+                                <li class="menu-megamenu-li">
+                                    <a id="menu-pages" class="mdl-button mdl-js-button mdl-js-ripple-effect">Pages <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="menu-megamenu">
+                                        <li class="row">
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-ttl">Link 1</div>
+                                                <ul>
+                                                    <li><a href="event-1.html">Event Style 1</a></li>
+                                                    <li><a href="event-2.html">Event Style 2</a></li>
+                                                    <li><a href="event-3.html">Event Style 3</a></li>
+                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="503.html">503 Temporarily Unavailable</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-ttl">Link 2</div>
+                                                <ul>
+                                                    <li><a href="departments-1.html">Departments Style 1</a></li>
+                                                    <li><a href="departments-2.html">Departments Style 2</a></li>
+                                                    <li><a href="gallery.html">Gallery Style 1</a></li>
+                                                    <li><a href="gallery-1.html">Gallery Style 2</a></li>
+                                                    <li><a href="404.html">404 Page Not Found</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="megamenu-ttl">Link 3</div>
+                                                <ul>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                    <li><a href="invoice.html">Invoice</a></li>
+                                                    <li><a href="terms-conditions.html">Terms &#38; Conditions</a></li>
+                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="theme-img">
+                                                    <img src="uploads/service-5.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </li> 
                                     </ul>
                                 </li>
-                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
 								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Tin tức 1</a></li>
-                                        <li><a href="blog.jsp">Tin tức 2</a></li>
+                                        <li><a href="blog.jsp">Blog Details 1</a></li>
+                                        <li><a href="blog.jsp">Blog Details 2</a></li>
                                     </ul>
                                 </li>
 								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
@@ -115,72 +147,94 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start page Title Section -->
+     <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>${blogInfo.title }</h1>
-                <p><a href="#">Trang chủ</a> <a href="#">Tin tức</a> &#8594; <span>${blogInfo.title }</span></p>
+                <h1>Tin tức</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Tin tức</span></p>
             </div>
         </div>
-    </div><!-- End page Title Section -->
-    <!-- Start Blog Section -->
+    </div><!-- End Page Title Section -->
+    <!-- Start Blog List Section -->
     <div class="layer-stretch">
         <div class="layer-wrapper">
             <div class="row">
                 <div class="col-lg-8 text-center">
-                    <div class="sidebar">
-                        <div class="theme-img theme-img-scalerotate blog-picture">
-                            <img class="" src="<c:url value="${blogInfo.image1 }" />" alt="">
-                        </div>
-                        <h2 class="blog-ttl">${blogInfo.title}</h2>
-                        <ul class="blog-detail">
-                            <li><i class="fa fa-calendar-o"></i>${blogInfo.createDate}</li>
-                        </ul>
-                        <div class="blog-post">
-                            <p class="paragraph-medium paragraph-black">${blogInfo.intro}</p>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="theme-img">
-                                        <img src="<c:url value="${blogInfo.image2 }" />" alt="">
-                                    </div>
+                    <div class="theme-material-card blog-full-block">
+                     <c:if test="${empty blog}">
+						    <p class = "theme-quote theme-quote-colored theme-quote-danger">
+						    Không tìm thấy kết quả phù hợp với từ khóa "${searchKeyword}"</p>
+						</c:if>
+                        <div class="row">
+                        <c:forEach items="${blog}" var="item">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">${item.createDate }</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="<c:url value="${item.image1 }" />" alt="">
                                 </div>
                             </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph1}</p>
-                            <div class="theme-quote">
-                                <i class="fa fa-quote-left"></i> ${blogInfo.quote}
-                            </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph2}</p>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:url value="${blogInfo.image3 }" />" alt="">
-                                    </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">${item.title }</a></h3>
+                                </div>
+                                <div class="blog-full-description">${item.intro }</div>
+                                <div class="blog-full-ftr">
+                                    <a href = "<%=request.getContextPath()%>/showBlogInfo?idBlog=${item.idBlog}" class="pull-right anchor-icon">
+                                        Đọc thêm <i class="fa fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph3}"</p>
+                            </c:forEach>
                         </div>
-                        <div class="row blog-meta">
-                            <div class="col-sm-7 blog-tag">
-                                <p>Loại bài viết : </p>
-                                <ul>
-                                    <li><a href="<%=request.getContextPath()%>/showBlogByTag?idTag=${blogInfo.tag.idTag }">${blogInfo.tag.tag }</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-5 text-right">
-                                <ul class="social-list social-list-sm">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>  
+                    </div>
+                    
+                    <ul class="theme-pagination">
+				        <c:choose>
+				            <c:when test="${currentPage > 1}">
+				                <li><a href="<%=request.getContextPath()%>/showAllBlogs?page=${currentPage - 1}">&laquo; Previous</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>&laquo; Previous</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				
+				        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+				            <c:choose>
+				                <c:when test="${loop.index == currentPage}">
+				                    <li class="active"><span>${loop.index}</span></li>
+				                </c:when>
+				                <c:otherwise>
+				                    <li><a href="<%=request.getContextPath()%>/showAllBlogs?page=${loop.index}">${loop.index}</a></li>
+				                </c:otherwise>
+				            </c:choose>
+				        </c:forEach>
+				
+				        <c:choose>
+				            <c:when test="${currentPage < totalPages}">
+				                <li><a href="<%=request.getContextPath()%>/showAllBlogs?page=${currentPage + 1}">Next &raquo;</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><span>Next &raquo;</span></li>
+				            </c:otherwise>
+				        </c:choose>
+				    </ul>
+				    
                 </div>
                 <div class="col-lg-4">
-                    <div class="sidebar">
+                    <div class="theme-material-card text-center">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                        <form class="searchform" action ="<%=request.getContextPath()%>/showAllBlogs>" >
+                            <input class="mdl-textfield__input" type="text" id="sidebar-search" name = "search">
+                            <label class="mdl-textfield__label" for="sidebar-search">Tìm bài viết</label>
+                            <button type = "submit" class="fa fa-search search-button"></button>
+                            </form>
+                        </div>
+                    </div>
+                   <div class="sidebar">
                         <div class="sub-ttl">Bài viết gần đây</div>
                        <c:forEach items="${recent}" var="item">
-                        <a href="<%=request.getContextPath()%>/showBlogInfo?idBlog=${item.idBlog}" class="row blog-recent">
+                        <a href="#" class="row blog-recent">
                             <div class="col-4 blog-recent-img">
                                 <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
                             </div>
@@ -191,27 +245,31 @@
                         </a>
                         </c:forEach>
                     </div>
-                    <div class="sidebar">
-                        <div class="sub-ttl">Loại tin tức</div>
+                  <div class="theme-material-card">
+                        <div class="sub-ttl">Categories</div>
                         <ul class="category-list">
-                        	<c:forEach items="${tag}" var="item">
-                            <li><a href="<%=request.getContextPath()%>/showBlogByTag?idTag=${item.idTag }"><i class="fa fa-newspaper-o"></i>${item.tag }</a><span>(${item.numOfPosts })</span></li>
-                            </c:forEach>
+                            <li><a href="#"><i class="fa fa-newspaper-o"></i>News</a><span>(10)</span></li>
+                            <li><a href="#"><i class="fa fa-history"></i>History</a><span>(20)</span></li>
+                            <li><a href="#"><i class="fa fa-th"></i>Mythology</a><span>(9)</span></li>
+                            <li><a href="#"><i class="fa fa-cloud"></i>Technology</a><span>(21)</span></li>
+                            <li><a href="#"><i class="fa fa-flask"></i>Science</a><span>(13)</span></li>
+                            <li><a href="#"><i class="fa fa-info-circle"></i>New Disese</a><span>(7)</span></li>
+                            <li><a href="#"><i class="fa fa-hospital-o"></i>Health</a><span>(5)</span></li>
+                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>wellness</a><span>(8)</span></li>
                         </ul>
                     </div>
-                    <div class="sidebar">
-                        <div class="sub-ttl">Tin tức phổ biến</div>
-                        <a href="#" class="theme-tag theme-tag-1">Tag</a>
-                        <a href="#" class="theme-tag theme-tag-1">Wellness</a>
-                        <a href="#" class="theme-tag theme-tag-1 theme-tag-colored">Science</a>
-                        <a href="#" class="theme-tag theme-tag-1">Doctor</a>
-                        <a href="#" class="theme-tag theme-tag-1 theme-tag-colored">Clinic</a>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Danh mục</div>
+                        <a href="#" class="theme-tag theme-tag-2">Sức khỏe</a>
+                        <a href="#" class="theme-tag theme-tag-2">Dinh dưỡng</a>
+                        <a href="#" class="theme-tag theme-tag-2 theme-tag-colored">Bệnh</a>
+                        <a href="#" class="theme-tag theme-tag-2">Tin tức</a>
+                        <a href="#" class="theme-tag theme-tag-2 theme-tag-colored">Điều trị</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- End Blog Section -->
-    <!-- Start Emergency Section -->
+    </div><!-- End Blog List Section -->
     <div id="emergency">
         <div class="layer-stretch">
             <div class="layer-wrapper">
