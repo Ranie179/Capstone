@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.datn.web.repository.ServiceRepository;
 import com.datn.web.bean.Services;
@@ -21,13 +22,23 @@ public class ServiceService {
 		return serviceRepository.showServiceInfo(id);
 	}
 	
-	public int getTotalServiceCount() {
-		return serviceRepository.getTotalServiceCount();
+	public int getTotalServiceCount(String search) {
+	    if (!StringUtils.isEmpty(search)) {
+	        return serviceRepository.getTotalServiceCount(search);
+	    } else {
+	        return serviceRepository.getTotalServiceCount();
+	    }
 	}
 
-	public List<Services> getServicesByPage(int page, int pageSize) {
-		return serviceRepository.getServicesByPage(page, pageSize);
+
+	public List<Services> showAllService(int page, int pageSize, String search) {
+	    if (!StringUtils.isEmpty(search)) {
+	        return serviceRepository.showAllService(page, pageSize, search);
+	    } else {
+	        return serviceRepository.showAllService(page, pageSize);
+	    }
 	}
+
 
 	public List<Services> searchServiceByName(String search) {
 		return serviceRepository.searchServiceByName(search);

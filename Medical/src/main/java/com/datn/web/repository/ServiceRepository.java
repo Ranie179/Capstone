@@ -48,20 +48,30 @@ public class ServiceRepository {
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}
 	
-	public List<Services> getServicesByPage(int page, int pageSize) {
+	public List<Services> showAllService(int page, int pageSize) {
 	    int offset = (page - 1) * pageSize;
 	    String sql = "SELECT * FROM service LIMIT ? OFFSET ?";
 	    Object[] params = new Object[]{pageSize, offset};
 	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}
-
-
 	
+	public List<Services> showAllService(int page, int pageSize, String search) {
+	    int offset = (page - 1) * pageSize;
+	    String sql = "SELECT * FROM service WHERE UPPER(name) LIKE UPPER(?) LIMIT ? OFFSET ?";
+	    Object[] params = new Object[]{"%" + search + "%", pageSize, offset};
+	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+
 	public int getTotalServiceCount() {
 	    String sql = "SELECT COUNT(*) FROM service";
 	    return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 
+	public int getTotalServiceCount(String search) {
+	    String sql = "SELECT COUNT(*) FROM service WHERE UPPER(name) LIKE UPPER(?)";
+	    Object[] params = new Object[]{"%" + search + "%"};
+	    return jdbcTemplate.queryForObject(sql, params, Integer.class);
+	}
 
 	public List<Services> searchServiceByName(String search) {
 	    String sql = "SELECT * FROM service WHERE UPPER(name) LIKE UPPER(?)";

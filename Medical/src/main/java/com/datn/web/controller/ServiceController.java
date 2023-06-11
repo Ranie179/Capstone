@@ -22,18 +22,24 @@ public class ServiceController {
 	private DoctorService doctorService;
 	
 	@RequestMapping(value = "showAllService", method = RequestMethod.GET)
-	public String showAllService(@RequestParam(defaultValue = "1") int page, Model model) {
-	    int pageSize = 5; 
-	    int totalCount = serviceService.getTotalServiceCount(); 
-	    int totalPages = (int) Math.ceil((double) totalCount / pageSize); 
-	    List<Services> services = serviceService.getServicesByPage(page, pageSize);
+	public String showAllService(@RequestParam(defaultValue = "1") int page, 
+			@RequestParam(required = false) String searchKeyword, 
+			@RequestParam(required = false) Integer idDepartment,
+			@RequestParam(required = false) Integer expYear,
+			@RequestParam(required = false) String search, Model model) {
+	    int pageSize = 5;
+	    int totalCount = serviceService.getTotalServiceCount(search);
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+	    List<Services> services = serviceService.showAllService(page, pageSize, search);
 	    model.addAttribute("service", services);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
-	    List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize);
+		List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize, searchKeyword, idDepartment, expYear);
 	    model.addAttribute("doctor", doctors);
-		return "customer/servicelist";
+	    model.addAttribute("search", search);
+	    return "customer/servicelist";
 	}
+
 	
 	@RequestMapping(value = "showServiceInfo", method = RequestMethod.GET)
 	public String showServiceInfo(@RequestParam("id") int id, Model model) {

@@ -47,10 +47,8 @@ public class BlogController {
 	public String showBlogInfo(@RequestParam("idBlog") int idBlog, Model model) {
 		List<Blogs> blogs = blogService.showBlogInfo(idBlog);
 		model.addAttribute("blogInfo", blogs.get(0));
-		
 		List<Tags> tags = tagService.showTags();
 		model.addAttribute("tag", tags);
-		
 		List<Blogs> recentBlog = blogService.getRecentBlog();
 		model.addAttribute("recent", recentBlog);
 		return "customer/blog";

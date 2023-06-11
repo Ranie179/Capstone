@@ -40,6 +40,7 @@ public class DoctorRepository {
             return doctor;
         }
     }
+	
 	public List<Doctors> showAllDoctor(int page, int pageSize) {
 		int offset = (page - 1) * pageSize;
 		Object[] params = new Object[]{pageSize, offset};
@@ -47,6 +48,17 @@ public class DoctorRepository {
 				+ "from doctors as doc\r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department LIMIT ? OFFSET ?";
+		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
+	}
+	
+	public List<Doctors> showAllDoctor(int page, int pageSize, String search) {
+		int offset = (page - 1) * pageSize;
+		Object[] params = new Object[]{"%" + search + "%", pageSize, offset};
+		String sql = "SELECT doc.*, d.Department_Name, p.Position_Name\r\n"
+				+ "FROM doctors AS doc\r\n"
+				+ "JOIN positions AS p ON doc.ID_Position = p.ID_Position\r\n"
+				+ "JOIN departments AS d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "WHERE UPPER(doc.Doctor_Name) LIKE UPPER(?) LIMIT ? OFFSET ?";
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
@@ -75,17 +87,93 @@ public class DoctorRepository {
 		String sql = "SELECT COUNT(*) FROM doctors";
 	    return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
-	public List<Doctors> searchDoctorByName(String search) {
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
-				+ "from doctors as doc \r\n"
-				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
-				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
-				+ "WHERE UPPER(Doctor_Name) LIKE UPPER(?)";
-		Object[] params = new Object[]{"%" + search + "%"};
-	    return jdbcTemplate.query(sql, params, new DoctorRowMapper());
+	
+	public int getTotalDoctorCount(String search) {
+		String sql = "SELECT COUNT(*) FROM doctors WHERE UPPER(Doctor_Name) LIKE UPPER(?)";
+	    Object[] params = new Object[]{"%" + search + "%"};
+		return jdbcTemplate.queryForObject(sql, params, Integer.class);
 	}
 
+	public List<Doctors> showDoctorByExp(int page, int pageSize, Integer experience) {
+		int offset = (page - 1) * pageSize;
+		String sql = "";
+		  switch (experience) {
+		        case 1:
+		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		                  "FROM doctors AS doc " +
+		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
+		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "WHERE doc.EXP_YEARS < 1 LIMIT ? OFFSET ?";
+		            break;
+		        case 2:
+		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		                  "FROM doctors AS doc " +
+		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
+		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "WHERE doc.EXP_YEARS BETWEEN 1 AND 3 LIMIT ? OFFSET ?";
+		            break;
+		        case 3:
+		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		                  "FROM doctors AS doc " +
+		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
+		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "WHERE doc.EXP_YEARS BETWEEN 3 AND 7 LIMIT ? OFFSET ?";
+		            break;
+		        case 4:
+		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		                  "FROM doctors AS doc " +
+		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
+		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "WHERE doc.EXP_YEARS BETWEEN 7 AND 10 LIMIT ? OFFSET ?";
+		            break;
+		        case 5:
+		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		                  "FROM doctors AS doc " +
+		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
+		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "WHERE doc.EXP_YEARS > 10 LIMIT ? OFFSET ?";
+		            break;
+		    }
+		  Object[] params = new Object[] {pageSize, offset };
+			return jdbcTemplate.query(sql, params, new DoctorRowMapper());
+	}
 
+	public int getTotalDoctorByIdDepartment(int idDepartment) {
+		String sql = "SELECT COUNT(*) FROM doctors WHERE ID_Department = ?";
+		Object[] params = new Object[] {idDepartment};
+		return jdbcTemplate.queryForObject(sql, params, Integer.class);
+	}
 
+	public List<Doctors> showDoctorByIdDepartment(int page, int pageSize, Integer idDepartment) {
+		int offset = (page - 1) * pageSize;
+		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+				+ "from doctors as doc\r\n"
+				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
+				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "where doc.ID_Department = ? LIMIT ? OFFSET ? ";
+		Object[] params = new Object[] {idDepartment, pageSize, offset};
+		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
+	}
 
+	public int getTotalDoctorByExp(Integer experience) {
+		String sql = "";
+		switch (experience) {
+        case 1:
+            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS < 1";
+            break;
+        case 2:
+            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 1 AND 3";
+            break;
+        case 3:
+            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 3 AND 7";
+            break;
+        case 4:
+            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 7 AND 10";
+            break;
+        case 5:
+            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS > 10";
+            break;
+    }
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
 }

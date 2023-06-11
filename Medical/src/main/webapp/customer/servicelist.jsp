@@ -133,7 +133,7 @@
 				    <div class="theme-material-card">
 				        <div class="theme-accordion-container">
 				        <c:if test="${empty service}">
-						    <p>Không tìm thấy kết quả phù hợp với từ khóa "${searchKeyword}"</p>
+						    <p>Không tìm thấy kết quả phù hợp với từ khóa "${search}"</p>
 						</c:if>
 				            <div class="theme-accordion">
 				                <c:forEach items="${service}" var="item">
@@ -164,46 +164,50 @@
 				        </div>
 				    </div>
 				
-				    <ul class="theme-pagination">
-				        <c:choose>
-				            <c:when test="${currentPage > 1}">
-				                <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage - 1}">&laquo; Previous</a></li>
-				            </c:when>
-				            <c:otherwise>
-				                <li><span>&laquo; Previous</span></li>
-				            </c:otherwise>
-				        </c:choose>
-				
-				        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-				            <c:choose>
-				                <c:when test="${loop.index == currentPage}">
-				                    <li class="active"><span>${loop.index}</span></li>
-				                </c:when>
-				                <c:otherwise>
-				                    <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}">${loop.index}</a></li>
-				                </c:otherwise>
-				            </c:choose>
-				        </c:forEach>
-				
-				        <c:choose>
-				            <c:when test="${currentPage < totalPages}">
-				                <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}">Next &raquo;</a></li>
-				            </c:when>
-				            <c:otherwise>
-				                <li><span>Next &raquo;</span></li>
-				            </c:otherwise>
-				        </c:choose>
-				    </ul>
+				   <ul class="theme-pagination">
+					    <c:choose>
+					        <c:when test="${currentPage > 1}">
+					            <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>&laquo; Previous</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					
+					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+					        <c:choose>
+					            <c:when test="${loop.index == currentPage}">
+					                <li class="active"><span>${loop.index}</span></li>
+					            </c:when>
+					            <c:otherwise>
+					                <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}&search=${search}">${loop.index}</a></li>
+					            </c:otherwise>
+					        </c:choose>
+					    </c:forEach>
+					
+					    <c:choose>
+					        <c:when test="${currentPage < totalPages}">
+					            <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>Next &raquo;</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					</ul>
+
 				</div>
 
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                         <form class="searchform" action ="<%=request.getContextPath()%>/searchServiceByName">
-                            <input class="mdl-textfield__input" type="text" id="sidebar-search" name = "search">
-                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên dịch vụ</label>
-                            <button class="fa fa-search search-button" type = "submit"></button>
-                            </form>
+                         <form class="searchform" action="<%=request.getContextPath()%>/showAllService" method="GET">
+						    <input type="hidden" name="page" value="${currentPage}" />
+						    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+						        <input class="mdl-textfield__input" type="text" id="sidebar-search" name="search" value="${search}">
+						        <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên dịch vụ</label>
+						        <button class="fa fa-search search-button" type="submit"></button>
+						    </div>
+						</form>
                         </div>
                     </div>
                     <div class="theme-material-card">

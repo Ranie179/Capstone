@@ -199,14 +199,6 @@
                             </c:forEach>
                         </ul>
                     </div>
-                    <div class="sidebar">
-                        <div class="sub-ttl">Tin tức phổ biến</div>
-                        <a href="#" class="theme-tag theme-tag-1">Tag</a>
-                        <a href="#" class="theme-tag theme-tag-1">Wellness</a>
-                        <a href="#" class="theme-tag theme-tag-1 theme-tag-colored">Science</a>
-                        <a href="#" class="theme-tag theme-tag-1">Doctor</a>
-                        <a href="#" class="theme-tag theme-tag-1 theme-tag-colored">Clinic</a>
-                    </div>
                 </div>
             </div>
         </div>

@@ -158,47 +158,100 @@
                               </c:forEach>
                         </div>
 					</div>
-				 <ul class="theme-pagination">
+				<ul class="theme-pagination">
+				    <c:choose>
+				        <c:when test="${not empty idDepartment and empty search and empty experience}">
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
+				        </c:when>
+				        <c:when test="${empty idDepartment and not empty search and empty experience}">
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
+				        </c:when>
+				        <c:when test="${empty idDepartment and empty search and not empty experience}">
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&experience=${experience}">&laquo; Previous</a></li>
+				        </c:when>
+				        <c:otherwise>
+				            <li><span>&laquo; Previous</span></li>
+				        </c:otherwise>
+				    </c:choose>
+				    
+				    <c:forEach begin="1" end="${totalPages}" var="pageNumber">
 				        <c:choose>
-				            <c:when test="${currentPage > 1}">
-				                <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}">&laquo; Previous</a></li>
+				            <c:when test="${pageNumber == currentPage}">
+				                <li class="active"><span>${pageNumber}</span></li>
 				            </c:when>
 				            <c:otherwise>
-				                <li><span>&laquo; Previous</span></li>
+				                <c:choose>
+				                    <c:when test="${not empty idDepartment and empty search and empty experience}">
+				                        <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${pageNumber}&idDepartment=${idDepartment}">${pageNumber}</a></li>
+				                    </c:when>
+				                    <c:when test="${empty idDepartment and not empty search and empty experience}">
+				                        <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${pageNumber}&search=${search}">${pageNumber}</a></li>
+				                    </c:when>
+				                    <c:when test="${empty idDepartment and empty search and not empty experience}">
+				                        <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${pageNumber}&experience=${experience}">${pageNumber}</a></li>
+				                    </c:when>
+				                    <c:otherwise>
+				                        <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${pageNumber}&idDepartment=${idDepartment}&experience=${experience}&search=${search}">${pageNumber}</a></li>
+				                    </c:otherwise>
+				                </c:choose>
 				            </c:otherwise>
 				        </c:choose>
-				
-				        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+				    </c:forEach>
+				    
+				    <c:choose>
+				        <c:when test="${currentPage < totalPages}">
 				            <c:choose>
-				                <c:when test="${loop.index == currentPage}">
-				                    <li class="active"><span>${loop.index}</span></li>
+				                <c:when test="${not empty idDepartment and empty search and empty experience}">
+				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}&idDepartment=${idDepartment}">Next &raquo;</a></li>
+				                </c:when>
+				                <c:when test="${empty idDepartment and not empty search and empty experience}">
+				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+				                </c:when>
+				                <c:when test="${empty idDepartment and empty search and not empty experience}">
+				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}&experience=${experience}">Next &raquo;</a></li>
 				                </c:when>
 				                <c:otherwise>
-				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${loop.index}">${loop.index}</a></li>
+				                    <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}&idDepartment=${idDepartment}&experience=${experience}&search=${search}">Next &raquo;</a></li>
 				                </c:otherwise>
 				            </c:choose>
-				        </c:forEach>
-				
-				        <c:choose>
-				            <c:when test="${currentPage < totalPages}">
-				                <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage + 1}">Next &raquo;</a></li>
-				            </c:when>
-				            <c:otherwise>
-				                <li><span>Next &raquo;</span></li>
-				            </c:otherwise>
-				        </c:choose>
-				    </ul>
+				        </c:when>
+				        <c:otherwise>
+				            <li><span>Next &raquo;</span></li>
+				        </c:otherwise>
+				    </c:choose>
+				</ul>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                           <form class="searchform" action ="<%=request.getContextPath()%>/searchDoctorByName">
-	                            <input class="mdl-textfield__input" type="search" id="searchDoctor" name = "searchDoctor">
-	                            <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên bác sĩ</label>
-	                            <button type = "submit" class="fa fa-search search-button"></button>
-                            </form>
+                           <form class="searchform" action="<%=request.getContextPath()%>/showAllDoctor" method="GET">
+						    <input type="hidden" name="page" value="${currentPage}" />
+						    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+						        <input class="mdl-textfield__input" type="text" id="sidebar-search" name="search" value="${search}">
+						        <label class="mdl-textfield__label" for="sidebar-search">Tìm theo tên bác sĩ</label>
+						        <button class="fa fa-search search-button" type="submit"></button>
+						    </div>
+						</form>
                         </div>
                     </div>
+                      <div class="sidebar">
+                        <div class="sub-ttl">Tìm bác sĩ theo khoa</div>
+                        <ul class="category-list">
+                        	<c:forEach items="${department}" var="item">
+                            <li><a href="<%=request.getContextPath()%>/showAllDoctor?idDepartment=${item.idDepartment }"><i class="fa fa-newspaper-o"></i>${item.departmentName }</a><span>(Số B.Sĩ:${item.numOfDoctors })</span></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sub-ttl">Tìm theo kinh nghiệm</div>
+                        <a href="<%=request.getContextPath()%>/showAllDoctor?experience=1" class="theme-tag theme-tag-1">Dưới 1 năm</a>
+                        <a href="<%=request.getContextPath()%>/showAllDoctor?experience=2" class="theme-tag theme-tag-1">1-3 năm</a>
+                        <a href="<%=request.getContextPath()%>/showAllDoctor?experience=3" class="theme-tag theme-tag-1">3-7 năm</a>
+                        <a href="<%=request.getContextPath()%>/showAllDoctor?experience=4" class="theme-tag theme-tag-1">7-10 năm</a>
+                        <a href="<%=request.getContextPath()%>/showAllDoctor?experience=5" class="theme-tag theme-tag-1">Trên 10 năm</a>
+                    </div>
+
                     <div class="theme-material-card">
                         <div class="sub-ttl">Dịch vụ</div>
                         <div class="flexslider theme-flexslider">
@@ -216,43 +269,18 @@
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Tin mới nhất</div>
+                        <div class="sub-ttl">Bài viết gần đây</div>
+                       <c:forEach items="${recent}" var="item">
                         <a href="#" class="row blog-recent">
                             <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                                <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
-                                <h4>Tin 1</h4>
-                                <p>8 tháng 5 2023</p>
+                                <h4>${item.title }</h4>
+                                <p>${item.createDate }</p>
                             </div>
                         </a>
-                        <a href="#" class="row blog-recent">
-                            <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-2.jpg" alt="">
-                            </div>
-                            <div class="col-8 blog-recent-post">
-                                <h4>Tin 2</h4>
-                                <p>27 tháng 4 2023</p>
-                            </div>
-                        </a>
-                        <a href="#" class="row blog-recent">
-                            <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-4.jpg" alt="">
-                            </div>
-                            <div class="col-8 blog-recent-post">
-                                <h4>Tin 3</h4>
-                                <p>24 tháng 4 2023</p>
-                            </div>
-                        </a>
-                        <a href="#" class="row blog-recent">
-                            <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-5.jpg" alt="">
-                            </div>
-                            <div class="col-8 blog-recent-post">
-                                <h4>Tin 4</h4>
-                                <p>15 tháng 4 2023</p>
-                            </div>
-                        </a>
+                        </c:forEach>
                     </div>
                     <div class="theme-material-card">
                         <div class="sub-ttl">Thời gian làm việc</div>
@@ -563,5 +591,13 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+	$(document).ready(function() {
+	  $('.theme-tag').click(function() {
+	    $('.theme-tag').removeClass('theme-tag-colored'); // Xóa lớp CSS hiện tại trên tất cả các thẻ <a>
+	    $(this).addClass('theme-tag-colored'); // Thêm lớp CSS cho thẻ <a> được nhấp vào
+	  });
+	});
+	</script>
 </body>
 </html>
