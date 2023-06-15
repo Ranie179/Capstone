@@ -32,6 +32,8 @@
     <link href='<c:url value="/resources/css/flexslider.css" />' rel="stylesheet" type="text/css">
     <!-- Custom Main Stylesheet CSS -->
     <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet" type="text/css">
+        <!-- Custom Chat Stylesheet CSS -->
+    <link href='<c:url value="/resources/css/chat.css" />' rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Start Header -->
@@ -126,44 +128,21 @@
     </div><!-- End page Title Section -->
    <!-- partial:index.partial.html -->
   <section class="msger">
-    <header class="msger-header">
-      <div class="msger-header-title">
-        ROBO-DOC
-      </div>
-    </header>
+        <header class="msger-header">
+            <div class="msger-header-title">
+                Tư vấn miễn phí cùng Medichat
+            </div>
+        </header>
 
-    <main class="msger-chat">
-      <div class="msg left-msg">
-        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">Robo-Doc</div>
-          </div>
-          <div class="msg-text">
-             Hello, my name is RoboDoc, and I will be happy to help diagnose your disease. 
-          </div>
-        </div>
-      </div>
-      <div class="msg left-msg">
-        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+        <main class="msger-chat">
+           
+        </main>
 
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">Robo-Doc</div>
-          </div>
-          <div class="msg-text">
-            To start, we need to ask some basic questions, tap OK to continue ! 
-          </div>
-        </div>
-      </div>
-    </main>
-      
-
-    <form class="msger-inputarea">
-      <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
-      <button type="submit" class="msger-send-btn">Send</button>
-    </form>
-     </section>
+        <form id="chatForm" class="msger-inputarea">
+            <input type="text" class="msger-input" id="userInput" placeholder="Nhập tin nhắn của bạn...">
+            <button type="submit" class="msger-send-btn">Gửi</button>
+        </form>
+    </section>
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -391,6 +370,51 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+        $(document).ready(function() {
+            $("#chatForm").submit(function(e) {
+                e.preventDefault();
+
+                var userInput = $("#userInput").val().trim();
+                if (userInput !== '') {
+                    appendMessage('You', userInput, 'right');
+
+                    $.ajax({
+                        url: 'http://localhost:5000/chat',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({user_input: userInput}),
+                        success: function(response) {
+                            var botResponse = response.response;
+                            appendMessage('Robo-Doc', botResponse, 'left');
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+
+                    $("#userInput").val('');
+                }
+            });
+
+            function appendMessage(name, message, side) {
+                var msgHTML = '<div class="msg ' + side + '-msg">' +
+                    '<div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>' +
+                    '<div class="msg-bubble">' +
+                    '<div class="msg-info">' +
+                    '<div class="msg-info-name">' + name + '</div>' +
+                    '</div>' +
+                    '<div class="msg-text">' +
+                    message +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                $('.msger-chat').append(msgHTML);
+                $('.msger-chat').scrollTop($('.msger-chat')[0].scrollHeight);
+            }
+        });
+    </script>
    
 </body>
 </html>

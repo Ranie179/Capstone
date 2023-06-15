@@ -52,4 +52,9 @@ public class DoctorService {
 		return doctorRepository.getTotalDoctorByIdDepartment(idDepartment);
 	}
 
+
+	public List<Doctors> showExpDoctor() {
+		return doctorRepository.showExpDoctor();
+	}
+
 }

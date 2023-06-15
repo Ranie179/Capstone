@@ -95,8 +95,12 @@
 								<li><a href="<%=request.getContextPath()%>/showAllService" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="<%=request.getContextPath()%>/showAllDoctor" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li><a href = "<%=request.getContextPath()%>/showAllBlogs" id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức</a></li>
-								<li><a href="customer/myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
-                                <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
+								<li><a id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lịch hẹn khám bệnh<i class="fa fa-chevron-down"></i> </a>
+								<ul class="menu-dropdown">
+                                        <li><a href="about.jsp">Đặt lịch khám</a></li>
+                                        <li><a href="contact.jsp">Tra cứu thông tin lịch hẹn</a></li>
+                                    </ul></li>
+                                <li><a href="chat.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn miễn phí</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -200,7 +204,7 @@
                         <div class="hm-about-block">
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-user-md"></i></div>
                             <div class="tbl-cell hm-about-number">
-                                <span class="counter">54</span>
+                                <span class="counter">${count }</span>
                                 <p>Bác sĩ</p>
                             </div>
                         </div>
@@ -316,46 +320,14 @@
                 </div>
                 <div class="layer-container">
                     <div id="hm-doctor-slider" class="owl-carousel owl-theme theme-owl-dot">
+                    <c:forEach items="${doctor}" var="item">
                         <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 1</h6>
-                            <p>Khoa 1</p>
+                            <img class="img-responsive" src="<c:url value="${item.imageUrl }" />" alt="">
+                            <h6>${item.doctorName}</h6>
+                            <p>${item.department.departmentName }</p>
+                            <p class = "color-orange">Số năm kinh nghiệm: ${item.expYear }</p>
                         </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 2</h6>
-                            <p>Khoa 2</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 3</h6>
-                            <p>Khoa 3</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 4</h6>
-                            <p>Khoa 4</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 5</h6>
-                            <p>Khoa 5</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 6</h6>
-                            <p>Khoa 6</p>
-                        </div>
-                       <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 7</h6>
-                            <p>Khoa 7</p>
-                        </div>
-                        <div class="hm-doctor">
-                            <img class="img-responsive" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            <h6>Bác sĩ 8</h6>
-                            <p>Khoa 8</p>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -368,51 +340,23 @@
                 <h3>Tin mới nhất</h3>
             </div>
             <div class="row">
+            <c:forEach items="${blog}" var="item">
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
-                            <div class="blog-card-date">08 tháng 05 2023</div>
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <div class="blog-card-date">${item.createDate}</div>
+                            <img src="<c:url value="${item.image1 }" />" alt="">
                         </div>
                         <div class="blog-card-ttl">
-                            <h3><a href="#">Tin tức 1</a></h3>
+                            <h3><a href="<%=request.getContextPath()%>/showBlogInfo?idBlog=${item.idBlog}">${item.title}</a></h3>
                         </div>
                         <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Tác giả 2</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
+                            <p><i class="fa fa-bookmark-o"></i><a href = "<%=request.getContextPath()%>/showBlogByTag?idTag=${item.tag.idTag }">${item.tag.tag}</a></p>
+                            <p><a href="<%=request.getContextPath()%>/showBlogInfo?idBlog=${item.idBlog}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="theme-block theme-block-hover">
-                        <div class="theme-block-picture">
-                            <div class="blog-card-date">10 tháng 05 2023</div>
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="blog-card-ttl">
-                            <h3><a href="#">Tin tức 2</a></h3>
-                        </div>
-                        <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Tác giả 2</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="theme-block theme-block-hover">
-                        <div class="theme-block-picture">
-                            <div class="blog-card-date">18 tháng 05 2023</div>
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="blog-card-ttl">
-                            <h3><a href="#">Tin tức 3</a></h3>
-                        </div>
-                        <div class="blog-card-details">
-                            <p><i class="fa fa-user"></i>Tác giả 3</p>
-                            <p><a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đọc thêm</a></p>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div><!-- End Blog Section -->

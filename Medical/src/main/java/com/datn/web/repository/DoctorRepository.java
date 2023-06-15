@@ -176,4 +176,14 @@ public class DoctorRepository {
     }
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
+
+	public List<Doctors> showExpDoctor() {
+		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+				+ "from doctors as doc\r\n"
+				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
+				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "ORDER BY WORK_YEARS DESC\r\n"
+				+ "LIMIT 10";
+		return jdbcTemplate.query(sql, new DoctorRowMapper());
+	}
 }
