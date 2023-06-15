@@ -430,7 +430,7 @@
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-               <form action="/dat-lich-lay-mau" class="form-horizontal" enctype="multipart/form-data" method="post">    <div class="schedule-main"></div>
+               <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method="post">    <div class="schedule-main"></div>
         <div class="container">
             <div class="schedule-container">
                 <div class="schedule-form">
@@ -446,30 +446,30 @@
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="appointment-name">
-                                <label class="mdl-textfield__label" for="appointment-name">Tên</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name" required>
+                                <label class="mdl-textfield__label" for="appointment-name">Tên *</label> 
                                 <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
                             </div>
                         </div>
                            <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-phone"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="appointment-mobile">
-                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" required>
+                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
                             </div>
                         </div>
                             <div class="col-md-6">
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							        <i class="fa fa-calendar-o"></i>
-							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date">
-							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ hợp lệ!</span>
+							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="" required>
+							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
 							    </div>
 							</div>
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email">
+                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                             </div>
@@ -477,25 +477,29 @@
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-angle-double-down"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1">
-                                        <option value="1">Nam</option>
-                                        <option value="2">Nữ</option>
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "gender" required>
+                                    	<option disabled selected>--Chọn giới tính--</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                        <option value="Khác">Khác</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                                    <i class="fa fa-angle-double-down"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1">
-                                        <option value="1">Khoa 1</option>
-                                        <option value="2">Khoa 2</option>
+                                    <i class="fa fa-hospital-o"></i>
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment">
+                                        <option disabled selected>--Chọn khoa--</option>
+                                        <c:forEach items="${department}" var="item">
+                                        <option value="${item.idDepartment }">${item.departmentName }</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
 							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							            <i class="fa fa-paper-plane"></i>
-							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1"></textarea>
+							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note"></textarea>
 							            <label class="mdl-textfield__label" for="sample-message-1">Ghi chú (Ghi thêm yêu cầu hoặc đề nghị của bạn)</label>
 							            <span class="mdl-textfield__error">Ghi thêm yêu cầu hoặc đề nghị của bạn</span>
 							        </div>
@@ -637,13 +641,37 @@
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ // Lấy ngày hiện tại và giờ hiện tại
+    var today = new Date();
+    var currentHour = today.getHours();
+    var currentMinute = today.getMinutes();
 
-        ga('create', 'UA-93901876-1', 'auto');
-        ga('send', 'pageview');
+    // Lấy ngày tối thiểu
+    var minDate;
+
+    if ((currentHour >= 0 && currentHour < 12) || (currentHour === 12 && currentMinute === 0)) {
+        // Nếu giờ hiện tại từ 12:00 SA đến 11:59 SA, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    } else if (currentHour >= 12) {
+        // Nếu giờ hiện tại từ 12:00 CH trở đi, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    }
+
+    // Cập nhật giá trị tối thiểu (min) của trường ngày
+    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
+
+    // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
+    function formatNumber(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
     </script>
+   
 </body>
 </html>

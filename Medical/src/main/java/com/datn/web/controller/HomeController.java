@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.datn.web.bean.Blogs;
+import com.datn.web.bean.Departments;
 import com.datn.web.bean.Doctors;
 import com.datn.web.service.BlogService;
+import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 
 @Controller
@@ -19,7 +21,8 @@ public class HomeController {
     private DoctorService doctorService;
     @Autowired
     private BlogService blogService;
-    
+    @Autowired
+    private DepartmentService departmentService;
 
     @RequestMapping("/")
     public String test(Model model) {
@@ -28,6 +31,8 @@ public class HomeController {
     	blogs.remove(4);
     	blogs.remove(3);
     	int doctorCount = doctorService.getTotalDoctorCount(null, null, null);
+    	List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
         model.addAttribute("doctor", doctors);
         model.addAttribute("blog", blogs);
         model.addAttribute("count", doctorCount);
