@@ -32,7 +32,6 @@
     <link href='<c:url value="/resources/css/flexslider.css" />' rel="stylesheet" type="text/css">
     <!-- Custom Main Stylesheet CSS -->
     <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet" type="text/css">
-    <link href='<c:url value="/resources/css/aaa.css" />' rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Start Header -->
@@ -62,9 +61,8 @@
                         <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
                             <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            <li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            <li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            <li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                            <li class="mdl-menu__item"><a href="register.jsp"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            <li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
                         </ul>
                     </div>
                 </div>
@@ -103,7 +101,7 @@
                                         <li><a href="blog.jsp">Tin tức 2</a></li>
                                     </ul>
                                 </li>
-								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
+								<li><a href="customer/myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
                                 <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
                                 <li>
                                 </li>
@@ -116,25 +114,81 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start page Title Section -->
+      <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Khoa 1</h1>
-               <p><a href="#">Trang chủ</a> &#8594; <a href="#">Khoa</a> &#8594; <span>Khoa 1</span></p>
+                <h1><c:out value="${departmentInfo.departmentName}" /></h1>
+                <p><a href="#">Trang chủ</a> &#8594; <a href="#">Khoa</a> &#8594; <span><c:out value="${departmentInfo.departmentName}" /></span></p>
             </div>
         </div>
-    </div><!-- End page Title Section -->
-    <h1 style ="text-align:center;">Khoa 1</h1>
-    <div class="image-with-text">
-  <img src="path-to-your-image.jpg" alt="Description of the image">
-  <div class="text-overlay">
-  
-    <h2>Title</h2>
-    <p>Some text description</p>
-  </div>
-</div>
-    
+    </div><!-- End Page Title Section -->
+    <!-- Start Service Section -->
+    <div id="service-page-1">
+        <div class="layer-stretch">
+            <div class="row layer-wrapper">
+                <div class="col-lg-8 text-center">
+                    <div class="theme-material-card">
+                    <div class="sub-ttl font-28">${departmentInfo.departmentName}</div>
+                        <div class="theme-img theme-img-scalerotate"><img class="" src="<c:url value="${departmentInfo.image }" />" alt=""></div>
+                        <div class="service-post">
+                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${departmentInfo.information}" /></p>
+                            <p class="paragraph-medium paragraph-black text-left">Dịch vụ nổi bật của khoa:</p>
+                            <c:forEach items="${service}" var="item">
+                            <ul class="theme-list text-left">
+                                <li><a href = "<%=request.getContextPath()%>/showServiceInfo?id=${item.id}"><i class="fa fa-dot-circle-o color-blue"></i><c:out value="${item.name }" /></a></li>
+                            </ul>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="theme-material-card">
+                    <div class="sub-ttl">Đội ngũ của chúng tôi</div>
+                        <div class="flexslider theme-flexslider">
+                            <ul class="slides">
+							  <c:forEach items="${doctor}" var="item" varStatus="loop">
+							      <li>
+							        <div class="theme-flexslider-container">
+							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
+							          <h4><c:out value="${item.doctorName}" /></h4>
+							          <p><c:out value="${item.department.departmentName}" /></p>
+							        </div>
+							      </li>
+							  </c:forEach>
+							</ul>
+                        </div>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Bài viết gần đây</div>
+                       <c:forEach items="${recent}" var="item">
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>${item.title }</h4>
+                                <p>${item.createDate }</p>
+                            </div>
+                        </a>
+                        </c:forEach>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Thời gian làm việc</div>
+                        <ul class="timetable">
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 2</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 3</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 4</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 5</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 6</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 7</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Service Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">

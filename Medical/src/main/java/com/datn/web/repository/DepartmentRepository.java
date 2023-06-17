@@ -22,14 +22,38 @@ public class DepartmentRepository {
         	department.setDepartmentName(rs.getString("Department_Name"));
         	department.setIdDepartment(rs.getInt("ID_Department"));
         	department.setNumOfDoctors(rs.getInt("NumOfDoctors"));
+        	department.setImage(rs.getString("Image"));
+        	department.setIntro(rs.getString("Intro"));
+        	department.setInformation(rs.getString("Information"));
         	return department;
         }
     }
 	public List<Departments> showDepartmentAndDoctor() {
-		String sql = "SELECT departments.ID_Department, departments.Department_Name, COUNT(doctors.ID_Doctor) "
-				+ "as NumOfDoctors FROM departments LEFT JOIN doctors "
+		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
+				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
 				+ "ON departments.ID_Department = doctors.ID_Department GROUP BY departments.Department_Name;";
 		return jdbcTemplate.query(sql, new DepartmentRowMapper());
+	}
+	public int getTotalDepartmentCount() {
+		String sql = "SELECT COUNT(*) FROM departments";
+		return jdbcTemplate.queryForObject(sql,Integer.class);
+	}
+	public List<Departments> showAllDepartment(int page, int pageSize) {
+		int offset = (page - 1) * pageSize;
+	    String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
+	    		+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
+	    		+ "ON departments.ID_Department = doctors.ID_Department GROUP BY departments.Department_Name LIMIT ? OFFSET ?";
+	    Object[] params = new Object[]{pageSize, offset};
+		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
+	}
+	public List<Departments> showDepartmentInfo(int id) {
+		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor) AS NumOfDoctors\r\n"
+				+ "FROM departments\r\n"
+				+ "LEFT JOIN doctors ON departments.ID_Department = doctors.ID_Department\r\n"
+				+ "WHERE departments.ID_Department = ?\r\n"
+				+ "GROUP BY departments.Department_Name;";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
 	}
 
 }

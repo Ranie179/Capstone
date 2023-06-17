@@ -4,7 +4,9 @@ public class Departments {
 	private int idDepartment;
 	protected String departmentName;
 	protected int numOfDoctors;
-	
+	protected String intro;
+	protected String information;
+	protected String image;
 	
 	public int getNumOfDoctors() {
 		return numOfDoctors;
@@ -24,12 +26,33 @@ public class Departments {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	public Departments(String departmentName, int numOfDoctors) {
+	
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+	public String getInformation() {
+		return information;
+	}
+	public void setInformation(String information) {
+		this.information = information;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public Departments(String departmentName, int numOfDoctors, String intro, String information, String image) {
 		super();
 		this.departmentName = departmentName;
 		this.numOfDoctors = numOfDoctors;
+		this.intro = intro;
+		this.information = information;
+		this.image = image;
 	}
-	
 	public Departments() {
 		super();
 	};

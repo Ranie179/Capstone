@@ -128,80 +128,54 @@
     <div id="doctor-page" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-10">
             <div class="row">
+            <c:forEach items="${department}" var="item">
                 <div class="col-md-4">
                     <div class="theme-block theme-block-hover text-left">
                         <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <img class="card-img-top" src="<c:url value="${item.image}" />" alt="">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Khoa 1</h4>
-                            <p class="text-muted">Thông tin khoa 1</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
+                            <h4 class="card-title">${item.departmentName }</h4>
+                            <p class="text-muted">${item.intro }</p>
+                            <a href="<%=request.getContextPath()%>/showDepartmentInfo?id=${item.idDepartment}" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 2</h4>
-                            <p class="text-muted">Thông tin khoa 2</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 3</h4>
-                            <p class="text-muted">Thông tin khoa 3</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 4</h4>
-                            <p class="text-muted">Thông tin khoa 4</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 5</h4>
-                            <p class="text-muted">Thông tin khoa 5</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-               <div class="col-md-4">
-                    <div class="theme-block theme-block-hover text-left">
-                        <div class="theme-block-picture">
-                            <img class="card-img-top" src="<c:url value="/resources/images/test.jpg" />" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Khoa 6</h4>
-                            <p class="text-muted">Thông tin khoa 6</p>
-                            <a href="#" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
+         <div class="layer-wrapper text-center">
+        <ul class="theme-pagination">
+					    <c:choose>
+					        <c:when test="${currentPage > 1}">
+					            <li><a href="<%=request.getContextPath()%>/showAllDepartment?page=${currentPage - 1}">&laquo; Previous</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>&laquo; Previous</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					
+					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+					        <c:choose>
+					            <c:when test="${loop.index == currentPage}">
+					                <li class="active"><span>${loop.index}</span></li>
+					            </c:when>
+					            <c:otherwise>
+					                <li><a href="<%=request.getContextPath()%>/showAllDepartment?page=${loop.index}">${loop.index}</a></li>
+					            </c:otherwise>
+					        </c:choose>
+					    </c:forEach>
+					
+					    <c:choose>
+					        <c:when test="${currentPage < totalPages}">
+					            <li><a href="<%=request.getContextPath()%>/showAllDepartment?page=${currentPage + 1}">Next &raquo;</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>Next &raquo;</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					</ul>
+					</div>
     </div><!-- End Doctor List Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">

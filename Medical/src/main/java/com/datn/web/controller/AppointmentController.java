@@ -7,18 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Random;
 
 import com.datn.web.bean.Appointment;
+import com.datn.web.bean.Blogs;
+import com.datn.web.bean.Departments;
+import com.datn.web.bean.Services;
+import com.datn.web.bean.Doctors;
 import com.datn.web.service.AppointmentService;
+import com.datn.web.service.BlogService;
+import com.datn.web.service.DepartmentService;
+import com.datn.web.service.DoctorService;
+import com.datn.web.service.ServiceService;
 
 @Controller
 public class AppointmentController {
 	@Autowired
 	private AppointmentService appointmentService;
+	@Autowired
+	private DoctorService doctorService;
+	@Autowired 
+	private BlogService blogService;
+	@Autowired
+	private ServiceService serviceService;
+	@Autowired
+	private DepartmentService departmentService;
 	
 	public static String generateToken(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -41,6 +58,7 @@ public class AppointmentController {
 		String token = generateToken(10);
 		appointmentService.setAppointment(name, phone, date, email, gender, idDepartment, note, token);
 		model.addAttribute("token", token);
+		System.out.print(token);
 		return "customer/success";
 	}
 	
@@ -48,7 +66,31 @@ public class AppointmentController {
 	public String searchAppointment(@RequestParam("token") String token, Model model) {
 		List<Appointment> appointment = appointmentService.searchAppointment(token);
 		model.addAttribute("appointment", appointment.get(0));
-		return "customer/test";
+		List<Services> services = serviceService.showMoreService();
+		List<Doctors> doctors = doctorService.showExpDoctor();
+		List<Blogs> recent = blogService.getRecentBlog();
+		model.addAttribute("doctor", doctors);
+		model.addAttribute("service", services);
+		model.addAttribute("recent", recent);
+		return "customer/appointmentinfo";
+	}
+	
+	@RequestMapping(value = "showMoreInfo")
+	public String showMoreInfo(Model model) {
+		List<Services> services = serviceService.showMoreService();
+		List<Doctors> doctors = doctorService.showExpDoctor();
+		List<Blogs> recent = blogService.getRecentBlog();
+		model.addAttribute("doctor", doctors);
+		model.addAttribute("service", services);
+		model.addAttribute("recent", recent);
+		return "customer/turnup";
+	}
+	
+	@RequestMapping(value = "showDepartmentForAppointment")
+	public String showDepartmentForAppointment(Model model) {
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
+    	return "customer/myappointment";
 	}
 
 }

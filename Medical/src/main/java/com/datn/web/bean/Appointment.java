@@ -12,6 +12,8 @@ public class Appointment {
 	protected Departments department;
 	protected String note;
 	protected String token;
+	protected String information;
+	
 	public int getId() {
 		return id;
 	}
@@ -66,8 +68,14 @@ public class Appointment {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public String getInformation() {
+		return information;
+	}
+	public void setInformation(String information) {
+		this.information = information;
+	}
 	public Appointment(String name, String phone, Timestamp appointmentDate, String email, String gender,
-			Departments department, String note, String token) {
+			Departments department, String note, String token, String information) {
 		super();
 		this.name = name;
 		this.phone = phone;
@@ -77,6 +85,7 @@ public class Appointment {
 		this.department = department;
 		this.note = note;
 		this.token = token;
+		this.information = information;
 	}
 	public Appointment() {
 		super();

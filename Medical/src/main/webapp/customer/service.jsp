@@ -129,7 +129,7 @@
             <div class="row layer-wrapper">
                 <div class="col-lg-8 text-center">
                     <div class="theme-material-card">
-                        <div class="theme-img theme-img-scalerotate"><img src="<c:url value="https://drive.google.com/uc?id=1Lli1GZMPTBY24JsE7LXTbWmlaZUck31k" />" alt=""></div>
+                        <div class="theme-img theme-img-scalerotate"><img src="<c:out value="${serviceInfo.image1}" />" alt=""></div>
                         <div class="service-post">
                             <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.intro}" /></p>
                             <div class="row">

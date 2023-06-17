@@ -78,6 +78,12 @@ public class ServiceRepository {
 	    Object[] params = new Object[]{"%" + search + "%"};
 	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}
+	
+	public List<Services> showServiceByIdDepartment(int id){
+		String sql = "SELECT * FROM service WHERE ID_Department = ? LIMIT 10";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
 
 
 

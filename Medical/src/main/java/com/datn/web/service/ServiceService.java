@@ -44,4 +44,8 @@ public class ServiceService {
 		return serviceRepository.searchServiceByName(search);
 	}
 	
+	public List<Services> showServiceByIdDepartment(int id){
+		return serviceRepository.showServiceByIdDepartment(id);
+	}
+	
 }

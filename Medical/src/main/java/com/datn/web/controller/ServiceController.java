@@ -34,7 +34,7 @@ public class ServiceController {
 	    model.addAttribute("service", services);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
-		List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize, searchKeyword, idDepartment, expYear);
+		List<Doctors> doctors = doctorService.showExpDoctor();
 	    model.addAttribute("doctor", doctors);
 	    model.addAttribute("search", search);
 	    return "customer/servicelist";

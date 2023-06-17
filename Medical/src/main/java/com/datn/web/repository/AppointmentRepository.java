@@ -30,6 +30,7 @@ public class AppointmentRepository {
         	appointment.setNote(rs.getString("Note"));
         	appointment.setPhone(rs.getString("Phone"));
         	appointment.setToken(rs.getString("Token"));
+        	appointment.setInformation(rs.getString("Information"));
         	Departments department = new Departments();
         	department.setDepartmentName(rs.getString("Department_Name"));
         	appointment.setDepartment(department);
@@ -38,9 +39,9 @@ public class AppointmentRepository {
     }
 	public void setAppointment(String name, String phone, Timestamp date, String email, String gender,
 			int idDepartment, String note, String token) throws Exception {
-		String sql = "INSERT INTO appointment(name, phone, appointment_date, email, gender, id_department, note, token)"
+		String sql = "INSERT INTO appointment(name, phone, appointment_date, email, gender, id_department, note, token, information)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = new Object[] {name, phone, date, email, gender, idDepartment, note, token};
+		Object[] params = new Object[] {name, phone, date, email, gender, idDepartment, note, token, "Không có thông báo"};
 		int rs =jdbcTemplate.update(sql, params);
 		if(rs!= 1) {
 			throw new Exception(); 

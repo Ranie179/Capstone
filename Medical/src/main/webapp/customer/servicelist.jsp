@@ -211,19 +211,17 @@
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Our Team</div>
+                        <div class="sub-ttl">Đội ngũ của chúng tôi</div>
                         <div class="flexslider theme-flexslider">
                             <ul class="slides">
 							  <c:forEach items="${doctor}" var="item" varStatus="loop">
-							    <c:if test="${loop.index < 5}">
 							      <li>
 							        <div class="theme-flexslider-container">
 							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
-							          <h4><c:out value="${item.doctorName}" /></h4>
+							          <h4><a href = "<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}"><c:out value="${item.doctorName}" /></a></h4>
 							          <p><c:out value="${item.department.departmentName}" /></p>
 							        </div>
 							      </li>
-							    </c:if>
 							  </c:forEach>
 							</ul>
                         </div>

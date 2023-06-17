@@ -92,7 +92,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
@@ -115,23 +115,224 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start Page Title Section -->
+    <!-- Start page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đặt lịch khám</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Đặt lịch khám</span></p>
+                <h1>Tra cứu thông tin lịch hẹn</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Tra cứu thông tin lịch hẹn</span></p>
             </div>
         </div>
-    </div><!-- End Page Title Section -->
-	<form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post">    <div class="schedule-main"></div>
+    </div><!-- End page Title Section -->
+    <!-- Start Turn up Section -->
+               
+    <div id="doctor-page" class="layer-stretch">
+        <div class="layer-wrapper text-center">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				               <i class="fa fa-user-o"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Tên người hẹn</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.name }" disabled>
+				        </div>     
+				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-phone"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Số điện thoại</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.phone }" disabled> 
+				        </div>
+ 				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-calendar-o"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Ngày giờ hẹn</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.appointmentDate }" disabled> 
+				        </div>
+				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-envelope-o"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Email:</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.email }" disabled> 
+				        </div>
+				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-venus-mars"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Giới tính</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.gender }" disabled> 
+				        </div>
+				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-building"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Khoa</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.department.departmentName }" disabled> 
+				        </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa-sticky-note-o"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Ghi chú của người hẹn</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.note }" disabled> 
+				        </div> 
+				    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+				        <i class="fa fa fa-info"></i>
+				               <label style = "color: black;" class="mdl-textfield__label" for="sample-text-1">Thông báo của chúng tôi</label>
+				               <input style = "padding-left: 10px; color: black;" class="mdl-textfield__input" type="text" value = "${appointment.information }" disabled> 
+				        </div>				          				                
+                </div>
+                <div class="col-lg-4">
+                    <div class="theme-material-card">
+                    <div class="sub-ttl">Đội ngũ của chúng tôi</div>
+                        <div class="flexslider theme-flexslider">
+                            <ul class="slides">
+							  <c:forEach items="${doctor}" var="item" varStatus="loop">
+							      <li>
+							        <div class="theme-flexslider-container">
+							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
+							          <h4><c:out value="${item.doctorName}" /></h4>
+							          <p><c:out value="${item.department.departmentName}" /></p>
+							        </div>
+							      </li>
+							  </c:forEach>
+							</ul>
+                        </div>
+                    </div>
+                     <div class="theme-material-card">
+                        <div class="sub-ttl">Dịch vụ</div>
+                        <div class="flexslider theme-flexslider">
+                            <ul class="slides">
+                            <c:forEach items="${service}" var="item">
+                                <li>
+                                    <div class="theme-flexslider-container">
+                                        <img src="<c:url value="${item.image1}" />" alt="" />
+                                        <h4>${item.name}</h4>
+                                        <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Bài viết gần đây</div>
+                       <c:forEach items="${recent}" var="item">
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>${item.title }</h4>
+                                <p>${item.createDate }</p>
+                            </div>
+                        </a>
+                        </c:forEach>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Thời gian làm việc</div>
+                        <ul class="timetable">
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 2</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 3</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 4</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 5</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 6</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 7</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Doctor List Section -->
+    <!-- Start Department List Section -->
+    <div class="parallax-background parallax-background-2">
+        <div class="layer-stretch">
+            <div class="layer-wrapper layer-bottom-10">
+                <div class="layer-ttl layer-ttl-white">
+                    <h3>Khoa</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Phụ khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa phụ khoa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Y học nhiệt đới</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa y học nhiệt đới</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Tim mạch</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tim mạch</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Đa khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa đa khoa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Mắt</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa mắt</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Tiêu hóa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tiêu hóa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Department List Section -->
+    <!-- Start Emergency Section -->
+    <div id="emergency">
+        <div class="layer-stretch">
+            <div class="layer-wrapper">
+                <div class="layer-ttl">
+                    <h3>Khẩn cấp</h3>
+                </div>
+                <div class="layer-container">
+                    <div class="paragraph-medium paragraph-black">
+                        Trong trường hợp khẩn cấp hoặc cần hỗ trợ <br/>
+                        Làm ơn gọi số điện thoại này:
+                    </div>
+                    <div class="emergency-number">0123.456.115</div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Emergency Section -->
+    <!-- Start Make an Appointment Modal -->
+    <div id="appointment" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <form action="/dat-lich-lay-mau" class="form-horizontal" enctype="multipart/form-data" method="post">    <div class="schedule-main"></div>
         <div class="container">
             <div class="schedule-container">
                 <div class="schedule-form">
                 <div class="p-2 text-center">
                     <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
-                     <div class="paragraph-medium paragraph-black">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
                     <div class="form">
+                        <input name="__RequestVerificationToken" type="hidden" value="3eeMuUiBYPzTMawKIH_d3Xl5og9-IgUQ-z4dHmVc6DCy-Ae71zrfuG3cqJBKLaU5JUxGqxDksmmXiQ1JXzQ17uQwTPgDJ5ccdiHENla9SRE1" />
                         <div class="schedule-row row">
                             <div class="schedule-col col-xl-12">
                                 <div class="form-group schedule-comment">
@@ -140,30 +341,30 @@
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name" required>
-                                <label class="mdl-textfield__label" for="appointment-name">Tên *</label> 
+                                <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="appointment-name">
+                                <label class="mdl-textfield__label" for="appointment-name">Tên</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
                             </div>
                         </div>
                            <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-phone"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" required>
-                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="appointment-mobile">
+                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
                             </div>
                         </div>
                             <div class="col-md-6">
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							        <i class="fa fa-calendar-o"></i>
-							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="" required>
-							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
+							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date">
+							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ hợp lệ!</span>
 							    </div>
 							</div>
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email">
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                             </div>
@@ -171,29 +372,25 @@
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-angle-double-down"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "gender" required>
-                                    	<option disabled selected>--Chọn giới tính--</option>
-                                        <option value="Nam">Nam</option>
-                                        <option value="Nữ">Nữ</option>
-                                        <option value="Khác">Khác</option>
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1">
+                                        <option value="1">Nam</option>
+                                        <option value="2">Nữ</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                                    <i class="fa fa-hospital-o"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment">
-                                        <option disabled selected>--Chọn khoa--</option>
-                                        <c:forEach items="${department}" var="item">
-                                        <option value="${item.idDepartment }">${item.departmentName }</option>
-                                        </c:forEach>
+                                    <i class="fa fa-angle-double-down"></i>
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1">
+                                        <option value="1">Khoa 1</option>
+                                        <option value="2">Khoa 2</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
 							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							            <i class="fa fa-paper-plane"></i>
-							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note"></textarea>
+							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1"></textarea>
 							            <label class="mdl-textfield__label" for="sample-message-1">Ghi chú (Ghi thêm yêu cầu hoặc đề nghị của bạn)</label>
 							            <span class="mdl-textfield__error">Ghi thêm yêu cầu hoặc đề nghị của bạn</span>
 							        </div>
@@ -212,23 +409,17 @@
             </div>
         </div>
     </form>
-    <!-- Start Emergency Section -->
-    <div id="emergency">
-        <div class="layer-stretch">
-            <div class="layer-wrapper">
-                <div class="layer-ttl">
-                    <h3>Khẩn cấp</h3>
-                </div>
-                <div class="layer-container">
-                    <div class="paragraph-medium paragraph-black">
-                        Trong trường hợp khẩn cấp hoặc cần hỗ trợ <br/>
-                        Làm ơn gọi số điện thoại này:
-                    </div>
-                    <div class="emergency-number">0123.456.115</div>
+                <div class="modal-body">
+                    <div class="appointment-error"></div>
                 </div>
             </div>
         </div>
-    </div><!-- End Emergency Section -->
+    </div><!-- End Make an Appointment Modal -->
+    <!-- Fixed Appointment Button at Bottom -->
+    <div id="appointment-button" class="animated fadeInUp">
+        <button id="appointment-now" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised"><i class="fa fa-plus"></i></button>
+        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="appointment-now">Đặt lịch hẹn</div>
+    </div><!-- End Fixed Appointment Button at Bottom -->
     <!-- Start Footer Section -->
     <footer id="footer">
         <div class="layer-stretch">
@@ -340,38 +531,5 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-    
-     <script>
- // Lấy ngày hiện tại và giờ hiện tại
-    var today = new Date();
-    var currentHour = today.getHours();
-    var currentMinute = today.getMinutes();
-
-    // Lấy ngày tối thiểu
-    var minDate;
-
-    if ((currentHour >= 0 && currentHour < 12) || (currentHour === 12 && currentMinute === 0)) {
-        // Nếu giờ hiện tại từ 12:00 SA đến 11:59 SA, ngày tối thiểu là hôm nay
-        var currentDay = today.getDate();
-        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
-        var currentYear = today.getFullYear();
-        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
-    } else if (currentHour >= 12) {
-        // Nếu giờ hiện tại từ 12:00 CH trở đi, ngày tối thiểu là hôm nay
-        var currentDay = today.getDate();
-        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
-        var currentYear = today.getFullYear();
-        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
-    }
-
-    // Cập nhật giá trị tối thiểu (min) của trường ngày
-    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
-
-    // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
-    function formatNumber(number) {
-        return number < 10 ? "0" + number : number;
-    }
-
-    </script>
 </body>
 </html>
