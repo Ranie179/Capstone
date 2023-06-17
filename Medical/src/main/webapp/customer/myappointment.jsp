@@ -124,19 +124,14 @@
             </div>
         </div>
     </div><!-- End Page Title Section -->
-	<form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post">    <div class="schedule-main"></div>
+	 <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post">
         <div class="container">
             <div class="schedule-container">
                 <div class="schedule-form">
                 <div class="p-2 text-center">
                     <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
                      <div class="paragraph-medium paragraph-black">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
-                    <div class="form">
                         <div class="schedule-row row">
-                            <div class="schedule-col col-xl-12">
-                                <div class="form-group schedule-comment">
-                                </div>
-                            </div>
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
@@ -185,7 +180,7 @@
                                     <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment">
                                         <option disabled selected>--Chọn khoa--</option>
                                         <c:forEach items="${department}" var="item">
-                                        <option value="${item.idDepartment }">${item.departmentName }</option>
+                                        <option value="<c:out value="${item.idDepartment}"/>">${item.departmentName }</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -193,15 +188,15 @@
                             <div class="col-md-12">
 							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							            <i class="fa fa-paper-plane"></i>
-							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note"></textarea>
-							            <label class="mdl-textfield__label" for="sample-message-1">Ghi chú (Ghi thêm yêu cầu hoặc đề nghị của bạn)</label>
-							            <span class="mdl-textfield__error">Ghi thêm yêu cầu hoặc đề nghị của bạn</span>
+							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note" required></textarea>
+							            <label class="mdl-textfield__label" for="sample-message-1">Mô tả triệu chứng sơ bộ *</label>
+							            <span class="mdl-textfield__error">Làm ơn miêu tả triệu chứng sơ bộ của bạn để chúng tôi có thể sắp xếp tốt hơn ( Nếu như dùng dịch vụ không phải khám bệnh có thể ghi "Không có")</span>
 							        </div>
 							    </div>
                             </div>
 
                             <div class="schedule-col col-xl-12">
-                                <div class="form-submit">
+                                <div style = "padding-top: 30px; "class="form-submit">
                     				<button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đặt lịch khám</button>
                 				</div>
                             </div>
@@ -210,7 +205,6 @@
 
                 </div>
             </div>
-        </div>
     </form>
     <!-- Start Emergency Section -->
     <div id="emergency">

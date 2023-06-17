@@ -15,7 +15,7 @@ public class AppointmentService {
 	@Autowired
 	private AppointmentRepository appointmentRepository;
 
-	public void setAppointment(String name, String phone, Timestamp date, String email, String gender,
+	public void setAppointment(String name, String phone, String date, String email, String gender,
 			int idDepartment, String note, String token) throws Exception {
 		appointmentRepository.setAppointment(name, phone, date, email, gender, idDepartment, note, token);
 		
