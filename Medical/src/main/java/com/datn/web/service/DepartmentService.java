@@ -22,12 +22,20 @@ public class DepartmentService {
 		return departmentRepository.getTotalDepartmentCount();
 	}
 
-	public List<Departments> showAllDepartment(int page, int pageSize) {
-		return departmentRepository.showAllDepartment(page, pageSize);
+	public List<Departments> showAllDepartmentWorking(int page, int pageSize) {
+		return departmentRepository.showAllDepartmentWorking(page, pageSize);
 	}
 
 	public List<Departments> showDepartmentInfo(int id) {
 		return departmentRepository.showDepartmentInfo(id);
+	}
+
+	public void deleteDepartment(int idDepartment){
+		departmentRepository.deleteDepartment(idDepartment);
+	}
+
+	public List<Departments> showAllDepartment(int page, int pageSize) {
+		return departmentRepository.showAllDepartment(page, pageSize);
 	}
 
 }

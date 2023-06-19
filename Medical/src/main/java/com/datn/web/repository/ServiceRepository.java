@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.datn.web.bean.Services;
+import com.datn.web.bean.Departments;
 @Repository
 public class ServiceRepository {
 	
@@ -32,6 +33,29 @@ public class ServiceRepository {
             services.setImage5(rs.getString("image5"));
             services.setIntro(rs.getString("intro"));
             services.setEndline(rs.getString("endline"));
+            return services;
+        }
+    }
+	
+	private class ServiceDepartmentRowMapper implements RowMapper<Services> {
+        public Services mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Services services = new Services();
+            services.setId(rs.getInt("id"));
+            services.setName(rs.getString("name"));
+            services.setIcon(rs.getString("icon"));
+            services.setDescription1(rs.getString("description1"));
+            services.setDescription2(rs.getString("description2"));
+            services.setDescription3(rs.getString("description3"));
+            services.setImage1(rs.getString("image1"));
+            services.setImage2(rs.getString("image2"));
+            services.setImage3(rs.getString("image3"));
+            services.setImage4(rs.getString("image4"));
+            services.setImage5(rs.getString("image5"));
+            services.setIntro(rs.getString("intro"));
+            services.setEndline(rs.getString("endline"));
+            Departments department = new Departments();
+            department.setDepartmentName(rs.getString("Department_Name"));
+            services.setDepartment(department);
             return services;
         }
     }
@@ -83,6 +107,20 @@ public class ServiceRepository {
 		String sql = "SELECT * FROM service WHERE ID_Department = ? LIMIT 10";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+	
+	public List<Services> adminShowService(int page, int pageSize){
+		int offset = (page - 1) * pageSize;
+		String sql = "SELECT * FROM service join departments on service.ID_Department = departments.ID_Department LIMIT ? OFFSET ?";
+		Object[] params = new Object[]{pageSize, offset};
+		return jdbcTemplate.query(sql, params, new ServiceDepartmentRowMapper());
+	}
+	
+	public List<Services> adminShowService(int page, int pageSize, String search){
+		int offset = (page - 1) * pageSize;
+		String sql = "SELECT service.*, departments.Department_Name FROM service join departments on service.ID_Department = departments.ID_Department WHERE UPPER(name) LIKE UPPER(?) LIMIT ? OFFSET ?";
+		Object[] params = new Object[]{"%" + search + "%", pageSize, offset};
+		return jdbcTemplate.query(sql, params, new ServiceDepartmentRowMapper());
 	}
 
 

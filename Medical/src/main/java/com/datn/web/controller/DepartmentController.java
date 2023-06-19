@@ -33,7 +33,7 @@ public class DepartmentController {
 		int pageSize = 6;
 	    int totalCount = departmentService.getTotalDepartmentCount( );
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-		List<Departments> departments = departmentService.showAllDepartment(page, pageSize);
+		List<Departments> departments = departmentService.showAllDepartmentWorking(page, pageSize);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("department", departments);
@@ -51,6 +51,36 @@ public class DepartmentController {
 		model.addAttribute("recent", recent);
 		model.addAttribute("service", service);
 		return "customer/department";
+	}
+	
+	@RequestMapping(value = "adminShowDepartment")
+	public String adminShowDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
+		int pageSize = 10;
+	    int totalCount = departmentService.getTotalDepartmentCount( );
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+		List<Departments> departments = departmentService.showAllDepartmentWorking(page, pageSize);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("department", departments);
+		return "admin/admindepartmentlist";
+	}
+	
+	@RequestMapping(value = "deleteDepartment")
+	public String deleteDepartment(@RequestParam("id") int idDepartment){
+		departmentService.deleteDepartment(idDepartment);
+		return "redirect:adminShowDepartment";
+	}
+	
+	@RequestMapping(value = "adminShowAllDepartment")
+	public String adminShowAllDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
+		int pageSize = 10;
+	    int totalCount = departmentService.getTotalDepartmentCount( );
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+		List<Departments> departments = departmentService.showAllDepartment(page, pageSize);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("department", departments);
+		return "admin/adminalldepartment";
 	}
 
 }

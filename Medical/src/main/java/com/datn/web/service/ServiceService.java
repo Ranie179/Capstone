@@ -47,5 +47,13 @@ public class ServiceService {
 	public List<Services> showServiceByIdDepartment(int id){
 		return serviceRepository.showServiceByIdDepartment(id);
 	}
+
+	public List<Services> adminShowService(int page, int pageSize, String search) {
+		if (!StringUtils.isEmpty(search)) {
+	        return serviceRepository.adminShowService(page, pageSize, search);
+	    } else {
+	        return serviceRepository.adminShowService(page, pageSize);
+	    }
+	}
 	
 }

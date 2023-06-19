@@ -133,7 +133,10 @@
 				    <div class="theme-material-card">
 				        <div class="theme-accordion-container">
 				        <c:if test="${empty service}">
-						    <p>Không tìm thấy kết quả phù hợp với từ khóa "${search}"</p>
+						    <div style = "width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
+                                <strong>Xin lỗi!</strong> Không tìm thấy kết quả phù hợp với từ khóa "${search}"
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                            </div>
 						</c:if>
 				            <div class="theme-accordion">
 				                <c:forEach items="${service}" var="item">

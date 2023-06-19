@@ -56,6 +56,12 @@ public class DoctorController {
 		model.addAttribute("idDepartment", idDepartment);
 		model.addAttribute("experience", experience);
 		model.addAttribute("search", search);
+		if (experience == null) {
+	        experience = 0; // Giá trị mặc định, ví dụ "1" cho "Dưới 1 năm"
+	    }
+	    
+	    // Truyền giá trị trạng thái đã chọn sang view
+	    model.addAttribute("selectedExperience", experience);
 		return "customer/doctorlist";
 	}
 	
@@ -73,7 +79,35 @@ public class DoctorController {
 		return "customer/doctor";
 	}
 	
-	
+	@RequestMapping(value = "adminShowDoctor")
+	public String adminShowDoctor(@RequestParam(required = false) Integer experience,
+			@RequestParam(required = false) Integer idDepartment,
+			@RequestParam(required = false) String search, 
+			@RequestParam(defaultValue = "1") int page, Model model) {
+		int pageSize = 10; 
+	    int totalCount = doctorService.getTotalDoctorCount(search, idDepartment, experience); 
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize); 
+		List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize, search, idDepartment, experience);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    
+	    List<Services> services = serviceService.showMoreService();
+	    model.addAttribute("service", services);
+	    List<Blogs> recentBlog = blogService.getRecentBlog();
+		model.addAttribute("recent", recentBlog);
+		
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+	    model.addAttribute("doctorlist", doctors);
+		model.addAttribute("department", departments);
+		model.addAttribute("idDepartment", idDepartment);
+		model.addAttribute("experience", experience);
+		model.addAttribute("search", search);
+		if (experience == null) {
+	        experience = 0;
+	    }
+	    model.addAttribute("selectedExperience", experience);
+		return "admin/admindoctorlist";
+	}
 	
 }
 

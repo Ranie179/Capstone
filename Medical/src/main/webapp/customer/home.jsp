@@ -89,6 +89,7 @@
                                         <li><a href="about.jsp">Về chúng tôi</a></li>
                                         <li><a href="contact.jsp">Liên hệ</a></li>
                                         <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
+                                        <li><a href = "<%=request.getContextPath()%>/adminShowDoctor">>test admin</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<%=request.getContextPath()%>/showAllDepartment" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>

@@ -15,6 +15,8 @@ public class Services {
 	protected String intro;
 	protected String advantage;
 	protected String endline;
+	protected Departments department;
+	
 	public int getId() {
 		return id;
 	}
@@ -99,10 +101,15 @@ public class Services {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public Departments getDepartment() {
+		return department;
+	}
+	public void setDepartment(Departments department) {
+		this.department = department;
+	}
 	public Services(String name, String image1, String image2, String image3, String image4, String image5,
 			String description1, String description2, String description3, String icon, String intro, String advantage,
-			String endline) {
+			String endline, Departments department) {
 		super();
 		this.name = name;
 		this.image1 = image1;
@@ -117,6 +124,7 @@ public class Services {
 		this.intro = intro;
 		this.advantage = advantage;
 		this.endline = endline;
+		this.department = department;
 	}
 	public Services() {}
 	

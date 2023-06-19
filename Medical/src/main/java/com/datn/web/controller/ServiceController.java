@@ -23,9 +23,6 @@ public class ServiceController {
 	
 	@RequestMapping(value = "showAllService", method = RequestMethod.GET)
 	public String showAllService(@RequestParam(defaultValue = "1") int page, 
-			@RequestParam(required = false) String searchKeyword, 
-			@RequestParam(required = false) Integer idDepartment,
-			@RequestParam(required = false) Integer expYear,
 			@RequestParam(required = false) String search, Model model) {
 	    int pageSize = 5;
 	    int totalCount = serviceService.getTotalServiceCount(search);
@@ -58,5 +55,18 @@ public class ServiceController {
 	    return "customer/servicelist";
 	}
 
+	@RequestMapping(value = "adminShowService")
+	public String adminShowService(@RequestParam(defaultValue = "1") int page, 
+			@RequestParam(required = false) String search, Model model) {
+	    int pageSize = 10;
+	    int totalCount = serviceService.getTotalServiceCount(search);
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+	    List<Services> services = serviceService.adminShowService(page, pageSize, search);
+	    model.addAttribute("service", services);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("search", search);
+	    return "admin/adminservicelist";
+	}
 
 }
