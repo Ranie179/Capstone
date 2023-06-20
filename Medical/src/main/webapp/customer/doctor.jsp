@@ -131,7 +131,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="theme-img theme-img-scalerotate">
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                            <img src="<c:url value="${doctorInfo.imageUrl}" />" alt="">
                         </div>
                     </div>
                     <div class="col-sm-8">

@@ -25,4 +25,17 @@ public class AppointmentService {
 		return appointmentRepository.searchAppointment(token);
 	}
 
+	public List<Appointment> adminShowAllAppointment() {
+		return appointmentRepository.adminShowAllAppointment();
+	}
+
+	public List<Appointment> adminShowAppointmentInfo(int id) {
+		return appointmentRepository.adminShowAppointmentInfo(id);
+	}
+
+	public void adminUpdateAppointment(int id, String status, String information) {
+		appointmentRepository.adminUpdateAppointment(id, status, information);
+		
+	}
+
 }

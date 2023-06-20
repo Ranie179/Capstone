@@ -1,5 +1,11 @@
 package com.datn.web.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.service.BlogService;
 import com.datn.web.service.DegreeService;
 import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
+import com.datn.web.service.PositionService;
 import com.datn.web.service.ServiceService;
 import com.datn.web.bean.Doctors;
+import com.datn.web.bean.Image;
+import com.datn.web.bean.Positions;
 import com.datn.web.bean.Services;
 import com.datn.web.bean.Blogs;
 import com.datn.web.bean.Degrees;
@@ -32,6 +42,8 @@ public class DoctorController {
 	private BlogService blogService;
 	@Autowired
 	private DepartmentService departmentService;
+	@Autowired
+	private PositionService positionService;
 	
 	@RequestMapping(value = "showAllDoctor", method = RequestMethod.GET)
 	public String showAllService(@RequestParam(required = false) Integer experience,
@@ -108,6 +120,40 @@ public class DoctorController {
 	    model.addAttribute("selectedExperience", experience);
 		return "admin/admindoctorlist";
 	}
+	
+	@RequestMapping(value = "adminShowDoctorInfo")
+	public String adminShowDoctorInfo(@RequestParam("id") int id, Model model) {
+		List<Doctors> doctorInfo = doctorService.showDoctorInfo(id);
+		model.addAttribute("doctorInfo", doctorInfo.get(0));
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+		model.addAttribute("department", departments);
+		List<Positions> position = positionService.showAllPosition();
+		model.addAttribute("position", position);
+		List<Degrees> degrees = degreeService.showDegree(id);
+		model.addAttribute("degree", degrees);
+		return "admin/admindoctor";
+	}
+	
+	@RequestMapping(value = "adminEditDoctor")
+	public String adminEditDoctor(@RequestParam("id") int id, @RequestParam("idDepartment") int idDepartment, 
+			@RequestParam("idPosition") int idPosition, @RequestParam("isWorking") String isWorking, 
+			@RequestParam("experience") int experience, @RequestParam("salary") int salary, 
+			@RequestParam("information") String information, @RequestParam("phone") String phone, 
+			@RequestParam("file") MultipartFile file, Model model) throws IOException {
+
+                String relativePath = "/resources/images/avatar" + String.valueOf(id) + ".png";
+
+                String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+                File destinationFile = new File(destinationPath);
+                Path destination = destinationFile.toPath();
+                InputStream inputStream = file.getInputStream();
+                Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
+                
+                doctorService.adminEditDoctor(id, idDepartment, idPosition, experience, salary, information, phone, isWorking, relativePath);
+
+		return "redirect:adminShowDoctorInfo?id=" + id;
+	}
+	
 	
 }
 

@@ -100,5 +100,26 @@ public class AppointmentController {
     	return "customer/myappointment";
 	}
 	
+	@RequestMapping(value = "adminShowAllAppointment")
+	public String adminShowAllAppointment(Model model) {
+		List<Appointment> appointment = appointmentService.adminShowAllAppointment();
+		model.addAttribute("appointmentlist", appointment);
+		return "admin/adminappointmentlist";
+	}
+	
+	@RequestMapping(value = "adminShowAppointmentInfo")
+	public String adminShowAppointmentInfo(@RequestParam("id") int id, Model model) {
+		List<Appointment> appointmentInfo = appointmentService.adminShowAppointmentInfo(id);
+		model.addAttribute("appointment", appointmentInfo.get(0));
+		return "admin/adminappointment";
+	}
+	
+	@RequestMapping(value = "adminUpdateAppointment")
+	public String adminUpdateAppointment(@RequestParam("id") int id, @RequestParam("status") String status, 
+			@RequestParam("information") String information,
+			Model model) {
+		appointmentService.adminUpdateAppointment(id, status, information);
+		return "redirect:adminShowAllAppointment";
+	}
 
 }

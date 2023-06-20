@@ -130,6 +130,7 @@
         <div class="layer-wrapper text-center">
             <div class="row">
                 <div class="col-lg-8">
+                 <div id="accordion">
 				    <div class="theme-material-card">
 				        <div class="theme-accordion-container">
 				        <c:if test="${empty service}">
@@ -165,6 +166,7 @@
 				                </c:forEach>
 				            </div>
 				        </div>
+				    </div>
 				    </div>
 				
 				   <ul class="theme-pagination">

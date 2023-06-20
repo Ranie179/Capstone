@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Doctors;
 import com.datn.web.repository.DoctorRepository;
@@ -56,5 +57,14 @@ public class DoctorService {
 	public List<Doctors> showExpDoctor() {
 		return doctorRepository.showExpDoctor();
 	}
+
+
+	public void adminEditDoctor(int id, int idDepartment,int idPosition, int experience, int salary, String information, String phone, String isWorking,
+			String relativePath) {
+		doctorRepository.adminEditDoctor(id, idDepartment, idPosition, experience, salary, information, phone, isWorking, relativePath);
+		
+	}
+
+
 
 }

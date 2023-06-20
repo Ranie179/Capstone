@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Positions;
@@ -37,6 +38,9 @@ public class DoctorRepository {
             doctor.setGraduate(rs.getString("Graduate"));
             doctor.setExpYear(rs.getInt("EXP_YEARS"));
             doctor.setWorkYear(rs.getInt("WORK_YEARS"));
+            doctor.setSalary(rs.getInt("Salary"));
+            doctor.setIsWorking(rs.getString("isWorking"));
+            doctor.setPhone(rs.getString("Phone"));
             return doctor;
         }
     }
@@ -186,4 +190,17 @@ public class DoctorRepository {
 				+ "LIMIT 10";
 		return jdbcTemplate.query(sql, new DoctorRowMapper());
 	}
+
+	public void adminEditDoctor(int id, int idDepartment,int idPosition, int experience, int salary, String information, String phone, String isWorking,
+			String relativePath) {
+		String sql = "UPDATE doctors\r\n"
+				+ "SET ID_Department = ?, ID_Position = ?, EXP_YEARS = ?, salary = ?, Information = ?, phone = ?, isWorking = ?, Image_Url = ?\r\n"
+				+ "WHERE ID_Doctor = ?";
+		Object[] params = new Object[] {idDepartment, idPosition, experience, salary, information, phone, isWorking, relativePath, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	
+
+
 }

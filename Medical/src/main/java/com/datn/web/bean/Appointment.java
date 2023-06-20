@@ -13,6 +13,7 @@ public class Appointment {
 	protected String note;
 	protected String token;
 	protected String information;
+	protected String appointmentStatus;
 	
 	public int getId() {
 		return id;
@@ -74,8 +75,14 @@ public class Appointment {
 	public void setInformation(String information) {
 		this.information = information;
 	}
+	public String getAppointmentStatus() {
+		return appointmentStatus;
+	}
+	public void setAppointmentStatus(String appointmentStatus) {
+		this.appointmentStatus = appointmentStatus;
+	}
 	public Appointment(String name, String phone, Timestamp appointmentDate, String email, String gender,
-			Departments department, String note, String token, String information) {
+			Departments department, String note, String token, String information, String appointmentStatus) {
 		super();
 		this.name = name;
 		this.phone = phone;
@@ -86,6 +93,7 @@ public class Appointment {
 		this.note = note;
 		this.token = token;
 		this.information = information;
+		this.appointmentStatus = appointmentStatus;
 	}
 	public Appointment() {
 		super();

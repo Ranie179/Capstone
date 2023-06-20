@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
@@ -152,7 +152,7 @@
                                 <thead>
                                     <tr class="table-primary-head">
                                         <th class="text-center">Tên</th>
-                                        <th class="text-center">Hợp đồng</th>
+                                        <th class ="text-center">Hợp đồng</th>
                                         <th class="text-center">Chức vị</th>
                                         <th class="text-center">Khoa</th>
                                         <th class="text-center">Kinh nghiệm</th>
@@ -163,12 +163,12 @@
                                 <c:forEach items="${doctorlist}" var="item">
                                     <tr>
                                         <td class="text-center">${item.doctorName}</td>
-                                        <td> <a href="#" data-toggle="tooltip" data-placement="top" title="Hợp đồng"><i class="bx bx-detail"></i></a></td>
+                                        <td class="text-center"> <a href="#" data-toggle="tooltip" data-placement="top" title="Hợp đồng"><i class="bx bx-detail"></i></a></td>
                                         <td class="text-center">${item.position.positionName }</td>
                                         <td class="text-center">${item.department.departmentName }</td>
                                         <td class="text-center"> ${item.expYear } năm</td>
                                          <td class="text-center">
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
+                                            <a href="<%=request.getContextPath()%>/adminShowDoctorInfo?id=${item.idDoctor}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                     </tr>

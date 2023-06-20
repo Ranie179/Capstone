@@ -38,4 +38,8 @@ public class DepartmentService {
 		return departmentRepository.showAllDepartment(page, pageSize);
 	}
 
+	public List<Departments> adminEditDepartment(int id) {
+		return departmentRepository.adminEditDepartment(id);
+	}
+
 }

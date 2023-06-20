@@ -31,6 +31,7 @@ public class AppointmentRepository {
         	appointment.setPhone(rs.getString("Phone"));
         	appointment.setToken(rs.getString("Token"));
         	appointment.setInformation(rs.getString("Information"));
+        	appointment.setAppointmentStatus(rs.getString("Appointment_Status"));
         	Departments department = new Departments();
         	department.setDepartmentName(rs.getString("Department_Name"));
         	appointment.setDepartment(department);
@@ -53,6 +54,26 @@ public class AppointmentRepository {
 		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where token = ?";
 		Object[] params = new Object[] {token};
 		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
+	}
+
+	public List<Appointment> adminShowAllAppointment() {
+		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department";
+		return jdbcTemplate.query(sql, new AppointmentRowMapper());
+	}
+
+	public List<Appointment> adminShowAppointmentInfo(int id) {
+		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where id = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
+	}
+
+	public void adminUpdateAppointment(int id, String status, String information) {
+		String sql = "UPDATE appointment\r\n"
+				+ "SET Appointment_Status = ?, Information = ?\r\n"
+				+ "WHERE id = ?;";
+		Object[] params = new Object[] {status, information, id};
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 

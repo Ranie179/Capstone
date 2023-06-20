@@ -36,7 +36,7 @@ public class DepartmentRepository {
 		return jdbcTemplate.query(sql, new DepartmentRowMapper());
 	}
 	public int getTotalDepartmentCount() {
-		String sql = "SELECT COUNT(*) FROM departments";
+		String sql = "SELECT COUNT(*) FROM departments WHERE isWorking = \"Vẫn còn hoạt động\"";
 		return jdbcTemplate.queryForObject(sql,Integer.class);
 	}
 	public List<Departments> showAllDepartmentWorking(int page, int pageSize) {
@@ -77,6 +77,13 @@ public class DepartmentRepository {
 	    		+ "ON departments.ID_Department = doctors.ID_Department "
 	    		+ "GROUP BY departments.Department_Name LIMIT ? OFFSET ?";
 	    Object[] params = new Object[]{pageSize, offset};
+		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
+	}
+	public List<Departments> adminEditDepartment(int id) {
+		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
+				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
+				+ "ON departments.ID_Department = doctors.ID_Department where ID_Department = ? GROUP BY departments.Department_Name;";
+		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
 	}
 

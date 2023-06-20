@@ -31,7 +31,7 @@ public class ImageController {
                 String relativePath = "/resources/images/aaa.png";
                 byte[] imageData = file.getBytes();
 
-                String destinationPath = "C:\\Users\\Asus\\Downloads\\Github\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+                String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
                 File destinationFile = new File(destinationPath);
                 Path destination = destinationFile.toPath();
                 InputStream inputStream = file.getInputStream();

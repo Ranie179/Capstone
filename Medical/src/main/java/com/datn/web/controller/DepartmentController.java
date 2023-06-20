@@ -83,4 +83,10 @@ public class DepartmentController {
 		return "admin/adminalldepartment";
 	}
 
+	@RequestMapping(value = "adminEditDepartment")
+	public String adminEditDepartment(@RequestParam("id") int id, Model model) {
+		List<Departments> departmentInfo = departmentService.adminEditDepartment(id);
+		model.addAttribute("department", departmentInfo);
+		return "admin/admindepartment";
+	}
 }
