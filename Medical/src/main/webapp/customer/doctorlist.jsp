@@ -152,7 +152,7 @@
                                     <div class="doctor-details-extra">
                                         <div class="doctor-details-extra-3">
                                             <p><i class="fa fa-shield"></i>${item.position.positionName }</p>
-                                            <p><i class="fa fa-mortar-board"></i>${item.graduate }</p>
+                                            <p><i class="fa fa-mortar-board"></i>${item.graduate.graduate }</p>
                                             <p><i class="fa fa-star"></i>Kinh nghiệm : ${item.expYear } năm</p>
                                         </div>
                                     </div>

@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Positions;
 import com.datn.web.bean.Departments;
+import com.datn.web.bean.Graduate;
 @Repository
 public class DoctorRepository {
 	@Autowired
@@ -35,9 +35,10 @@ public class DoctorRepository {
             department.setDepartmentName(rs.getString("Department_Name"));
             doctor.setDepartment(department);
             doctor.setInformation(rs.getString("Information"));
-            doctor.setGraduate(rs.getString("Graduate"));
+            Graduate graduate = new Graduate();
+            graduate.setGraduate(rs.getString("Graduate"));
+            doctor.setGraduate(graduate);
             doctor.setExpYear(rs.getInt("EXP_YEARS"));
-            doctor.setWorkYear(rs.getInt("WORK_YEARS"));
             doctor.setSalary(rs.getInt("Salary"));
             doctor.setIsWorking(rs.getString("isWorking"));
             doctor.setPhone(rs.getString("Phone"));
@@ -48,39 +49,44 @@ public class DoctorRepository {
 	public List<Doctors> showAllDoctor(int page, int pageSize) {
 		int offset = (page - 1) * pageSize;
 		Object[] params = new Object[]{pageSize, offset};
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc\r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
-				+ "join departments as d ON doc.ID_Department = d.ID_Department LIMIT ? OFFSET ?";
+				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
+				+ "LIMIT ? OFFSET ?";
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
 	public List<Doctors> showAllDoctor(int page, int pageSize, String search) {
 		int offset = (page - 1) * pageSize;
 		Object[] params = new Object[]{"%" + search + "%", pageSize, offset};
-		String sql = "SELECT doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "FROM doctors AS doc\r\n"
 				+ "JOIN positions AS p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "JOIN departments AS d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
 				+ "WHERE UPPER(doc.Doctor_Name) LIKE UPPER(?) LIMIT ? OFFSET ?";
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
 	public List<Doctors> showDoctorInfo(int idDoctor) {
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc \r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
 				+ "where doc.ID_Doctor = ?";
 		Object[] params = new Object[] {idDoctor};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 
 	public List<Doctors> doctorBonus(int idDepartment) {
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc \r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
 				+ "where d.ID_Department = ?\r\n"
 				+ "LIMIT 3";
 		Object[] params = new Object[] {idDepartment};
@@ -103,38 +109,43 @@ public class DoctorRepository {
 		String sql = "";
 		  switch (experience) {
 		        case 1:
-		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
 		                  "FROM doctors AS doc " +
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
 		                  "WHERE doc.EXP_YEARS < 1 LIMIT ? OFFSET ?";
 		            break;
 		        case 2:
-		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
 		                  "FROM doctors AS doc " +
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
 		                  "WHERE doc.EXP_YEARS BETWEEN 1 AND 3 LIMIT ? OFFSET ?";
 		            break;
 		        case 3:
-		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
 		                  "FROM doctors AS doc " +
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
 		                  "WHERE doc.EXP_YEARS BETWEEN 3 AND 7 LIMIT ? OFFSET ?";
 		            break;
 		        case 4:
-		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
 		                  "FROM doctors AS doc " +
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
 		                  "WHERE doc.EXP_YEARS BETWEEN 7 AND 10 LIMIT ? OFFSET ?";
 		            break;
 		        case 5:
-		            sql = "SELECT doc.*, d.Department_Name, p.Position_Name " +
+		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
 		                  "FROM doctors AS doc " +
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
+		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
 		                  "WHERE doc.EXP_YEARS > 10 LIMIT ? OFFSET ?";
 		            break;
 		    }
@@ -150,10 +161,11 @@ public class DoctorRepository {
 
 	public List<Doctors> showDoctorByIdDepartment(int page, int pageSize, Integer idDepartment) {
 		int offset = (page - 1) * pageSize;
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc\r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
 				+ "where doc.ID_Department = ? LIMIT ? OFFSET ? ";
 		Object[] params = new Object[] {idDepartment, pageSize, offset};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
@@ -182,11 +194,12 @@ public class DoctorRepository {
 	}
 
 	public List<Doctors> showExpDoctor() {
-		String sql = "select doc.*, d.Department_Name, p.Position_Name\r\n"
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc\r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
-				+ "ORDER BY WORK_YEARS DESC\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
+				+ "ORDER BY EXP_YEARS DESC\r\n"
 				+ "LIMIT 10";
 		return jdbcTemplate.query(sql, new DoctorRowMapper());
 	}
@@ -200,6 +213,17 @@ public class DoctorRepository {
 		jdbcTemplate.update(sql, params);
 		
 	}
+
+	public void addDoctor(String name, String gender, String phone, String birthDay, int idPosition, int idDepartment,
+			int salary, int idGraduate, int newID) {
+		String sql = "INSERT INTO Doctors(Doctor_Name, Gender, phone, BirthDay, ID_Position, ID_Department, salary, ID_Graduate, ID_Contract)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {name, gender, phone, birthDay, idPosition, idDepartment, salary, idGraduate, newID};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+
 	
 
 

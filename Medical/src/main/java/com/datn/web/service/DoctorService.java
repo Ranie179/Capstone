@@ -66,5 +66,15 @@ public class DoctorService {
 	}
 
 
+	public void addDoctor(String name, String gender, String phone, String birthDay, int idPosition, int idDepartment,
+			int salary, int idGraduate, int newID) {
+		doctorRepository.addDoctor(name, gender, phone, birthDay, idPosition, idDepartment, salary, idGraduate, newID);
+		
+	}
+
+
+
+
+
 
 }

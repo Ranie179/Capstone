@@ -148,6 +148,8 @@
                        <div class = "table-wrapper">
         		<div style = "margin: 0 0 0 0;" class="theme-material-card">
                             <p class="font-16 text-center">Danh sách bác sĩ đang hoạt động</p>
+                              <a href ="<%=request.getContextPath()%>/getToAddDoctor"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bác sĩ mới</button></a> 
+                            <a href =""><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Xem toàn bộ bác sĩ</button></a>
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">

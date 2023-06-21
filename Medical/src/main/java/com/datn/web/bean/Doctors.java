@@ -11,9 +11,8 @@ public class Doctors {
 	protected Positions position;
 	protected Departments department;
 	protected String information;
-	protected String graduate;
+	protected Graduate graduate;
 	protected int expYear;
-	protected int workYear;
 	protected int salary;
 	protected String phone;
 	protected String isWorking;
@@ -66,10 +65,10 @@ public class Doctors {
 	public void setInformation(String information) {
 		this.information = information;
 	}
-	public String getGraduate() {
+	public Graduate getGraduate() {
 		return graduate;
 	}
-	public void setGraduate(String graduate) {
+	public void setGraduate(Graduate graduate) {
 		this.graduate = graduate;
 	}
 	public int getExpYear() {
@@ -77,12 +76,6 @@ public class Doctors {
 	}
 	public void setExpYear(int expYear) {
 		this.expYear = expYear;
-	}
-	public int getWorkYear() {
-		return workYear;
-	}
-	public void setWorkYear(int workYear) {
-		this.workYear = workYear;
 	}
 	public int getSalary() {
 		return salary;
@@ -103,7 +96,7 @@ public class Doctors {
 		this.phone = phone;
 	}
 	public Doctors(String doctorName, String imageUrl, String gender, Date birthDay, Positions position,
-			Departments department, String information, String graduate, int expYear, int workYear, int salary, String isWorking, String phone) {
+			Departments department, String information, Graduate graduate, int expYear, int salary, String isWorking, String phone) {
 		super();
 		this.doctorName = doctorName;
 		this.imageUrl = imageUrl;
@@ -114,7 +107,6 @@ public class Doctors {
 		this.information = information;
 		this.graduate = graduate;
 		this.expYear = expYear;
-		this.workYear = workYear;
 		this.salary = salary;
 		this.isWorking = isWorking;
 		this.phone = phone;

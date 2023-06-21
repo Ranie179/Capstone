@@ -141,12 +141,12 @@
                             <p><c:out value="${doctorInfo.department.departmentName}" /></p>
                         </div>
                         <div class="doctor-details-extra text-left p-0 pt-4">
-                            <p class="text-center"><i class="fa fa-mortar-board"></i><c:out value="${doctorInfo.graduate}" /></p>
+                            <p class="text-center"><i class="fa fa-mortar-board"></i><c:out value="${doctorInfo.graduate.graduate}" /></p>
                             <p class="text-center"><i class="fa fa-star"></i><c:out value="${doctorInfo.expYear}" /> năm kinh nghiệm</p>
-                            <p class="text-center"><i class="fa fa-briefcase"></i><c:out value="${doctorInfo.workYear}" /> năm làm việc với chúng tôi</p>
                         </div>
-                        <p class="text-muted p-2"><c:out value="${doctorInfo.information}" /></p>
+                       
                     </div>
+                    <div class = "col-md-12"><p class="text-muted p-2 text-justify"><c:out value="${doctorInfo.information}" /></p></div>
                     <div class="col-sm-12">
                         <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
                         <table class="table table-hover">
@@ -217,8 +217,7 @@
                                     </div>
                                     <div class="doctor-details-extra">
                                         <p><i class="fa fa-shield"></i>${item.position.positionName }</p>
-                                        <p><i class="fa fa-mortar-board"></i>${item.graduate }</p>
-                                        <p><i class="fa fa-briefcase"></i>${item.workYear } năm là việc với chúng tôi</p>
+                                        <p><i class="fa fa-mortar-board"></i>${item.graduate.graduate }</p>
                                         <p><i class="fa fa-star"></i>Kinh nghiệm: ${item.expYear } năm</p>
                                     </div>
                                 </div>
