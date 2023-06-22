@@ -158,7 +158,7 @@
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
+                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                             </div>
@@ -167,7 +167,7 @@
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-angle-double-down"></i>
                                     <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "gender" required>
-                                    	<option disabled selected>--Chọn giới tính--</option>
+                                    	<option value ="" disabled selected>--Chọn giới tính--</option>
                                         <option value="Nam">Nam</option>
                                         <option value="Nữ">Nữ</option>
                                         <option value="Khác">Khác</option>
@@ -177,8 +177,8 @@
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-hospital-o"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment">
-                                        <option disabled selected>--Chọn khoa--</option>
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment" required>
+                                        <option value ="" disabled selected>--Chọn khoa--</option>
                                         <c:forEach items="${department}" var="item">
                                         <option value="<c:out value="${item.idDepartment}"/>">${item.departmentName }</option>
                                         </c:forEach>

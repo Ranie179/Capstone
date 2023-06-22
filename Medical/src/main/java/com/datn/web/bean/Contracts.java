@@ -24,8 +24,12 @@ public class Contracts {
 	protected int leaveTime;
 	protected int salary;
 	protected Payment payment;
-	protected Date createDate;
-	protected Date endDate;
+	protected int cDay;
+	protected int cMonth;
+	protected int cYear;
+	protected int eDay;
+	protected int eMonth;
+	protected int eYear;
 	public int getIdContract() {
 		return idContract;
 	}
@@ -152,22 +156,47 @@ public class Contracts {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	public Date getCreateDate() {
-		return createDate;
+	public int getcDay() {
+		return cDay;
 	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setcDay(int cDay) {
+		this.cDay = cDay;
 	}
-	public Date getEndDate() {
-		return endDate;
+	public int getcMonth() {
+		return cMonth;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setcMonth(int cMonth) {
+		this.cMonth = cMonth;
+	}
+	public int getcYear() {
+		return cYear;
+	}
+	public void setcYear(int cYear) {
+		this.cYear = cYear;
+	}
+	public int geteDay() {
+		return eDay;
+	}
+	public void seteDay(int eDay) {
+		this.eDay = eDay;
+	}
+	public int geteMonth() {
+		return eMonth;
+	}
+	public void seteMonth(int eMonth) {
+		this.eMonth = eMonth;
+	}
+	public int geteYear() {
+		return eYear;
+	}
+	public void seteYear(int eYear) {
+		this.eYear = eYear;
 	}
 	public Contracts(String name, Departments department, Positions position, Date birthDay, String identityNumber,
 			String gender, Graduate graduate, String nationality, String identityPlace, Date identityDay,
 			String address1, String address2, String phone, String bankNumber, String bank, int workTime, int restTime,
-			int leaveTime, int salary, Payment payment, Date createDate, Date endDate) {
+			int leaveTime, int salary, Payment payment, int cDay, int cMonth, int cYear, int eDay, int eMonth,
+			int eYear) {
 		super();
 		this.name = name;
 		this.department = department;
@@ -189,8 +218,12 @@ public class Contracts {
 		this.leaveTime = leaveTime;
 		this.salary = salary;
 		this.payment = payment;
-		this.createDate = createDate;
-		this.endDate = endDate;
+		this.cDay = cDay;
+		this.cMonth = cMonth;
+		this.cYear = cYear;
+		this.eDay = eDay;
+		this.eMonth = eMonth;
+		this.eYear = eYear;
 	}
 	public Contracts() {
 		super();

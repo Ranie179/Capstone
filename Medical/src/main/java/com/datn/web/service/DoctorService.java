@@ -73,6 +73,29 @@ public class DoctorService {
 	}
 
 
+	public void adminEditDoctorWithoutAvatar(int id, int idDepartment, int idPosition, int experience, int salary,
+			String information, String phone, String isWorking) {
+		doctorRepository.adminEditDoctorWithoutAvatar(id, idDepartment, idPosition, experience, salary, information, phone, isWorking);
+		
+	}
+
+
+	public void adminDeleteDoctor(int id) {
+		doctorRepository.adminDeleteDoctor(id);
+		
+	}
+
+
+	public int adminGetCountDoctor() {
+		return doctorRepository.adminGetCountDoctor();	
+	}
+
+
+	public List<Doctors> adminShowDeletedDoctor(int page, int pageSize) {
+		return doctorRepository.adminShowDeletedDoctor(page, pageSize);
+	}
+
+
 
 
 

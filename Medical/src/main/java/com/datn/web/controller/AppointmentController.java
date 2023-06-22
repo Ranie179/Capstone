@@ -104,14 +104,14 @@ public class AppointmentController {
 	public String adminShowAllAppointment(Model model) {
 		List<Appointment> appointment = appointmentService.adminShowAllAppointment();
 		model.addAttribute("appointmentlist", appointment);
-		return "admin/adminappointmentlist";
+		return "admin/adminAppointmentList";
 	}
 	
 	@RequestMapping(value = "adminShowAppointmentInfo")
 	public String adminShowAppointmentInfo(@RequestParam("id") int id, Model model) {
 		List<Appointment> appointmentInfo = appointmentService.adminShowAppointmentInfo(id);
 		model.addAttribute("appointment", appointmentInfo.get(0));
-		return "admin/adminappointment";
+		return "admin/adminAppointment";
 	}
 	
 	@RequestMapping(value = "adminUpdateAppointment")

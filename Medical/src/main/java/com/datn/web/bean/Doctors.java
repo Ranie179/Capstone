@@ -5,6 +5,7 @@ import java.util.Date;
 public class Doctors {
 	private int idDoctor;
 	protected String doctorName;
+	protected Contracts contract;
 	protected String imageUrl;
 	protected String gender;
 	protected Date birthDay;
@@ -25,6 +26,12 @@ public class Doctors {
 	}
 	public String getDoctorName() {
 		return doctorName;
+	}
+	public Contracts getContract() {
+		return contract;
+	}
+	public void setContract(Contracts contract) {
+		this.contract = contract;
 	}
 	public void setDoctorName(String doctorName) {
 		this.doctorName = doctorName;
@@ -95,10 +102,11 @@ public class Doctors {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Doctors(String doctorName, String imageUrl, String gender, Date birthDay, Positions position,
+	public Doctors(String doctorName, Contracts contract, String imageUrl, String gender, Date birthDay, Positions position,
 			Departments department, String information, Graduate graduate, int expYear, int salary, String isWorking, String phone) {
 		super();
 		this.doctorName = doctorName;
+		this.contract = contract;
 		this.imageUrl = imageUrl;
 		this.gender = gender;
 		this.birthDay = birthDay;

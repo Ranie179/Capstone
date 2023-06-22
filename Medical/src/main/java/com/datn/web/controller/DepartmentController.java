@@ -62,7 +62,7 @@ public class DepartmentController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("department", departments);
-		return "admin/admindepartmentlist";
+		return "admin/adminDepartmentList";
 	}
 	
 	@RequestMapping(value = "deleteDepartment")
@@ -71,22 +71,22 @@ public class DepartmentController {
 		return "redirect:adminShowDepartment";
 	}
 	
-	@RequestMapping(value = "adminShowAllDepartment")
-	public String adminShowAllDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
+	@RequestMapping(value = "adminShowDeletedDepartment")
+	public String adminShowDeletedDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
 		int pageSize = 10;
-	    int totalCount = departmentService.getTotalDepartmentCount( );
+	    int totalCount = departmentService.getTotalDeletedDepartmentCount( );
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-		List<Departments> departments = departmentService.showAllDepartment(page, pageSize);
+		List<Departments> departments = departmentService.adminShowDeletedDepartment(page, pageSize);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("department", departments);
-		return "admin/adminalldepartment";
+		return "admin/adminDeletedDepartment";
 	}
 
 	@RequestMapping(value = "adminEditDepartment")
 	public String adminEditDepartment(@RequestParam("id") int id, Model model) {
 		List<Departments> departmentInfo = departmentService.adminEditDepartment(id);
 		model.addAttribute("department", departmentInfo);
-		return "admin/admindepartment";
+		return "admin/adminDepartment";
 	}
 }

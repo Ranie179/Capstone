@@ -13,6 +13,7 @@ import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Positions;
 import com.datn.web.bean.Departments;
 import com.datn.web.bean.Graduate;
+import com.datn.web.bean.Contracts;
 @Repository
 public class DoctorRepository {
 	@Autowired
@@ -23,6 +24,9 @@ public class DoctorRepository {
         	Doctors doctor = new Doctors();
             doctor.setIdDoctor(rs.getInt("ID_Doctor"));
             doctor.setDoctorName(rs.getString("Doctor_Name"));
+            Contracts contract = new Contracts();
+            contract.setIdContract(rs.getInt("ID_Contract"));
+            doctor.setContract(contract);
             doctor.setImageUrl(rs.getString("Image_URL"));
             doctor.setGender(rs.getString("Gender"));
             doctor.setBirthDay(rs.getDate("BirthDay"));
@@ -54,6 +58,7 @@ public class DoctorRepository {
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
+				+ "where doc.isWorking = \"Vẫn còn làm việc\"\r\n"
 				+ "LIMIT ? OFFSET ?";
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
@@ -66,7 +71,7 @@ public class DoctorRepository {
 				+ "JOIN positions AS p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "JOIN departments AS d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
-				+ "WHERE UPPER(doc.Doctor_Name) LIKE UPPER(?) LIMIT ? OFFSET ?";
+				+ "WHERE doc.isWorking = \"Vẫn còn làm việc\" and UPPER(doc.Doctor_Name) LIKE UPPER(?) LIMIT ? OFFSET ?";
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
@@ -87,19 +92,19 @@ public class DoctorRepository {
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
-				+ "where d.ID_Department = ?\r\n"
+				+ "where doc.isWorking = \"Vẫn còn làm việc\" and d.ID_Department = ?\r\n"
 				+ "LIMIT 3";
 		Object[] params = new Object[] {idDepartment};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	
 	public int getTotalDoctorCount() {
-		String sql = "SELECT COUNT(*) FROM doctors";
+		String sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\"";
 	    return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 	
 	public int getTotalDoctorCount(String search) {
-		String sql = "SELECT COUNT(*) FROM doctors WHERE UPPER(Doctor_Name) LIKE UPPER(?)";
+		String sql = "SELECT COUNT(*) FROM doctors WHERE UPPER(Doctor_Name) LIKE UPPER(?) and isWorking = \"Vẫn còn làm việc\"";
 	    Object[] params = new Object[]{"%" + search + "%"};
 		return jdbcTemplate.queryForObject(sql, params, Integer.class);
 	}
@@ -114,7 +119,7 @@ public class DoctorRepository {
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
 		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
-		                  "WHERE doc.EXP_YEARS < 1 LIMIT ? OFFSET ?";
+		                  "WHERE doc.isWorking = \"Vẫn còn làm việc\" and doc.EXP_YEARS < 1 LIMIT ? OFFSET ?";
 		            break;
 		        case 2:
 		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
@@ -122,7 +127,7 @@ public class DoctorRepository {
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
 		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
-		                  "WHERE doc.EXP_YEARS BETWEEN 1 AND 3 LIMIT ? OFFSET ?";
+		                  "WHERE doc.isWorking = \"Vẫn còn làm việc\" and doc.EXP_YEARS BETWEEN 1 AND 3 LIMIT ? OFFSET ?";
 		            break;
 		        case 3:
 		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
@@ -130,7 +135,7 @@ public class DoctorRepository {
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
 		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
-		                  "WHERE doc.EXP_YEARS BETWEEN 3 AND 7 LIMIT ? OFFSET ?";
+		                  "WHERE doc.isWorking = \"Vẫn còn làm việc\" and doc.EXP_YEARS BETWEEN 3 AND 7 LIMIT ? OFFSET ?";
 		            break;
 		        case 4:
 		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
@@ -138,7 +143,7 @@ public class DoctorRepository {
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
 		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
-		                  "WHERE doc.EXP_YEARS BETWEEN 7 AND 10 LIMIT ? OFFSET ?";
+		                  "WHERE doc.isWorking = \"Vẫn còn làm việc\" and doc.EXP_YEARS BETWEEN 7 AND 10 LIMIT ? OFFSET ?";
 		            break;
 		        case 5:
 		            sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n" +
@@ -146,7 +151,7 @@ public class DoctorRepository {
 		                  "JOIN positions AS p ON doc.ID_Position = p.ID_Position " +
 		                  "JOIN departments AS d ON doc.ID_Department = d.ID_Department " +
 		                  "JOIN graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n" +
-		                  "WHERE doc.EXP_YEARS > 10 LIMIT ? OFFSET ?";
+		                  "WHERE doc.isWorking = \"Vẫn còn làm việc\" and doc.EXP_YEARS > 10 LIMIT ? OFFSET ?";
 		            break;
 		    }
 		  Object[] params = new Object[] {pageSize, offset };
@@ -154,7 +159,7 @@ public class DoctorRepository {
 	}
 
 	public int getTotalDoctorByIdDepartment(int idDepartment) {
-		String sql = "SELECT COUNT(*) FROM doctors WHERE ID_Department = ?";
+		String sql = "SELECT COUNT(*) FROM doctors WHERE isWorking = \"Vẫn còn làm việc\" and ID_Department = ?";
 		Object[] params = new Object[] {idDepartment};
 		return jdbcTemplate.queryForObject(sql, params, Integer.class);
 	}
@@ -166,7 +171,7 @@ public class DoctorRepository {
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
-				+ "where doc.ID_Department = ? LIMIT ? OFFSET ? ";
+				+ "where doc.isWorking = \"Vẫn còn làm việc\" and doc.ID_Department = ? LIMIT ? OFFSET ? ";
 		Object[] params = new Object[] {idDepartment, pageSize, offset};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
@@ -175,19 +180,19 @@ public class DoctorRepository {
 		String sql = "";
 		switch (experience) {
         case 1:
-            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS < 1";
+            sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\" and EXP_YEARS < 1";
             break;
         case 2:
-            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 1 AND 3";
+            sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\" and EXP_YEARS BETWEEN 1 AND 3";
             break;
         case 3:
-            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 3 AND 7";
+            sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\" and EXP_YEARS BETWEEN 3 AND 7";
             break;
         case 4:
-            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS BETWEEN 7 AND 10";
+            sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\" and EXP_YEARS BETWEEN 7 AND 10";
             break;
         case 5:
-            sql = "SELECT COUNT(*) FROM doctors where EXP_YEARS > 10";
+            sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Vẫn còn làm việc\" and EXP_YEARS > 10";
             break;
     }
 		return jdbcTemplate.queryForObject(sql, Integer.class);
@@ -199,6 +204,7 @@ public class DoctorRepository {
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
+				+ "where doc.isWorking = \"Vẫn còn làm việc\"\r\n"
 				+ "ORDER BY EXP_YEARS DESC\r\n"
 				+ "LIMIT 10";
 		return jdbcTemplate.query(sql, new DoctorRowMapper());
@@ -221,6 +227,43 @@ public class DoctorRepository {
 		Object[] params = new Object[] {name, gender, phone, birthDay, idPosition, idDepartment, salary, idGraduate, newID};
 		jdbcTemplate.update(sql, params);
 		
+	}
+
+	public void adminEditDoctorWithoutAvatar(int id, int idDepartment, int idPosition, int experience, int salary,
+			String information, String phone, String isWorking) {
+		String sql = "UPDATE doctors\r\n"
+				+ "SET ID_Department = ?, ID_Position = ?, EXP_YEARS = ?, salary = ?, Information = ?, phone = ?, isWorking = ?\r\n"
+				+ "WHERE ID_Doctor = ?";
+		Object[] params = new Object[] {idDepartment, idPosition, experience, salary, information, phone, isWorking, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminDeleteDoctor(int id) {
+		String sql = "UPDATE doctors\r\n"
+				+ "SET isWorking = \"Không còn làm việc nữa\"\r\n"
+				+ "WHERE ID_Doctor = ?;";
+		Object[] params = new Object[] {id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public int adminGetCountDoctor() {
+		String sql = "SELECT COUNT(*) FROM doctors where isWorking = \"Không còn làm việc nữa\" ";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+
+	public List<Doctors> adminShowDeletedDoctor(int page, int pageSize) {
+		int offset = (page - 1) * pageSize;
+		Object[] params = new Object[]{pageSize, offset};
+		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
+				+ "from doctors as doc\r\n"
+				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
+				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
+				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
+				+ "where doc.isWorking = \"Không còn làm việc nữa\"\r\n"
+				+ "LIMIT ? OFFSET ?";
+		return jdbcTemplate.query(sql,params, new DoctorRowMapper());
 	}
 
 

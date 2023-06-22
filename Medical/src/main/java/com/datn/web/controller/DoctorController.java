@@ -23,7 +23,6 @@ import com.datn.web.service.DoctorService;
 import com.datn.web.service.PositionService;
 import com.datn.web.service.ServiceService;
 import com.datn.web.bean.Doctors;
-import com.datn.web.bean.Image;
 import com.datn.web.bean.Positions;
 import com.datn.web.bean.Services;
 import com.datn.web.bean.Blogs;
@@ -118,7 +117,7 @@ public class DoctorController {
 	        experience = 0;
 	    }
 	    model.addAttribute("selectedExperience", experience);
-		return "admin/admindoctorlist";
+		return "admin/adminDoctorList";
 	}
 	
 	@RequestMapping(value = "adminShowDoctorInfo")
@@ -131,7 +130,7 @@ public class DoctorController {
 		model.addAttribute("position", position);
 		List<Degrees> degrees = degreeService.showDegree(id);
 		model.addAttribute("degree", degrees);
-		return "admin/admindoctor";
+		return "admin/adminDoctor";
 	}
 	
 	@RequestMapping(value = "adminEditDoctor")
@@ -139,19 +138,40 @@ public class DoctorController {
 			@RequestParam("idPosition") int idPosition, @RequestParam("isWorking") String isWorking, 
 			@RequestParam("experience") int experience, @RequestParam("salary") int salary, 
 			@RequestParam("information") String information, @RequestParam("phone") String phone, 
-			@RequestParam("file") MultipartFile file, Model model) throws IOException {
+			@RequestParam(required = false) MultipartFile file, Model model) throws IOException {
 
-                String relativePath = "/resources/images/avatar" + String.valueOf(id) + ".png";
-
-                String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
-                File destinationFile = new File(destinationPath);
-                Path destination = destinationFile.toPath();
-                InputStream inputStream = file.getInputStream();
-                Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
-                
-                doctorService.adminEditDoctor(id, idDepartment, idPosition, experience, salary, information, phone, isWorking, relativePath);
+		if (!file.isEmpty()) {
+		    String relativePath = "/resources/images/avatar" + String.valueOf(id) + ".png";
+		    String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+		    File destinationFile = new File(destinationPath);
+		    Path destination = destinationFile.toPath();
+		    InputStream inputStream = file.getInputStream();
+		    Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
+		    
+		    doctorService.adminEditDoctor(id, idDepartment, idPosition, experience, salary, information, phone, isWorking, relativePath);
+		} else {
+		    doctorService.adminEditDoctorWithoutAvatar(id, idDepartment, idPosition, experience, salary, information, phone, isWorking);
+		}
 
 		return "redirect:adminShowDoctorInfo?id=" + id;
+	}
+	
+	@RequestMapping(value = "adminDeleteDoctor")
+	public String adminDeleteDoctor(@RequestParam("id") int id) {
+		doctorService.adminDeleteDoctor(id);
+		return "redirect:adminShowDoctor";
+	}
+	
+	@RequestMapping("adminShowDeletedDoctor")
+	public String adminShowDeletedDoctor(@RequestParam(defaultValue = "1") int page, Model model) {
+		int pageSize = 10; 
+	    int totalCount = doctorService.adminGetCountDoctor(); 
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize); 
+		List<Doctors> doctor = doctorService.adminShowDeletedDoctor(page, pageSize);
+		model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("doctor", doctor);
+		return "admin/adminDeletedDoctor";
 	}
 	
 	

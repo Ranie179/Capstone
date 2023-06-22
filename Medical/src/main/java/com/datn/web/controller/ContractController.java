@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.datn.web.bean.Contracts;
 import com.datn.web.bean.Departments;
 import com.datn.web.bean.Graduate;
 import com.datn.web.bean.Payment;
@@ -66,7 +67,14 @@ public class ContractController {
 		model.addAttribute("payment", payment);
 		List<Graduate> graduate = graduateService.showAllGraduate();
 		model.addAttribute("graduate", graduate);
-		return "admin/adminaddcontract";
+		return "admin/adminAddContract";
+	}
+	
+	@RequestMapping(value = "adminShowContract")
+	public String adminShowContract(@RequestParam("id") int id, Model model) {
+		List<Contracts> contract = contractService.adminShowContract(id);
+		model.addAttribute("contract", contract.get(0));
+		return "admin/adminContract";
 	}
 
 }

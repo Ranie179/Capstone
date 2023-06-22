@@ -34,12 +34,16 @@ public class DepartmentService {
 		departmentRepository.deleteDepartment(idDepartment);
 	}
 
-	public List<Departments> showAllDepartment(int page, int pageSize) {
-		return departmentRepository.showAllDepartment(page, pageSize);
+	public List<Departments> adminShowDeletedDepartment(int page, int pageSize) {
+		return departmentRepository.adminShowDeletedDepartment(page, pageSize);
 	}
 
 	public List<Departments> adminEditDepartment(int id) {
 		return departmentRepository.adminEditDepartment(id);
+	}
+
+	public int getTotalDeletedDepartmentCount() {
+		return departmentRepository.getTotalDeletedDepartmentCount();
 	}
 
 }

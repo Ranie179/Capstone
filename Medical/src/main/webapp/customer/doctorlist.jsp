@@ -164,13 +164,13 @@
 				<ul class="theme-pagination">
 				    <c:choose>
 				        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search and empty experience)}">
-				            <li><a href="<%=request.getContextPath()%>/adminShowDoctor?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
 				        </c:when>
 				        <c:when test="${currentPage > 1 && (empty idDepartment and not empty search and empty experience)}">
-				            <li><a href="<%=request.getContextPath()%>/adminShowDoctor?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
 				        </c:when>
 				        <c:when test="${currentPage > 1 && (empty idDepartment and empty search and not empty experience)}">
-				            <li><a href="<%=request.getContextPath()%>/adminShowDoctor?page=${currentPage - 1}&experience=${experience}">&laquo; Previous</a></li>
+				            <li><a href="<%=request.getContextPath()%>/showAllDoctor?page=${currentPage - 1}&experience=${experience}">&laquo; Previous</a></li>
 				        </c:when>
 				        <c:otherwise>
 				            <li><span>&laquo; Previous</span></li>
@@ -249,15 +249,15 @@
                      <div class="theme-material-card">
 					    <div class="sub-ttl">Tìm theo kinh nghiệm</div>
 					     <a style = "display:none;" class="theme-tag theme-tag-1 ${selectedExperience == null || selectedExperience == '0' ? 'theme-tag-colored' : ''}"></a>
-					    <a href="<%=request.getContextPath()%>/adminShowDoctor?experience=1"
+					    <a href="<%=request.getContextPath()%>/showAllDoctor?experience=1"
 					       class="theme-tag theme-tag-1 ${selectedExperience == null || selectedExperience == '1' ? 'theme-tag-colored' : ''}">Dưới 1 năm</a>
-					    <a href="<%=request.getContextPath()%>/adminShowDoctor?experience=2"
+					    <a href="<%=request.getContextPath()%>/showAllDoctor?experience=2"
 					       class="theme-tag theme-tag-1 ${selectedExperience == '2' ? 'theme-tag-colored' : ''}">1-3 năm</a>
-					    <a href="<%=request.getContextPath()%>/adminShowDoctor?experience=3"
+					    <a href="<%=request.getContextPath()%>/showAllDoctor?experience=3"
 					       class="theme-tag theme-tag-1 ${selectedExperience == '3' ? 'theme-tag-colored' : ''}">3-7 năm</a>
-					    <a href="<%=request.getContextPath()%>/adminShowDoctor?experience=4"
+					    <a href="<%=request.getContextPath()%>/showAllDoctor?experience=4"
 					       class="theme-tag theme-tag-1 ${selectedExperience == '4' ? 'theme-tag-colored' : ''}">7-10 năm</a>
-					    <a href="<%=request.getContextPath()%>/adminShowDoctor?experience=5"
+					    <a href="<%=request.getContextPath()%>/showAllDoctor?experience=5"
 					       class="theme-tag theme-tag-1 ${selectedExperience == '5' ? 'theme-tag-colored' : ''}">Trên 10 năm</a>
 					</div>
 

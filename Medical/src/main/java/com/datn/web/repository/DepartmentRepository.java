@@ -39,6 +39,10 @@ public class DepartmentRepository {
 		String sql = "SELECT COUNT(*) FROM departments WHERE isWorking = \"Vẫn còn hoạt động\"";
 		return jdbcTemplate.queryForObject(sql,Integer.class);
 	}
+	public int getTotalDeletedDepartmentCount() {
+		String sql = "SELECT COUNT(*) FROM departments WHERE isWorking = \"Không còn hoạt động nữa\"";
+		return jdbcTemplate.queryForObject(sql,Integer.class);
+	}
 	public List<Departments> showAllDepartmentWorking(int page, int pageSize) {
 		int offset = (page - 1) * pageSize;
 	    String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
@@ -70,11 +74,12 @@ public class DepartmentRepository {
 		jdbcTemplate.update(sql, params);
 		jdbcTemplate.update(sql2);		
 	}
-	public List<Departments> showAllDepartment(int page, int pageSize) {
+	public List<Departments> adminShowDeletedDepartment(int page, int pageSize) {
 		int offset = (page - 1) * pageSize;
 	    String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
 	    		+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
-	    		+ "ON departments.ID_Department = doctors.ID_Department "
+	    		+ "ON departments.ID_Department = doctors.ID_Department\r\n"
+	    		+ "WHERE departments.isWorking = \"Không còn hoạt động nữa\"\r\n"
 	    		+ "GROUP BY departments.Department_Name LIMIT ? OFFSET ?";
 	    Object[] params = new Object[]{pageSize, offset};
 		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());

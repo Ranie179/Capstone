@@ -2,6 +2,7 @@ package com.datn.web.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,7 +23,7 @@ public class ContractRepository {
         public Contracts mapRow(ResultSet rs, int rowNum) throws SQLException {
         	Contracts contract = new Contracts();
         	contract.setIdContract(rs.getInt("ID_Contract"));
-        	contract.setName(rs.getString("Name"));
+        	contract.setName(rs.getString("Doctor_Name"));
         	Departments department = new Departments();
         	department.setDepartmentName(rs.getString("Department_Name"));
         	contract.setDepartment(department);
@@ -48,10 +49,14 @@ public class ContractRepository {
         	contract.setLeaveTime(rs.getInt("Leave_Time"));
         	contract.setSalary(rs.getInt("Salary"));
         	Payment payment = new Payment();
-        	payment.setPayment("Payment");
+        	payment.setPayment(rs.getString("Payment"));
         	contract.setPayment(payment);
-        	contract.setCreateDate(rs.getDate("Create_Date"));
-        	contract.setEndDate(rs.getDate("End_Date"));
+        	contract.setcDay(rs.getInt("DAY(Create_Date)"));;
+        	contract.setcMonth(rs.getInt("MONTH(Create_Date)"));
+        	contract.setcYear(rs.getInt("YEAR(Create_Date)"));
+        	contract.seteDay(rs.getInt("DAY(End_Date)"));;
+        	contract.seteMonth(rs.getInt("MONTH(End_Date)"));
+        	contract.seteYear(rs.getInt("YEAR(End_Date)"));
         	return contract;
         }
 	}
@@ -74,6 +79,17 @@ public class ContractRepository {
 		Object[] params = new Object[] {newID, name, nationality, phone, iPlace, identity, gender, idGraduate, birthDay, iDate, address1, address2,
 				createDate, endDate, salary, bankNumber, bank, workTime, restTime, leaveTime, idDepartment, idPosition, idPayment};
 		return jdbcTemplate.update(sql, params);
+	}
+	public List<Contracts> adminShowContract(int id) {
+		String sql = "select *, DAY(Create_Date), MONTH(Create_Date), YEAR(Create_Date),\r\n"
+				+ "DAY(End_Date), MONTH(End_Date), YEAR(End_Date) from \r\n"
+				+ "contract join departments on contract.ID_Department = departments.ID_Department\r\n"
+				+ "join positions on contract.ID_Position = positions.ID_Position\r\n"
+				+ "join graduate on contract.ID_Graduate = graduate.ID_Graduate\r\n"
+				+ "join payment on contract.ID_Payment = payment.ID_Payment\r\n"
+				+ "where ID_Contract = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new ContractRowMapper());
 	}
 	
 	

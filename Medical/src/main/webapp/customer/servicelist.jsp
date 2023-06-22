@@ -222,9 +222,10 @@
 							  <c:forEach items="${doctor}" var="item" varStatus="loop">
 							      <li>
 							        <div class="theme-flexslider-container">
-							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
+							          <img src="/Medical${item.imageUrl }" alt="" />
 							          <h4><a href = "<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}"><c:out value="${item.doctorName}" /></a></h4>
-							          <p><c:out value="${item.department.departmentName}" /></p>
+							          <p>Khoa:<c:out value="${item.department.departmentName}" /></p>
+							          <p>Kinh nghiệm:<c:out value="${item.expYear}" /> năm</p>
 							        </div>
 							      </li>
 							  </c:forEach>
