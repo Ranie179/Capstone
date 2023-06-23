@@ -94,15 +94,16 @@ public class DepartmentController {
 	}
 
 	@RequestMapping(value = "adminShowDepartmentInfo")
-	public String adminShowDepartmentInfo(@RequestParam("id") int id, Model model) {
+	public String adminShowDepartmentInfo(@RequestParam(required = false) String success, @RequestParam("id") int id, Model model) {
 		List<Departments> department = departmentService.adminShowDepartmentInfo(id);
 		model.addAttribute("department", department.get(0));
+		model.addAttribute("successMessage", success);
 		return "admin/adminDepartment";
 	}
 	
 	@RequestMapping(value = "adminEditDepartment")
 	public String adminEditDepartment(@RequestParam("id") int id, @RequestParam(required = false) MultipartFile file, @RequestParam("name") String name, 
-			@RequestParam("intro") String intro, @RequestParam("information") String information) throws IOException {
+			@RequestParam("intro") String intro, @RequestParam("information") String information, Model model) throws IOException {
 		
 		if (!file.isEmpty()) {
 		    String relativePath = "/resources/images/department" + String.valueOf(id) + ".png";
@@ -112,10 +113,20 @@ public class DepartmentController {
 		    InputStream inputStream = file.getInputStream();
 		    Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
 		    departmentService.adminEditDepartment(id, name, intro, information, relativePath);
+		    File directory = new File("C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\resources\\images");
+		    String[] files = directory.list();
+		    for (String file1 : files) {
+		        File currentFile = new File(directory.getPath(), file1);
+		        if (currentFile.isDirectory()) {
+		        }
+		    }
+
+
 		} else {
 			departmentService.adminEditDepartmentWithoutImage(id, name, intro, information);
 		}
-		return "redirect:adminShowDepartment";
+		String success = "Success";
+		return "redirect:adminShowDepartmentInfo?id=" +id+ "&success=" + success;
 	}
 	
 	@RequestMapping(value = "adminAddDepartment")

@@ -140,6 +140,12 @@
         <div class="layer-wrapper">
             <div class="theme-material-card text-center">
             <p style = "text-align: center;"class="font-16">Thông tin của khoa "${department.departmentName }"</p>
+             <c:if test="${not empty successMessage}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="theme-img theme-img-scalerotate">
