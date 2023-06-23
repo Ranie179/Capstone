@@ -135,85 +135,44 @@
     <section class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
-    <form action = "<%=request.getContextPath()%>/adminUpdateAppointment" onsubmit = "return(validate());">
+    <form action = "<%=request.getContextPath()%>/adminEditDepartment" method="POST" enctype="multipart/form-data" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
         <div class="layer-wrapper">
             <div class="theme-material-card text-center">
-            <p style = "text-align: center;"class="font-16">Thông tin lịch hẹn</p>
+            <p style = "text-align: center;"class="font-16">Thông tin của khoa "${department.departmentName }"</p>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-user-o"></i>
-                            <input style = "display:none;" name  = "id" value = "${appointment.id }">
-                            <input class="mdl-textfield__input" type="text" id="profile-name" readonly value = "${appointment.name }">
-                            <label class="mdl-textfield__label" for="profile-name">Tên khách hàng</label>
+                    <div class="col-sm-4">
+                        <div class="theme-img theme-img-scalerotate">
+                            <img src="<c:url value="${department.image}" />" alt="">
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-envelope-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="profile-email" readonly value = "${appointment.email }">
-                            <label class="mdl-textfield__label" for="profile-email">Email</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-phone"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="profile-mobile" readonly value = "${appointment.phone }">
-                            <label class="mdl-textfield__label" for="profile-mobile">Số điện thoại</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-calendar"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-birthdate" readonly value = "${appointment.appointmentDate }">
-                            <label class="mdl-textfield__label" for="profile-birthdate">Ngày giờ hẹn</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-venus-mars"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-address-1" readonly value = "${appointment.gender }">
-                            <label class="mdl-textfield__label" for="profile-address-1">Giới tính</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+						<input type="file" name="file" />
+                   	</div>
+                   	<div class="col-md-8">
+                   		<input style = "display: none;" class="mdl-textfield__input" type="text" id="id" name = "id" value = "${department.idDepartment }">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-building-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-address-2" readonly value = "${appointment.department.departmentName }">
-                            <label class="mdl-textfield__label" for="profile-address-2">Khoa</label>
-                            <span class="mdl-textfield__error">Please Enter Valid Address!</span>
+                            <input class="mdl-textfield__input" type="text" id="name" name = "name" value = "${department.departmentName }">
+                            <label class="mdl-textfield__label" for="profile-address-2">Tên khoa</label>
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-lock"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-address-2" readonly value = "${appointment.token }">
-                            <label class="mdl-textfield__label" for="profile-address-2">Token</label>
-                        </div>
-                </div>
-               <div class="col-md-6">
-				    <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-				        <i class="fa fa-check-square-o"></i>
-				        <select class="mdl-selectfield__select" id="status" name = "status">
-				            <option value="Đã lên lịch" ${appointment.appointmentStatus == 'Đã lên lịch' ? 'selected' : ''}>Đã lên lịch</option>
-				            <option value="Đã hủy" ${appointment.appointmentStatus == 'Đã hủy' ? 'selected' : ''}>Đã hủy</option>
-				            <option value="Đã xong" ${appointment.appointmentStatus == 'Đã xong' ? 'selected' : ''}>Đã xong</option>
-				        </select>
-				    </div>
-				</div>
-            </div>
-                <div class="row">
-                    <div class="col-md-6">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
-                            <textarea class="mdl-textfield__input" rows="5" id="profile-about" readonly >${appointment.note }</textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Ghi chú</label>
+                            <textarea class="mdl-textfield__input" rows="5" id="intro"name = "intro"  maxLength = "100">${department.intro }</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Giới thiệu (Thông tin ngắn gọn của khoa)</label>
+                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-bullhorn"></i>
-                            <textarea class="mdl-textfield__input" rows="5" id="profile-allergies" name = "information"> ${appointment.information }</textarea>
-                            <label class="mdl-textfield__label" for="profile-allergies">Thông báo</label>
-                            <span id="annouce-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống.</span>
+                            <i class="fa fa-info"></i>
+                            <textarea class="mdl-textfield__input" rows="8" id="information" name = "information">${department.information }</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Thông tin chi tiết của khoa</label>
+                            <span id="information-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                        </div>
                         </div>
                     </div>
-                </div>
                 <div class="form-submit">
-                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
             </div>  
         </div>
@@ -252,12 +211,23 @@
      <script>
     	function validate() {
     		let check = true;
-			if( document.getElementById("profile-allergies").value == "" ) {
-				console.log("profile-allergies");
-	            document.getElementById("annouce-invalid").style.display = "block";
+			if( document.getElementById("name").value == "" ) {
+	            document.getElementById("name-invalid").style.display = "block";
 	            check = false;
 	         } else {
-	        	 document.getElementById("annouce-invalid").style.display = "none";
+	        	 document.getElementById("name-invalid").style.display = "none";
+	         }
+			if( document.getElementById("intro").value == "" ) {
+	            document.getElementById("intro-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("intro-invalid").style.display = "none";
+	         }
+			if( document.getElementById("information").value == "" ) {
+	            document.getElementById("information-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("information-invalid").style.display = "none";
 	         }
 			
 			return check;

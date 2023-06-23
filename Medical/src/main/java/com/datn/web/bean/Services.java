@@ -6,12 +6,9 @@ public class Services {
 	protected String image1;
 	protected String image2;
 	protected String image3;
-	protected String image4;
-	protected String image5;
 	protected String description1;
 	protected String description2;
 	protected String description3;
-	protected String icon;
 	protected String intro;
 	protected String advantage;
 	protected String endline;
@@ -40,18 +37,6 @@ public class Services {
 	}
 	public void setImage3(String image3) {
 		this.image3 = image3;
-	}
-	public String getImage4() {
-		return image4;
-	}
-	public void setImage4(String image4) {
-		this.image4 = image4;
-	}
-	public String getImage5() {
-		return image5;
-	}
-	public void setImage5(String image5) {
-		this.image5 = image5;
 	}
 	public String getDescription1() {
 		return description1;
@@ -89,12 +74,6 @@ public class Services {
 	public void setEndline(String endline) {
 		this.endline = endline;
 	}
-	public String getIcon() {
-		return icon;
-	}
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
 	public String getName() {
 		return name;
 	}
@@ -107,20 +86,17 @@ public class Services {
 	public void setDepartment(Departments department) {
 		this.department = department;
 	}
-	public Services(String name, String image1, String image2, String image3, String image4, String image5,
-			String description1, String description2, String description3, String icon, String intro, String advantage,
+	public Services(String name, String image1, String image2, String image3,String description1, String description2, 
+			String description3, String intro, String advantage,
 			String endline, Departments department) {
 		super();
 		this.name = name;
 		this.image1 = image1;
 		this.image2 = image2;
 		this.image3 = image3;
-		this.image4 = image4;
-		this.image5 = image5;
 		this.description1 = description1;
 		this.description2 = description2;
 		this.description3 = description3;
-		this.icon = icon;
 		this.intro = intro;
 		this.advantage = advantage;
 		this.endline = endline;

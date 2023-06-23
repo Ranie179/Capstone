@@ -142,7 +142,7 @@
                        <div class = "table-wrapper">
         		<div style = "margin: 0 0 0 0;" class="theme-material-card">
                             <p style = "text-align: center;"class="font-16">Danh sách khoa đang vận hành</p>
-                            <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm khoa mới</button> 
+                            <a href = "admin/adminAddDepartment.jsp"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm khoa mới</button></a>
                             <a href ="<%=request.getContextPath()%>/adminShowDeletedDepartment"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Xem những khoa không còn hoạt động</button></a>
                             <table class="table">
                                 <thead>
@@ -158,7 +158,7 @@
                                         <td class="text-center">${item.departmentName}</td>
                                         <td class="text-center">${item.intro }</td>
                                          <td class="text-center">
-                                            <a  href="<%=request.getContextPath()%>/adminEditDepartment?id=${item.idDepartment}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
+                                            <a  href="<%=request.getContextPath()%>/adminShowDepartmentInfo?id=${item.idDepartment}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="showConfirmationDialog(${item.idDepartment})"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                     </tr>

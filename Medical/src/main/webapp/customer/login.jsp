@@ -125,38 +125,42 @@
         </div>
     </div><!-- End page Title Section -->
     <!-- Start Login Section -->
+    <form action ="<%=request.getContextPath()%>/login" method = "post" onsubmit = "return(validate());">
     <div id="login-page" class="layer-stretch">
         <div class="layer-wrapper"> 
             <div class="form-container">    
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
-                    id="login-email" name = "email">
-                    <label class="mdl-textfield__label" for="login-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                     <i class="fa fa-envelope-o"></i>
+                     <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
+                     <label class="mdl-textfield__label" for="appointment-email">Email<em>*</em></label>
+                     <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                     <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống.</span>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="login-password" name = "password">
+                    <input class="mdl-textfield__input" type="password" id="password" name = "password">
                     <label class="mdl-textfield__label" for="login-password">Mật khẩu <em> *</em></label>
                     <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ!</span>
+                    <span id="pass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống.</span>
                     <div class="forgot-pass">Quên mật khẩu?</div>
                 </div>
                 <div class="form-submit">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đăng nhập</button>
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đăng nhập</button>
                 </div>
-                <div class="or-using">Hoặc đăng nhập bằng</div>
-                <div class="social-login">
-                    <a href="#" class="social-facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                    <a href="#" class="social-google"><i class="fa fa-google"></i>Google</a>
-                </div>
+                    <c:if test="${not empty error}">
+					     <div style = "margin-top: 20px; text-align:center; width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
+				             <strong>Sai tài khoản hoặc mật khẩu!</strong>
+				             <button type="button" class="close" data-dismiss="alert">×</button>
+				         </div>
+					</c:if>
                 <div class="login-link">
                     <span class="paragraph-small">Vẫn chưa có tài khoản?</span>
                     <a href="register.jsp" class="">Đăng ký ngay</a>
                 </div>
             </div>
         </div>
-    </div><!-- End Login Section -->
+    </div>
+    </form><!-- End Login Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -384,5 +388,25 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+    	function validate() {
+    		let check = true;
+			if( document.getElementById("email").value == "" ) {
+	            document.getElementById("email-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("email-invalid").style.display = "none";
+	         }
+			
+			if( document.getElementById("password").value == "" ) {
+	            document.getElementById("pass-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("pass-invalid").style.display = "none";
+	         }
+			
+			return check;
+    	}
+    </script>
 </body>
 </html>

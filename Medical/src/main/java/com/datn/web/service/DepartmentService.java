@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Departments;
 import com.datn.web.repository.DepartmentRepository;
@@ -38,12 +39,38 @@ public class DepartmentService {
 		return departmentRepository.adminShowDeletedDepartment(page, pageSize);
 	}
 
-	public List<Departments> adminEditDepartment(int id) {
-		return departmentRepository.adminEditDepartment(id);
-	}
 
 	public int getTotalDeletedDepartmentCount() {
 		return departmentRepository.getTotalDeletedDepartmentCount();
 	}
+
+	public void adminEditDepartment(int id, String name, String intro, String information, String relativePath) {
+		departmentRepository.adminEditDepartment(id, name, intro, information, relativePath);
+	}
+
+	public void adminEditDepartmentWithoutImage(int id, String name, String intro, String information) {
+		departmentRepository.adminEditDepartmentWithoutImage(id, name, intro, information);
+		
+	}
+
+	public List<Departments> adminShowDepartmentInfo(int id) {
+		return departmentRepository.adminShowDepartmentInfo(id);
+	}
+
+	public int getNewID() {
+		return departmentRepository.getNewID();
+	}
+
+	public void adminAddDepartment(int newID, String name, String intro, String information, String relativePath) {
+		departmentRepository.adminAddDepartment(newID, name, intro, information, relativePath);
+		
+	}
+
+	public void adminAddDepartmentWithoutImage(int newID, String name, String intro, String information) {
+		departmentRepository.adminAddDepartmentWithoutImage(newID, name, intro, information);
+		
+	}
+
+
 
 }

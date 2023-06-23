@@ -58,12 +58,37 @@
                 <div class="hdr-top-line"></div>
                 <div class="hdr-top-block">
                     <div class="theme-dropdown">
-                        <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
-                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            <li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
-                            <li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
-                            <li class="mdl-menu__item"><a href="register.jsp"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
-                        </ul>
+                        		<c:set var="isLoggedIn" value="false" />
+								<c:set var="email" value="" />
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
+								<c:if test="${not empty cookie.userEmail}">
+									<c:set var="email" value="${cookie.userEmail.value}" />
+								</c:if>
+								<c:choose>
+									<c:when test="${isLoggedIn}">
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
+											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
+                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
+                            					<li class="mdl-menu__item"><a href="register.jsp"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
+                        					</ul>
+											<a href="<%=request.getContextPath()%>/logout"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng xuất </span>
+											</a>
+									</c:when>
+									<c:otherwise>
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
+                        					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                            					<li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            					<li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
+                            					<li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                        					</ul>
+									</c:otherwise>
+								</c:choose>
                     </div>
                 </div>
             </div>

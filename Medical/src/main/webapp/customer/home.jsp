@@ -58,13 +58,33 @@
                 <div class="hdr-top-line"></div>
                 <div class="hdr-top-block">
                     <div class="theme-dropdown">
-                        <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
-                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            <li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            <li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            <li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
-                        </ul>
+                        <c:set var="isLoggedIn" value="false" />
+								<c:set var="email" value="" />
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
+								<c:if test="${not empty cookie.userEmail}">
+									<c:set var="email" value="${cookie.userEmail.value}" />
+								</c:if>
+								<c:choose>
+									<c:when test="${isLoggedIn}">
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
+											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
+                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
+                        					</ul>
+									</c:when>
+									<c:otherwise>
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
+                        					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                            					<li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            					<li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
+                            					<li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                        					</ul>
+									</c:otherwise>
+								</c:choose>
                     </div>
                 </div>
             </div>
@@ -431,7 +451,7 @@
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-               <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post">
+               <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post" onsubmit = "return(validate());">
         <div class="container">
             <div class="schedule-container">
                 <div class="schedule-form">
@@ -442,62 +462,69 @@
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="name" name = "name">
                                 <label class="mdl-textfield__label" for="appointment-name">Tên *</label> 
                                 <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+                                <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập tên của bạn</span>
                             </div>
                         </div>
                            <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-phone"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="phone" name = "phone">
                                 <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
+                                <span id="phone-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập số điện thoại</span>
                             </div>
                         </div>
                             <div class="col-md-6">
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							        <i class="fa fa-calendar-o"></i>
-							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="" required>
+							        <input class="mdl-textfield__input" type="datetime-local" id="date" name = "date" min="" max="" value="">
 							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
+							        <span id="date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn ngày giờ</span>
 							    </div>
 							</div>
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
+                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                                <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
                             </div>
                         </div>
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-angle-double-down"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "gender" required>
-                                    	<option disabled selected>--Chọn giới tính--</option>
+                                    <select class="mdl-selectfield__select" id="gender" name = "gender">
+                                    	<option value = "" disabled selected>--Chọn giới tính--</option>
                                         <option value="Nam">Nam</option>
                                         <option value="Nữ">Nữ</option>
                                         <option value="Khác">Khác</option>
                                     </select>
+                                    <span id="gender-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn giới tính</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                                     <i class="fa fa-hospital-o"></i>
-                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "idDepartment">
-                                        <option disabled selected>--Chọn khoa--</option>
+                                    <select class="mdl-selectfield__select" id="department" name = "idDepartment">
+                                        <option value = "" disabled selected>--Chọn khoa--</option>
                                         <c:forEach items="${department}" var="item">
                                         <option value="<c:out value="${item.idDepartment}"/>">${item.departmentName }</option>
                                         </c:forEach>
                                     </select>
+                                    <span id="department-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn khoa</span>
                                 </div>
                             </div>
                             <div class="col-md-12">
 							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							            <i class="fa fa-paper-plane"></i>
-							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note" required></textarea>
+							            <textarea class="mdl-textfield__input" rows="5" id="note" name = "note"></textarea>
 							            <label class="mdl-textfield__label" for="sample-message-1">Mô tả triệu chứng sơ bộ *</label>
 							            <span class="mdl-textfield__error">Làm ơn miêu tả triệu chứng sơ bộ của bạn để chúng tôi có thể sắp xếp tốt hơn ( Nếu như dùng dịch vụ không phải khám bệnh có thể ghi "Không có")</span>
+							            <span id="note-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống.</span>
 							        </div>
 							    </div>
                             </div>
@@ -667,6 +694,55 @@
     }
 
     </script>
-   
+    <script>
+    	function validate() {
+    		let check = true;
+			if( document.getElementById("name").value == "" ) {
+	            document.getElementById("name-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("name-invalid").style.display = "none";
+	         }
+			
+			if( document.getElementById("phone").value == "" ) {
+	            document.getElementById("phone-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("phone-invalid").style.display = "none";
+	         }
+			if( document.getElementById("email").value == "" ) {
+	            document.getElementById("email-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("email-invalid").style.display = "none";
+	         }
+			if( document.getElementById("date").value == "" ) {
+	            document.getElementById("date-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("date-invalid").style.display = "none";
+	         }
+			if( document.getElementById("gender").value == "" ) {
+	            document.getElementById("gender-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("gender-invalid").style.display = "none";
+	         }
+			if( document.getElementById("department").value == "" ) {
+	            document.getElementById("department-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("department-invalid").style.display = "none";
+	         }
+			if( document.getElementById("note").value == "" ) {
+	            document.getElementById("note-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("note-invalid").style.display = "none";
+	         }
+			
+			return check;
+    	}
+    </script>
 </body>
 </html>

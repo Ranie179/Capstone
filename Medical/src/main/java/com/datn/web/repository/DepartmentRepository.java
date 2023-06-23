@@ -84,12 +84,49 @@ public class DepartmentRepository {
 	    Object[] params = new Object[]{pageSize, offset};
 		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
 	}
-	public List<Departments> adminEditDepartment(int id) {
+	public void adminEditDepartment(int id, String name, String intro, String information, String relativePath) {
+		String sql = "UPDATE departments\r\n"
+				+ "SET Department_Name = ?, Intro = ?, Information = ?, Image = ?\r\n"
+				+ "WHERE ID_Department = ?;";
+		Object[] params = new Object[] {name, intro, information, relativePath, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	public void adminEditDepartmentWithoutImage(int id, String name, String intro, String information) {
+		String sql = "UPDATE departments\r\n"
+				+ "SET Department_Name = ?, Intro = ?, Information = ?\r\n"
+				+ "WHERE ID_Department = ?;";
+		Object[] params = new Object[] {name, intro, information, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	public List<Departments> adminShowDepartmentInfo(int id) {
 		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
 				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
-				+ "ON departments.ID_Department = doctors.ID_Department where ID_Department = ? GROUP BY departments.Department_Name;";
+				+ "ON departments.ID_Department = doctors.ID_Department where departments.ID_Department = ? GROUP BY departments.Department_Name;";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
+	}
+	public int getNewID() {
+		String sql = "SELECT MAX(ID_Department) FROM Departments";
+		Integer newID = jdbcTemplate.queryForObject(sql, Integer.class);
+		if (newID == null) {
+			newID = 0;
+		}
+		return newID;
+	}
+	public void adminAddDepartment(int newID, String name, String intro, String information, String relativePath) {
+		String sql = "INSERT INTO Departments(ID_Department, Department_Name, Intro, Information, Image)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, intro, information, relativePath};
+		jdbcTemplate.update(sql, params);
+	}
+	public void adminAddDepartmentWithoutImage(int newID, String name, String intro, String information) {
+		String sql = "INSERT INTO Departments(ID_Department, Department_Name, Intro, Information)\r\n"
+				+ "VALUES (?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, intro, information};
+		jdbcTemplate.update(sql, params);
+		
 	}
 
 }

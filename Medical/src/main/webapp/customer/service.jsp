@@ -145,19 +145,9 @@
                             <p></p>
                             <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description2}" /></p>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="theme-img theme-img-scalerotate">
                                         <img src="<c:out value="${serviceInfo.image3}" />" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:out value="${serviceInfo.image4}" />" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:out value="${serviceInfo.image5}" />" alt="">
                                     </div>
                                 </div>
                             </div>

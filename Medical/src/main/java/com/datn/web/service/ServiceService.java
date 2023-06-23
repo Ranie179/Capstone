@@ -1,10 +1,17 @@
 package com.datn.web.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.repository.ServiceRepository;
 import com.datn.web.bean.Services;
@@ -55,5 +62,65 @@ public class ServiceService {
 	        return serviceRepository.adminShowService(page, pageSize);
 	    }
 	}
+
+	public void adminDeleteService(int id) {
+		serviceRepository.adminDeleteService(id);
+		
+	}
+
+	public void upload1(String relativePath, int id) {
+		serviceRepository.upload1(relativePath, id);
+		
+	}
+
+	public void adminEditService(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline) {
+		serviceRepository.adminEditService(id, name, intro, description1, description2, description3, advantage, endline);
+		
+	}
+
+	public void adminEditServiceImage1(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminEditServiceImage1(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+
+	public void adminEditServiceImage2(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminEditServiceImage2(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+
+	public void adminEditServiceImage3(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminEditServiceImage3(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+
+	public void adminEditServiceImage12(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminEditServiceImage12(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+
+	public void adminEditServiceImage23(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminEditServiceImage23(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+
+	public void adminEditServiceImage13(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminEditServiceImage13(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+
+	public void adminEditService3Image(int id, String name, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2,
+			String relativePath3) {
+		serviceRepository.adminEditService3Image(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3);
+		
+	}
+
 	
 }

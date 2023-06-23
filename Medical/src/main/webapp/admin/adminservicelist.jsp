@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
@@ -87,14 +87,14 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
 
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
@@ -135,37 +135,38 @@
     <section class="home">
         		    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
+        <div class="layer-wrapper">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
                     <c:if test="${empty service}">
-						    <div style = "width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
+						   <div style = "width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
                                 <strong>Xin lỗi!</strong> Không tìm thấy kết quả phù hợp với từ khóa "${search}"
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                             </div>
 						</c:if>
                        <div class = "table-wrapper">
         		<div style = "margin: 0 0 0 0;" class="theme-material-card">
-                            <p class="font-16">Danh sách bác sĩ</p>
+                            <p class="font-16 text-center">Danh sách dịch vụ hiện có</p>
+                              <a href ="<%=request.getContextPath()%>/getToAddService"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm dịch vụ mới</button></a> 
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
-                                        <th class="text-center">Tên</th>
-                                        <th class="text-center">Giới thiệu</th>
+                                        <th class="text-center">Tên dịch vụ</th>
+                                        <th class ="text-center">Thông tin ngắn gọn</th>
                                         <th class="text-center">Khoa</th>
-                                        <th class = "text-center">Hành động</th>
+                                        <th class="text-center">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${service}" var="item">
                                     <tr>
                                         <td class="text-center">${item.name}</td>
-                                        <td class="text-center">${item.intro }</td>
+                                        <td class="text-center"> ${item.intro }</td>
                                         <td class="text-center">${item.department.departmentName }</td>
                                          <td class="text-center">
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                                            <a href="<%=request.getContextPath()%>/adminShowServiceInfo?id=${item.id }" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
+                                            <a onClick="confirmDeleteService(${item.id })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -174,7 +175,7 @@
                         </div>
                    	</div>
 					</div>
-				 <ul class="theme-pagination">
+				<ul class="theme-pagination text-center">
 					    <c:choose>
 					        <c:when test="${currentPage > 1}">
 					            <li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
@@ -209,7 +210,7 @@
                 <div class="col-lg-4">
                     <div class="theme-material-card text-center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                           <form class="searchform" action="<%=request.getContextPath()%>/adminShowService" method="GET">
+                         <form class="searchform" action="<%=request.getContextPath()%>/adminShowService" method="GET">
 						    <input type="hidden" name="page" value="${currentPage}" />
 						    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
 						        <input class="mdl-textfield__input" type="text" id="sidebar-search" name="search" value="${search}">
@@ -253,5 +254,14 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+		function confirmDeleteService(id) {
+			  if (confirm("Bạn có chắc muốn xóa dịch vụ này không?")) {
+				  console.log("adminDeleteService?id=" + id)
+			    window.location.href = "adminDeleteService?id=" + id
+			  }
+			}
+	
+	</script>
 
 </html>
