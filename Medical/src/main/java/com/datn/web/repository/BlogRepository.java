@@ -78,6 +78,12 @@ public class BlogRepository {
 		Object[] params = new Object[] {idTag};
 		return jdbcTemplate.query(sql, params, new BlogRowMapper());
 	}
+
+	public void adminDeleteBlog(int id) {
+		String sql = "DELETE FROM BLOGS WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {id};
+		jdbcTemplate.update(sql, params);
+	}
 	
 
 }

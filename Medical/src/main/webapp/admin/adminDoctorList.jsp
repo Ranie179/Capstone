@@ -80,7 +80,7 @@
                     </li>
                     
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
@@ -97,12 +97,6 @@
                         <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
                         </a>
                     </li>
                 </ul>

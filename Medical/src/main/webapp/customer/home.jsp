@@ -480,7 +480,7 @@
                             <div class="col-md-6">
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							        <i class="fa fa-calendar-o"></i>
-							        <input class="mdl-textfield__input" type="datetime-local" id="date" name = "date" min="" max="" value="">
+							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="">
 							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
 							        <span id="date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn ngày giờ</span>
 							    </div>
@@ -662,7 +662,7 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-    <script>
+     <script>
  // Lấy ngày hiện tại và giờ hiện tại
     var today = new Date();
     var currentHour = today.getHours();

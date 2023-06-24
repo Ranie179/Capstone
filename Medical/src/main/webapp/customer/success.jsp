@@ -135,7 +135,7 @@
 					</div>
 					<div class="alert alert-success" role="alert">
                                 <h4 class="alert-heading">Bạn đã đặt lịch hẹn cho chúng tôi thành công!</h4>
-                                <p>Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất có thể, khoảng thời gian này sẽ không lâu đâu nên bạn không cần lo lắng quá ^^</p>
+                                <p>Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất có thể, phiền bạn bỏ chút thời gian để check mail hoặc số điện thoại của mình, khoảng thời gian này sẽ không lâu đâu nên bạn không cần lo lắng quá ^^</p>
                                 <p class="mb-0">Chúng tôi gởi bạn đoạn mã sau: <strong>${token }</strong></p>
                                 <p>Bạn nên giữ lại mã này để có thể xem lại thông tin lịch hẹn của bạn hoặc 
                                 xem thông báo của chúng tôi gửi đến bạn về cuộc hẹn sau khi chúng tôi liên lạc với bạn <strong><a href = "<%=request.getContextPath()%>/showMoreInfo"> Tại đây</a></strong></p>

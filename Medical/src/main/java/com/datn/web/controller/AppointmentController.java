@@ -1,16 +1,18 @@
 package com.datn.web.controller;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.SimpleEmail;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.List;
 import java.util.Random;
 
@@ -38,6 +40,17 @@ public class AppointmentController {
 	@Autowired
 	private DepartmentService departmentService;
 	
+	public String getDepartment(int idDepartment) {
+		return departmentService.getDepartment(idDepartment);
+	}
+	public String getDate(String appointmentDate) throws ParseException {
+		 String dateString = appointmentDate;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", new Locale("vi", "VN"));
+        Date date = formatter.parse(dateString);
+        SimpleDateFormat outputFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm", new Locale("vi", "VN"));
+        String formattedDate = outputFormatter.format(date);
+		return formattedDate;
+	}
 	public static String generateToken(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder token = new StringBuilder();
@@ -66,6 +79,25 @@ public class AppointmentController {
 		model.addAttribute("doctor", doctors);
 		model.addAttribute("service", services);
 		model.addAttribute("recent", recent);
+		
+		String message = "Xin chào" + name + "\r\nChúng tôi gửi mail này để xác nhận "
+				+ "rằng bạn đã đặt lịch tại phòng khám của chúng tôi vào: " + getDate(date) + " với"
+						+ " những thông tin như sau:\r\n"
+						+ "Số điện thoại:" + phone + "\r\n"
+						+ "Giới tính:"  + gender + "\r\n"
+						+ "Khoa:" + getDepartment(idDepartment)+ "\r\n"
+						+ "Mã của cuộc hẹn:" + token;
+		Email mail = new SimpleEmail();
+		mail.setHostName("smtp-mail.outlook.com");
+		mail.setSmtpPort(587);
+		mail.setAuthenticator(new DefaultAuthenticator("rainievalentine@outlook.com.vn", "Rainie132$"));
+		mail.setStartTLSEnabled(true);
+		mail.setFrom("rainievalentine@outlook.com.vn", "Phòng khám đa khoa Medic Support");
+		mail.addTo(email, "client");
+		mail.setSubject("Thông báo xác nhận lịch hẹn ở phòng khám Medic Support");
+		mail.setMsg(message);
+		mail.send();
+		
 		return "customer/success";
 	}
 	

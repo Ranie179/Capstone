@@ -128,5 +128,10 @@ public class DepartmentRepository {
 		jdbcTemplate.update(sql, params);
 		
 	}
+	public String getDepartment(int idDepartment) {
+		String sql = "SELECT Department_Name from departments where ID_Department = ?";
+		Object[] params = new Object[] {idDepartment};
+		return jdbcTemplate.queryForObject(sql, params, String.class);
+	}
 
 }

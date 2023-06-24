@@ -234,6 +234,95 @@ public class ServiceRepository {
 	}
 
 
+	public int getNewID() {
+		String sql = "SELECT MAX(ID) FROM service";
+		Integer newID = jdbcTemplate.queryForObject(sql, Integer.class);
+		if (newID == null) {
+			newID = 0;
+		}
+		return newID;
+	}
+
+	public void adminAddServiceImage1(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image1)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	
+	public void adminAddServiceImage2(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image2)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	
+	public void adminAddServiceImage3(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image3)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+
+	public void adminAddServiceImage12(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline, String relativePath1,
+			String relativePath2) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image1, image2)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1 , relativePath2};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	
+	public void adminAddServiceImage23(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline, String relativePath1,
+			String relativePath2) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image2, image3)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1 , relativePath2};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	
+	public void adminAddServiceImage13(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline, String relativePath1,
+			String relativePath2) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image1, image3)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1 , relativePath2};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+
+	public void adminAddService3Image(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline, String relativePath1,
+			String relativePath2, String relativePath3) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline, image1, image2, image3)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1 , relativePath2, relativePath3};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+
+	public void adminAddService(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline) {
+		String sql = "INSERT INTO service(id, name, ID_Department, intro, description1, description2, description3, advantage, endline)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {newID, name, idDepartment, intro, description1, description2, description3, advantage, endline};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+
 
 
 

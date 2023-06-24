@@ -71,6 +71,10 @@ public class DepartmentService {
 		
 	}
 
+	public String getDepartment(int idDepartment) {
+		return departmentRepository.getDepartment(idDepartment);
+	}
+
 
 
 }

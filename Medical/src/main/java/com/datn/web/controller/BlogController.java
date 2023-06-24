@@ -61,5 +61,26 @@ public class BlogController {
 		return "customer/bloglist";
 	}
 	
+	@RequestMapping(value = "adminShowBlog")
+	public String adminShowBlog(@RequestParam(required = false) String deleted, @RequestParam(defaultValue = "1") int page, Model model) {
+		int totalCount = blogService.getTotalBlogCount();
+		int pageSize = 10;
+		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+		
+		List<Blogs> blogs = blogService.showAllBlogs(page, pageSize);
+		model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+		model.addAttribute("blog", blogs);
+		model.addAttribute("deleted", deleted);
+		return "admin/adminBlogList";
+	}
+	
+	@RequestMapping(value = "adminDeleteBlog")
+	public String adminDeleteBlog(@RequestParam("id") int id){
+		blogService.adminDeleteBlog(id);
+		String deleted = "deleted";
+		return "redirect:adminShowBlog?deleted=" +deleted;
+	}
+	
 
 }

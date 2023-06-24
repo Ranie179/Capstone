@@ -32,6 +32,11 @@ public class BlogService {
 	public List<Blogs> showBlogByTag(int idTag) {
 		return blogRepository.showBlogByTag(idTag);
 	}
+
+	public void adminDeleteBlog(int id) {
+		blogRepository.adminDeleteBlog(id);
+		
+	}
 	
 
 }

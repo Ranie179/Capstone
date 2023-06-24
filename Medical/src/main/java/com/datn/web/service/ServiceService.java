@@ -122,5 +122,54 @@ public class ServiceService {
 		
 	}
 
+	public int getNewID() {
+		return serviceRepository.getNewID();
+	}
+
+	public void adminAddServiceImage1(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminAddServiceImage1(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+	public void adminAddServiceImage2(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminAddServiceImage2(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+	public void adminAddServiceImage3(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath) {
+		serviceRepository.adminAddServiceImage2(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath);
+		
+	}
+
+	public void adminAddServiceImage12(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminAddServiceImage12(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+	public void adminAddServiceImage23(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminAddServiceImage23(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+	public void adminAddServiceImage13(int newID, String name, int idDepartment, String intro, String description1, String description2,
+			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+		serviceRepository.adminAddServiceImage13(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+		
+	}
+
+	public void adminAddService3Image(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline, String relativePath1,
+			String relativePath2, String relativePath3) {
+		serviceRepository.adminAddService3Image(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3);
+		
+	}
+
+	public void adminAddService(int newID, String name, int idDepartment, String intro, String description1,
+			String description2, String description3, String advantage, String endline) {
+		serviceRepository.adminAddService(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline);
+		
+	}
+
 	
 }
