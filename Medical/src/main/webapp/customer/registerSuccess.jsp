@@ -58,33 +58,13 @@
                 <div class="hdr-top-line"></div>
                 <div class="hdr-top-block">
                     <div class="theme-dropdown">
-                        		<c:set var="isLoggedIn" value="false" />
-								<c:set var="email" value="" />
-								<c:if test="${not empty cookie.userIsLoggedIn}">
-									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
-								</c:if>
-								<c:if test="${not empty cookie.userEmail}">
-									<c:set var="email" value="${cookie.userEmail.value}" />
-								</c:if>
-								<c:choose>
-									<c:when test="${isLoggedIn}">
-											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
-											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
-                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
-                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
-                        					</ul>
-									</c:when>
-									<c:otherwise>
-											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
-                        					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            					<li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            					<li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            					<li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
-                        					</ul>
-									</c:otherwise>
-								</c:choose>
+                        <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                            <li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            <li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
+                            <li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -112,7 +92,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+								<li><a href="service.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
@@ -135,108 +115,160 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-      <!-- Start Page Title Section -->
+    <!-- Start page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Thông tin</h1>
-                <p><a href="#">Trang chủ</a> &#8594; <span>Thông tin</span></p>
+                <h1>Tra cứu thông tin lịch hẹn</h1>
+                <p><a href="#">Trang chủ</a> &#8594; <span>Tra cứu thông tin lịch hẹn</span></p>
             </div>
         </div>
-    </div><!-- End Page Title Section -->
- <!-- Start My Profile Section -->
-    <div id="profile-page" class="layer-stretch">
-    <form action = "<%=request.getContextPath()%>/editProfile" method = "post">
-     <c:if test="${not empty success}">
-						   <div class="alert alert-success" role="alert">
-						        <strong>Thông báo</strong> Đã cập nhật thông tin thành công!!!
-						        <button type="button" class="close" data-dismiss="alert">×</button>
-						    </div>
-						</c:if>
-        <div class="layer-wrapper">
-            <div class="theme-material-card text-center">
+    </div><!-- End page Title Section -->
+    <!-- Start Turn up Section -->
+    <div id="doctor-page" class="layer-stretch">
+        <div class="layer-wrapper text-center">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+					</div>
+					<div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Bạn đã đặt đăng ký tài khoản thành công!</h4>
+                                <p class="mb-0">Bây giờ bạn có thể đăng nhập hệ thống của chúng tôi với email <strong>${email }</strong></p>
+                                <p>Chúc bạn trải nghiệm dịch vụ của chúng tôi một cách vui vẻ
+                            </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Đội ngũ của chúng tôi</div>
+                        <div class="flexslider theme-flexslider">
+                            <ul class="slides">
+							  <c:forEach items="${doctor}" var="item" varStatus="loop">
+							      <li>
+							        <div class="theme-flexslider-container">
+							          <img src="/Medical${item.imageUrl }" alt="" />
+							          <h4><a href = "<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}"><c:out value="${item.doctorName}" /></a></h4>
+							          <p>Khoa:<c:out value="${item.department.departmentName}" /></p>
+							          <p>Kinh nghiệm:<c:out value="${item.expYear}" /> năm</p>
+							        </div>
+							      </li>
+							  </c:forEach>
+							</ul>
+                        </div>
+                    </div>
+                     <div class="theme-material-card">
+                        <div class="sub-ttl">Dịch vụ</div>
+                        <div class="flexslider theme-flexslider">
+                            <ul class="slides">
+                            <c:forEach items="${service}" var="item">
+                                <li>
+                                    <div class="theme-flexslider-container">
+                                        <img src="<c:url value="${item.image1}" />" alt="" />
+                                        <h4>${item.name}</h4>
+                                        <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="anchor-icon pull-right">Đọc thêm<i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Bài viết gần đây</div>
+                       <c:forEach items="${recent}" var="item">
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>${item.title }</h4>
+                                <p>${item.createDate }</p>
+                            </div>
+                        </a>
+                        </c:forEach>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Thời gian làm việc</div>
+                        <ul class="timetable">
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 2</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 3</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 4</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 5</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 6</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ 7</a><a class="pull-right"><i class="fa fa-clock-o"></i>9:00 SA - 5:00 CH</a></li>
+                            <li><a class="pull-left"><i class="fa fa-calendar"></i>Chủ nhật</a><a class="pull-right">Ngày lễ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Turn up Section -->
+    <!-- Start Department List Section -->
+    <div class="parallax-background parallax-background-2">
+        <div class="layer-stretch">
+            <div class="layer-wrapper layer-bottom-10">
+                <div class="layer-ttl layer-ttl-white">
+                    <h3>Khoa</h3>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-user-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="name" name = "name" value = "${profile.name }">
-                            <label class="mdl-textfield__label" for="name">Tên</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-envelope-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" readonly name = "email" value = "${profile.email }">
-                            <label class="mdl-textfield__label" for="email">Email</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập Email hợp lệ!</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-phone"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="phone" name = "phone" value = "${profile.phone }">
-                            <label class="mdl-textfield__label" for="phone">Số điện thoại</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Phụ khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa phụ khoa</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-calendar"></i>
-                            <input class="mdl-textfield__input" type="date" id="birthDay" name = "birthDay" value = "${profile.birthDay }">
-                            <label class="mdl-textfield__label" for="birthDay">Sinh nhật</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập sinh nhật hợp lệ!</span>
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                            <i class="fa fa-tint"></i>
-                            <select class="mdl-selectfield__select" name="blood" id="blood">
-							    <option value=""></option>
-							    <option value="O-" ${profile.blood == 'O-' ? 'selected' : ''}>O-</option>
-							    <option value="O+" ${profile.blood == 'O+' ? 'selected' : ''}>O+</option>
-							    <option value="A-" ${profile.blood == 'A-' ? 'selected' : ''}>A-</option>
-							    <option value="A+" ${profile.blood == 'A+' ? 'selected' : ''}>A+</option>
-							    <option value="B-" ${profile.blood == 'B-' ? 'selected' : ''}>B-</option>
-							    <option value="B+" ${profile.blood == 'B+' ? 'selected' : ''}>B+</option>
-							    <option value="AB-" ${profile.blood == 'AB-' ? 'selected' : ''}>AB-</option>
-							    <option value="AB+" ${profile.blood == 'AB+' ? 'selected' : ''}>AB+</option>
-							</select>
-                            <label class="mdl-selectfield__label" for="blood">Nhóm máu</label>
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                            <i class="fa fa-male"></i>
-                            <select class="mdl-selectfield__select" id="gender" name = "gender">
-							    <option value=""></option>
-							    <option value="Nam" ${profile.gender == 'Nam' ? 'selected' : ''}>Nam</option>
-							    <option value="Nữ" ${profile.gender == 'Nữ' ? 'selected' : ''}>Nữ</option>
-							    <option value="Khác" ${profile.gender == 'Khác' ? 'selected' : ''}>Khác</option>
-							</select>
-                            <label class="mdl-selectfield__label" for="profile-gender">Chọn giới tính</label>
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Y học nhiệt đới</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa y học nhiệt đới</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-address-card"></i>
-                            <input class="mdl-textfield__input" type="text" id="commune" name = "commune" value = "${profile.commune }">
-                            <label class="mdl-textfield__label" for="commune">Phường/Xã</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập địa chỉ hợp lệ!</span>
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Tim mạch</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tim mạch</p>
+                            </div>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-address-card"></i>
-                            <input class="mdl-textfield__input" type="text" id="district" name = "district" value = "${profile.district }">
-                            <label class="mdl-textfield__label" for="district">Quận/Huyện</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập địa chỉ hợp lệ!</span>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Đa khoa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa đa khoa</p>
+                            </div>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-map-marker"></i>
-                            <input class="mdl-textfield__input" type="text" id="province" name = "province" value = "${profile.province }">
-                            <label class="mdl-textfield__label" for="province">Tỉnh/Thành phố</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập địa chỉ hợp lệ!</span>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Mắt</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa mắt</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="department-block">
+                            <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
+                            <div class="tbl-cell department-detail">
+                                <h5>Tiêu hóa</h5>
+                                <p class="paragraph-small paragraph-white">Thông tin khoa tiêu hóa</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-submit">
-                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
-                </div>
-            </div>  
+            </div>
         </div>
-        </form>
-    </div><!-- End My Profile Section -->
+    </div><!-- End Department List Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">

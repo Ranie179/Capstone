@@ -70,7 +70,7 @@
 									<c:when test="${isLoggedIn}">
 											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
 											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showProfile?email=${email}"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
                             					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
                             					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
                         					</ul>

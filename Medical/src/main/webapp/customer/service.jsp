@@ -58,12 +58,33 @@
                 <div class="hdr-top-line"></div>
                 <div class="hdr-top-block">
                     <div class="theme-dropdown">
-                        <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
-                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            <li class="mdl-menu__item"><a href="register.jsp"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            <li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
-                        </ul>
+                        <c:set var="isLoggedIn" value="false" />
+								<c:set var="email" value="" />
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
+								<c:if test="${not empty cookie.userEmail}">
+									<c:set var="email" value="${cookie.userEmail.value}" />
+								</c:if>
+								<c:choose>
+									<c:when test="${isLoggedIn}">
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
+											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showProfile?email=${email}"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
+                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
+                        					</ul>
+									</c:when>
+									<c:otherwise>
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
+                        					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                            					<li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                            					<li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
+                            					<li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                        					</ul>
+									</c:otherwise>
+								</c:choose>
                     </div>
                 </div>
             </div>
@@ -88,21 +109,19 @@
                                         <li><a href="about.jsp">Về chúng tôi</a></li>
                                         <li><a href="contact.jsp">Liên hệ</a></li>
                                         <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
+                                        <li><a href = "<%=request.getContextPath()%>/adminShowDoctor">>test admin</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
-                                <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
-                                <li>
-                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
-                                    </a>
-                                    <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Tin tức 1</a></li>
-                                        <li><a href="blog.jsp">Tin tức 2</a></li>
-                                    </ul>
-                                </li>
-								<li><a href="customer/myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
-                                <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllDepartment" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
+								<li><a href="<%=request.getContextPath()%>/showAllService" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllDoctor" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
+                                <li><a href = "<%=request.getContextPath()%>/showAllBlogs" id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức</a></li>
+								<li><a id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lịch hẹn khám bệnh<i class="fa fa-chevron-down"></i> </a>
+								<ul class="menu-dropdown">
+                                        <li><a href="<%=request.getContextPath()%>/showDepartmentForAppointment">Đặt lịch khám</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/showMoreInfo">Tra cứu thông tin lịch hẹn</a></li>
+                                    </ul></li>
+                                <li><a href="chat.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn miễn phí</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -129,6 +148,7 @@
             <div class="row layer-wrapper">
                 <div class="col-lg-8 text-center">
                     <div class="theme-material-card">
+                    <input style = "display:none;" type = "text" id = "id" name = "id" value = "${serviceInfo.id }"> 
                         <div class="theme-img theme-img-scalerotate"><img src="<c:out value="${serviceInfo.image1}" />" alt=""></div>
                         <div class="service-post">
                             <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.intro}" /></p>
@@ -162,86 +182,37 @@
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Reviews (9)</div>
+                        <div class="sub-ttl">Bình luận gần đây</div>
                         <ul class="comment-list">
+                        <c:forEach items="${comment}" var="item">
                             <li>
-                                <div class="row">
-                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
-                                        <div class="theme-img">
-                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                                        </div>
-                                    </div>
                                     <div class="col-10 comment-detail text-left">
-                                        <div class="comment-meta">
-                                            <span>Tác giả 1</span>
-                                            <span>22 tháng 5 2023</span>
-                                        </div>
-                                        <div class="comment-post">
-                                            Comment 1
-                                        </div>                      
-                                    </div>
-                                </div>
+									    <div class="comment-meta">
+									        <span>${item.email}</span>
+									        <span>${item.createDate}</span>
+									    </div>
+									    <div class="comment-post">
+									        ${item.comment}
+									    </div>                      
+									</div>
                             </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
-                                        <div class="theme-img">
-                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-10 comment-detail text-left">
-                                        <div class="comment-meta">
-                                            <span>Tác giả 2</span>
-                                            <span>22 tháng 5 2023</span>
-                                        </div>
-                                        <div class="comment-post">
-                                            Comment 2
-                                        </div>                      
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
-                                        <div class="theme-img">
-                                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-10 comment-detail text-left">
-                                        <div class="col-10 comment-detail text-left">
-                                        <div class="comment-meta">
-                                            <span>Tác giả 3</span>
-                                            <span>22 tháng 5 2023</span>
-                                        </div>
-                                        <div class="comment-post">
-                                            Comment 3
-                                        </div>                      
-                                    </div>
-                                    </div>
-                                </div>
-                            </li>
+                            </c:forEach>
                         </ul>
                     </div>
+                    <form action = "<%=request.getContextPath()%>/comment" method = "post" onsubmit = "return(validate());">
                     <div class="theme-material-card">
                         <div class="sub-ttl layer-ttl-white">Viết bình luận</div>
                         <div class="row comment-form">
                             <div class="col-sm-6">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="comment-name">
-                                    <label class="mdl-textfield__label" for="comment-name">Tên <em> *</em></label>
-                                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="comment-email">
+                                    <input class="mdl-textfield__input" type="text" id="email" name = "email" value = "${email }">
                                     <label class="mdl-textfield__label" for="comment-email">Email <em> *</em></label>
-                                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                                 </div>
+                                <input style = "display:none;" type = "text" id = "id" name = "id" value = "${serviceInfo.id }"> 
                             </div>
                             <div class="col-sm-12">
                                 <div class="mdl-textfield mdl-js-textfield form-input">
-                                    <textarea class="mdl-textfield__input" rows="4" id="comment-message" ></textarea>
+                                    <textarea class="mdl-textfield__input" rows="4" id="comment" name = "comment"></textarea>
                                     <label class="mdl-textfield__label" for="comment-message">Bình luận ...</label>
                                 </div>
                             </div>
@@ -252,6 +223,7 @@
                             </div>  
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="theme-material-card">
@@ -505,5 +477,18 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+    function validate(){
+    	let check = true
+    	
+    	if( document.getElementById("comment").value == "" ) {
+            document.getElementById("comment-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("comment-invalid").style.display = "none";
+         }
+    	return check
+    }
+    </script>
 </body>
 </html>

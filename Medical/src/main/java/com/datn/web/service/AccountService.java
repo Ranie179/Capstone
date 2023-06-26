@@ -23,5 +23,18 @@ public class AccountService {
 	public String getRole(String email) {
 		return accountRepository.getRole(email);
 	}
+	
+	public boolean checkExistEmail(String email) {
+		int i = accountRepository.checkExistEmail(email);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
+
+	public void register(String email, String encodePass) {
+		accountRepository.register(email, encodePass);
+		
+	}
 
 }

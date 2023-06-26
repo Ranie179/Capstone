@@ -132,59 +132,110 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;" class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
-    <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
+    <form method="POST" action="<%=request.getContextPath()%>/adminEditBlog" enctype="multipart/form-data" method = "post" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
-            <div style ="height:840px; overflow-y:auto;" class="theme-material-card">
-            <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
-           		<div class="col-lg-8 text-center">
+        <div class="layer-wrapper text-center">
+            <div class="theme-material-card">
+            <p style = "text-align: center;"class="font-16">${blogInfo.title}</p>
+            <c:if test="${not empty success}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+           		<div class="col-lg-12 text-center">
                         <div class="theme-img theme-img-scalerotate blog-picture">
                             <img class="" src="<c:url value="${blogInfo.image1 }" />" alt="">
                         </div>
-                        <h2 class="blog-ttl">${blogInfo.title}</h2>
+                        <p class = "text-center">Ảnh tiêu đề</p>
+                        <div style = "margin-left: 180px; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img1" name = "img1"></div>
+                        <div class = "row">
+                        <div style = "margin-left:25px;" class = "col-md-7">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-newspaper-o"></i>
+                            <input style = "display:none;" id = "id" name = "id" value = " ${blogInfo.idBlog }">
+                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "name" id="name">${blogInfo.title}</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Tên bài viết</label>   
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+                            </div>            
+                        </div>
+                        <div class = "col-md-4">
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+				        <i class="fa fa-bookmark-o"></i>
+				        <select class="mdl-selectfield__select" id="idTag" name = "idTag">
+				        	<c:forEach items="${tag}" var="item">
+				            <option value="${item.idTag }" <c:out value = "${item.tag.equals(blogInfo.tag.tag)? 'selected' : ''}"/>>${item.tag}</option>
+				            </c:forEach>
+				        </select>
+				    </div>
+                        </div>
+                        </div>
                         <ul class="blog-detail">
                             <li><i class="fa fa-calendar-o"></i>${blogInfo.createDate}</li>
                         </ul>
                         <div class="blog-post">
-                            <p class="paragraph-medium paragraph-black">${blogInfo.intro}</p>
+                            <div style = "margin:auto;"class = "col-md-12">
+		                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+		                            <i class="fa fa-plus"></i>
+		                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "intro" id="intro">${blogInfo.intro}</textarea>
+		                            <label class="mdl-textfield__label" for="profile-about">Lời mở đầu</label> 
+		                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+		                            </div>            
+		                        </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="theme-img">
                                         <img src="<c:url value="${blogInfo.image2 }" />" alt="">
                                     </div>
                                 </div>
+                                <p style = "margin:auto;" class = "text-center">Ảnh thứ nhất</p>
                             </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph1}</p>
-                            <div class="theme-quote">
-                                <i class="fa fa-quote-left"></i> ${blogInfo.quote}
-                            </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph2}</p>
+                            <div style = "margin-left: 180px; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img2" name = "img2"></div>
+                           <div class="col-md-12">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para1" id="para1">${blogInfo.paragraph1 }</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 1</label>
+                            <span id="para1-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+                        </div>
+                        </div>
+                           <div style = "margin:auto;"class = "col-md-12">
+		                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+		                            <i class="fa fa-quote-left"></i>
+		                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "quote" id="quote">${blogInfo.quote}</textarea>
+		                            <label class="mdl-textfield__label" for="profile-about">Châm ngôn/Trích dẫn</label>  
+		                            <span id="quote-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>   
+		                            </div>            
+		                        </div>
+                            <div class="col-md-12">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para2" id="para2">${blogInfo.paragraph2 }</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 2</label>
+                            <span id="para2-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+                        </div>
+                        </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="theme-img theme-img-scalerotate">
                                         <img src="<c:url value="${blogInfo.image3 }" />" alt="">
                                     </div>
                                 </div>
+                                <p style = "margin:auto;" class = "text-center">Ảnh thứ hai</p>
                             </div>
-                            <p class="paragraph-medium paragraph-black">${blogInfo.paragraph3}"</p>
+                            <div style = "margin:auto; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img3" name = "img3"></div>
+                            <div class="col-md-12">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para3" id="para3">${blogInfo.paragraph3 }</textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 3</label>
+                            <span id="para3-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
                         </div>
-                        <div class="row blog-meta">
-                            <div class="col-sm-7 blog-tag">
-                                <p>Loại bài viết : </p>
-                                <ul>
-                                    <li><a href="<%=request.getContextPath()%>/showBlogByTag?idTag=${blogInfo.tag.idTag }">${blogInfo.tag.tag }</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-5 text-right">
-                                <ul class="social-list social-list-sm">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                                </ul>
-                            </div>
-                        </div> 
+                        </div>
+                        </div>
                 </div>
                 <div class="form-submit text-center">
                     <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
@@ -223,5 +274,26 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    
+    <script>
+    function validate() {
+		let check = true;
+		if( document.getElementById("name").value == "" ) {
+            document.getElementById("name-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("name-invalid").style.display = "none";
+         }
+		
+		if( document.getElementById("intro").value == "" ) {
+            document.getElementById("intro-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("intro-invalid").style.display = "none";
+         }
+		
+		return check;
+	}
+    </script>
 
 </html>

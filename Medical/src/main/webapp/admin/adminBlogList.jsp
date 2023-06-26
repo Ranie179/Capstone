@@ -154,12 +154,18 @@
 							        <button type="button" class="close" data-dismiss="alert">×</button>
 							    </div>
 							</c:if>
-                              <a href ="<%=request.getContextPath()%>/getToAddService"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm dịch vụ mới</button></a> 
+							<c:if test="${not empty success}">
+						   <div class="alert alert-success" role="alert">
+                                <strong>Thông báo!</strong> Đã thêm bài viết mới
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                            </div>
+						</c:if>
+                              <a href ="<%=request.getContextPath()%>/getToAddBlog"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bài viết mới</button></a> 
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
                                         <th class="text-center">Tên bài viết</th>
-                                        <th class ="text-center">Thông tin ngắn gọn</th>
+                                        <th class ="text-center">Lọai bài viết</th>
                                         <th class="text-center">Hành động</th>
                                     </tr>
                                 </thead>
@@ -167,7 +173,7 @@
                                 <c:forEach items="${blog}" var="item">
                                     <tr>
                                         <td class="text-center">${item.title}</td>
-                                        <td class="text-center"> ${item.intro }</td>
+                                        <td class="text-center"> ${item.tag.tag }</td>
                                          <td class="text-center">
                                             <a href="<%=request.getContextPath()%>/adminShowBlogInfo?id=${item.idBlog }" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
                                             <a onClick="confirmDeleteBlog(${item.idBlog })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>

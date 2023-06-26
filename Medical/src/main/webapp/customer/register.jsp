@@ -127,40 +127,46 @@
     <!-- Start Register Section -->
     <div class="layer-stretch">
         <div class="layer-wrapper">
+        <form action = "<%=request.getContextPath()%>/register" method = "post" onsubmit="return(validate());">
             <div class="form-container">
+             <c:if test="${not empty failed}">
+						   <div class="alert alert-danger" role="alert">
+						        <strong>Thông báo</strong> Email đã tồn tại tài khoản trong hệ thống!!! Vui lòng thử lại 
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-user-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="register-name">
-                    <label class="mdl-textfield__label" for="register-name">Tên <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email">
-                    <label class="mdl-textfield__label" for="register-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                     <i class="fa fa-envelope-o"></i>
+                     <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
+                     <label class="mdl-textfield__label" for="appointment-email">Email</label>
+                     <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                     <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="register-password">
+                    <input class="mdl-textfield__input" type="password" id="pass" name = "pass">
                     <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
                     <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
+                    <span id="pass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập mật khẩu của bạn</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-key"></i>
+                    <input class="mdl-textfield__input" type="password" id="repass" name = "repass">
+                    <label class="mdl-textfield__label" for="register-password">Nhập lại mật khẩu <em> *</em></label>
+                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
+                    <span id="repass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập lại mật khẩu của bạn</span>
+                    <span id="confirmPass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Mật khẩu của bạn không trùng khớp</span>
                 </div>
                 <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="terms-conditions.jsp">điều khoản &#38; điều kiện</a></div>
                 <div class="form-submit">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="or-using">Hoặc đăng nhập bằng</div>
-                <div class="social-login">
-                    <a href="#" class="social-facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                    <a href="#" class="social-google"><i class="fa fa-google"></i>Google</a>
+                    <button type ="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
                 </div>
                 <div class="login-link">
                     <span class="paragraph-small">Đã có tài khoản?</span>
                     <a href="#" class="">Đăng nhập ngay</a>
                 </div>
             </div>
-
+			</form>
         </div>
     </div><!-- End Register Section -->
     <!-- Start Emergency Section -->
@@ -389,5 +395,45 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+    function validate() {
+        var check = true;
+        var repassword = document.getElementById("repass").value;
+        var password = document.getElementById("pass").value;
+            
+        if (document.getElementById("email").value == "") {
+            document.getElementById("email-invalid").style.display = "block";
+            check = false;
+        } else {
+            document.getElementById("email-invalid").style.display = "none";
+        }
+        
+        if (password == "") {
+            document.getElementById("pass-invalid").style.display = "block";
+            check = false;
+        } else {
+            document.getElementById("pass-invalid").style.display = "none";
+        }
+        
+        if(repassword == ""){
+        	document.getElementById("repass-invalid").style.display = "block";
+            check = false;
+        } else {
+            document.getElementById("repass-invalid").style.display = "none";
+        }
+        
+        if(repassword != pass){
+        	document.getElementById("confirmPass-invalid").style.display = "block";
+        	check = false;
+        } else {
+            document.getElementById("confirmPass-invalid").style.display = "none";
+        }
+        
+        
+        return check;
+    }
+
+</script>
+    
 </body>
 </html>

@@ -132,100 +132,109 @@
 
     </nav>
 
-    <section style = "height: auto;" class="home">
+    <section style = "height:auto;" class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
-    <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
+    <form method="POST" action="<%=request.getContextPath()%>/adminAddBlog" enctype="multipart/form-data" method = "post" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div class="layer-wrapper text-center">
             <div class="theme-material-card">
-            <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
-            <div id="doctor-page" class="layer-stretch">
-        	<div class="layer-wrapper layer-bottom-5">
-                        <div class="theme-img theme-img-scalerotate"><img src="/Medical<c:out value="${serviceInfo.image1}" />" alt=""></div>
+            <p style = "text-align: center;"class="font-16"></p>
+            <c:if test="${not empty success}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+           		<div class="col-lg-12 text-center">
+                        <div class="theme-img theme-img-scalerotate blog-picture">
+                            <img class="" src="/Medical/resources/images/1920x800-slider.jpg" alt="">
+                        </div>
                         <p class = "text-center">Ảnh tiêu đề</p>
+                        <div style = "margin-left: 180px; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img1" name = "img1"></div>
                         <div class = "row">
-                        <div style = "margin-left: 15px;" class = "col-md-6">
+                        <div style = "margin-left:25px;" class = "col-md-7">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-heart"></i>
-                            <input style = "display:none;" id = "id" name = "id" value = " ${serviceInfo.id }">
-                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "name" id="profile-about">${serviceInfo.name}</textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Tên dịch vụ</label>               
+                            <i class="fa fa-newspaper-o"></i>
+                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "name" id="name"></textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Tên bài viết</label>   
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+                            </div>            
+                        </div>
+                        <div class = "col-md-4">
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+				        <i class="fa fa-bookmark-o"></i>
+				        <select class="mdl-selectfield__select" id="idTag" name = "idTag">
+				        <option value = "" disabled selected>--Chọn loại bài viết--</option>
+				        	<c:forEach items="${tag}" var="item">
+				            <option value="${item.idTag }">${item.tag}</option>
+				            </c:forEach>
+				        </select>
+				        <span id="idTag-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn loại bài viết</span>
+				    </div>
                         </div>
                         </div>
-                        <div style = "margin-left: 150px; margin-top:20px;" class = "col-md-4"><input type = "file" id = "img1" name = "img1">
+                        <ul class="blog-detail">
+                        </ul>
+                        <div class="blog-post">
+                            <div style = "margin:auto;"class = "col-md-12">
+		                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+		                            <i class="fa fa-plus"></i>
+		                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "intro" id="intro"></textarea>
+		                            <label class="mdl-textfield__label" for="profile-about">Lời mở đầu</label> 
+		                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>  
+		                            </div>            
+		                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="theme-img">
+                                        <img src="/Medical/resources/images/1920x800-slider.jpg" alt="">
+                                    </div>
+                                </div>
+                                <p style = "margin:auto;" class = "text-center">Ảnh thứ nhất</p>
+                            </div>
+                            <div style = "margin-left: 180px; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img2" name = "img2"></div>
+                           <div class="col-md-12">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para1" id="para1"></textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 1</label>
                         </div>
                         </div>
-                        
-
+                           <div style = "margin:auto;"class = "col-md-12">
+		                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+		                            <i class="fa fa-quote-left"></i>
+		                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "quote" id="quote"></textarea>
+		                            <label class="mdl-textfield__label" for="profile-about">Châm ngôn/Trích dẫn</label>   
+		                            </div>            
+		                        </div>
                             <div class="col-md-12">
                    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-sticky-note-o"></i>
-                            <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="profile-about">${serviceInfo.intro }</textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Giới thiệu</label>
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para2" id="para2"></textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 2</label>
                         </div>
-                        </div>
-                            <div class="row">
-                                <div style = "margin-left: 15px;" class="col-md-6">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-			                            <i class="fa fa-info"></i>
-			                            <textarea class="mdl-textfield__input" rows="12" maxLength = "200" name = "description1" id="profile-about">${serviceInfo.description1 }</textarea>
-			                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ nhất</label>
-			                        </div>
-                                </div>
-                                <div style = "margin-left: 70px;" class="col-md-5">
-                                    <div class="theme-img theme-img-scalerotate">
-                                        <img src="/Medical<c:out value="${serviceInfo.image2}" />" alt="">
-                                    </div>
-                                    <p class = "text-center">Ảnh thứ nhất</p>
-                                    <input style = "margin-left:150px;" type = "file" name = "img2">
-                                </div>
-                                 
-                            </div>
-                            <p></p>
-                           <div class="col-md-12">
-		                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-		                            <i class="fa fa-info"></i>
-		                            <textarea class="mdl-textfield__input" rows="4" name = "description2" id="profile-about">${serviceInfo.description2 }</textarea>
-		                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ 2</label>
-		                        </div>
                         </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="/Medical<c:out value="${serviceInfo.image3}" />" alt="">
+                                        <img src="/Medical/resources/images/1920x800-slider.jpg" alt="">
                                     </div>
-                                    <p class = "text-center">Ảnh thứ ba</p>
-                                    <input style = "margin-left:400px;" type = "file" name = "img3">
                                 </div>
+                                <p style = "margin:auto;" class = "text-center">Ảnh thứ hai</p>
                             </div>
-                            <p></p>
+                            <div style = "margin:auto; margin-top:20px;" class = "col-md-8"><input type = "file" id = "img3" name = "img3"></div>
                             <div class="col-md-12">
-		                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-		                            <i class="fa fa-info"></i>
-		                            <textarea class="mdl-textfield__input" rows="4" name = "description3" id="profile-about">${serviceInfo.description3 }</textarea>
-		                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ 3</label>
-		                        </div>
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-paragraph"></i>
+                            <textarea class="mdl-textfield__input" rows="4" name = "para3" id="para3"></textarea>
+                            <label class="mdl-textfield__label" for="profile-about">Đoạn thứ 3</label>
                         </div>
-                                <div class="col-md-12">
-				                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-				                            <i class="fa fa-dot-circle-o"></i>
-				                            <textarea class="mdl-textfield__input" rows="2" name = "advantage" id="profile-about">${serviceInfo.advantage }</textarea>
-				                            <label class="mdl-textfield__label" for="profile-about">Lợi ích của dịch vụ</label>
-				                        </div>
-		                        </div>
-                            <p></p>
-                                <div class="col-md-12">
-			                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-			                            <i class="fa fa-flag"></i>
-			                            <textarea class="mdl-textfield__input" rows="2" name = "endline" id="profile-about">${serviceInfo.endline }</textarea>
-			                            <label class="mdl-textfield__label" for="profile-about">Lời kết thúc</label>
-			                        </div>
-                        	</div> 
-             </div>
-         </div>
+                        </div>
+                        </div>
+                </div>
                 <div class="form-submit text-center">
-                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
             </div>  
         </div>
@@ -261,5 +270,32 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    
+    <script>
+    function validate() {
+		let check = true;
+		if( document.getElementById("name").value == "" ) {
+            document.getElementById("name-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("name-invalid").style.display = "none";
+         }
+		
+		if( document.getElementById("intro").value == "" ) {
+            document.getElementById("intro-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("intro-invalid").style.display = "none";
+         }
+		if( document.getElementById("idTag").value == "" ) {
+            document.getElementById("idTag-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("idTag-invalid").style.display = "none";
+         }
+		
+		return check;
+	}
+    </script>
 
 </html>

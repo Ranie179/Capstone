@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.datn.web.bean.Departments;
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Services;
+import com.datn.web.bean.Comment;
+import com.datn.web.service.CommentService;
 import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 import com.datn.web.service.ServiceService;
@@ -31,6 +33,8 @@ public class ServiceController {
 	private DoctorService doctorService;
 	@Autowired
 	private DepartmentService departmentService;
+	@Autowired
+	private CommentService commentService;
 	
 	public int getNewID() {
 		return serviceService.getNewID();
@@ -58,6 +62,8 @@ public class ServiceController {
 		model.addAttribute("serviceInfo",serviceInfo.get(0));
 		List<Services> services = serviceService.showMoreService();
 	    model.addAttribute("service", services);
+	    List<Comment> comments = commentService.showComment(id);
+	    model.addAttribute("comment", comments);
 		return "customer/service";
 	}
 	
