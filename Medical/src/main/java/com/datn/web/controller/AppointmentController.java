@@ -44,7 +44,7 @@ public class AppointmentController {
 		return departmentService.getDepartment(idDepartment);
 	}
 	public String getDate(String appointmentDate) throws ParseException {
-		 String dateString = appointmentDate;
+		String dateString = appointmentDate;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", new Locale("vi", "VN"));
         Date date = formatter.parse(dateString);
         SimpleDateFormat outputFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm", new Locale("vi", "VN"));
@@ -75,6 +75,8 @@ public class AppointmentController {
 		List<Services> services = serviceService.showMoreService();
 		List<Doctors> doctors = doctorService.showExpDoctor();
 		List<Blogs> recent = blogService.getRecentBlog();
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		model.addAttribute("token", token);
 		model.addAttribute("doctor", doctors);
 		model.addAttribute("service", services);
@@ -111,6 +113,8 @@ public class AppointmentController {
 		model.addAttribute("doctor", doctors);
 		model.addAttribute("service", services);
 		model.addAttribute("recent", recent);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/appointmentinfo";
 	}
 	
@@ -122,6 +126,8 @@ public class AppointmentController {
 		model.addAttribute("doctor", doctors);
 		model.addAttribute("service", services);
 		model.addAttribute("recent", recent);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/turnup";
 	}
 	
@@ -152,6 +158,43 @@ public class AppointmentController {
 			Model model) {
 		appointmentService.adminUpdateAppointment(id, status, information);
 		return "redirect:adminShowAllAppointment";
+	}
+	
+	@RequestMapping(value = "showUpcomingAppointment")
+	public String showUpcomingAppointment(Model model) {
+		List<Appointment> appointment =  appointmentService.showUpcomingAppointment();
+		model.addAttribute("appointment", appointment);
+		return "admin/adminPage";
+	}
+	
+	@RequestMapping(value = "showMyAppointment")
+	public String showMyAppointment(@RequestParam(defaultValue = "1") int page, @RequestParam("email") String email, Model model){
+		int pageSize = 10;
+	    int totalCount = appointmentService.getTotalAppointment(email);
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+		List<Appointment> appointment = appointmentService.showMyAppointment(page, pageSize, email);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
+		model.addAttribute("email", email);
+		model.addAttribute("appointment", appointment);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+		return "customer/appointmentList";
+	}
+	
+	@RequestMapping(value = "showAppointmentByID")
+	public String showAppointmentByID(@RequestParam("id") int id, Model model) {
+		List<Appointment> appointment = appointmentService.showAppointmentByID(id);
+		model.addAttribute("appointment", appointment.get(0));
+		List<Services> services = serviceService.showMoreService();
+		List<Doctors> doctors = doctorService.showExpDoctor();
+		List<Blogs> recent = blogService.getRecentBlog();
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
+		model.addAttribute("doctor", doctors);
+		model.addAttribute("service", services);
+		model.addAttribute("recent", recent);
+		return "customer/appointmentinfo";
 	}
 
 }

@@ -135,56 +135,60 @@
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đăng ký</h1>
-                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <span>Đăng ký</span></p>
+                <h1>Điều khoản &#38; Điều kiện khi đăng ký</h1>
+                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <span>Điều khoản &#38; Điều kiện khi đăng ký</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
-    <!-- Start Register Section -->
+    <!-- Start Terms and Condition Section -->
     <div class="layer-stretch">
         <div class="layer-wrapper">
-        <form action = "<%=request.getContextPath()%>/register" method = "post" onsubmit="return(validateaccount());">
-            <div class="form-container">
-             <c:if test="${not empty failed}">
-						   <div class="alert alert-danger" role="alert">
-						        <strong>Thông báo</strong> Email đã tồn tại tài khoản trong hệ thống!!! Vui lòng thử lại 
-						        <button type="button" class="close" data-dismiss="alert">×</button>
-						    </div>
-						</c:if>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                     <i class="fa fa-envelope-o"></i>
-                     <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
-                     <label class="mdl-textfield__label" for="appointment-email">Email</label>
-                     <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
-                     <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
+            <div class="layer-fixed">
+                <p class="paragraph-medium paragraph-black text-justify">
+                    Thông tin tài khoản:
+                </p>
+                <ul class="theme-list-basic text-justified text-justify">
+                    <li>Khách hàng phải cung cấp thông tin cá nhân cần thiết một cách đầy đủ và chính xác càng sớm càng tốt khi đăng ký tài khoản thành viên.</li>
+                    <li>Thông tin cá nhân bao gồm tên, ngày sinh, địa chỉ, số điện thoại, và địa chỉ email.</li>
+                </ul>
+				 <p class="paragraph-medium paragraph-black text-justify">
+                    Quyền và trách nhiệm của thành viên:
+                </p>
+                <ul class="theme-list-basic text-justified text-justify">
+                    <li>Thành viên có quyền truy cập và sử dụng các dịch vụ và tiện ích mà bệnh viện cung cấp cho thành viên.</li>
+                    <li>Thành viên phải tuân thủ các quy định, quyền lợi và trách nhiệm được quy định bởi bệnh viện.</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Bảo mật thông tin:
+                </p>
+                <ul class="theme-list-basic text-justified text-justify">
+                    <li>Bệnh viện cam kết bảo vệ thông tin cá nhân của thành viên theo quy định pháp luật và chính sách bảo mật của bệnh viện.</li>
+                    <li>Thông tin cá nhân chỉ được sử dụng cho mục đích nội bộ của bệnh viện và không được tiết lộ cho bên thứ ba mà không có sự đồng ý của thành viên.</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Quyền hạn và giới hạn:
+                </p>
+                <ul class="theme-list-basic text-justify">
+                    <li>Bệnh viện có quyền hủy bỏ tài khoản thành viên nếu thành viên vi phạm các điều khoản và điều kiện đã được quy định.</li>
+                    <li>Bệnh viện có quyền thay đổi hoặc chấm dứt dịch vụ thành viên mà không cần thông báo trước.</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Quyền lợi và ưu đãi:
+                </p>
+                <ul class="theme-list-basic text-justified text-justify">
+                    <li>Thành viên có thể được hưởng các quyền lợi và ưu đãi đặc biệt do bệnh viện cung cấp cho thành viên.</li>
+                    <li>Các quyền lợi và ưu đãi có thể bao gồm giảm giá dịch vụ, ưu tiên đặt lịch khám, hoặc các chương trình chăm sóc sức khỏe đặc biệt.</li>
+                </ul>
+                <div class="theme-quote">
+                    <i class="fa fa-quote-left"></i> Tôi sẽ kê toa vì lợi ích của bệnh nhân, tùy theo khả năng và thẩm định của tôi và không bao giờ làm hại ai. - Hippocrates - 
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="pass" name = "pass">
-                    <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                    <span id="pass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập mật khẩu của bạn</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="repass" name = "repass">
-                    <label class="mdl-textfield__label" for="register-password">Nhập lại mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                    <span id="repass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập lại mật khẩu của bạn</span>
-                    <span id="confirmPass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Mật khẩu của bạn không trùng khớp</span>
-                </div>
-                <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="customer/conditions-register.jsp">điều khoản &#38; điều kiện khi đăng ký</a></div>
-                <div class="form-submit">
-                    <button type ="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="login-link">
-                    <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
-                </div>
+                <div class="theme-quote theme-quote-colored text-justify">
+                    <i class="fa fa-quote-left"></i> Ở đây không chỉ có dịch vụ, ở đây còn có sự chăm sóc tận tình bằng cả thể xác, con tim và linh hồn <br>
+                    Sự hài lòng của quý khách hàng là niềm hạnh phúc của chúng tôi
+                </div>  
             </div>
-			</form>
         </div>
-    </div><!-- End Register Section -->
+    </div><!-- End Terms and Condition Section -->
     <!-- Start Emergency Section -->
     <div id="emergency">
         <div class="layer-stretch">
@@ -201,7 +205,7 @@
                 </div>
             </div>
         </div>
-    </div><!-- End Emergency Section -->    
+    </div><!-- End Emergency Section -->
     <!-- Start Make an Appointment Modal -->
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -418,45 +422,6 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-    <script>
-    function validateaccount() {
-        var check = true;
-        var repassword = document.getElementById("repass").value;
-        var password = document.getElementById("pass").value;
-            
-        if (document.getElementById("email").value == "") {
-            document.getElementById("email-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("email-invalid").style.display = "none";
-        }
-        
-        if (password == "") {
-            document.getElementById("pass-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("pass-invalid").style.display = "none";
-        }
-        
-        if(repassword == ""){
-        	document.getElementById("repass-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("repass-invalid").style.display = "none";
-        }
-        
-        if(repassword != pass){
-        	document.getElementById("confirmPass-invalid").style.display = "block";
-        	check = false;
-        } else {
-            document.getElementById("confirmPass-invalid").style.display = "none";
-        }
-        
-        
-        return check;
-    }
-
-</script>
      <script>
  // Lấy ngày hiện tại và giờ hiện tại
     var today = new Date();
@@ -481,7 +446,7 @@
     }
 
     // Cập nhật giá trị tối thiểu (min) của trường ngày
-    document.getElementById("date").setAttribute("min", minDate + "T08:00");
+    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
 
     // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
     function formatNumber(number) {

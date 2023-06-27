@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Blogs;
+import com.datn.web.bean.Departments;
 import com.datn.web.bean.Tags;
 import com.datn.web.service.BlogService;
+import com.datn.web.service.DepartmentService;
 import com.datn.web.service.TagService;
 
 @Controller
@@ -26,6 +28,8 @@ public class BlogController {
 	private BlogService blogService;
 	@Autowired
 	private TagService tagService;
+	@Autowired
+	private DepartmentService departmentService;
 	
 	@RequestMapping(value = "showTags")
 	public String showTags(Model model) {
@@ -57,6 +61,10 @@ public class BlogController {
 		model.addAttribute("blog", blogs);
 		List<Blogs> recentBlog = blogService.getRecentBlog();
 		model.addAttribute("recent", recentBlog);
+		List<Tags> tags = tagService.showTags();
+		model.addAttribute("tag", tags);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/bloglist";
 	}
 	
@@ -68,6 +76,8 @@ public class BlogController {
 		model.addAttribute("tag", tags);
 		List<Blogs> recentBlog = blogService.getRecentBlog();
 		model.addAttribute("recent", recentBlog);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/blog";
 	}
 	
@@ -75,6 +85,10 @@ public class BlogController {
 	public String showBlogByTag(@RequestParam("idTag") int idTag, Model model) {
 		List<Blogs> blogs = blogService.showBlogByTag(idTag);
 		model.addAttribute("blog", blogs);
+		List<Tags> tags = tagService.showTags();
+		model.addAttribute("tag", tags);
+		List<Blogs> recentBlog = blogService.getRecentBlog();
+		model.addAttribute("recent", recentBlog);
 		return "customer/bloglist";
 	}
 	

@@ -43,10 +43,12 @@ public class DepartmentController {
 		int pageSize = 6;
 	    int totalCount = departmentService.getTotalDepartmentCount( );
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-		List<Departments> departments = departmentService.showAllDepartmentWorking(page, pageSize);
+		List<Departments> departmentslist = departmentService.showAllDepartmentWorking(page, pageSize);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
-	    model.addAttribute("department", departments);
+	    model.addAttribute("departmentList", departmentslist);
+	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/departmentlist";
 	}
 	
@@ -60,6 +62,8 @@ public class DepartmentController {
 		model.addAttribute("doctor", doctors);
 		model.addAttribute("recent", recent);
 		model.addAttribute("service", service);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/department";
 	}
 	

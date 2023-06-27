@@ -52,18 +52,23 @@ public class ServiceController {
 		List<Doctors> doctors = doctorService.showExpDoctor();
 	    model.addAttribute("doctor", doctors);
 	    model.addAttribute("search", search);
+	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 	    return "customer/servicelist";
 	}
 
 	
 	@RequestMapping(value = "showServiceInfo", method = RequestMethod.GET)
-	public String showServiceInfo(@RequestParam("id") int id, Model model) {
+	public String showServiceInfo(@RequestParam(required = false) String failed, @RequestParam("id") int id, Model model) {
 		List<Services> serviceInfo = serviceService.showServiceInfo(id);
 		model.addAttribute("serviceInfo",serviceInfo.get(0));
 		List<Services> services = serviceService.showMoreService();
 	    model.addAttribute("service", services);
 	    List<Comment> comments = commentService.showComment(id);
 	    model.addAttribute("comment", comments);
+	    model.addAttribute("failed", failed);
+	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/service";
 	}
 	

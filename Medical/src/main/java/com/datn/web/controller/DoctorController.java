@@ -87,6 +87,8 @@ public class DoctorController {
 		model.addAttribute("doctorBonus", doctorBonus);
 		List<Services> services = serviceService.showMoreService();
 		model.addAttribute("serviceBonus", services);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/doctor";
 	}
 	

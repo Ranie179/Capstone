@@ -20,4 +20,8 @@ public class CommentService {
 		return commentRepository.showComment(id);
 	}
 
+	public List<Comment> showRecentComment() {
+		return commentRepository.showRecentComment();
+	}
+
 }

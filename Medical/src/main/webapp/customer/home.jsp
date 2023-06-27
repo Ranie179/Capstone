@@ -9,9 +9,9 @@
     <!-- Site Title -->
     <title>Medical Support</title>
     <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -71,7 +71,7 @@
 											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
 											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
                             					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showProfile?email=${email}"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
-                            					<li class="mdl-menu__item"><a href="profile.jsp"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showMyAppointment?email=${email}"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
                             					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
                         					</ul>
 									</c:when>
@@ -79,9 +79,7 @@
 											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
                         					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
                             					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            					<li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            					<li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            					<li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/getToRegister"><i class="fa fa-user-o"></i>Đăng ký</a></li>
                         					</ul>
 									</c:otherwise>
 								</c:choose>
@@ -96,32 +94,32 @@
                     <div class="tbl-row">
                         <!-- Start Header Logo Section -->
                         <div class="tbl-cell hdr-logo">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                            <a href="index.html"><img src="<c:url value="/resources/images/eevee.png" />" alt=""></a>
                         </div><!-- End Header Logo Section -->
                         <div class="tbl-cell hdr-menu">
                             <!-- Start Menu Section -->
                             <ul class="menu">
-                             	<li><a href="home.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
+                             	<li><a href="<%=request.getContextPath()%>/" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Trang chủ</a></li>
                                 <li>
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="about.jsp">Về chúng tôi</a></li>
-                                        <li><a href="contact.jsp">Liên hệ</a></li>
-                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
-                                        <li><a href = "<%=request.getContextPath()%>/adminShowDoctor">>test admin</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToAbout">Về chúng tôi</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToContact">Liên hệ</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToPolicy">Điều kiện và điều khoản khi đặt lịch </a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToContidion">Điều kiện và điều khoản khi đăng ký</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<%=request.getContextPath()%>/showAllDepartment" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
 								<li><a href="<%=request.getContextPath()%>/showAllService" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
                                 <li><a href="<%=request.getContextPath()%>/showAllDoctor" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
-                                <li><a href = "<%=request.getContextPath()%>/showAllBlogs" id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllBlogs" id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức</a></li>
 								<li><a id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lịch hẹn khám bệnh<i class="fa fa-chevron-down"></i> </a>
 								<ul class="menu-dropdown">
                                         <li><a href="<%=request.getContextPath()%>/showDepartmentForAppointment">Đặt lịch khám</a></li>
                                         <li><a href="<%=request.getContextPath()%>/showMoreInfo">Tra cứu thông tin lịch hẹn</a></li>
                                     </ul></li>
-                                <li><a href="chat.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn miễn phí</a></li>
+                                <li><a href="<%=request.getContextPath()%>/getToChat" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn miễn phí</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -145,7 +143,7 @@
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-1.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button slider-appointment">
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đặt lịch hẹn<i class="fa fa-flag-checkered"></i></a>
+                        <a href = "<%=request.getContextPath()%>/showDepartmentForAppointment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đặt lịch hẹn<i class="fa fa-flag-checkered"></i></a>
                     </div>
                 </li>
                 <li>
@@ -156,7 +154,7 @@
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-2.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button">
-                        <a href = "doctorlist.jsp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đọc thêm<i class="fa fa-external-link"></i></a>
+                        <a href = "<%=request.getContextPath()%>/showAllDoctor" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Đọc thêm<i class="fa fa-external-link"></i></a>
                     </div>
                 </li>
                 <li>
@@ -167,7 +165,7 @@
                     <div class="slider-backgroung-image" style="background-image: url(uploads/slider-3.jpg);"></div>
                     <!-- Make an Appointment  Button -->
                     <div class="slider-button">
-                        <a href = "about.jsp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Về chúng tôi<i class="fa fa-eye"></i></a>
+                        <a href = "<%=request.getContextPath()%>/getToAbout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  animated fadeInUp">Về chúng tôi<i class="fa fa-eye"></i></a>
                     </div>
                 </li>
             </ul>
@@ -390,41 +388,15 @@
                 </div>
                 <div class="layer-container">
                     <div id="testimonial-slider" class="owl-carousel owl-theme theme-owl-dot">
+                        <c:forEach items = "${comment }" var = "item">
                         <div class="testimonial-block">  
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Bình luận 1
+                                ${item.comment }
                             </div>
-                            <a>Tác giả 1</a>
+                            <a>${item.email }</a>
                         </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 2
-                            </div>
-                            <a>Tác giả 2</a>
-                        </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 3
-                            </div>
-                            <a>Tác giả 3</a>
-                        </div>
-                        <div class="testimonial-block">
-                             <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 4
-                            </div>
-                            <a>Tác giả 4</a>
-                        </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 5
-                            </div>
-                            <a>Tác giả 5</a>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -458,6 +430,7 @@
                 <div class="p-2 text-center">
                     <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
                      <div class="paragraph-medium paragraph-black">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
+                      <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="<%=request.getContextPath()%>/getToPolicy">điều khoản &#38; điều kiện khi đặt lịch</a></div>
                         <div class="schedule-row row">
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
@@ -480,7 +453,7 @@
                             <div class="col-md-6">
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 							        <i class="fa fa-calendar-o"></i>
-							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="">
+							        <input class="mdl-textfield__input" type="datetime-local" id="date" name = "date" min="" max="" value="">
 							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
 							        <span id="date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn ngày giờ</span>
 							    </div>
@@ -686,7 +659,7 @@
     }
 
     // Cập nhật giá trị tối thiểu (min) của trường ngày
-    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
+    document.getElementById("date").setAttribute("min", minDate + "T08:00");
 
     // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
     function formatNumber(number) {

@@ -9,9 +9,9 @@
     <!-- Site Title -->
     <title>Medical Support</title>
     <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -58,13 +58,31 @@
                 <div class="hdr-top-line"></div>
                 <div class="hdr-top-block">
                     <div class="theme-dropdown">
-                        <a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
-                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
-                            <li class="mdl-menu__item"><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                            <li class="mdl-menu__item"><a href="register.html"><i class="fa fa-user-o"></i>Đăng ký</a></li>
-                            <li class="mdl-menu__item"><a href="forgot.html"><i class="fa fa-key"></i>Quên mật khẩu?</a></li>
-                            <li class="mdl-menu__item"><a href="about.html"><i class="fa fa-info"></i>Trợ giúp</a></li>
-                        </ul>
+                        <c:set var="isLoggedIn" value="false" />
+								<c:set var="email" value="" />
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
+								<c:if test="${not empty cookie.userEmail}">
+									<c:set var="email" value="${cookie.userEmail.value}" />
+								</c:if>
+								<c:choose>
+									<c:when test="${isLoggedIn}">
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> ${email}</a>
+											<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showProfile?email=${email}"><i class="fa fa-info"></i>Thông tin tài khoản</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/showMyAppointment?email=${email}"><i class="fa fa-calendar"></i>Lịch đã hẹn</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-user-o"></i>Đăng xuất</a></li>
+                        					</ul>
+									</c:when>
+									<c:otherwise>
+											<a id="profile-menu" class="mdl-button mdl-js-button mdl-js-ripple-effect font-13"><i class="fa fa-user-o color-black"></i> My Account</a>
+                        					<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect metarial-menu" data-mdl-for="profile-menu">
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                            					<li class="mdl-menu__item"><a href="<%=request.getContextPath()%>/getToRegister"><i class="fa fa-user-o"></i>Đăng ký</a></li>
+                        					</ul>
+									</c:otherwise>
+								</c:choose>
                     </div>
                 </div>
             </div>
@@ -76,7 +94,7 @@
                     <div class="tbl-row">
                         <!-- Start Header Logo Section -->
                         <div class="tbl-cell hdr-logo">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                            <a href="index.html"><img src="<c:url value="/resources/images/eevee.png" />" alt=""></a>
                         </div><!-- End Header Logo Section -->
                         <div class="tbl-cell hdr-menu">
                             <!-- Start Menu Section -->
@@ -86,24 +104,22 @@
                                     <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Thông tin<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="menu-dropdown">
-                                        <li><a href="about.jsp">Về chúng tôi</a></li>
-                                        <li><a href="contact.jsp">Liên hệ</a></li>
-                                        <li><a href="terms-conditions.jsp">Điều kiện và điều khoản</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToAbout">Về chúng tôi</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToContact">Liên hệ</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToPolicy">Điều kiện và điều khoản khi đặt lịch </a></li>
+                                        <li><a href="<%=request.getContextPath()%>/getToContidion">Điều kiện và điều khoản khi đăng ký</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="department.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
-								<li><a href="servicelist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
-                                <li><a href="doctorlist.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
-                                <li>
-                                    <a id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức<i class="fa fa-chevron-down"></i>
-                                    </a>
-                                    <ul class="menu-dropdown">
-                                        <li><a href="blog.jsp">Tin tức 1</a></li>
-                                        <li><a href="blog.jsp">Tin tức 2</a></li>
-                                    </ul>
-                                </li>
-								<li><a href="myappointment.jsp" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Đặt lịch khám</a></li>
-                                <li><a href="components.html" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Components</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllDepartment" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Khoa</a></li>
+								<li><a href="<%=request.getContextPath()%>/showAllService" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Dịch vụ</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllDoctor" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Danh sách bác sĩ</a></li>
+                                <li><a href="<%=request.getContextPath()%>/showAllBlogs" id="menu-blog" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tin tức</a></li>
+								<li><a id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Lịch hẹn khám bệnh<i class="fa fa-chevron-down"></i> </a>
+								<ul class="menu-dropdown">
+                                        <li><a href="<%=request.getContextPath()%>/showDepartmentForAppointment">Đặt lịch khám</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/showMoreInfo">Tra cứu thông tin lịch hẹn</a></li>
+                                    </ul></li>
+                                <li><a href="<%=request.getContextPath()%>/getToChat" id="menu-shortcodes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Tư vấn miễn phí</a></li>
                                 <li>
                                 </li>
                                 <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
@@ -119,8 +135,8 @@
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Terms &#38; Condition</h1>
-                <p><a href="#">Home</a> &#8594; <span>Terms &#38; Condition</span></p>
+                <h1>Điều khoản &#38; Điều kiện khi đặt lịch</h1>
+                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <span>Điều khoản &#38; Điều kiện khi đặt lịch</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
@@ -128,56 +144,46 @@
     <div class="layer-stretch">
         <div class="layer-wrapper">
             <div class="layer-fixed">
-                <p class="paragraph-medium paragraph-black">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore asperiores ea velit enim labore doloribus autem, excepturi reprehenderit voluptatum cupiditate ducimus dolores accusantium aspernatur veniam. Numquam qui consequatur, quaerat laboriosam.
+                <p class="paragraph-medium paragraph-black text-justify">
+                    Đặt lịch và xác nhận:
                 </p>
-                <p class="paragraph-medium paragraph-black">
-                    Quaeque dolorem mei in, nec cu noster everti. His sumo option corpora an. Pro ei alia oblique, deseruisse delicatissimi eos et. Ad iisque ponderum forensibus sed. Vis in legere consulatu philosophia, an nec assentior dissentiunt. Stet legere qui cu, ius an everti option constituto.
-                    Mel ut omittam platonem. Mea at duis dicta, animal civibus accusam cu sed. Diceret ancillae dissentiet ei per, nec utinam nemore ei, eu accusam indoctum mei. Qui in esse labores dissentiunt, mel epicuri fastidii detraxit in. Quod dicta soleat pri ad, illud electram inciderint no vix. Mel in atqui numquam, platonem vituperatoribus sit ut. Velit probatus gloriatur ad eum.
-                </p>
-                <ul class="theme-list-basic">
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, delectus.</li>
-                    <li>Fuga ratione asperiores obcaecati omnis ex porro, eius qui. Repellendus?</li>
-                    <li>Consectetur facilis eaque vero similique, molestias porro, rerum praesentium.</li>
-                    <li>
-                        Iure sunt, sed quidem saepe laudantium quibusdam culpa voluptatum veniam. Iure sunt, sed quidem saepe laudantium quibusdam culpa voluptatum veniam.Iure sunt, sed quidem saepe laudantium quibusdam culpa voluptatum veniam.Iure sunt, sed quidem saepe laudantium quibusdam culpa voluptatum veniam.
-                        <ul>
-                            <li>Mel ut omittam platonem. Mea at duis dicta, animal civibus accusam cu sed. Diceret ancillae dissentiet ei per, nec utinam nemore ei, eu accusam indoctum mei. Qui in esse labores dissentiunt, mel epicuri fastidii detraxit in. Quod dicta soleat pri ad, illud electram inciderint no vix. Mel in atqui numquam, platonem vituperatoribus sit ut. Velit probatus gloriatur ad eum.
-                            </li>
-                            <li>Mel ut omittam platonem. Mea at duis dicta, animal civibus accusam cu sed. Diceret ancillae dissentiet ei per, nec utinam nemore ei, eu accusam indoctum mei. Qui in esse labores dissentiunt, mel epicuri fastidii detraxit in. Quod dicta soleat pri ad, illud electram inciderint no vix. Mel in atqui numquam, platonem vituperatoribus sit ut. Velit probatus gloriatur ad eum.
-                            </li>
-                            <li>Mel ut omittam platonem. Mea at duis dicta, animal civibus accusam cu sed. Diceret ancillae dissentiet ei per, nec utinam nemore ei, eu accusam indoctum mei. Qui in esse labores dissentiunt, mel epicuri fastidii detraxit in. Quod dicta soleat pri ad, illud electram inciderint no vix. Mel in atqui numquam, platonem vituperatoribus sit ut. Velit probatus gloriatur ad eum.
-                            </li>
-                            <li>Mel ut omittam platonem. Mea at duis dicta, animal civibus accusam cu sed. Diceret ancillae dissentiet ei per, nec utinam nemore ei, eu accusam indoctum mei. Qui in esse labores dissentiunt, mel epicuri fastidii detraxit in. Quod dicta soleat pri ad, illud electram inciderint no vix. Mel in atqui numquam, platonem vituperatoribus sit ut. Velit probatus gloriatur ad eum.
-                            </li>
-                        </ul>       
-                    </li>
+                <ul class="theme-list-basic text-justify">
+                    <li>Khách hàng phải cung cấp thông tin cá nhân chính xác và đầy đủ để đặt lịch khám.</li>
+                    <li>Lịch hẹn sẽ được xác nhận ngay sau khi đặt lịch và sẽ thông báo với khách hàng bệnh viện xem xét và xác nhận thay đổi.</li>
                 </ul>
-                <h3>Sub Heading</h3>
-                <p class="paragraph-medium paragraph-black">
-                    Pugnant Stoici cum Peripateticis. Aliter enim explicari, quod quaeritur, non potest. Vide ne ista sint Manliana vestra aut maiora etiam, si imperes quod facere non possim. Qui est in parvis malis. At iste non dolendi status non vocatur voluptas. Eam si varietatem diceres, intellegerem, ut etiam non dicente te intellego; Ac tamen hic mallet non dolere. Nunc omni virtuti vitium contrario nomine opponitur. Atqui reperies, inquit, in hoc quidem pertinacem; Quae quo sunt excelsiores, eo dant clariora indicia naturae. Nulla profecto est, quin suam vim retineat a primo ad extremum.
+				 <p class="paragraph-medium paragraph-black text-justify">
+                    Hủy lịch hẹn:
                 </p>
-                <h4>Sub Heading</h4>
-                <p class="paragraph-medium paragraph-black">
-                    Pugnant Stoici cum Peripateticis. Aliter enim explicari, quod quaeritur, non potest. Vide ne ista sint Manliana vestra aut maiora etiam, si imperes quod facere non possim. Qui est in parvis malis. At iste non dolendi status non vocatur voluptas. Eam si varietatem diceres, intellegerem, ut etiam non dicente te intellego; Ac tamen hic mallet non dolere. Nunc omni virtuti vitium contrario nomine opponitur. Atqui reperies, inquit, in hoc quidem pertinacem; Quae quo sunt excelsiores, eo dant clariora indicia naturae. Nulla profecto est, quin suam vim retineat a primo ad extremum.
+                <ul class="theme-list-basic text-justify">
+                    <li>Khách hàng có thể yêu cầu hủy lịch hẹn trước một khoảng thời gian xác định, thông thường là trước ít nhất 24 giờ trước khi lịch hẹn diễn ra.</li>
+                    <li>Quy định về hủy lịch hẹn có thể khác nhau, và việc hủy lịch sau thời hạn quy định hoặc không thông báo trước có thể gây hạn chế đặt lịch hẹn tương lai.</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Thanh toán và chi phí:
                 </p>
-                <ol class="theme-list-basic">
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, eligendi hic impedit distinctio labore voluptate. Consequuntur officia velit ipsum! Magnam.</li>
-                    <li>Ut rem quo, laborum harum, eos dolorem. Reprehenderit adipisci, dolorum vel, minus quisquam atque laborum tempore quaerat, quam dolore vero.</li>
-                    <li>Alias, qui expedita consequuntur cumque tempora harum. Expedita fuga totam nemo pariatur aspernatur laborum neque, commodi magni id dignissimos velit?</li>
-                    <li>Et vel, natus neque quod molestias nam nihil odio earum! Sequi at nulla reprehender it praesentium qui error eligendi id alias!</li>
-                    <li>Accusamus, est? Fugit ducimus culpa praesentium qui ab, repellendus mollitia ipsam eos enim expedita a explicabo est perspiciatis optio laboriosam?</li>
-                    <li>Deleniti hic facilis in beatae, dignissimos delectus eligendi perspiciatis laboriosam voluptate, architecto tenetur assumenda, corrupti nostrum recusandae placeat voluptatum laborum.</li>
-                    <li>Ab corrupti, at vero, consequuntur quos minima optio magni, sequi sit ad eveniet perspiciatis itaque, provident illo laudantium hic porro.</li>
-                    <li>Maiores doloremque suscipit sed eligendi, aliquid dicta tenetur. Voluptate enim incidunt culpa laboriosam tempora numquam quam, iste, esse optio eaque!</li>
-                    <li>Incidunt, quibusdam eveniet iusto natus maiores velit debitis, cumque quae placeat minima voluptates quas sint, cupiditate ratione laboriosam assumenda et?</li>
-                    <li>Dolorum nihil harum ducimus id quo in maiores molestiae magnam, delectus temporibus laudantium hic atque itaque unde vero quam quibusdam?</li>
-                </ol>
+                <ul class="theme-list-basic text-justify">
+                    <li>Khách hàng phải chịu trách nhiệm thanh toán các chi phí liên quan đến dịch vụ khám và điều trị.</li>
+                    <li>Bệnh viện có thể yêu cầu khách hàng thanh toán trước hoặc cung cấp thông tin về bảo hiểm y tế (nếu có).</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Quyền riêng tư và bảo mật thông tin:
+                </p>
+                <ul class="theme-list-basic text-justify">
+                    <li>Bệnh viện cam kết bảo vệ thông tin cá nhân và y tế của khách hàng theo quy định pháp luật và chính sách bảo mật của bệnh viện.</li>
+                    <li>Thông tin cá nhân và y tế chỉ được sử dụng cho mục đích khám và điều trị, và không được tiết lộ cho bên thứ ba mà không có sự đồng ý của khách hàng.</li>
+                </ul>
+                 <p class="paragraph-medium paragraph-black text-justify">
+                    Giới hạn trách nhiệm:
+                </p>
+                <ul class="theme-list-basic text-justify">
+                    <li>Bệnh viện không chịu trách nhiệm về bất kỳ tổn thất hoặc thiệt hại nào phát sinh do sử dụng dịch vụ khám bệnh, trừ khi có sự cẩu thả hoặc khuyết điểm chất lượng do bệnh viện gây ra.</li>
+                </ul>
                 <div class="theme-quote">
-                    <i class="fa fa-quote-left"></i> Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti ad litora torquent per conubia nostra per inceptos himenaeos. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti ad litora torquent per conubia nostra per inceptos himenaeos.
+                    <i class="fa fa-quote-left"></i> Tôi sẽ kê toa vì lợi ích của bệnh nhân, tùy theo khả năng và thẩm định của tôi và không bao giờ làm hại ai. - Hippocrates - 
                 </div>
                 <div class="theme-quote theme-quote-colored">
-                    <i class="fa fa-quote-left"></i> Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti ad litora torquent per conubia nostra per inceptos himenaeos. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti ad litora torquent per conubia nostra per inceptos himenaeos.
+                    <i class="fa fa-quote-left"></i> Ở đây không chỉ có dịch vụ, ở đây còn có sự chăm sóc tận tình bằng cả thể xác, con tim và linh hồn <br>
+                    Sự hài lòng của quý khách hàng là niềm hạnh phúc của chúng tôi
                 </div>  
             </div>
         </div>
@@ -203,77 +209,98 @@
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title">Đặt lịch hẹn</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="appointment-error"></div>
-                    <div class="row">
-                        <div class="col-md-6">
+               <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal" enctype="multipart/form-data" method = "post" onsubmit = "return(validate());">
+        <div class="container">
+            <div class="schedule-container">
+                <div class="schedule-form">
+                <div class="p-2 text-center">
+                    <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
+                     <div class="paragraph-medium paragraph-black">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
+                      <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="<%=request.getContextPath()%>/getToPolicy">điều khoản &#38; điều kiện khi đặt lịch</a></div>
+                        <div class="schedule-row row">
+                         <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="appointment-name">
-                                <label class="mdl-textfield__label" for="appointment-name">Tên</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="name" name = "name">
+                                <label class="mdl-textfield__label" for="appointment-name">Tên *</label> 
                                 <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+                                <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập tên của bạn</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                                <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email">
-                                <label class="mdl-textfield__label" for="appointment-email">Email</label>
-                                <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                           <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-phone"></i>
-                                <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="appointment-mobile">
-                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="phone" name = "phone">
+                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
+                                <span id="phone-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập số điện thoại</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                                <i class="fa fa-hospital-o"></i>
-                                <select class="mdl-selectfield__select" id="appointment-department">
-                                    <option value="">&nbsp;</option>
-                                    <option value="1">Gynaecology</option>
-                                    <option value="2">Orthology</option>
-                                    <option value="3">Dermatologist</option>
-                                    <option value="4">Anaesthesia</option>
-                                    <option value="5">Ayurvedic</option>
-                                </select>
-                                <label class="mdl-selectfield__label" for="appointment-department">Chọn khoa</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
-                                <i class="fa fa-user-md"></i>
-                                <select class="mdl-selectfield__select" id="appointment-doctor">
-                                    <option value="">&nbsp;</option>
-                                    <option value="1">Dr. Daniel Barnes</option>
-                                    <option value="2">Dr. Steve Soeren</option>
-                                    <option value="3">Dr. Barbara Baker</option>
-                                    <option value="4">Dr. Melissa Bates</option>
-                                    <option value="5">Dr. Linda Adams</option>
-                                </select>
-                                <label class="mdl-selectfield__label" for="appointment-doctor">Choose Doctor</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                            <div class="col-md-6">
+							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							        <i class="fa fa-calendar-o"></i>
+							        <input class="mdl-textfield__input" type="datetime-local" id="date" name = "date" min="" max="" value="">
+							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
+							        <span id="date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn ngày giờ</span>
+							    </div>
+							</div>
+                            <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                                <i class="fa fa-calendar-o"></i>
-                                <input class="mdl-textfield__input" type="text" id="appointment-date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                <label class="mdl-textfield__label" for="appointment-date">Date</label>
-                                <span class="mdl-textfield__error">Làm ơn nhập ngày hợp lệ!</span>
+                                <i class="fa fa-envelope-o"></i>
+                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
+                                <label class="mdl-textfield__label" for="appointment-email">Email</label>
+                                <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                                <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+                                    <i class="fa fa-angle-double-down"></i>
+                                    <select class="mdl-selectfield__select" id="gender" name = "gender">
+                                    	<option value = "" disabled selected>--Chọn giới tính--</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                        <option value="Khác">Khác</option>
+                                    </select>
+                                    <span id="gender-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn giới tính</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+                                    <i class="fa fa-hospital-o"></i>
+                                    <select class="mdl-selectfield__select" id="department" name = "idDepartment">
+                                        <option value = "" disabled selected>--Chọn khoa--</option>
+                                        <c:forEach items="${department}" var="item">
+                                        <option value="<c:out value="${item.idDepartment}"/>">${item.departmentName }</option>
+                                        </c:forEach>
+                                    </select>
+                                    <span id="department-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn khoa</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							            <i class="fa fa-paper-plane"></i>
+							            <textarea class="mdl-textfield__input" rows="5" id="note" name = "note"></textarea>
+							            <label class="mdl-textfield__label" for="sample-message-1">Mô tả triệu chứng sơ bộ *</label>
+							            <span class="mdl-textfield__error">Làm ơn miêu tả triệu chứng sơ bộ của bạn để chúng tôi có thể sắp xếp tốt hơn ( Nếu như dùng dịch vụ không phải khám bệnh có thể ghi "Không có")</span>
+							            <span id="note-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống.</span>
+							        </div>
+							    </div>
+                            </div>
+
+                            <div class="schedule-col col-xl-12">
+                                <div style = "padding-top: 30px; "class="form-submit">
+                    				<button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đặt lịch khám</button>
+                				</div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center pt-4">
-                        <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary button-lg make-appointment">Đặt lịch hẹn</button>
-                    </div>
+
+                </div>
+            </div>
+    </form>
+                <div class="modal-body">
+                    <div class="appointment-error"></div>
                 </div>
             </div>
         </div>
@@ -281,7 +308,7 @@
     <!-- Fixed Appointment Button at Bottom -->
     <div id="appointment-button" class="animated fadeInUp">
         <button id="appointment-now" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised"><i class="fa fa-plus"></i></button>
-        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="appointment-now">Đặt lịch hẹn</div>
+        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="appointment-now">Make An Appointment</div>
     </div><!-- End Fixed Appointment Button at Bottom -->
     <!-- Start Footer Section -->
     <footer id="footer">
@@ -318,7 +345,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col-md-4 footer-block">
+                <div class="col-md-4 footer-block">
                     <div class="footer-ttl"><p>Truy cập nhanh</p></div>
                     <div class="footer-container footer-b">
                         <div class="tbl">
@@ -394,5 +421,87 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+     <script>
+ // Lấy ngày hiện tại và giờ hiện tại
+    var today = new Date();
+    var currentHour = today.getHours();
+    var currentMinute = today.getMinutes();
+
+    // Lấy ngày tối thiểu
+    var minDate;
+
+    if ((currentHour >= 0 && currentHour < 12) || (currentHour === 12 && currentMinute === 0)) {
+        // Nếu giờ hiện tại từ 12:00 SA đến 11:59 SA, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    } else if (currentHour >= 12) {
+        // Nếu giờ hiện tại từ 12:00 CH trở đi, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    }
+
+    // Cập nhật giá trị tối thiểu (min) của trường ngày
+    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
+
+    // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
+    function formatNumber(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
+    </script>
+    <script>
+    	function validate() {
+    		let check = true;
+			if( document.getElementById("name").value == "" ) {
+	            document.getElementById("name-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("name-invalid").style.display = "none";
+	         }
+			
+			if( document.getElementById("phone").value == "" ) {
+	            document.getElementById("phone-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("phone-invalid").style.display = "none";
+	         }
+			if( document.getElementById("email").value == "" ) {
+	            document.getElementById("email-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("email-invalid").style.display = "none";
+	         }
+			if( document.getElementById("date").value == "" ) {
+	            document.getElementById("date-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("date-invalid").style.display = "none";
+	         }
+			if( document.getElementById("gender").value == "" ) {
+	            document.getElementById("gender-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("gender-invalid").style.display = "none";
+	         }
+			if( document.getElementById("department").value == "" ) {
+	            document.getElementById("department-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("department-invalid").style.display = "none";
+	         }
+			if( document.getElementById("note").value == "" ) {
+	            document.getElementById("note-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("note-invalid").style.display = "none";
+	         }
+			
+			return check;
+    	}
+    </script>
 </body>
 </html>

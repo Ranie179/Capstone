@@ -131,77 +131,79 @@
             </div>
         </div><!-- End Main Header Section -->
     </header><!-- End Header -->
-    <!-- Start Page Title Section -->
+      <!-- Start Page Title Section -->
     <div class="page-ttl">
         <div class="layer-stretch">
             <div class="page-ttl-container">
-                <h1>Đăng ký</h1>
-                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <span>Đăng ký</span></p>
+                <h1>Danh sách lịch hẹn của bạn</h1>
+                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <span>Danh sách lịch hẹn của bạn</span></p>
             </div>
         </div>
     </div><!-- End Page Title Section -->
-    <!-- Start Register Section -->
-    <div class="layer-stretch">
-        <div class="layer-wrapper">
-        <form action = "<%=request.getContextPath()%>/register" method = "post" onsubmit="return(validateaccount());">
-            <div class="form-container">
-             <c:if test="${not empty failed}">
-						   <div class="alert alert-danger" role="alert">
-						        <strong>Thông báo</strong> Email đã tồn tại tài khoản trong hệ thống!!! Vui lòng thử lại 
-						        <button type="button" class="close" data-dismiss="alert">×</button>
-						    </div>
-						</c:if>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                     <i class="fa fa-envelope-o"></i>
-                     <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
-                     <label class="mdl-textfield__label" for="appointment-email">Email</label>
-                     <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
-                     <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="pass" name = "pass">
-                    <label class="mdl-textfield__label" for="register-password">Mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                    <span id="pass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập mật khẩu của bạn</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                    <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="repass" name = "repass">
-                    <label class="mdl-textfield__label" for="register-password">Nhập lại mật khẩu <em> *</em></label>
-                    <span class="mdl-textfield__error">Làm ơn nhập mật khẩu hợp lệ! (Tối thiểu 8 kí tự)!</span>
-                    <span id="repass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập lại mật khẩu của bạn</span>
-                    <span id="confirmPass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Mật khẩu của bạn không trùng khớp</span>
-                </div>
-                <div class="login-condition">Khi nhấp vào nút "Tạo tài khoản", bạn đã đồng ý với<br /><a href="customer/conditions-register.jsp">điều khoản &#38; điều kiện khi đăng ký</a></div>
-                <div class="form-submit">
-                    <button type ="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Tạo tài khoản</button>
-                </div>
-                <div class="login-link">
-                    <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
-                </div>
-            </div>
-			</form>
-        </div>
-    </div><!-- End Register Section -->
-    <!-- Start Emergency Section -->
-    <div id="emergency">
-        <div class="layer-stretch">
-            <div class="layer-wrapper">
-                <div class="layer-ttl">
-                    <h3>Khẩn cấp</h3>
-                </div>
-                <div class="layer-container">
-                    <div class="paragraph-medium paragraph-black">
-                        Trong trường hợp khẩn cấp hoặc cần hỗ trợ <br/>
-                        Làm ơn gọi số điện thoại này:
-                    </div>
-                    <div class="emergency-number">0123.456.115</div>
-                </div>
-            </div>
-        </div>
-    </div><!-- End Emergency Section -->    
+ <!-- Start My Profile Section -->
+ <div style = "margin:auto;" class = "col-lg-8">
+   <div style = "margin: 0 0 0 0;" class="theme-material-card">
+                            <p style = "text-align: center;"class="font-16">Danh sách lịch hẹn của bạn</p>
+                            <table class="table">
+                                <thead>
+                                    <tr class="table-primary-head">
+                                        <th class="text-center">Tên</th>
+                                        <th class="text-center">Số điện thoại</th>
+                                        <th class = "text-center">Ngày hẹn</th>
+                                        <th class = "text-center">Khoa</th>
+                                        <th class = "text-center">Mã lịch hẹn</th>
+                                        <th class = "text-center">Trạng thái</th>
+                                        <th class = "text-center">Xem thông tin chi tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${appointment}" var="item">
+                                    <tr>
+                                        <td class="text-center">${item.name}</td>
+                                        <td class="text-center">${item.phone}</td>
+                                        <td class="text-center">${item.appointmentDate}</td>
+                                        <td class="text-center">${item.department.departmentName}</td>
+                                        <td class="text-center">${item.token}</td>
+                                        <td class="text-center">${item.appointmentStatus}</td>
+                                         <td class="text-center">
+                                            <a  href="<%=request.getContextPath()%>/showAppointmentByID?id=${item.id}" data-toggle="tooltip" data-placement="top" title="Xem thông tin chi tiết"><i class="fa fa-info-circle color-dark"></i></a>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="theme-pagination text-center">
+					    <c:choose>
+					        <c:when test="${currentPage > 1}">
+					            <li><a href="<%=request.getContextPath()%>/showMyAppointment?page=${currentPage - 1}&email=${email}">&laquo; Previous</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>&laquo; Previous</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					
+					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+					        <c:choose>
+					            <c:when test="${loop.index == currentPage}">
+					                <li class="active"><span>${loop.index}</span></li>
+					            </c:when>
+					            <c:otherwise>
+					                <li><a href="<%=request.getContextPath()%>/showMyAppointment?page=${loop.index}&email=${email}">${loop.index}</a></li>
+					            </c:otherwise>
+					        </c:choose>
+					    </c:forEach>
+					
+					    <c:choose>
+					        <c:when test="${currentPage < totalPages}">
+					            <li><a href="<%=request.getContextPath()%>/showMyAppointment?page=${currentPage + 1}&email=${email}">Next &raquo;</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><span>Next &raquo;</span></li>
+					        </c:otherwise>
+					    </c:choose>
+					</ul>
+					</div>
     <!-- Start Make an Appointment Modal -->
     <div id="appointment" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -213,7 +215,7 @@
                 <div class="p-2 text-center">
                     <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
                      <div class="paragraph-medium paragraph-black">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
-                      <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="<%=request.getContextPath()%>/getToPolicy">điều khoản &#38; điều kiện khi đặt lịch</a></div>
+                      <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="customer/terms-conditions.jsp">điều khoản &#38; điều kiện khi đặt lịch</a></div>
                         <div class="schedule-row row">
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
@@ -418,45 +420,6 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-    <script>
-    function validateaccount() {
-        var check = true;
-        var repassword = document.getElementById("repass").value;
-        var password = document.getElementById("pass").value;
-            
-        if (document.getElementById("email").value == "") {
-            document.getElementById("email-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("email-invalid").style.display = "none";
-        }
-        
-        if (password == "") {
-            document.getElementById("pass-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("pass-invalid").style.display = "none";
-        }
-        
-        if(repassword == ""){
-        	document.getElementById("repass-invalid").style.display = "block";
-            check = false;
-        } else {
-            document.getElementById("repass-invalid").style.display = "none";
-        }
-        
-        if(repassword != pass){
-        	document.getElementById("confirmPass-invalid").style.display = "block";
-        	check = false;
-        } else {
-            document.getElementById("confirmPass-invalid").style.display = "none";
-        }
-        
-        
-        return check;
-    }
-
-</script>
      <script>
  // Lấy ngày hiện tại và giờ hiện tại
     var today = new Date();
@@ -481,7 +444,7 @@
     }
 
     // Cập nhật giá trị tối thiểu (min) của trường ngày
-    document.getElementById("date").setAttribute("min", minDate + "T08:00");
+    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
 
     // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
     function formatNumber(number) {

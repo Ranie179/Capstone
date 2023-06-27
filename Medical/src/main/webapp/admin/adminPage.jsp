@@ -121,83 +121,23 @@
 
     </nav>
 
-    <section style = "height:auto;"  class="home">
-        		    <!-- Start Doctor List Section -->
-    <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                       <div class = "table-wrapper">
-        					<div style = "margin: 0 0 0 0;" class="theme-material-card">
-                            <p style = "text-align: center;"class="font-16">Danh sách những bác sĩ đã nghỉ làm</p>
-                            <table class="table">
-                                <thead>
-                                    <tr class="table-primary-head">
-                                        <th class="text-center">Tên</th>
-                                        <th class="text-center">Giới tính</th>
-                                        <th class = "text-center">Số điện thoại</th>
-                                        <th class = "text-center">Khoa</th>
-                                        <th class = "text-center">Vị trí</th>
-                                        <th class = "text-center">Học vấn</th>
-                                        <th class = "text-center">Năm kinh nghiệm</th>
-                                        <th class = "text-center">Trạng thái</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${doctor}" var="item">
-                                    <tr>
-                                        <td class="text-center">${item.doctorName}</td>
-                                        <td class="text-center">${item.gender }</td>
-                                        <td class="text-center">${item.phone }</td>
-                                        <td class="text-center">${item.department.departmentName }</td>
-                                        <td class="text-center">${item.position.positionName }</td>
-                                        <td class="text-center">${item.graduate.graduate }</td>
-                                        <td class="text-center">${item.expYear }</td>
-                                        <td class="text-center"><span class="badge badge-danger">${item.isWorking}</span></td>
-                                    </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                   	</div>
-					</div>
-				 <ul class="theme-pagination text-center">
-					    <c:choose>
-					        <c:when test="${currentPage > 1}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowDeletedDoctor?page=${currentPage - 1}">&laquo; Previous</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>&laquo; Previous</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					
-					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-					        <c:choose>
-					            <c:when test="${loop.index == currentPage}">
-					                <li class="active"><span>${loop.index}</span></li>
-					            </c:when>
-					            <c:otherwise>
-					                <li><a href="<%=request.getContextPath()%>/adminShowDeletedDoctor?page=${loop.index}">${loop.index}</a></li>
-					            </c:otherwise>
-					        </c:choose>
-					    </c:forEach>
-					
-					    <c:choose>
-					        <c:when test="${currentPage < totalPages}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowDeletedDoctor?page=${currentPage + 1}">Next &raquo;</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>Next &raquo;</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					</ul>
-
-                </div>
-            </div>
-        </div>
-    </div><!-- End Doctor List Section -->
-        		
+    <section style = "height: auto;" class="home">
+    <div id="upcoming-appointments">
+    <div class = "theme-material-card">
+     <c:if test="${empty appointment}">
+						   <div class="alert alert-danger" role="alert">
+						        <strong>Thông báo</strong> Sắp tới chưa có cuộc hẹn nào!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>	
+		<c:forEach items = "${appointment }" var = "item">
+			<div class="alert alert-success" role="alert">
+						        <strong>Sắp đến!!!</strong> <p class="mb-0"> Giờ:<strong>${item.appointmentDate }</strong>&nbsp Tên khách hàng <strong>${item.name }</strong> 
+						       &nbsp Số điện thoại <strong>${item.phone }</strong>&nbsp Khoa <strong>${item.department.departmentName }</strong></p>
+						    </div>
+		</c:forEach>
+		</div>  	
+		</div>
     </section>
 </body>
     <script src = '<c:url value="/resources/js/js-page-admin.js" />' ></script>
@@ -227,5 +167,32 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    <script>
+    function updateUpcomingAppointments() {
+        $.ajax({
+            url: "/showUpcomingAppointment",
+            type: "GET",
+            dataType: "html",
+            success: function(response) {
+                // Tìm phần tử cha chứa danh sách cuộc hẹn
+                var upcomingAppointmentsContainer = $("#upcoming-appointments");
+                
+                // Xóa tất cả các cuộc hẹn hiện tại
+                upcomingAppointmentsContainer.empty();
+                
+                // Thêm danh sách cuộc hẹn mới
+                upcomingAppointmentsContainer.append(response);
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+            }
+        });
+    }
 
+    // Cập nhật danh sách cuộc hẹn mới và giao diện mỗi giây
+    setInterval(function() {
+        updateUpcomingAppointments();
+    }, 1000);
+
+    </script>
 </html>

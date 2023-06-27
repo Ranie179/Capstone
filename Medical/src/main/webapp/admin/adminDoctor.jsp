@@ -99,18 +99,12 @@
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,7 +126,7 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditDoctor" enctype="multipart/form-data">

@@ -41,4 +41,10 @@ public class CommentRepository {
 		return jdbcTemplate.query(sql, params, new CommentRowMapper());
 	}
 
+	public List<Comment> showRecentComment() {
+		String sql = "SELECT * from comment\r\n"
+				+ "ORDER BY Create_Date DESC LIMIT 5";
+		return jdbcTemplate.query(sql, new CommentRowMapper());
+	}
+
 }

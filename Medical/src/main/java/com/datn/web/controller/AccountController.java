@@ -16,10 +16,12 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
 import com.datn.web.bean.Blogs;
+import com.datn.web.bean.Departments;
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Services;
 import com.datn.web.service.AccountService;
 import com.datn.web.service.BlogService;
+import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 import com.datn.web.service.ServiceService;
 
@@ -35,6 +37,8 @@ public class AccountController {
 	private ServiceService serviceService;
 	@Autowired
 	private BlogService blogService;
+	@Autowired
+	private DepartmentService departmentService;
 	
 	 public static String hashPassword(String pass) {
 	        try {
@@ -58,6 +62,8 @@ public class AccountController {
 	 	@GetMapping("/login")
 	    public String showLoginForm(Model model, @RequestParam(value = "previousUrl", defaultValue = "/") String previousUrl) {
 	        model.addAttribute("previousUrl", previousUrl);
+	        List<Departments> departments = departmentService.showDepartmentAndDoctor();
+	    	model.addAttribute("department", departments);
 	        return "customer/login";
 	    }
 
@@ -75,7 +81,7 @@ public class AccountController {
 	                if ("admin".equals(role)) {
 	                    addLoggedInCookie(response, "adminIsLoggedIn");
 	                    addEmailCookie(response, "adminEmail", email);
-	                    return "redirect:adminShowDoctor";
+	                    return "redirect:showUpcomingAppointment";
 	                } else {
 	                    addLoggedInCookie(response, "userIsLoggedIn");
 	                    addEmailCookie(response, "userEmail", email);
@@ -83,9 +89,13 @@ public class AccountController {
 	                }
 	            } else {
 	                model.addAttribute("error", "Sai tài khoản hoặc mật khẩu");
+	                List<Departments> departments = departmentService.showDepartmentAndDoctor();
+	            	model.addAttribute("department", departments);
 	                return "customer/login";
 	            }
 	        } catch (EmptyResultDataAccessException e) {
+	        	List<Departments> departments = departmentService.showDepartmentAndDoctor();
+	        	model.addAttribute("department", departments);
 	            model.addAttribute("error", "Sai tài khoản hoặc mật khẩu");
 	            return "customer/login";
 	        }
@@ -112,7 +122,6 @@ public class AccountController {
 	        deleteCookie(request, response, "adminEmail");
 	        deleteCookie(request, response, "userIsLoggedIn");
 	        deleteCookie(request, response, "userEmail");
-
 	        return "redirect:/";
 	    }
 
@@ -142,10 +151,14 @@ public class AccountController {
 				model.addAttribute("service", services);
 				model.addAttribute("recent", recent);
 				model.addAttribute("email", email);
+				List<Departments> departments = departmentService.showDepartmentAndDoctor();
+		    	model.addAttribute("department", departments);
 				return "customer/registerSuccess";
 			}
 			else {
 				model.addAttribute("failed", "failed");
+				List<Departments> departments = departmentService.showDepartmentAndDoctor();
+		    	model.addAttribute("department", departments);
 				return "customer/register";
 			}
 			
