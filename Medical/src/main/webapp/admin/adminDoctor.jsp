@@ -49,52 +49,48 @@
 
             <i class='bx bx-chevron-right toggle'></i>
         </header>
-        <div class="menu-bar">
+         <div class="menu-bar">
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>

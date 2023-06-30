@@ -152,7 +152,7 @@
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
-                            <textarea class="mdl-textfield__input" rows="5" id="intro"name = "intro"  maxLength = "100">${department.intro }</textarea>
+                            <textarea class="mdl-textfield__input" rows="5" id="intro"name = "intro"  maxLength = "200">${department.intro }</textarea>
                             <label class="mdl-textfield__label" for="profile-about">Giới thiệu (Thông tin ngắn gọn của khoa)</label>
                             <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>

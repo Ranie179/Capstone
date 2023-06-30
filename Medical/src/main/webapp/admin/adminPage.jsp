@@ -71,12 +71,7 @@
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Inventory.jsp">
-                            <i class='bx bxs-user-account icon'></i>
-                            <span class="text nav-text">Quản lý tài khoản</span>
-                        </a>
-                    </li>
+
                     <li class="nav-link">
                         <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>

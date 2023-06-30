@@ -141,7 +141,7 @@
         </div>
     </div><!-- End page Title Section -->
     <!-- Start Doctor List Section -->
-    <div id="doctor-page" class="layer-stretch">
+   <div id="doctor-page" class="layer-stretch">
         <div class="layer-wrapper text-center">
             <div class="row">
                 <div class="col-lg-8">
@@ -152,8 +152,8 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                             </div>
 						</c:if>
-                        <div class="col-md-12">
-                         <c:forEach items="${doctorlist}" var="item">
+                     <c:forEach items="${doctorlist}" var="item">
+                        <div class="col-md-6">
                             <div class="theme-block theme-block-hover">
                                 <div class="theme-block-picture">
                                     <img src="<c:url value="${item.imageUrl}" />" alt="">
@@ -174,9 +174,9 @@
                                     </div>
                                 </div>
                             </div>
-                              </c:forEach>
                         </div>
-					</div>
+                        </c:forEach>
+                    </div>
 				<ul class="theme-pagination">
 				    <c:choose>
 				        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search and empty experience)}">
@@ -254,7 +254,7 @@
 						</form>
                         </div>
                     </div>
-                      <div class="sidebar">
+                      <div class="sidebar" style = "height: 400px; overflow-y: auto;">
                         <div class="sub-ttl">Tìm bác sĩ theo khoa</div>
                         <ul class="category-list">
                         	<c:forEach items="${department}" var="item">

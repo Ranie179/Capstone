@@ -260,7 +260,7 @@
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <img class="img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        <img class="img-thumbnail" src="<c:url value="/resources/images/khoa-hinh-anh.jpg" />" alt="">
                     </div>
                 </div>
             </div>
@@ -277,8 +277,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Phụ khoa</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin phụ khoa</p>
+                            <h5>Sản khoa</h5>
+                            <p class="paragraph-small paragraph-white">Chuyên khoa Sản - Phụ khoa của Medic Support không ngừng chú trọng hội tụ đội ngũ bác sĩ chuyên nghiệp cùng công nghệ hiện đại</p>
                         </div>
                     </div>
                 </div>
@@ -286,8 +286,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Y học nhiệt đới</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin y học nhiệt đới</p>
+                            <h5>Xét nghiệm</h5>
+                            <p class="paragraph-small paragraph-white">Trung tâm Xét nghiệm Medic Support - thương hiệu xét nghiệm số 1 phía Bắc, tự hào là nơi tụ hội được đội ngũ chuyên gia đầu ngành</p>
                         </div>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
                         <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
                         <div class="tbl-cell department-detail">
                             <h5>Da liễu</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin da liễu</p>
+                            <p class="paragraph-small paragraph-white">Chuyên khoa Da liễu - Bệnh viện Đa khoa Medic Support có đội ngũ y bác sỹ giàu kinh nghiệm trong việc chuẩn đoán và điều trị</p>
                         </div>
                     </div>
                 </div>
@@ -304,8 +304,8 @@
                     <div class="department-block department-card">
                         <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
                         <div class="tbl-cell department-detail">
-                            <h5>Phẫu thuật</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin phẫu thuật</p>
+                            <h5>Khoa ngoại</h5>
+                            <p class="paragraph-small paragraph-white">Đáp ứng nhu cầu của người dân về điều trị hiệu quả và nhanh chóng các bệnh mặt thông qua phẫu thuật hoặc tiểu phẫu</p>
                         </div>
                     </div>
                 </div>
@@ -314,7 +314,7 @@
                         <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
                         <div class="tbl-cell department-detail">
                             <h5>Mắt</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin mắt</p>
+                            <p class="paragraph-small paragraph-white">Chuyên khoa Mắt của Bệnh viện Đa khoa Medic Support đã và đang trở thành địa chỉ tin cậy của đông đảo người dân</p>
                         </div>
                     </div>
                 </div>
@@ -323,7 +323,7 @@
                         <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
                         <div class="tbl-cell department-detail">
                             <h5>Tiêu hóa</h5>
-                            <p class="paragraph-small paragraph-white">Thông tin tiêu hóa</p>
+                            <p class="paragraph-small paragraph-white">Chuyên khoa Tiêu hóa được hình thành và phát triển gắn liền với sự phát triển của bệnh viện, tuổi đời chắc chắc không thấp</p>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Blogs;
@@ -24,6 +26,7 @@ import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 import com.datn.web.service.ServiceService;
 
+import jakarta.servlet.ServletContext;
 @Controller
 public class DepartmentController {
 	@Autowired
@@ -38,6 +41,14 @@ public class DepartmentController {
 	public int getNewID() {
 		return departmentService.getNewID();
 	}
+	public static String getPath() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        ServletContext servletContext = attr.getRequest().getServletContext();
+        String realPath = servletContext.getRealPath("/");
+        String rootFolderPath = realPath.replace("\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps", "");
+        return realPath;
+    }
+	
 	@RequestMapping(value = "showAllDepartment")
 	public String showAllDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
 		int pageSize = 6;
@@ -110,6 +121,7 @@ public class DepartmentController {
 			@RequestParam("intro") String intro, @RequestParam("information") String information, Model model) throws IOException {
 		
 		if (!file.isEmpty()) {
+			System.out.print(getPath());
 		    String relativePath = "/resources/images/department" + String.valueOf(id) + ".png";
 		    String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
 		    File destinationFile = new File(destinationPath);

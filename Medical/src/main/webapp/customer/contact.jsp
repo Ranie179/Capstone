@@ -182,7 +182,8 @@
     <!-- Start Google Map Section -->
     <div id="map">
         <div class="map-wrapper">
-            <div id="map-container"></div>
+            <div id="map-container">
+                            <img src="<c:url value="/resources/images/map.png" />" alt=""></div>
         </div>
         <div class="map-address">
             <div class="map-icon"><i class="fa fa-map-marker"></i></div>

@@ -224,7 +224,7 @@
              </div>
          </div>
                 <div class="form-submit text-center">
-                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
             </div>  
         </div>

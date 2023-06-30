@@ -49,7 +49,7 @@ public class DoctorController {
 			@RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, 
 			@RequestParam(defaultValue = "1") int page, Model model) {
-		int pageSize = 5; 
+		int pageSize = 10; 
 	    int totalCount = doctorService.getTotalDoctorCount(search, idDepartment, experience); 
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize); 
 		List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize, search, idDepartment, experience);

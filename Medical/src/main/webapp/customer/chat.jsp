@@ -490,7 +490,7 @@
                         data: JSON.stringify({user_input: userInput}),
                         success: function(response) {
                             var botResponse = response.response;
-                            appendMessage('Robo-Doc', botResponse, 'left');
+                            appendMessage('Medichat', botResponse, 'left');
                         },
                         error: function(error) {
                             console.log(error);
