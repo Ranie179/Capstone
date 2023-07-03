@@ -123,81 +123,52 @@
 
     <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
-    <div id="doctor-page" class="layer-stretch">
+    <!-- Start My Profile Section -->
+    <form action = "<%=request.getContextPath()%>/adminEditAccount" method="POST" enctype="multipart/form-data" onsubmit = "return(validate());">
+    <div id="profile-page" class="layer-stretch">
         <div class="layer-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                       <div class = "table-wrapper">
-        					<div style = "margin: 0 0 0 0;" class="theme-material-card">
-                            <p style = "text-align: center;"class="font-16">Danh sách toàn bộ khoa</p>
-                            <table class="table">
-                                <thead>
-                                    <tr class="table-primary-head">
-                                        <th class="text-center">Tên</th>
-                                        <th class = "text-center">Trạng thái</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${department}" var="item">
-                                    <tr>
-                                        <td class="text-center">${item.departmentName}</td>
-                                        <td class="text-center">
-                                         <c:choose>
-						                    <c:when test="${item.isWorking eq 'Vẫn còn hoạt động'}">
-						                        <span class="badge badge-success">${item.isWorking}</span>
-						                    </c:when>
-						                    <c:when test="${item.isWorking eq 'Không còn hoạt động nữa'}">
-						                        <span class="badge badge-danger">${item.isWorking}</span>
-						                    </c:when>
-						                    <c:otherwise>
-						                        <span>${item.isWorking}</span>
-						                    </c:otherwise>
-						                </c:choose>
-                                        </td>
-                                    </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+            <div class="theme-material-card text-center">
+            <p style = "text-align: center;"class="font-16">Thông tin của tài khoản</p>
+             <c:if test="${not empty successMessage}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+                <div class="row">
+                   	<div class="col-md-8">
+                   		<input style = "display: none;" class="mdl-textfield__input" type="text" id="id" name = "id" value = "${department.idDepartment }">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-envelope-o"></i>
+                            <input class="mdl-textfield__input" type="text" id="name" name = "name" value = "${account.email }">
+                            <label class="mdl-textfield__label" for="profile-address-2">Email</label>
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
-                   	</div>
-					</div>
-				 <ul class="theme-pagination text-center">
-					    <c:choose>
-					        <c:when test="${currentPage > 1}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowAllDepartment?page=${currentPage - 1}">&laquo; Previous</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>&laquo; Previous</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					
-					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-					        <c:choose>
-					            <c:when test="${loop.index == currentPage}">
-					                <li class="active"><span>${loop.index}</span></li>
-					            </c:when>
-					            <c:otherwise>
-					                <li><a href="<%=request.getContextPath()%>/adminShowAllDepartment?page=${loop.index}">${loop.index}</a></li>
-					            </c:otherwise>
-					        </c:choose>
-					    </c:forEach>
-					
-					    <c:choose>
-					        <c:when test="${currentPage < totalPages}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowAllDepartment?page=${currentPage + 1}">Next &raquo;</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>Next &raquo;</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					</ul>
-
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-key"></i>
+                            <input class="mdl-textfield__input" type="password" id="name" name = "name" value = "${account.pass }">
+                            <label class="mdl-textfield__label" for="profile-about">Mật khẩu</label>
+                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-user-circle-o"></i>
+                             <select class="mdl-selectfield__select" id="status" name = "idDepartment">
+				            <option value="" >user</option>
+				            <option value="" >admin</option>
+				        </select>
+                            <span id="information-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                        </div>
+                        </div>
+                    </div>
+                <div class="form-submit">
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
-            </div>
+            </div>  
         </div>
-    </div><!-- End Doctor List Section -->
-        		
+    </div>
+ </form><!-- End My Profile Section -->
     </section>
 </body>
     <script src = '<c:url value="/resources/js/js-page-admin.js" />' ></script>
@@ -227,5 +198,31 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
+    
+     <script>
+    	function validate() {
+    		let check = true;
+			if( document.getElementById("name").value == "" ) {
+	            document.getElementById("name-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("name-invalid").style.display = "none";
+	         }
+			if( document.getElementById("intro").value == "" ) {
+	            document.getElementById("intro-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("intro-invalid").style.display = "none";
+	         }
+			if( document.getElementById("information").value == "" ) {
+	            document.getElementById("information-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("information-invalid").style.display = "none";
+	         }
+			
+			return check;
+    	}
+    </script>
 
 </html>

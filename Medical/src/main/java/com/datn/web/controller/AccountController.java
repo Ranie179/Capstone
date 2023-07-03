@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
+import com.datn.web.bean.Account;
 import com.datn.web.bean.Blogs;
 import com.datn.web.bean.Departments;
 import com.datn.web.bean.Doctors;
@@ -162,5 +163,18 @@ public class AccountController {
 				return "customer/register";
 			}
 			
+		}
+	    
+		@RequestMapping(value = "adminShowAccount")
+		public String adminShowAccount(Model model) {
+			List<Account> account = accountService.adminShowAccount();
+			model.addAttribute("account", account);
+			return "admin/adminAccountList";
+		}
+		
+		@RequestMapping(value = "adminDeleteAccount")
+		public String adminDeleteAccount(@RequestParam("id") int id) {
+			accountService.adminDeleteAccount(id)
+;			return "redirect:adminShowAccount";
 		}
 }

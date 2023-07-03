@@ -126,7 +126,7 @@
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div class="layer-wrapper text-center">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
             <div id="doctor-page" class="layer-stretch">
@@ -146,19 +146,30 @@
                         </div>
                         </div>
                         
-
-                            <div class="col-md-12">
-                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							<div class = "row">
+                            <div class="col-md-8">
+                   		<div style = "margin-left: 14px;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
                             <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="profile-about">${serviceInfo.intro }</textarea>
                             <label class="mdl-textfield__label" for="profile-about">Giới thiệu</label>
                         </div>
                         </div>
+                        <div class="col-md-4">
+				    <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+				        <i class="fa fa-building-o"></i>
+				        <select class="mdl-selectfield__select" id="idDepartment" name = "idDepartment">
+				        	<c:forEach items="${department}" var="item">
+				            <option value="${item.idDepartment }" <c:out value = "${item.departmentName.equals(serviceInfo.department.departmentName)? 'selected' : ''}"/>>${item.departmentName}</option>
+				            </c:forEach>
+				        </select>
+				    </div>
+				    </div>
+				    </div>
                             <div class="row">
                                 <div style = "margin-left: 15px;" class="col-md-6">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 			                            <i class="fa fa-info"></i>
-			                            <textarea class="mdl-textfield__input" rows="12" maxLength = "200" name = "description1" id="profile-about">${serviceInfo.description1 }</textarea>
+			                            <textarea class="mdl-textfield__input" rows="12" name = "description1" id="profile-about">${serviceInfo.description1 }</textarea>
 			                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ nhất</label>
 			                        </div>
                                 </div>

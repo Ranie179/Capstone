@@ -167,7 +167,7 @@
 							  <c:forEach items="${doctor}" var="item" varStatus="loop">
 							      <li>
 							        <div class="theme-flexslider-container">
-							          <img src="<c:out value="${item.imageUrl}" />" alt="" />
+							          <img src="<c:out value="/Medical${item.imageUrl}" />" alt="" />
 							          <h4><c:out value="${item.doctorName}" /></h4>
 							          <p><c:out value="${item.department.departmentName}" /></p>
 							        </div>

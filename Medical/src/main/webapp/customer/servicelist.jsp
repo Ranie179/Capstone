@@ -164,12 +164,12 @@
 				                    <div class="theme-accordion-bdy">
 				                        <div class="row service-accordian">
 				                            <div class="col-sm-3 theme-accordian-img text-center">
-				                                <img class="img-responsive img-thumbnail" src="<c:out value="${item.image1}" />" alt="">
+				                                <img class="img-responsive img-thumbnail" src="<c:out value="/Medical${item.image1}" />" alt="">
 				                            </div>
 				                            <div class="col-sm-9">
 				                                <p class="paragraph-small paragraph-black">
 				                                    <span class="theme-dropcap color-green"><c:out value="${item.intro.charAt(0)}" /></span>
-				                                    <c:out value="${item.intro}" />
+				                                    <c:out value="${item.intro.substring(1)}" />
 				                                </p>
 				                                <div class="pull-right">
 				                                    <a href="<%=request.getContextPath()%>/showServiceInfo?id=${item.id}" class="button-icon">
@@ -249,7 +249,7 @@
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Time Table</div>
+                        <div class="sub-ttl">Thời gian làm việc</div>
                         <ul class="timetable">
                                     <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ hai</a><a class="pull-right"><i class="fa fa-clock-o"></i>7:00 SA - 5:00 CH</a></li>
                                     <li><a class="pull-left"><i class="fa fa-calendar"></i>Thứ ba</a><a class="pull-right"><i class="fa fa-clock-o"></i>7:00 SA - 5:00 CH</a></li>

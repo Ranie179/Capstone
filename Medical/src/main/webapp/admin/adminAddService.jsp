@@ -127,7 +127,7 @@
     <form method="POST" action="<%=request.getContextPath()%>/adminAddService" enctype="multipart/form-data">
     <div id="profile-page" class="layer-stretch">
         <div class="layer-wrapper">
-            <div style ="height:840px; overflow-y:auto;" class="theme-material-card">
+            <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thêm dịch vụ mới</p>
             <div id="doctor-page" class="layer-stretch">
         	<div class="layer-wrapper layer-bottom-5">

@@ -147,32 +147,32 @@
                 <div class="col-lg-8 text-center">
                     <div class="theme-material-card">
                     <input style = "display:none;" type = "text" id = "id" name = "id" value = "${serviceInfo.id }"> 
-                        <div class="theme-img theme-img-scalerotate"><img src="<c:out value="${serviceInfo.image1}" />" alt=""></div>
+                        <div class="theme-img theme-img-scalerotate"><img src="<c:out value="/Medical${serviceInfo.image1}" />" alt=""></div>
                         <div class="service-post">
-                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.intro}" /></p>
+                            <p class="paragraph-medium paragraph-black text-justify"><c:out value="${serviceInfo.intro}" /></p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description1}" /></p>
+                                    <p class="paragraph-medium paragraph-black text-justify"><c:out value="${serviceInfo.description1}" /></p>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:out value="${serviceInfo.image2}" />" alt="">
+                                        <img src="<c:out value="/Medical${serviceInfo.image2}" />" alt="">
                                     </div>
                                 </div>
                             </div>
                             <p></p>
-                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description2}" /></p>
+                            <p class="paragraph-medium paragraph-black text-justify"><c:out value="${serviceInfo.description2}" /></p>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="theme-img theme-img-scalerotate">
-                                        <img src="<c:out value="${serviceInfo.image3}" />" alt="">
+                                        <img src="<c:out value="/Medical${serviceInfo.image3}" />" alt="">
                                     </div>
                                 </div>
                             </div>
                             <p></p>
-                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${serviceInfo.description3}" /></p>
+                            <p class="paragraph-medium paragraph-black text-justify"><c:out value="${serviceInfo.description3}" /></p>
                             <ul class="theme-list text-left">
-                                <li><i class="fa fa-dot-circle-o color-blue"></i><c:out value="${serviceInfo.advantage}" /></li>
+                                <li style="white-space: pre-line;"><i style="white-space: pre-wrap;" class="fa fa-dot-circle-o color-blue"></i>Lợi ích: <br><c:out value="${serviceInfo.advantage}" /></li>
                             </ul>
                             <p></p>
                             <div class="theme-quote theme-quote-colored">

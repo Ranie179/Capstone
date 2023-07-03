@@ -142,7 +142,6 @@
                                 <thead>
                                     <tr class="table-primary-head">
                                         <th class="text-center">Tên dịch vụ</th>
-                                        <th class ="text-center">Thông tin ngắn gọn</th>
                                         <th class="text-center">Khoa</th>
                                         <th class="text-center">Hành động</th>
                                     </tr>
@@ -151,7 +150,6 @@
                                 <c:forEach items="${service}" var="item">
                                     <tr>
                                         <td class="text-center">${item.name}</td>
-                                        <td class="text-center"> ${item.intro }</td>
                                         <td class="text-center">${item.department.departmentName }</td>
                                          <td class="text-center">
                                             <a href="<%=request.getContextPath()%>/adminShowServiceInfo?id=${item.id }" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>

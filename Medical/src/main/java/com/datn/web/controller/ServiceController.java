@@ -103,7 +103,9 @@ public class ServiceController {
 	@RequestMapping(value = "adminShowServiceInfo")
 	public String adminShowServiceInfo(@RequestParam("id") int id, Model model){
 		List<Services> serviceInfo = serviceService.showServiceInfo(id);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
 		model.addAttribute("serviceInfo", serviceInfo.get(0));
+	    model.addAttribute("department", departments);
 		return "admin/adminService";
 	}
 	public void getUrl(MultipartFile file, String relativePath) throws IOException {
@@ -116,9 +118,10 @@ public class ServiceController {
 	@RequestMapping(value = "adminEditService")
 	public String adminEditService(@RequestParam("id") int id, @RequestParam(required = false) MultipartFile  img1, 
 			@RequestParam(required = false) MultipartFile  img2, @RequestParam(required = false) MultipartFile  img3, 
-			@RequestParam("name") String  name, @RequestParam("intro") String  intro, @RequestParam("description1") String  description1,
-			@RequestParam("description2") String  description2, @RequestParam("description3") String  description3, 
-			@RequestParam("advantage") String  advantage, @RequestParam("endline") String  endline, Model model) throws IOException {
+			@RequestParam("name") String  name, @RequestParam("intro") String  intro, @RequestParam("idDepartment") int idDepartment,
+			@RequestParam("description1") String  description1, @RequestParam("description2") String  description2, 
+			@RequestParam("description3") String  description3, @RequestParam("advantage") String  advantage, 
+			@RequestParam("endline") String  endline, Model model) throws IOException {
 		
 		if (!img1.isEmpty() && img2.isEmpty() && img3.isEmpty()) {
 			 String relativePath = "/resources/images/service" + String.valueOf(id) + "img1.png";

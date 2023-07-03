@@ -130,29 +130,23 @@
                     <div class="row">
                        <div class = "table-wrapper">
         		<div class="theme-material-card">
-                            <p class="font-16">Danh sách dịch vụ</p>
+                            <p class="font-16">Danh sách tài khoản</p>
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
-                                        <th class="text-center">Tên</th>
-                                        <th class="text-center">Hợp đồng</th>
-                                        <th class="text-center">Chức vị</th>
-                                        <th class="text-center">Khoa</th>
-                                        <th class="text-center">Năm kinh nghiệm</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Quyền</th>
                                         <th class="text-center">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${doctorlist}" var="item">
+                                <c:forEach items="${account}" var="item">
                                     <tr>
-                                        <td class="text-center">${item.doctorName}</td>
-                                        <td> <a href="#" data-toggle="tooltip" data-placement="top" title="Hợp đồng"><i class="bx bx-detail"></i></a></td>
-                                        <td class="text-center">${item.position.positionName }</td>
-                                        <td class="text-center">${item.department.departmentName }</td>
-                                        <td class="text-center"> ${item.expYear }</td>
+                                        <td class="text-center">${item.email}</td>
+                                        <td class="text-center">${item.role }</td>
                                          <td class="text-center">
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                                            <a onClick="confirmDelete(${item.idAccount })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -257,5 +251,12 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-
+<script>
+function confirmDelete(id) {
+	  if (confirm("Bạn có chắc muốn xóa tài khoản này không?")) {
+		  console.log("adminDeleteAccount?id=" + id)
+	    window.location.href = "adminDeleteAccount?id=" + id
+	  }
+	}
+</script>
 </html>

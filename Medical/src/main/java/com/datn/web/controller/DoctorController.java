@@ -132,7 +132,7 @@ public class DoctorController {
 		model.addAttribute("position", position);
 		List<Degrees> degrees = degreeService.showDegree(id);
 		model.addAttribute("degree", degrees);
-		return "admin/adminDoctor";
+		return "admin/test";
 	}
 	
 	@RequestMapping(value = "adminEditDoctor")
