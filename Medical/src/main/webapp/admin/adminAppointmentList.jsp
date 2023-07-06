@@ -10,9 +10,9 @@
     <link href='<c:url value="/resources/css/style-page-admin.css" />' rel="stylesheet" type ="text/css"> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -56,64 +56,53 @@
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -135,23 +124,15 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
     <!-- Start Event Calendar Section -->
     <div class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card">
                 <div id="calendar" class="font-13"></div>
             </div>
         </div>
     </div><!-- End Event Calendar Section -->
-    <!-- Start Modal for event -->
-   <div class="layer-stretch">
-    <div class="layer-wrapper">
-        <div class="theme-material-card">
-            <div id="calendar" class="font-13"></div>
-        </div>
-    </div>
-</div>
 
 <!-- Start Modal for event -->
 <form action = "<%=request.getContextPath()%>/adminShowAppointmentInfo">
@@ -195,7 +176,7 @@
     </section>
 </body>
 	<script src = '<c:url value="/resources/js/moment.min.js" />' ></script>
-	
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/vi.min.js" />' ></script>
     <script src = '<c:url value="/resources/js/js-page-admin.js" />' ></script>
         <!-- Jquery Library 2.1 JavaScript-->
     <script src='<c:url value="/resources/js/jquery-2.1.4.min.js" />'></script>
@@ -241,7 +222,7 @@
     <c:forEach items="${appointmentlist}" var="item">
         {
             title: '${item.name}',
-            start: '${item.appointmentDate}',
+            start: '${item.appointmentDate}', 
             note: 'Mô tả: ${item.note}',
             phone: 'Số điện thoại: ${item.phone}',
             email: 'E-mail: ${item.email}',
@@ -258,6 +239,8 @@
         },
     </c:forEach>
 ];
+    
+    
 
 
 

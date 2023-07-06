@@ -49,60 +49,50 @@
 
             <i class='bx bx-chevron-right toggle'></i>
         </header>
-        <div class="menu-bar">
+         <div class="menu-bar">
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
                         </a>
                     </li>
                 </ul>
@@ -110,7 +100,7 @@
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,12 +122,12 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditDoctor" enctype="multipart/form-data">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin bác sĩ</p>
             <div id="doctor-page" class="layer-stretch">
@@ -229,7 +219,7 @@
                     </div>
                 </div>
                 <div class="form-submit text-center">
-               		<button onClick = "showDegree()" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Xem bằng cấp</button>
+               		<a onClick = "showDegree()" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Xem bằng cấp</a>
                     <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
                 </div>
             </div>  

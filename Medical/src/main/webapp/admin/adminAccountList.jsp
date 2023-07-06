@@ -9,9 +9,9 @@
     <link href='<c:url value="/resources/css/style-page-admin.css" />' rel="stylesheet" type ="text/css"> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -53,64 +53,53 @@
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
                         <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,38 +121,33 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
+        <div class="layer-wrapper">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
-                       <div class = "table-wrapper">
+                       <div style = "width: 95%;" class = "table-wrapper">
         		<div class="theme-material-card">
-                            <p class="font-16">Danh sách dịch vụ</p>
+                            <p class="font-16 text-center">Danh sách tài khoản</p>
+                            <a href = ""><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm tài khoản mới</button></a>
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
-                                        <th class="text-center">Tên</th>
-                                        <th class="text-center">Hợp đồng</th>
-                                        <th class="text-center">Chức vị</th>
-                                        <th class="text-center">Khoa</th>
-                                        <th class="text-center">Năm kinh nghiệm</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Quyền</th>
                                         <th class="text-center">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${doctorlist}" var="item">
+                                <c:forEach items="${account}" var="item">
                                     <tr>
-                                        <td class="text-center">${item.doctorName}</td>
-                                        <td> <a href="#" data-toggle="tooltip" data-placement="top" title="Hợp đồng"><i class="bx bx-detail"></i></a></td>
-                                        <td class="text-center">${item.position.positionName }</td>
-                                        <td class="text-center">${item.department.departmentName }</td>
-                                        <td class="text-center"> ${item.expYear }</td>
+                                        <td class="text-center">${item.email}</td>
+                                        <td class="text-center">${item.role }</td>
                                          <td class="text-center">
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                                            <a onClick="confirmDelete(${item.idAccount })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -172,7 +156,7 @@
                         </div>
                    	</div>
 					</div>
-				<ul class="theme-pagination">
+				<ul class="theme-pagination text-center">
 				    <c:choose>
 				        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search and empty experience)}">
 				            <li><a href="<%=request.getContextPath()%>/adminShowDoctor?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
@@ -268,5 +252,12 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-
+<script>
+function confirmDelete(id) {
+	  if (confirm("Bạn có chắc muốn xóa tài khoản này không?")) {
+		  console.log("adminDeleteAccount?id=" + id)
+	    window.location.href = "adminDeleteAccount?id=" + id
+	  }
+	}
+</script>
 </html>

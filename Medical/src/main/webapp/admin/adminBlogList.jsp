@@ -9,9 +9,9 @@
     <link href='<c:url value="/resources/css/style-page-admin.css" />' rel="stylesheet" type ="text/css"> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -53,7 +53,7 @@
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
@@ -66,51 +66,40 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
                         <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,10 +121,10 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
@@ -154,12 +143,18 @@
 							        <button type="button" class="close" data-dismiss="alert">×</button>
 							    </div>
 							</c:if>
-                              <a href ="<%=request.getContextPath()%>/getToAddService"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm dịch vụ mới</button></a> 
+							<c:if test="${not empty success}">
+						   <div class="alert alert-success" role="alert">
+                                <strong>Thông báo!</strong> Đã thêm bài viết mới
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                            </div>
+						</c:if>
+                              <a href ="<%=request.getContextPath()%>/getToAddBlog"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bài viết mới</button></a> 
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
                                         <th class="text-center">Tên bài viết</th>
-                                        <th class ="text-center">Thông tin ngắn gọn</th>
+                                        <th class ="text-center">Lọai bài viết</th>
                                         <th class="text-center">Hành động</th>
                                     </tr>
                                 </thead>
@@ -167,7 +162,7 @@
                                 <c:forEach items="${blog}" var="item">
                                     <tr>
                                         <td class="text-center">${item.title}</td>
-                                        <td class="text-center"> ${item.intro }</td>
+                                        <td class="text-center"> ${item.tag.tag }</td>
                                          <td class="text-center">
                                             <a href="<%=request.getContextPath()%>/adminShowBlogInfo?id=${item.idBlog }" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
                                             <a onClick="confirmDeleteBlog(${item.idBlog })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>

@@ -38,4 +38,26 @@ public class AppointmentService {
 		
 	}
 
+	public List<Appointment> showUpcomingAppointment() {
+		return appointmentRepository.showUpcomingAppointment();
+	}
+
+	public List<Appointment> showMyAppointment(int page, int pageSize, String email) {
+		return appointmentRepository.showMyAppointment(page, pageSize, email);
+	}
+
+	public int getTotalAppointment(String email) {
+		return appointmentRepository.getTotalAppointment(email);
+	}
+
+	public List<Appointment> showAppointmentByID(int id) {
+		return appointmentRepository.showAppointmentByID(id);
+	}
+
+	public void setApointmentWithAccount(String name, String phone, String date, String email, String gender,
+			int idDepartment, String note, String token, String emailAccount) {
+		appointmentRepository.setApointmentWithAccount(name, phone, date, email, gender, idDepartment, note, token, emailAccount);
+		
+	}
+
 }

@@ -9,9 +9,9 @@
     <link href='<c:url value="/resources/css/style-page-admin.css" />' rel="stylesheet" type ="text/css"> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -33,7 +33,7 @@
     <!-- Custom Main Stylesheet CSS -->
     <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet" type="text/css">
 </head>
-<body style = "overflow-y: hidden;">
+<body>
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -53,64 +53,53 @@
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,27 +121,29 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
     <form action = "<%=request.getContextPath()%>/addContract" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card text-center">
             <p style = "text-align: center;"class="font-16">Thêm một hợp đồng cho bác sĩ mới</p>
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-user-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-name" name = "name">
-                            <label class="mdl-textfield__label" for="profile-name">Tên bác sĩ</label>
+                            <input class="mdl-textfield__input" type="text" id="name" name = "name">
+                            <label class="mdl-textfield__label" for="name">Tên bác sĩ</label>
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span> 
                         </div>
                         </div>
                         <div class = "col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-users"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-nationality" name = "nationality">
+                            <input class="mdl-textfield__input" type="text" id="nationality" name = "nationality">
                             <label class="mdl-textfield__label" for="profile-nationality">Dân tộc</label>
+                            <span id="nationality-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                         <div class = >
@@ -160,15 +151,17 @@
                         <div class="col-md-3">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-phone"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="profile-mobile" name = "phone">
-                            <label class="mdl-textfield__label" for="profile-mobile">Số điện thoại</label>
+                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" name = "phone">
+                            <label class="mdl-textfield__label" for="phone">Số điện thoại</label>
+                            <span id="phone-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                         <div class = "col-md-9">
                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-map-marker"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-iplace" name ="iplace">
-                            <label class="mdl-textfield__label" for="profile-iplace">Nơi cấp CMND</label>
+                            <input class="mdl-textfield__input" type="text" id="iplace" name ="iplace">
+                            <label class="mdl-textfield__label" for="iplace">Nơi cấp CMND</label>
+                            <span id="iplace-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -176,16 +169,19 @@
                             <i class="fa fa-address-card"></i>
                             <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="identity" name = "identity">
                             <label class="mdl-textfield__label" for="identity">CMND/CCCD</label>
+                            <span id="identity-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon text-left">
 					        <i class="fa fa-venus-mars"></i>
 					        <label  for="profile-gender">Giới tính</label>
-					        <select class="mdl-selectfield__select text-center" id="profile-gender" name = "gender">
+					        <select class="mdl-selectfield__select text-center" id="gender" name = "gender">
+					        	<option value = "" selected>--Chọn giới tính--</option> 
 					            <option value="Nam" >Nam</option>
 					            <option value="Nữ" >Nữ</option>
 					        </select>
+					        <span id="gender-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn giới tính</span>
 					    </div>
                     </div>
                     <div class = "col-md-3">
@@ -193,38 +189,44 @@
 				        <i class="fa fa-building-o"></i>
 				        <label  for="graduate">Trình độ học vấn</label>
 				        <select class="mdl-selectfield__select text-center" id="graduate" name = "idGraduate">
+				        <option value = "" selected>--Chọn trình độ học vấn--</option> 
 				        <c:forEach items="${graduate}" var="item">
 				            <option value="${item.idGraduate }">${item.graduate }</option>
 				            </c:forEach>
 				        </select>
+				        <span id="graduate-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn trình độ học vấn</span>
 				    </div>
                     </div>
                         <div class="col-sm-3">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon text-left">
                             <i class="fa fa-calendar"></i>
                             <label  for="profile-birthdate">Ngày sinh</label>
-                            <input class="mdl-textfield__input" type="date" id="profile-birthdate" name = "birthday">
+                            <input class="mdl-textfield__input" type="date" id="birthday" name = "birthday">
+                            <span id="birthday-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn ngày sinh</span>
                         </div>
 						</div>
 						<div class="col-md-3">
                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon text-left">
                             <i class="fa fa-calendar-o"></i>
                             <label for="profile-idate">Ngày cấp CMND/CCCD</label>
-                            <input class="mdl-textfield__input" type="date" id="profile-idate" name = "idate">
+                            <input class="mdl-textfield__input" type="date" id="idate" name = "idate">
+                            <span id="idate-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn ngày cấp CMND/CCCD</span>
                         </div>
 						</div>
 						<div class="col-md-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-location-arrow"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-iplace" name = "address1">
-                            <label class="mdl-textfield__label" for="profile-mobile">Địa chỉ thường trú (Ghi rõ tên đường/tổ)</label>
+                            <input class="mdl-textfield__input" type="text" id="address1" name = "address1">
+                            <label class="mdl-textfield__label" for="address1">Địa chỉ thường trú (Ghi rõ tên đường/tổ)</label>
+                            <span id="address1-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                         <div class="col-md-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-location-arrow"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-iplace" name = "address2">
-                            <label class="mdl-textfield__label" for="profile-mobile">Địa chỉ liên lạc (Ghi rõ tên đường/tổ)</label>
+                            <input class="mdl-textfield__input" type="text" id="address2" name = "address2">
+                            <label class="mdl-textfield__label" for="address2">Địa chỉ liên lạc (Ghi rõ tên đường/tổ)</label>
+                            <span id="address2-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
 						<div class="col-md-6">
@@ -232,6 +234,7 @@
                             <i class="fa fa-calendar-o"></i>
                             <label for="create-date">Ngày bắt đầu hợp đồng</label>
                             <input class="mdl-textfield__input" type="date" id="create-date" name = "createdate">
+                            <span id="create-date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn ngày bắt đầu hợp đồng</span>
                         </div>
 						</div>
 						<div class="col-md-6">
@@ -239,50 +242,58 @@
                             <i class="fa fa-calendar"></i>
                             <label  for="end-date">Ngày kết thúc hợp đồng</label>
                             <input class="mdl-textfield__input" type="date" id="end-date" name = "enddate">
+                            <span id="end-date-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Làm ơn chọn ngày kết thúc hợp đồng</span>
                         </div>
                         </div>
                         <div class= "col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-money"></i>
-                            <input class="mdl-textfield__input" type="text" pattern = "[0-9]*" id="profile-iplace" name = "salary">
-                            <label class="mdl-textfield__label" for="profile-mobile">Lương</label>
+                            <input class="mdl-textfield__input" type="text" pattern = "[0-9]*" id="salary" name = "salary">
+                            <label class="mdl-textfield__label" for="salary">Lương</label>
+                            <span id="salary-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                          <div class = "col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-credit-card"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="bank-number" name = "banknumber">
-                            <label class="mdl-textfield__label" for="bank-number">Số tài khoản</label>
+                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="banknumber" name = "banknumber">
+                            <label class="mdl-textfield__label" for="banknumber">Số tài khoản</label>
+                            <span id="banknumber-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                         <div class = "col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-university"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-iplace" name = "bank">
-                            <label class="mdl-textfield__label" for="profile-mobile">Ngân hàng</label>
+                            <input class="mdl-textfield__input" type="text" id="bank" name = "bank">
+                            <label class="mdl-textfield__label" for="bank">Ngân hàng</label>
+                            <span id="bank-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                         <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-clock-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="work-time" name = "worktime">
-                            <label class="mdl-textfield__label" for="work-time">Giờ làm việc (trên 1 ngày)</label>
+                            <input class="mdl-textfield__input" type="text" id="worktime" name = "worktime">
+                            <label class="mdl-textfield__label" for="worktime">Giờ làm việc (trên 1 ngày)</label>
+                            <span id="worktime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon text-left">
 				        <i class="fa fa-building-o"></i>
 				        <label  for="status">Khoa</label>
-				        <select class="mdl-selectfield__select text-center" id="status" name = "idDepartment">
+				        <select class="mdl-selectfield__select text-center" id="department" name = "idDepartment">
+				        <option value = "" selected>--Chọn khoa--</option>
 				        <c:forEach items="${department}" var="item">
 				            <option value="${item.idDepartment }">${item.departmentName }</option>
 				            </c:forEach>
 				        </select>
+				        <span id="department-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
 				    </div>
                     </div>
                     <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-clock-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="rest-time" name = "resttime">
+                            <input class="mdl-textfield__input" type="text" id="resttime" name = "resttime">
                             <label class="mdl-textfield__label" for="rest-time">Thời gian nghỉ (trên 1 ngày)</label>
+                            <span id="resttime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                          <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon text-left">
 					        <i class="fa fa-user-md"></i>
@@ -292,27 +303,31 @@
 					            	<option value="${item.idPosition }">${item.positionName }</option>
 					            </c:forEach>
 					        </select>
+					        <span id="position-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
 				    </div>
                     </div>
                     <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-calendar-times-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="leave-time" name = "leavetime">
+                            <input class="mdl-textfield__input" type="text" id="leavetime" name = "leavetime">
                             <label class="mdl-textfield__label" for="leave-time">Thời gian nghỉ phép (Trên 1 tháng)</label>
+                            <span id="leavetime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                          <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon text-left">
 				        <i class="fa fa-user-md"></i>
 				        <label for="payment">Hình thức trả lương</label>
 				        <select class="mdl-selectfield__select text-center" id="payment" name = "idPayment">
+				        <option value = "" selected>--Chọn hình thức trả lương--</option>
 				        <c:forEach items="${payment}" var="item">
 				            <option value="${item.idPayment }">${item.payment }</option>
 				            </c:forEach>
 				        </select>
+				        <span id="payment-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
 				    </div>
                     </div>     
             </div>
                 <div class="form-submit text-center">
-                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu thay đổi</button>
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
             </div>  
         </div>
@@ -351,12 +366,137 @@
      <script>
     	function validate() {
     		let check = true;
-			if( document.getElementById("profile-allergies").value == "" ) {
-				console.log("profile-allergies");
-	            document.getElementById("annouce-invalid").style.display = "block";
+			if( document.getElementById("name").value == "" ) {
+	            document.getElementById("name-invalid").style.display = "block";
 	            check = false;
 	         } else {
-	        	 document.getElementById("annouce-invalid").style.display = "none";
+	        	 document.getElementById("name-invalid").style.display = "none";
+	         }
+			if( document.getElementById("nationality").value == "" ) {
+	            document.getElementById("nationality-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("nationality-invalid").style.display = "none";
+	         }
+			if( document.getElementById("phone").value == "" ) {
+	            document.getElementById("phone-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("phone-invalid").style.display = "none";
+	         }
+			if( document.getElementById("iplace").value == "" ) {
+	            document.getElementById("iplace-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("iplace-invalid").style.display = "none";
+	         }
+			if( document.getElementById("identity").value == "" ) {
+	            document.getElementById("identity-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("identity-invalid").style.display = "none";
+	         }
+			if( document.getElementById("gender").value == "" ) {
+	            document.getElementById("gender-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("gender-invalid").style.display = "none";
+	         }
+			if( document.getElementById("graduate").value == "" ) {
+	            document.getElementById("graduate-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("graduate-invalid").style.display = "none";
+	         }
+			if( document.getElementById("birthday").value == "" ) {
+	            document.getElementById("birthday-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("birthday-invalid").style.display = "none";
+	         }
+			if( document.getElementById("idate").value == "" ) {
+	            document.getElementById("idate-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("idate-invalid").style.display = "none";
+	         }
+			if( document.getElementById("address1").value == "" ) {
+	            document.getElementById("address1-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("address1-invalid").style.display = "none";
+	         }
+			if( document.getElementById("address2").value == "" ) {
+	            document.getElementById("address2-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("address2-invalid").style.display = "none";
+	         }
+			if( document.getElementById("create-date").value == "" ) {
+	            document.getElementById("create-date-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("create-date-invalid").style.display = "none";
+	         }
+			if( document.getElementById("end-date").value == "" ) {
+	            document.getElementById("end-date-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("end-date-invalid").style.display = "none";
+	         }
+			if( document.getElementById("salary").value == "" ) {
+	            document.getElementById("salary-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("salary-invalid").style.display = "none";
+	         }
+			if( document.getElementById("banknumber").value == "" ) {
+	            document.getElementById("banknumber-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("banknumber-invalid").style.display = "none";
+	         }
+			if( document.getElementById("bank").value == "" ) {
+	            document.getElementById("bank-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("bank-invalid").style.display = "none";
+	         }
+			if( document.getElementById("worktime").value == "" ) {
+	            document.getElementById("worktime-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("worktime-invalid").style.display = "none";
+	         }
+			if( document.getElementById("department").value == "" ) {
+	            document.getElementById("department-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("department-invalid").style.display = "none";
+	         }
+			if( document.getElementById("resttime").value == "" ) {
+	            document.getElementById("resttime-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("resttime-invalid").style.display = "none";
+	         }
+			if( document.getElementById("position").value == "" ) {
+	            document.getElementById("position-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("position-invalid").style.display = "none";
+	         }
+			if( document.getElementById("leavetime").value == "" ) {
+	            document.getElementById("leavetime-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("leavetime-invalid").style.display = "none";
+	         }
+			if( document.getElementById("payment").value == "" ) {
+	            document.getElementById("payment-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("payment-invalid").style.display = "none";
 	         }
 			
 			return check;

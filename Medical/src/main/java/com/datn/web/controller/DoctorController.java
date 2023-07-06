@@ -49,7 +49,7 @@ public class DoctorController {
 			@RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, 
 			@RequestParam(defaultValue = "1") int page, Model model) {
-		int pageSize = 5; 
+		int pageSize = 10; 
 	    int totalCount = doctorService.getTotalDoctorCount(search, idDepartment, experience); 
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize); 
 		List<Doctors> doctors = doctorService.showAllDoctor(page, pageSize, search, idDepartment, experience);
@@ -87,6 +87,8 @@ public class DoctorController {
 		model.addAttribute("doctorBonus", doctorBonus);
 		List<Services> services = serviceService.showMoreService();
 		model.addAttribute("serviceBonus", services);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/doctor";
 	}
 	
@@ -130,7 +132,7 @@ public class DoctorController {
 		model.addAttribute("position", position);
 		List<Degrees> degrees = degreeService.showDegree(id);
 		model.addAttribute("degree", degrees);
-		return "admin/adminDoctor";
+		return "admin/test";
 	}
 	
 	@RequestMapping(value = "adminEditDoctor")

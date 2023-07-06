@@ -9,9 +9,9 @@
     <link href='<c:url value="/resources/css/style-page-admin.css" />' rel="stylesheet" type ="text/css"> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <!-- Meta Description Tag -->
-    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -53,64 +53,53 @@
             <div class="menu">
                 <ul class="menu-links">
                 <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/showUpcomingAppointment">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Cage.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAllAppointment">
                             <i class='bx bx-calendar-check icon' ></i>
                             <span class="text nav-text">Quản lý lịch hẹn</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="Animal.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDoctor">
                             <i class='fa fa-user-md icon' ></i>
                             <span class="text nav-text">Quản lý bác sĩ</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
                         <a href="Inventory.jsp">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
-                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/adminShowBlog">
                             <i class='fa fa-newspaper-o icon'></i>
                             <span class="text nav-text">Quản lý bài viết</span>
                         </a>
                     </li>
-
                     <li class="nav-link">
-                        <a href="Staff.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowDepartment">
                             <i class='fa fa-building-o icon' ></i>
                             <span class="text nav-text">Quản lý khoa</span>
                         </a>
                     </li>
-
 					<li class="nav-link">
-                        <a href="Revenue.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowService">
                             <i class='bx bx-donate-heart icon' ></i>
                             <span class="text nav-text">Quản lý dịch vụ</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="Revenue.jsp">
-                            <i class='fa fa-sticky-note-o icon' ></i>
-                            <span class="text nav-text">Hợp đồng mới</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -132,13 +121,13 @@
 
     </nav>
 
-    <section class="home">
+    <section style = "height: auto;" class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
-            <div style ="height:840px; overflow-y:auto;" class="theme-material-card">
+        <div style = "width: 95%;" class="layer-wrapper text-center">
+            <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
             <div id="doctor-page" class="layer-stretch">
         	<div class="layer-wrapper layer-bottom-5">
@@ -157,19 +146,30 @@
                         </div>
                         </div>
                         
-
-                            <div class="col-md-12">
-                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							<div class = "row">
+                            <div class="col-md-8">
+                   		<div style = "margin-left: 14px;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
                             <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="profile-about">${serviceInfo.intro }</textarea>
                             <label class="mdl-textfield__label" for="profile-about">Giới thiệu</label>
                         </div>
                         </div>
+                        <div class="col-md-4">
+				    <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+				        <i class="fa fa-building-o"></i>
+				        <select class="mdl-selectfield__select" id="idDepartment" name = "idDepartment">
+				        	<c:forEach items="${department}" var="item">
+				            <option value="${item.idDepartment }" <c:out value = "${item.departmentName.equals(serviceInfo.department.departmentName)? 'selected' : ''}"/>>${item.departmentName}</option>
+				            </c:forEach>
+				        </select>
+				    </div>
+				    </div>
+				    </div>
                             <div class="row">
                                 <div style = "margin-left: 15px;" class="col-md-6">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 			                            <i class="fa fa-info"></i>
-			                            <textarea class="mdl-textfield__input" rows="12" maxLength = "200" name = "description1" id="profile-about">${serviceInfo.description1 }</textarea>
+			                            <textarea class="mdl-textfield__input" rows="12" name = "description1" id="profile-about">${serviceInfo.description1 }</textarea>
 			                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ nhất</label>
 			                        </div>
                                 </div>

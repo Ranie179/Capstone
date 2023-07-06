@@ -76,6 +76,51 @@ public class AppointmentRepository {
 		
 	}
 
+	public List<Appointment> showUpcomingAppointment() {
+		String sql = "SELECT appointment.*, departments.Department_Name\n"
+				+ "FROM appointment\r\n"
+				+ "JOIN departments ON appointment.ID_Department = departments.ID_Department\r\n"
+				+ "WHERE (appointment.Appointment_Date >= NOW() AND appointment.appointment_Date <= NOW() + INTERVAL 4 HOUR)\r\n"
+				+ "AND appointment_status = 'Đã lên lịch'\r\n"
+				+ "ORDER BY appointment.Appointment_Date ASC;";
+		return jdbcTemplate.query(sql, new AppointmentRowMapper());
+	}
+
+	public List<Appointment> showMyAppointment(int page, int pageSize, String email) {
+		int offset = (page - 1) * pageSize;
+		String sql = "SELECT appointment.*, departments.Department_Name\r\n"
+				+ "FROM appointment\r\n"
+				+ "JOIN departments ON appointment.ID_Department = departments.ID_Department\r\n"
+				+ "JOIN account ON appointment.ID_Account = account.ID_Account\r\n"
+				+ "WHERE account.email = ?\r\n"
+				+ "ORDER BY appointment.Appointment_Date ASC LIMIT ? OFFSET ?;";
+		Object[] params = new Object[] {email, pageSize, offset};
+		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
+	}
+
+	public int getTotalAppointment(String email) {
+		String sql = "SELECT COUNT(*) FROM appointment\r\n"
+				+ "JOIN Account ON appointment.ID_Account = account.ID_Account\r\n"
+				+ "WHERE account.email = ?";
+		Object[] params = new Object[] {email};
+		return jdbcTemplate.queryForObject(sql, params, Integer.class);
+	}
+
+	public List<Appointment> showAppointmentByID(int id) {
+		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where id = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
+	}
+
+	public void setApointmentWithAccount(String name, String phone, String date, String email, String gender,
+			int idDepartment, String note, String token, String emailAccount) {
+		String sql = "INSERT INTO appointment (name, phone, appointment_date, email, gender, id_department, note, token, information, ID_Account)\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "(SELECT ID_Account FROM Account WHERE Email = ?));";
+		Object[] params = new Object[] {name, phone, date, email, gender, idDepartment, note, token, "Không có thông báo", emailAccount};
+		jdbcTemplate.update(sql, params);
+	}
+
 
 
 }

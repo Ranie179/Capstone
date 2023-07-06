@@ -1,5 +1,7 @@
 package com.datn.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,28 @@ public class AccountService {
 
 	public String getRole(String email) {
 		return accountRepository.getRole(email);
+	}
+	
+	public boolean checkExistEmail(String email) {
+		int i = accountRepository.checkExistEmail(email);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
+
+	public void register(String email, String encodePass) {
+		accountRepository.register(email, encodePass);
+		
+	}
+
+	public List<Account> adminShowAccount() {
+		return accountRepository.adminShowAccount();
+	}
+
+	public void adminDeleteAccount(int id) {
+		accountRepository.adminDeleteAccount(id);
+		
 	}
 
 }

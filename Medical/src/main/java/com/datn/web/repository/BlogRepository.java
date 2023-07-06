@@ -3,7 +3,7 @@ package com.datn.web.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
+import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -84,6 +84,157 @@ public class BlogRepository {
 		Object[] params = new Object[] {id};
 		jdbcTemplate.update(sql, params);
 	}
+
+	public void adminEditBlog(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminEditBlogImage1(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image1 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath, id};
+		jdbcTemplate.update(sql, params);
+	}
+	
+	public void adminEditBlogImage2(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image2 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath, id};
+		jdbcTemplate.update(sql, params);
+	}
+	
+	public void adminEditBlogImage3(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image3 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath, id};
+		jdbcTemplate.update(sql, params);
+	}
+	
+	public void adminEditBlogImage12(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image1 = ?, Image2 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, id};
+		jdbcTemplate.update(sql, params);
+	}
+	
+	public void adminEditBlogImage23(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image2 = ?, Image3 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, id};
+		jdbcTemplate.update(sql, params);
+	}
+	
+	public void adminEditBlogImage13(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image1 = ?, Image3 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, id};
+		jdbcTemplate.update(sql, params);
+	}
+
+	public void adminEditBlog3Image(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, String relativePath3, int id) {
+		String sql = "UPDATE BLOGS\r\n"
+				+ "SET title = ?, ID_TAG = ?, Intro = ?, Quotation = ?, Paragraph1 = ?, Paragraph2 =?, Paragraph3 = ?, Image1 = ?,  Image2 = ?, Image3 = ?\r\n"
+				+ "WHERE ID_BLOG = ?";
+		Object[] params = new Object[] {name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, relativePath3, id};
+		jdbcTemplate.update(sql, params);
+	}
+
+	public int getNewID() {
+		String sql = "SELECT MAX(ID_Blog) from Blogs";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	Date currentDate = new Date(System.currentTimeMillis());
+	public void adminAddBlogImg1(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image1, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlogImg2(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image2, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlogImg3(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image3, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlogImg12(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image1, Image2, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlogImg23(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image2, Image3, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlogImg13(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image1, Image3, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlog3Img(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, String relativePath1, String relativePath2, String relativePath3, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Image1, Image2, Image3, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, relativePath1, relativePath2, relativePath3, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminAddBlog(String name, int idTag, String intro, String quote, String para1, String para2,
+			String para3, int newID) {
+		String sql = "INSERT INTO BLOGS(ID_Blog, Title, ID_TAG, Intro, Quotation, Paragraph1, Paragraph2, Paragraph3, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		Object[] params = new Object[] {newID, name, idTag, intro, quote, para1, para2, para3, currentDate};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
 	
 
 }

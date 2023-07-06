@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.datn.web.bean.Departments;
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Services;
+import com.datn.web.bean.Comment;
+import com.datn.web.service.CommentService;
 import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 import com.datn.web.service.ServiceService;
@@ -31,6 +33,8 @@ public class ServiceController {
 	private DoctorService doctorService;
 	@Autowired
 	private DepartmentService departmentService;
+	@Autowired
+	private CommentService commentService;
 	
 	public int getNewID() {
 		return serviceService.getNewID();
@@ -48,16 +52,23 @@ public class ServiceController {
 		List<Doctors> doctors = doctorService.showExpDoctor();
 	    model.addAttribute("doctor", doctors);
 	    model.addAttribute("search", search);
+	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 	    return "customer/servicelist";
 	}
 
 	
 	@RequestMapping(value = "showServiceInfo", method = RequestMethod.GET)
-	public String showServiceInfo(@RequestParam("id") int id, Model model) {
+	public String showServiceInfo(@RequestParam(required = false) String failed, @RequestParam("id") int id, Model model) {
 		List<Services> serviceInfo = serviceService.showServiceInfo(id);
 		model.addAttribute("serviceInfo",serviceInfo.get(0));
 		List<Services> services = serviceService.showMoreService();
 	    model.addAttribute("service", services);
+	    List<Comment> comments = commentService.showComment(id);
+	    model.addAttribute("comment", comments);
+	    model.addAttribute("failed", failed);
+	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	model.addAttribute("department", departments);
 		return "customer/service";
 	}
 	
@@ -92,7 +103,9 @@ public class ServiceController {
 	@RequestMapping(value = "adminShowServiceInfo")
 	public String adminShowServiceInfo(@RequestParam("id") int id, Model model){
 		List<Services> serviceInfo = serviceService.showServiceInfo(id);
+		List<Departments> departments = departmentService.showDepartmentAndDoctor();
 		model.addAttribute("serviceInfo", serviceInfo.get(0));
+	    model.addAttribute("department", departments);
 		return "admin/adminService";
 	}
 	public void getUrl(MultipartFile file, String relativePath) throws IOException {
@@ -105,9 +118,10 @@ public class ServiceController {
 	@RequestMapping(value = "adminEditService")
 	public String adminEditService(@RequestParam("id") int id, @RequestParam(required = false) MultipartFile  img1, 
 			@RequestParam(required = false) MultipartFile  img2, @RequestParam(required = false) MultipartFile  img3, 
-			@RequestParam("name") String  name, @RequestParam("intro") String  intro, @RequestParam("description1") String  description1,
-			@RequestParam("description2") String  description2, @RequestParam("description3") String  description3, 
-			@RequestParam("advantage") String  advantage, @RequestParam("endline") String  endline, Model model) throws IOException {
+			@RequestParam("name") String  name, @RequestParam("intro") String  intro, @RequestParam("idDepartment") int idDepartment,
+			@RequestParam("description1") String  description1, @RequestParam("description2") String  description2, 
+			@RequestParam("description3") String  description3, @RequestParam("advantage") String  advantage, 
+			@RequestParam("endline") String  endline, Model model) throws IOException {
 		
 		if (!img1.isEmpty() && img2.isEmpty() && img3.isEmpty()) {
 			 String relativePath = "/resources/images/service" + String.valueOf(id) + "img1.png";
