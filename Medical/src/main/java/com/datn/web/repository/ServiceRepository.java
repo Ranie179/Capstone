@@ -100,7 +100,7 @@ public class ServiceRepository {
 	}
 	
 	public List<Services> showServiceByIdDepartment(int id){
-		String sql = "SELECT * FROM service WHERE ID_Department = ? LIMIT 10";
+		String sql = "SELECT * FROM service WHERE ID_Department = ?";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}

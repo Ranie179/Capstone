@@ -40,7 +40,7 @@ public class ServiceController {
 		return serviceService.getNewID();
 	}
 	@RequestMapping(value = "showAllService", method = RequestMethod.GET)
-	public String showAllService(@RequestParam(defaultValue = "1") int page, 
+	public String showAllService(@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, Model model) {
 	    int pageSize = 5;
 	    int totalCount = serviceService.getTotalServiceCount(search);

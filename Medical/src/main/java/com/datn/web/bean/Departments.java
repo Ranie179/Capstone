@@ -8,6 +8,7 @@ public class Departments {
 	protected String information;
 	protected String image;
 	protected String isWorking;
+	protected int numOfServices;
 	
 	public int getNumOfDoctors() {
 		return numOfDoctors;
@@ -52,7 +53,13 @@ public class Departments {
 	public void setIsWorking(String isWorking) {
 		this.isWorking = isWorking;
 	}
-	public Departments(String departmentName, int numOfDoctors, String intro, String information, String image, String isWorking) {
+	public int getNumOfServices() {
+		return numOfServices;
+	}
+	public void setNumOfServices(int numOfServices) {
+		this.numOfServices = numOfServices;
+	}
+	public Departments(String departmentName, int numOfDoctors, String intro, String information, String image, String isWorking, int numOfServices) {
 		super();
 		this.departmentName = departmentName;
 		this.numOfDoctors = numOfDoctors;
@@ -60,6 +67,7 @@ public class Departments {
 		this.information = information;
 		this.image = image;
 		this.isWorking = isWorking;
+		this.numOfServices = numOfServices;
 	}
 	public Departments() {
 		super();

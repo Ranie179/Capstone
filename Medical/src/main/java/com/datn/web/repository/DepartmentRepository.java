@@ -29,6 +29,16 @@ public class DepartmentRepository {
         	return department;
         }
     }
+	
+	private class DepartmentServiceRowMapper implements RowMapper<Departments> {
+        public Departments mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	Departments department = new Departments();
+        	department.setDepartmentName(rs.getString("Department_Name"));
+        	department.setIdDepartment(rs.getInt("ID_Department"));
+        	department.setNumOfServices(rs.getInt("NumOfServices"));
+        	return department;
+        }
+    }
 	public List<Departments> showDepartmentAndDoctor() {
 		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
 				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
@@ -132,6 +142,12 @@ public class DepartmentRepository {
 		String sql = "SELECT Department_Name from departments where ID_Department = ?";
 		Object[] params = new Object[] {idDepartment};
 		return jdbcTemplate.queryForObject(sql, params, String.class);
+	}
+	public List<Departments> showDepartmentAndService() {
+		String sql = "SELECT departments.*, COUNT(service.id)\r\n"
+				+ "as NumOfServices FROM departments LEFT JOIN service\r\n"
+				+ "ON departments.ID_Department = service.ID_Department where departments.isWorking = \"Vẫn còn hoạt động\" GROUP BY departments.Department_Name;";
+		return jdbcTemplate.query(sql, new DepartmentServiceRowMapper());
 	}
 
 }
