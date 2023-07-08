@@ -126,7 +126,7 @@
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
+        <div style = "width: 95%;" class="layer-wrapper text-center">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
             <div id="doctor-page" class="layer-stretch">

@@ -126,7 +126,7 @@
     <!-- Start My Profile Section -->
     <form action = "<%=request.getContextPath()%>/adminEditDepartment" method="POST" enctype="multipart/form-data" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card text-center">
             <p style = "text-align: center;"class="font-16">Thông tin của khoa "${department.departmentName }"</p>
              <c:if test="${not empty successMessage}">

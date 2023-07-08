@@ -142,7 +142,7 @@
     </div><!-- End Page Title Section -->
  <!-- Start My Profile Section -->
     <div id="profile-page" class="layer-stretch">
-    <form action = "<%=request.getContextPath()%>/editProfile" method = "post">
+    <form action = "<%=request.getContextPath()%>/editProfile" method = "post" onsubmit = "return(profile());">
      <c:if test="${not empty success}">
 						   <div class="alert alert-success" role="alert">
 						        <strong>Thông báo</strong> Đã cập nhật thông tin thành công!!!
@@ -178,6 +178,7 @@
                             <input class="mdl-textfield__input" type="date" id="birthDay" name = "birthDay" value = "${profile.birthDay }">
                             <label class="mdl-textfield__label" for="birthDay">Sinh nhật</label>
                             <span class="mdl-textfield__error">Làm ơn nhập sinh nhật hợp lệ!</span>
+                            <span id="birthDay-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
                         </div>
                         <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                             <i class="fa fa-tint"></i>
@@ -193,16 +194,18 @@
 							    <option value="AB+" ${profile.blood == 'AB+' ? 'selected' : ''}>AB+</option>
 							</select>
                             <label class="mdl-selectfield__label" for="blood">Nhóm máu</label>
+                            <span id="blood-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn nhóm máu!</span>
                         </div>
                         <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
                             <i class="fa fa-male"></i>
-                            <select class="mdl-selectfield__select" id="gender" name = "gender">
-							    <option value=""></option>
+                            <select class="mdl-selectfield__select" id="profile-gender" name = "gender">
+							    <option value="" selected>Chọn giới tính</option>
 							    <option value="Nam" ${profile.gender == 'Nam' ? 'selected' : ''}>Nam</option>
 							    <option value="Nữ" ${profile.gender == 'Nữ' ? 'selected' : ''}>Nữ</option>
 							    <option value="Khác" ${profile.gender == 'Khác' ? 'selected' : ''}>Khác</option>
 							</select>
                             <label class="mdl-selectfield__label" for="profile-gender">Chọn giới tính</label>
+                            <span id="profile-gender-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn giới tính!</span>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -264,6 +267,7 @@
                       <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="<%=request.getContextPath()%>/getToPolicy">điều khoản &#38; điều kiện khi đặt lịch</a></div>
                         <div class="schedule-row row">
                          <div class="col-md-6">
+                         <input style = "display: none;" type="text" id="emailAccount" name = "emailAccount" value = "${email}">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
                                 <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="name" name = "name">
@@ -497,6 +501,32 @@
         return number < 10 ? "0" + number : number;
     }
 
+    </script>
+    <script>
+    	function profile() {
+    		let check = true;
+			if( document.getElementById("profile-gender").value == "" ) {
+	            document.getElementById("profile-gender-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("profile-gender-invalid").style.display = "none";
+	         }
+			
+			if( document.getElementById("birthDay").value == "" ) {
+	            document.getElementById("birthDay-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("birthDay-invalid").style.display = "none";
+	         }
+			if( document.getElementById("blood").value == "" ) {
+	            document.getElementById("blood-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("blood-invalid").style.display = "none";
+	         }
+			
+			return check;
+    	}
     </script>
     <script>
     	function validate() {

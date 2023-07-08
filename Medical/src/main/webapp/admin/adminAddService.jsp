@@ -124,9 +124,9 @@
     <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
-    <form method="POST" action="<%=request.getContextPath()%>/adminAddService" enctype="multipart/form-data">
+    <form method="POST" action="<%=request.getContextPath()%>/adminAddService" enctype="multipart/form-data" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thêm dịch vụ mới</p>
             <div id="doctor-page" class="layer-stretch">
@@ -137,19 +137,22 @@
                         <div style = "margin-left: 15px;" class = "col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-heart"></i>
-                            <textarea class="mdl-textfield__input" rows="2" maxLength = "200" name = "name" id="profile-about"></textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Tên dịch vụ</label>               
+                            <textarea class="mdl-textfield__input" rows="2" maxLength = "200" name ="name" id="name"></textarea>
+                            <label class="mdl-textfield__label" for="name">Tên dịch vụ</label> 
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>              
                         </div>
                         </div>
                         <div class = "col-md-4">
                         <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon text-left">
 					        <i class="fa fa-building-o"></i>
 					        <label  for="status">Khoa</label>
-					        <select class="mdl-selectfield__select text-center" id="status" name = "idDepartment">
+					        <select class="mdl-selectfield__select text-center" id="department" name = "idDepartment">
+					        <option value = "" selected>--Chọn khoa--</option>
 					        <c:forEach items="${department}" var="item">
 					            <option value="${item.idDepartment }">${item.departmentName }</option>
 					            </c:forEach>
 					        </select>
+					        <span id="department-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
 				    </div>
                         </div>
                         <div style = " margin-top:20px;" class = "col-md-3"><input type = "file" id = "img1" name = "img1">
@@ -160,15 +163,16 @@
                             <div class="col-md-12">
                    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
-                            <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="profile-about"></textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Giới thiệu</label>
+                            <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="intro"></textarea>
+                            <label class="mdl-textfield__label" for="intro">Giới thiệu</label>
+                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                             <div class="row">
                                 <div style = "margin-left: 15px;" class="col-md-6">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 			                            <i class="fa fa-info"></i>
-			                            <textarea class="mdl-textfield__input" rows="12" maxLength = "200" name = "description1" id="profile-about"></textarea>
+			                            <textarea class="mdl-textfield__input" rows="12" maxLength = "200" name = "description1" id="description1"></textarea>
 			                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ nhất</label>
 			                        </div>
                                 </div>
@@ -185,7 +189,7 @@
                            <div class="col-md-12">
 		                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 		                            <i class="fa fa-info"></i>
-		                            <textarea class="mdl-textfield__input" rows="4" name = "description2" id="profile-about"></textarea>
+		                            <textarea class="mdl-textfield__input" rows="4" name = "description2" id="description2"></textarea>
 		                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ 2</label>
 		                        </div>
                         </div>
@@ -202,14 +206,14 @@
                             <div class="col-md-12">
 		                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 		                            <i class="fa fa-info"></i>
-		                            <textarea class="mdl-textfield__input" rows="4" name = "description3" id="profile-about"></textarea>
+		                            <textarea class="mdl-textfield__input" rows="4" name = "description3" id="description3"></textarea>
 		                            <label class="mdl-textfield__label" for="profile-about">Mô tả thứ 3</label>
 		                        </div>
                         </div>
                                 <div class="col-md-12">
 				                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 				                            <i class="fa fa-dot-circle-o"></i>
-				                            <textarea class="mdl-textfield__input" rows="2" name = "advantage" id="profile-about"></textarea>
+				                            <textarea class="mdl-textfield__input" rows="2" name = "advantage" id="advantage"></textarea>
 				                            <label class="mdl-textfield__label" for="profile-about">Lợi ích của dịch vụ</label>
 				                        </div>
 		                        </div>
@@ -217,7 +221,7 @@
                                 <div class="col-md-12">
 			                   	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
 			                            <i class="fa fa-flag"></i>
-			                            <textarea class="mdl-textfield__input" rows="2" name = "endline" id="profile-about"></textarea>
+			                            <textarea class="mdl-textfield__input" rows="2" name = "endline" id="endline"></textarea>
 			                            <label class="mdl-textfield__label" for="profile-about">Lời kết thúc</label>
 			                        </div>
                         	</div> 
@@ -261,4 +265,30 @@
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
 
+ <script>
+    function validate() {
+		let check = true;
+		if( document.getElementById("name").value == "" ) {
+            document.getElementById("name-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("name-invalid").style.display = "none";
+         }
+		
+		if( document.getElementById("intro").value == "" ) {
+            document.getElementById("intro-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("intro-invalid").style.display = "none";
+         }
+		if( document.getElementById("department").value == "" ) {
+            document.getElementById("department-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("department-invalid").style.display = "none";
+         }
+		
+		return check;
+	}
+    </script>
 </html>

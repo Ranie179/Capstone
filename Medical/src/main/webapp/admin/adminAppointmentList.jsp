@@ -127,7 +127,7 @@
     <section style = "height:auto;"  class="home">
     <!-- Start Event Calendar Section -->
     <div class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card">
                 <div id="calendar" class="font-13"></div>
             </div>

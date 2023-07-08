@@ -124,7 +124,7 @@
     <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper">
+        <div style = "width: 95%;" class="layer-wrapper">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">

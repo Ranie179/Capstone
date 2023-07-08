@@ -151,7 +151,11 @@
         </header>
 
         <main class="msger-chat">
-           
+          <div class = "text-justify">Bạn hãy nhập triệu chứng ở đây và nhập những triệu chứng cách nhau bởi dấu phẩy <br>
+          Medichat sẽ dự đoán cho bạn ngay<br>
+          Làm ơn nhập từ 3 triệu chứng trở lên (Từ 4 triệu chứng trở lên thì dự đoán sẽ chính xác hơn)<br>
+         <strong>Lưu ý!!!</strong> Thông tin dự đoán này không thể thay thế những khám bệnh, xét nghiệm, chẩn đoán... chính thức từ bệnh viện
+         </div>
         </main>
 
         <form id="chatForm" class="msger-inputarea">
@@ -190,6 +194,7 @@
                       <div class="login-condition">Khi nhấp vào nút "Đặt lịch khám", bạn đã đồng ý với<br /><a href="<%=request.getContextPath()%>/getToPolicy">điều khoản &#38; điều kiện khi đặt lịch</a></div>
                         <div class="schedule-row row">
                          <div class="col-md-6">
+                         <input style = "display: none;" type="text" id="emailAccount" name = "emailAccount" value = "${email}">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-user-o"></i>
                                 <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="name" name = "name">

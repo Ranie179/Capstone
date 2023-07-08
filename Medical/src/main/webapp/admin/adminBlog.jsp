@@ -126,7 +126,7 @@
     <!-- Start My Profile Section -->
     <form method="POST" action="<%=request.getContextPath()%>/adminEditBlog" enctype="multipart/form-data" method = "post" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
+        <div style = "width: 95%;" class="layer-wrapper text-center">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">${blogInfo.title}</p>
             <c:if test="${not empty success}">

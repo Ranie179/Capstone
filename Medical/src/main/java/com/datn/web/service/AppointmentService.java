@@ -54,4 +54,10 @@ public class AppointmentService {
 		return appointmentRepository.showAppointmentByID(id);
 	}
 
+	public void setApointmentWithAccount(String name, String phone, String date, String email, String gender,
+			int idDepartment, String note, String token, String emailAccount) {
+		appointmentRepository.setApointmentWithAccount(name, phone, date, email, gender, idDepartment, note, token, emailAccount);
+		
+	}
+
 }

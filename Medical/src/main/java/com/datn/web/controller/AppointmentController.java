@@ -4,6 +4,7 @@ package com.datn.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.apache.commons.mail.DefaultAuthenticator;
@@ -66,12 +67,17 @@ public class AppointmentController {
     }
 	
 	@RequestMapping(value = "setAppointment")
-	public String setApointment(@RequestParam("name") String name, @RequestParam("phone") String phone,
+	public String setApointment(@RequestParam(required = false) String emailAccount, @RequestParam("name") String name, @RequestParam("phone") String phone,
 			@RequestParam("date") String date, @RequestParam("email") String email, 
 			@RequestParam("gender") String gender,@RequestParam("idDepartment") int idDepartment, 
 			@RequestParam("note") String note, Model model) throws Exception {
 		String token = generateToken(10);
-		appointmentService.setAppointment(name, phone, date, email, gender, idDepartment, note, token);
+		if (!StringUtils.isEmpty(emailAccount)) {
+			appointmentService.setApointmentWithAccount(name, phone, date, email, gender, idDepartment, note, token, emailAccount);
+		}
+		else {
+			appointmentService.setAppointment(name, phone, date, email, gender, idDepartment, note, token);
+		}
 		List<Services> services = serviceService.showMoreService();
 		List<Doctors> doctors = doctorService.showExpDoctor();
 		List<Blogs> recent = blogService.getRecentBlog();

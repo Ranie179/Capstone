@@ -124,13 +124,14 @@
     <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
     <div id="doctor-page" class="layer-stretch">
-        <div class="layer-wrapper text-center">
+        <div class="layer-wrapper">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
-                       <div class = "table-wrapper">
+                       <div style = "width: 95%;" class = "table-wrapper">
         		<div class="theme-material-card">
-                            <p class="font-16">Danh sách tài khoản</p>
+                            <p class="font-16 text-center">Danh sách tài khoản</p>
+                            <a href = ""><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm tài khoản mới</button></a>
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary-head">
@@ -155,7 +156,7 @@
                         </div>
                    	</div>
 					</div>
-				<ul class="theme-pagination">
+				<ul class="theme-pagination text-center">
 				    <c:choose>
 				        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search and empty experience)}">
 				            <li><a href="<%=request.getContextPath()%>/adminShowDoctor?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
