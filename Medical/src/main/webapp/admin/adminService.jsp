@@ -129,6 +129,12 @@
         <div style = "width: 95%;" class="layer-wrapper text-center">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin dịch vụ ${serviceInfo.name}</p>
+            <c:if test="${not empty update}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
             <div id="doctor-page" class="layer-stretch">
         	<div class="layer-wrapper layer-bottom-5">
                         <div class="theme-img theme-img-scalerotate"><img src="/Medical<c:out value="${serviceInfo.image1}" />" alt=""></div>

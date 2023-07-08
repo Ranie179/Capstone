@@ -79,7 +79,8 @@ public class DepartmentController {
 	}
 	
 	@RequestMapping(value = "adminShowDepartment")
-	public String adminShowDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
+	public String adminShowDepartment(@RequestParam(required = false) String add, @RequestParam(required = false) String delete,
+			@RequestParam(defaultValue = "1") int page,  Model model) {
 		int pageSize = 10;
 	    int totalCount = departmentService.getTotalDepartmentCount( );
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
@@ -87,6 +88,8 @@ public class DepartmentController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("department", departments);
+	    model.addAttribute("add", add);
+	    model.addAttribute("delete", delete);
 		return "admin/adminDepartmentList";
 	}
 	
@@ -160,6 +163,7 @@ public class DepartmentController {
 		} else {
 			departmentService.adminAddDepartmentWithoutImage(newID, name, intro, information);
 		}
-		return "redirect:adminShowDepartment";
+		String add = "add";
+		return "redirect:adminShowDepartment?add="+ add;
 	}
 }

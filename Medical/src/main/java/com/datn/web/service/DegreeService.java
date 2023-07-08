@@ -33,4 +33,9 @@ public class DegreeService {
 		
 	}
 
+	public void adminAddDegree(String degreeName, String college, String year, int idDoctor) {
+		degreeRepository.adminAddDegree(degreeName, college, year, idDoctor);
+		
+	}
+
 }

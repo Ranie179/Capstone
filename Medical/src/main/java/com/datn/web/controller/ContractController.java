@@ -54,7 +54,8 @@ public class ContractController {
 		contractService.addContract(newID, name, nationality, phone, iPlace, identity, gender, idGraduate, birthDay, iDate, address1, address2,
 				createDate, endDate, salary, bankNumber, bank, workTime, restTime, leaveTime, idDepartment, idPosition, idPayment);
 		doctorService.addDoctor(name, gender, phone, birthDay, idPosition, idDepartment, salary,idGraduate, newID);
-		return "redirect:adminShowDoctor";
+		String add = "add";
+		return "redirect:adminShowDoctor?add=" + add;
 	}
 	
 	@RequestMapping(value = "getToAddDoctor")

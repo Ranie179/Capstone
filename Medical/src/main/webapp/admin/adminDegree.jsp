@@ -139,22 +139,22 @@
                    	<div class="col-md-12">
                    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                    		<input style = "display:none;" class="mdl-textfield__input" id="id" name = "id" value = "${degreeInfo.idDegree }">
-                            <i class="fa fa-envelope-o"></i>
+                            <i class="fa fa-graduation-cap"></i>
                             <input class="mdl-textfield__input" id="name" name = "name" value = "${degreeInfo.degreeName }">
                             <label class="mdl-textfield__label" for="name">Tên</label>
                             <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-key"></i>
+                            <i class="fa fa-university"></i>
                             <input class="mdl-textfield__input" type="text" id="college" name = "college" value = "${degreeInfo.college }">
                             <label class="mdl-textfield__label" for="college">Tên trường</label>
                             <span id="college-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-key"></i>
+                            <i class="fa fa-calendar-o"></i>
                             <input class="mdl-textfield__input" type="text" pattern="[0-9]{4}" id="year" name = "year" value = "${degreeInfo.year }">
                             <label class="mdl-textfield__label" for="year">Năm</label>
-                            <span class="mdl-textfield__error">Làm ơn nhập số năm chĩnh xác</span>
+                            <span class="mdl-textfield__error">Làm ơn nhập số năm chính xác</span>
                             <span id="year-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                     </div>

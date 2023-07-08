@@ -128,15 +128,27 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
-                    <c:if test="${empty doctorlist}">
+                       <div class = "table-wrapper">
+        		<div style = "margin: 0 0 0 0;" class="theme-material-card">
+                            <p class="font-16 text-center">Danh sách bác sĩ đang làm việc</p>
+                            <c:if test="${empty doctorlist}">
 						   <div style = "width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
                                 <strong>Xin lỗi!</strong> Không tìm thấy kết quả phù hợp với thông tin bạn tìm
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                             </div>
 						</c:if>
-                       <div class = "table-wrapper">
-        		<div style = "margin: 0 0 0 0;" class="theme-material-card">
-                            <p class="font-16 text-center">Danh sách bác sĩ đang làm việc</p>
+						<c:if test="${not empty add}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã thêm bác sĩ thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+						<c:if test="${not empty delete}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã xóa bác sĩ thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
                               <a href ="<%=request.getContextPath()%>/getToAddDoctor"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bác sĩ mới</button></a> 
                             <a href ="<%=request.getContextPath()%>/adminShowDeletedDoctor"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Xem những bác sĩ đã nghỉ làm</button></a>
                             <table class="table">

@@ -51,5 +51,19 @@ public class DegreeController {
 		String deleteDegree = "deleteDegree";
 		return "redirect:adminShowDoctorInfo?id=" + idDoctor + "&deleteDegree=" + deleteDegree;
 	}
+	
+	@RequestMapping(value = "getToAddDegree")
+	public String getToAddDegree(@RequestParam("idDoctor") int idDoctor, Model model) {
+		model.addAttribute("idDoctor", idDoctor);
+		return "admin/adminAddDegree";
+	}
+	
+	@RequestMapping(value = "adminAddDegree")
+	public String adminAddDegree(@RequestParam("idDoctor") int idDoctor, @RequestParam("name") String degreeName , 
+			@RequestParam("college") String college, @RequestParam("year") String year) {
+		degreeService.adminAddDegree(degreeName, college, year, idDoctor);
+		String add = "add";
+		return "redirect:adminShowDoctorInfo?id=" + idDoctor + "&add=" + add;
+	}
 
 }

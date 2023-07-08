@@ -93,7 +93,8 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(value = "adminShowDoctor")
-	public String adminShowDoctor(@RequestParam(required = false) Integer experience,
+	public String adminShowDoctor(@RequestParam(required = false) String add, @RequestParam(required = false) String delete,
+			@RequestParam(required = false) Integer experience,
 			@RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, 
 			@RequestParam(defaultValue = "1") int page, Model model) {
@@ -115,6 +116,8 @@ public class DoctorController {
 		model.addAttribute("idDepartment", idDepartment);
 		model.addAttribute("experience", experience);
 		model.addAttribute("search", search);
+		model.addAttribute("add", add);
+		model.addAttribute("delete", delete);
 		if (experience == null) {
 	        experience = 0;
 	    }
@@ -123,7 +126,8 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(value = "adminShowDoctorInfo")
-	public String adminShowDoctorInfo(@RequestParam(required = false) String deleteDegree, @RequestParam("id") int id, Model model) {
+	public String adminShowDoctorInfo(@RequestParam(required = false) String add, @RequestParam(required = false) String update,
+			@RequestParam(required = false) String deleteDegree, @RequestParam("id") int id, Model model) {
 		List<Doctors> doctorInfo = doctorService.showDoctorInfo(id);
 		model.addAttribute("doctorInfo", doctorInfo.get(0));
 		List<Departments> departments = departmentService.showDepartmentAndDoctor();
@@ -133,6 +137,8 @@ public class DoctorController {
 		List<Degrees> degrees = degreeService.showDegree(id);
 		model.addAttribute("degree", degrees);
 		model.addAttribute("deleteDegree", deleteDegree);
+		model.addAttribute("add", add);
+		model.addAttribute("update", update);
 		return "admin/adminDoctor";
 	}
 	
@@ -155,14 +161,15 @@ public class DoctorController {
 		} else {
 		    doctorService.adminEditDoctorWithoutAvatar(id, idDepartment, idPosition, experience, salary, information, phone, isWorking);
 		}
-
-		return "redirect:adminShowDoctorInfo?id=" + id;
+		String update = "update";
+		return "redirect:adminShowDoctorInfo?id=" + id + "&update=" + update;
 	}
 	
 	@RequestMapping(value = "adminDeleteDoctor")
 	public String adminDeleteDoctor(@RequestParam("id") int id) {
 		doctorService.adminDeleteDoctor(id);
-		return "redirect:adminShowDoctor";
+		String delete = "delete";
+		return "redirect:adminShowDoctor?delete=" + delete;
 	}
 	
 	@RequestMapping("adminShowDeletedDoctor")

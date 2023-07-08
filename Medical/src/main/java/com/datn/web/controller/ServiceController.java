@@ -81,7 +81,8 @@ public class ServiceController {
 	}
 
 	@RequestMapping(value = "adminShowService")
-	public String adminShowService(@RequestParam(defaultValue = "1") int page, 
+	public String adminShowService(@RequestParam(required = false) String add, @RequestParam(required = false) String delete, 
+			@RequestParam(defaultValue = "1") int page, 
 			@RequestParam(required = false) String search, Model model) {
 	    int pageSize = 10;
 	    int totalCount = serviceService.getTotalServiceCount(search);
@@ -91,21 +92,25 @@ public class ServiceController {
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("search", search);
+	    model.addAttribute("add", add);
+	    model.addAttribute("delete", delete);
 	    return "admin/adminServiceList";
 	}
 	
 	@RequestMapping(value = "adminDeleteService")
 	public String adminDeleteService(@RequestParam("id") int id, Model model) {
 		serviceService.adminDeleteService(id);
-		return "redirect:adminShowService";
+		String delete = "delete";
+		return "redirect:adminShowService?delete=" + delete;
 	}
 	
 	@RequestMapping(value = "adminShowServiceInfo")
-	public String adminShowServiceInfo(@RequestParam("id") int id, Model model){
+	public String adminShowServiceInfo(@RequestParam(required = false) String update, @RequestParam("id") int id, Model model){
 		List<Services> serviceInfo = serviceService.showServiceInfo(id);
 		List<Departments> departments = departmentService.showDepartmentAndDoctor();
 		model.addAttribute("serviceInfo", serviceInfo.get(0));
 	    model.addAttribute("department", departments);
+	    model.addAttribute("update", update);
 		return "admin/adminService";
 	}
 	public void getUrl(MultipartFile file, String relativePath) throws IOException {
@@ -172,7 +177,8 @@ public class ServiceController {
 		else {
 			serviceService.adminEditService(id, name, intro, description1, description2, description3, advantage, endline);
 		}
-		return "redirect:adminShowServiceInfo?id=" + id;
+		String update = "update";
+		return "redirect:adminShowServiceInfo?id=" + id + "&update=" + update;
 	}
 	@RequestMapping(value = "getToAddService")
 	public String getToAddService(Model model) {
@@ -238,7 +244,8 @@ public class ServiceController {
 		else {
 			serviceService.adminAddService(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline);
 		}
-		return "redirect:adminShowService";
+		String add = "add";
+		return "redirect:adminShowService?add=" + add;
 	}
 	
 

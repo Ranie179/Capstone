@@ -134,12 +134,12 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-user-o"></i>
                             <input style = "display:none;" name  = "id" value = "${appointment.id }">
-                            <input class="mdl-textfield__input" type="text" id="profile-name" readonly value = "${appointment.name }">
+                            <input class="mdl-textfield__input" type="text" id="profile-name" name = "name" readonly value = "${appointment.name }">
                             <label class="mdl-textfield__label" for="profile-name">Tên khách hàng</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-envelope-o"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="profile-email" readonly value = "${appointment.email }">
+                            <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="profile-email" name = "email" readonly value = "${appointment.email }">
                             <label class="mdl-textfield__label" for="profile-email">Email</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
@@ -151,7 +151,7 @@
                     <div class="col-md-6">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-calendar"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-birthdate" readonly value = "${appointment.appointmentDate }">
+                            <input class="mdl-textfield__input" type="text" id="profile-birthdate" name = "date" readonly value = "${appointment.appointmentDate }">
                             <label class="mdl-textfield__label" for="profile-birthdate">Ngày giờ hẹn</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
@@ -161,7 +161,7 @@
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-building-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-address-2" readonly value = "${appointment.department.departmentName }">
+                            <input class="mdl-textfield__input" type="text" id="profile-address-2" name = "department" readonly value = "${appointment.department.departmentName }">
                             <label class="mdl-textfield__label" for="profile-address-2">Khoa</label>
                             <span class="mdl-textfield__error">Please Enter Valid Address!</span>
                         </div>
@@ -178,7 +178,7 @@
 				        <i class="fa fa-check-square-o"></i>
 				        <select class="mdl-selectfield__select" id="status" name = "status">
 				            <option value="Đã lên lịch" ${appointment.appointmentStatus == 'Đã lên lịch' ? 'selected' : ''}>Đã lên lịch</option>
-				            <option value="Đã hủy" ${appointment.appointmentStatus == 'Đã bị hủy' ? 'selected' : ''}>Đã bị hủy</option>
+				            <option value="Đã bị hủy" ${appointment.appointmentStatus == 'Đã bị hủy' ? 'selected' : ''}>Đã bị hủy</option>
 				            <option value="Đã xong" ${appointment.appointmentStatus == 'Đã xong' ? 'selected' : ''}>Đã xong</option>
 				        </select>
 				    </div>

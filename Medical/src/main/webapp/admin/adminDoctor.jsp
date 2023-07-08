@@ -136,6 +136,18 @@
 						        <button type="button" class="close" data-dismiss="alert">×</button>
 						    </div>
 						</c:if>
+			<c:if test="${not empty add}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã thêm bằng/chứng chỉ thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+			<c:if test="${not empty update}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
             <div id="doctor-page" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-5">
                 <div class="row">
@@ -236,7 +248,7 @@
             <div class="modal-content">
              <div class="col-sm-12">
                         <div class="sub-ttl pt-4 font-20">Bằng cấp/chứng chỉ</div>
-                        <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bằng mới</button> 
+                        <a href = "<%=request.getContextPath()%>/getToAddDegree?idDoctor=${doctorInfo.idDoctor  }" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bằng mới</a> 
                         <table class="table table-hover">
                             <thead>
                                 <tr style = "text-align: center;" class="table-primary-head">

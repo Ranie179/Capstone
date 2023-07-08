@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,14 @@ public class AppointmentController {
 	private ServiceService serviceService;
 	@Autowired
 	private DepartmentService departmentService;
+	
+	public String getCurrentDate() {
+	    Date currentDate = new Date(System.currentTimeMillis());
+	    SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+	    String formattedDate = outputFormat.format(currentDate);
+	    return formattedDate;
+	}
 	
 	public String getDepartment(int idDepartment) {
 		return departmentService.getDepartment(idDepartment);
@@ -159,9 +168,44 @@ public class AppointmentController {
 	}
 	
 	@RequestMapping(value = "adminUpdateAppointment")
-	public String adminUpdateAppointment(@RequestParam("id") int id, @RequestParam("status") String status, 
+	public String adminUpdateAppointment(@RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("date") String date, @RequestParam("department") String department,
+			@RequestParam("id") int id, @RequestParam("status") String status, 
 			@RequestParam("information") String information,
-			Model model) {
+			Model model) throws EmailException, ParseException {
+		if(status.equals("Đã xong")) {
+			String message = "Xin chào" + name + "\r\nChúng tôi gửi mail này để thông báo "
+					+ "rằng cuộc hẹn của bạn tại phòng khám của chúng tôi vào lúc " + date + "\r\n"
+						+ "Với khoa:" + department + "\r\n"+ status + " vào lúc " + getCurrentDate() + "\r\n"
+							+ "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi! Chúc bạn có một ngày vui vẻ!";
+			Email mail = new SimpleEmail();
+			mail.setHostName("smtp-mail.outlook.com");
+			mail.setSmtpPort(587);
+			mail.setAuthenticator(new DefaultAuthenticator("rainievalentine@outlook.com.vn", "Rainie132$"));
+			mail.setStartTLSEnabled(true);
+			mail.setFrom("rainievalentine@outlook.com.vn", "Phòng khám đa khoa Medic Support");
+			mail.addTo(email, "client");
+			mail.setSubject("Thông báo lịch hẹn ở phòng khám Medic Support đã hoàn thành");
+			mail.setMsg(message);
+			mail.send();
+			}
+			if (status.equals("Đã bị hủy")) {
+				String message = "Xin chào" + name + "\r\nChúng tôi gửi mail này để thông báo "
+						+ "rằng cuộc hẹn của bạn tại phòng khám của chúng tôi vào lúc " + date + "\r\n"
+						+ "Với khoa:" + department + "\r\n" + status + " vào lúc " + getCurrentDate() + "\r\n"
+								+ "Vì lí do như sau: " + information + "\r\n"
+								+ "Cảm phiền bạn đặt lại lịch nếu vẫn muốn sử dụng dịch vụ của chúng tôi! Xin cảm ơn";
+				Email mail = new SimpleEmail();
+				mail.setHostName("smtp-mail.outlook.com");
+				mail.setSmtpPort(587);
+				mail.setAuthenticator(new DefaultAuthenticator("rainievalentine@outlook.com.vn", "Rainie132$"));
+				mail.setStartTLSEnabled(true);
+				mail.setFrom("rainievalentine@outlook.com.vn", "Phòng khám đa khoa Medic Support");
+				mail.addTo(email, "client");
+				mail.setSubject("Thông báo lịch hẹn ở phòng khám Medic Support bị hủy");
+				mail.setMsg(message);
+				mail.send();
+			}
 		appointmentService.adminUpdateAppointment(id, status, information);
 		return "redirect:adminShowAllAppointment";
 	}

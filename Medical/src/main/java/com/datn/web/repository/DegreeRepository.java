@@ -59,4 +59,12 @@ public class DegreeRepository {
 		
 	}
 
+	public void adminAddDegree(String degreeName, String college, String year, int idDoctor) {
+		String sql = "INSERT INTO Degrees(Degree_Name, College, Years, ID_Doctor) "
+				+ "VALUES (?, ?, ?, ?);";
+		Object[] params = new Object[] {degreeName, college, year, idDoctor};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
 }

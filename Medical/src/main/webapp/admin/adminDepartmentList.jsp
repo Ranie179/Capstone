@@ -131,6 +131,18 @@
                        <div class = "table-wrapper">
         		<div style = "margin: 0 0 0 0;" class="theme-material-card">
                             <p style = "text-align: center;"class="font-16">Danh sách khoa đang vận hành</p>
+                            <c:if test="${not empty delete}">
+							   <div class="alert alert-success" role="alert">
+							        <strong>Thông báo</strong> Đã xóa khoa thành công!!!
+							        <button type="button" class="close" data-dismiss="alert">×</button>
+							    </div>
+							</c:if>
+							<c:if test="${not empty add}">
+							   <div class="alert alert-success" role="alert">
+							        <strong>Thông báo</strong> Đã thêm khoa thành công!!!
+							        <button type="button" class="close" data-dismiss="alert">×</button>
+							    </div>
+							</c:if>
                             <a href = "admin/adminAddDepartment.jsp"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm khoa mới</button></a>
                             <a href ="<%=request.getContextPath()%>/adminShowDeletedDepartment"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Xem những khoa không còn hoạt động</button></a>
                             <table class="table">
@@ -257,7 +269,7 @@
     $('#confirmButton').click(function() {
       confirmDelete(id);
       hide();
-      window.location.href = "adminShowDepartment";
+      window.location.href = "adminShowDepartment?delete='delete'";
     });
   }
 
