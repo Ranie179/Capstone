@@ -181,7 +181,7 @@
                 </div>
                 <div class="login-link">
                     <span class="paragraph-small">Đã có tài khoản?</span>
-                    <a href="#" class="">Đăng nhập ngay</a>
+                    <a href="<%=request.getContextPath()%>/login" class="">Đăng nhập ngay</a>
                 </div>
             </div>
 			</form>

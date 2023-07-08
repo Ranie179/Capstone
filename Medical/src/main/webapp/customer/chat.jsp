@@ -491,7 +491,7 @@
                     appendMessage('You', userInput, 'right');
 
                     $.ajax({
-                        url: 'http://localhost:5000/chat',
+                        url: 'sendChat',
                         type: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify({user_input: userInput}),

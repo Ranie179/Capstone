@@ -173,7 +173,7 @@
 					</c:if>
                 <div class="login-link">
                     <span class="paragraph-small">Vẫn chưa có tài khoản?</span>
-                    <a href="register.jsp" class="">Đăng ký ngay</a>
+                    <a href="<%=request.getContextPath()%>/getToRegister" class="">Đăng ký ngay</a>
                 </div>
             </div>
         </div>
