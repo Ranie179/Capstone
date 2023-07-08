@@ -55,13 +55,45 @@ public class AccountRepository {
 		jdbcTemplate.update(sql2, params2);
 		
 	}
-	public List<Account> adminShowAccount() {
-		String sql = "SELECT * FROM ACCOUNT";
-		return jdbcTemplate.query(sql, new AccountRowMapper());
+	public List<Account> adminShowAccount(int page, int pageSize) {
+		int offset = (page - 1) * pageSize;
+		String sql = "SELECT * FROM ACCOUNT LIMIT ? OFFSET ?";
+		Object[] params = new Object[]{pageSize, offset};
+		return jdbcTemplate.query(sql, params, new AccountRowMapper());
 	}
 	public void adminDeleteAccount(int id) {
 		String sql = "DELETE FROM ACCOUNT WHERE ID_ACCOUNT = ?";
 		Object[] params = new Object[] {id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	public int getTotalAccount() {
+		String sql = "SELECT COUNT(*) FROM account";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	public List<Account> adminShowAccountInfo(int id) {
+		String sql = "SELECT * FROM ACCOUNT WHERE ID_ACCOUNT = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new AccountRowMapper());
+	}
+	public void adminResetPassword(String password, int id) {
+		String sql = "UPDATE ACCOUNT "
+				+ "SET pass = ? WHERE ID_ACCOUNT = ?";
+		Object[] params = new Object[] {password, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	public void adminEditAccount(String role, int id) {
+		String sql = "UPDATE ACCOUNT "
+				+ "SET role = ? WHERE ID_ACCOUNT = ?";
+		Object[] params = new Object[] {role, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+	public void adminAddAccount(String email, String hashpass, String role) {
+		String sql = "INSERT INTO ACCOUNT(Email, Pass, Role) "
+				+ "VALUES (?, ?, ?);";
+		Object [] params = new Object[] {email, hashpass, role};
 		jdbcTemplate.update(sql, params);
 		
 	}

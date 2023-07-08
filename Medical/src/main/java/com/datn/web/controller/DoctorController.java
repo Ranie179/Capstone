@@ -123,7 +123,7 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(value = "adminShowDoctorInfo")
-	public String adminShowDoctorInfo(@RequestParam("id") int id, Model model) {
+	public String adminShowDoctorInfo(@RequestParam(required = false) String deleteDegree, @RequestParam("id") int id, Model model) {
 		List<Doctors> doctorInfo = doctorService.showDoctorInfo(id);
 		model.addAttribute("doctorInfo", doctorInfo.get(0));
 		List<Departments> departments = departmentService.showDepartmentAndDoctor();
@@ -132,7 +132,8 @@ public class DoctorController {
 		model.addAttribute("position", position);
 		List<Degrees> degrees = degreeService.showDegree(id);
 		model.addAttribute("degree", degrees);
-		return "admin/test";
+		model.addAttribute("deleteDegree", deleteDegree);
+		return "admin/adminDoctor";
 	}
 	
 	@RequestMapping(value = "adminEditDoctor")

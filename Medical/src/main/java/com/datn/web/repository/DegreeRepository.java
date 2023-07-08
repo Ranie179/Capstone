@@ -37,4 +37,26 @@ public class DegreeRepository {
 		return jdbcTemplate.query(sql, params, new DegreeRowMapper());
 	}
 
+	public List<Degrees> adminShowDegreeInfo(int id) {
+		String sql = "SELECT * FROM DEGREES WHERE ID_Degree = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new DegreeRowMapper());
+	}
+
+	public void adminEditDegree(String name, String college, String year, int id) {
+		String sql = "UPDATE degrees "
+				+ "SET Degree_Name = ?, College = ?, Years = ? "
+				+ "WHERE ID_Degree = ?";
+		Object[] params = new Object[] {name, college, year, id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
+	public void adminDeleteDegree(int id) {
+		String sql = "DELETE FROM Degrees WHERE ID_Degree = ?";
+		Object[] params = new Object[] {id};
+		jdbcTemplate.update(sql, params);
+		
+	}
+
 }

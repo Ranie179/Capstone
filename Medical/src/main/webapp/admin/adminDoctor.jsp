@@ -130,6 +130,12 @@
         <div style = "width: 95%;" class="layer-wrapper">
             <div class="theme-material-card">
             <p style = "text-align: center;"class="font-16">Thông tin bác sĩ</p>
+            <c:if test="${not empty deleteDegree}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã xóa bằng/chứng chỉ thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
             <div id="doctor-page" class="layer-stretch">
         <div class="layer-wrapper layer-bottom-5">
                 <div class="row">
@@ -229,7 +235,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
              <div class="col-sm-12">
-                        <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
+                        <div class="sub-ttl pt-4 font-20">Bằng cấp/chứng chỉ</div>
                         <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bằng mới</button> 
                         <table class="table table-hover">
                             <thead>
@@ -247,8 +253,8 @@
                                     <td style = "text-align: center;"><c:out value="${item.college}" /></td>
                                     <td style = "text-align: center;" ><span ><c:out value="${item.year}" /></span></td>
                                     <td class="text-center">
-                                            <a  href="" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa" onclick=""><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                                            <a  href="<%=request.getContextPath()%>/adminShowDegreeInfo?id=${item.idDegree}&idDoctor=${doctorInfo.idDoctor }" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="confirmDeleteDegree(${item.idDegree}, ${doctorInfo.idDoctor })"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                                         </td>
                                 </tr>
                                 </c:forEach>
@@ -297,6 +303,12 @@
   function hide() {
     $('#appointment').modal('hide');
   }
+  
+  function confirmDeleteDegree(id, idDoctor) {
+	  if (confirm("Bạn có chắc muốn xóa bằng/chứng chỉ này không?")) {
+	    window.location.href = "adminDeleteDegree?id=" + id + "&idDoctor=" + idDoctor
+	  }
+	}
 </script>
 
 </html>

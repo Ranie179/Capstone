@@ -18,4 +18,19 @@ public class DegreeService {
 		return degreeRepository.showDegree(idDoctor);
 	}
 
+	public List<Degrees> adminShowDegreeInfo(int id) {
+		return degreeRepository.adminShowDegreeInfo(id);
+		
+	}
+
+	public void adminEditDegree(String name, String college, String year, int id) {
+		degreeRepository.adminEditDegree(name, college, year, id);
+		
+	}
+
+	public void adminDeleteDegree(int id) {
+		degreeRepository.adminDeleteDegree(id);
+		
+	}
+
 }

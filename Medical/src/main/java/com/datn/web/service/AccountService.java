@@ -39,12 +39,35 @@ public class AccountService {
 		
 	}
 
-	public List<Account> adminShowAccount() {
-		return accountRepository.adminShowAccount();
+	public List<Account> adminShowAccount(int page, int pageSize) {
+		return accountRepository.adminShowAccount(page, pageSize);
 	}
 
 	public void adminDeleteAccount(int id) {
 		accountRepository.adminDeleteAccount(id);
+		
+	}
+
+	public int getTotalAccount() {
+		return accountRepository.getTotalAccount();
+	}
+
+	public List<Account> adminShowAccountInfo(int id) {
+		return accountRepository.adminShowAccountInfo(id);
+	}
+
+	public void adminResetPassword(String password, int id) {
+		accountRepository.adminResetPassword(password, id);
+		
+	}
+
+	public void adminEditAccount(String role, int id) {
+		accountRepository.adminEditAccount(role, id);
+		
+	}
+
+	public void adminAddAccount(String email, String hashpass, String role) {
+		accountRepository.adminAddAccount(email, hashpass, role);
 		
 	}
 

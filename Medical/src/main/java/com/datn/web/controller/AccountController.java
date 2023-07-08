@@ -166,15 +166,62 @@ public class AccountController {
 		}
 	    
 		@RequestMapping(value = "adminShowAccount")
-		public String adminShowAccount(Model model) {
-			List<Account> account = accountService.adminShowAccount();
+		public String adminShowAccount(@RequestParam(required = false) String delete, @RequestParam(required = false) String add, 
+				@RequestParam(defaultValue = "1") int page, Model model) {
+			int pageSize = 10;
+		    int totalCount = accountService.getTotalAccount();
+		    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+			List<Account> account = accountService.adminShowAccount(page, pageSize);
 			model.addAttribute("account", account);
+			model.addAttribute("currentPage", page);
+		    model.addAttribute("totalPages", totalPages);
+		    model.addAttribute("add", add);
+		    model.addAttribute("delete", delete);
 			return "admin/adminAccountList";
 		}
 		
 		@RequestMapping(value = "adminDeleteAccount")
 		public String adminDeleteAccount(@RequestParam("id") int id) {
-			accountService.adminDeleteAccount(id)
-;			return "redirect:adminShowAccount";
+			accountService.adminDeleteAccount(id);
+			String delete = "delete";
+			return "redirect:adminShowAccount?delete=" + delete;
+		}
+		
+		@RequestMapping(value = "adminShowAccountInfo")
+		public String adminShowAccountInfo(@RequestParam(required = false) String edit, @RequestParam(required = false) String reset, @RequestParam("id") int id, Model model) {
+			List<Account> accountInfo = accountService.adminShowAccountInfo(id);
+			model.addAttribute("accountInfo", accountInfo.get(0));
+			model.addAttribute("reset", reset);
+			model.addAttribute("edit", edit);
+			return "admin/adminAccount";
+		}
+		
+		@RequestMapping(value = "adminResetPassword")
+		public String adminResettPassword(@RequestParam("id") int id) {
+			String password = hashPassword("1");
+			accountService.adminResetPassword(password, id);
+			String reset = "reset";
+			return "redirect:adminShowAccountInfo?reset=" + reset + "&id=" + id;
+		}
+		
+		@RequestMapping(value = "adminEditAccount") 
+		public String adminEditAccount (@RequestParam("role") String role, @RequestParam("id") int id) {
+			accountService.adminEditAccount(role, id);
+			String edit = "edit";
+			return "redirect:adminShowAccountInfo?id=" + id + "&edit=" + edit;
+		}
+		
+		@RequestMapping(value = "getToAddAccount")
+		public String getToAddAccount() {
+			return "admin/adminAddAccount";
+		}
+		
+		@RequestMapping(value = "adminAddAccount")
+		public String adminAddAccount(@RequestParam("email") String email, @RequestParam("pass") String pass,
+				@RequestParam("role") String role) {
+			String hashpass = hashPassword(pass);
+			accountService.adminAddAccount(email, hashpass, role);
+			String add = "add";
+			return "redirect:adminShowAccount?add=" + add;
 		}
 }

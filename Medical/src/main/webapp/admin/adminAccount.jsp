@@ -129,40 +129,39 @@
         <div class="layer-wrapper">
             <div class="theme-material-card text-center">
             <p style = "text-align: center;"class="font-16">Thông tin của tài khoản</p>
-             <c:if test="${not empty successMessage}">
+             <c:if test="${not empty edit}">
 						   <div class="alert alert-success" role="alert">
-						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
+						        <strong>Thông báo</strong> Đã cập nhật quyền tài khoản thành công!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
+						<c:if test="${not empty reset}">
+						   <div class="alert alert-success" role="alert">
+						        <strong>Thông báo</strong> Đã reset mật khẩu thành công!!!
 						        <button type="button" class="close" data-dismiss="alert">×</button>
 						    </div>
 						</c:if>
                 <div class="row">
                    	<div class="col-md-8">
-                   		<input style = "display: none;" class="mdl-textfield__input" type="text" id="id" name = "id" value = "${department.idDepartment }">
+                   		<input style = "display: none;" class="mdl-textfield__input" type="text" id="id" name = "id" value = "${accountInfo.idAccount }">
                    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-envelope-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="name" name = "name" value = "${account.email }">
-                            <label class="mdl-textfield__label" for="profile-address-2">Email</label>
-                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
-                            <i class="fa fa-key"></i>
-                            <input class="mdl-textfield__input" type="password" id="name" name = "name" value = "${account.pass }">
-                            <label class="mdl-textfield__label" for="profile-about">Mật khẩu</label>
-                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                            <input class="mdl-textfield__input" type="text" id="email" name = "email" readonly value = "${accountInfo.email }">
+                            <label class="mdl-textfield__label" for="email">Email</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-user-circle-o"></i>
-                             <select class="mdl-selectfield__select" id="status" name = "idDepartment">
-				            <option value="" >user</option>
-				            <option value="" >admin</option>
+                             <select class="mdl-selectfield__select" id="role" name = "role">
+				            <option value="user" ${accountInfo.role == 'user' ? 'selected' : ''}>user</option>
+				            <option value="admin" ${accountInfo.role == 'admin' ? 'selected' : ''}>admin</option>
 				        </select>
-                            <span id="information-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
                         </div>
                     </div>
                 <div class="form-submit">
+                	<a onClick = "confirmReset(${accountInfo.idAccount})" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Reset mật khẩu</a>
                     <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
             </div>  
@@ -200,29 +199,11 @@
     <script src='<c:url value="/resources/js/custom.js" />'></script>
     
      <script>
-    	function validate() {
-    		let check = true;
-			if( document.getElementById("name").value == "" ) {
-	            document.getElementById("name-invalid").style.display = "block";
-	            check = false;
-	         } else {
-	        	 document.getElementById("name-invalid").style.display = "none";
-	         }
-			if( document.getElementById("intro").value == "" ) {
-	            document.getElementById("intro-invalid").style.display = "block";
-	            check = false;
-	         } else {
-	        	 document.getElementById("intro-invalid").style.display = "none";
-	         }
-			if( document.getElementById("information").value == "" ) {
-	            document.getElementById("information-invalid").style.display = "block";
-	            check = false;
-	         } else {
-	        	 document.getElementById("information-invalid").style.display = "none";
-	         }
-			
-			return check;
-    	}
+     function confirmReset(idAccount) {
+		  if (confirm("Bạn có chắc muốn reset mật khẩu này về 1 không?")) {
+		    window.location.href = "adminResetPassword?id=" + idAccount
+		  }
+		}
     </script>
 
 </html>

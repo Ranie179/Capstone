@@ -123,86 +123,53 @@
 
     <section style = "height:auto;"  class="home">
         		    <!-- Start Doctor List Section -->
-    <div id="doctor-page" class="layer-stretch">
+    <!-- Start My Profile Section -->
+    <form action = "<%=request.getContextPath()%>/adminAddAccount" method="POST" enctype="multipart/form-data" onsubmit = "return(validate());">
+    <div id="profile-page" class="layer-stretch">
         <div class="layer-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                <c:if test="${not empty add}">
+            <div class="theme-material-card text-center">
+            <p style = "text-align: center;"class="font-16">Thông tin của tài khoản</p>
+             <c:if test="${not empty successMessage}">
 						   <div class="alert alert-success" role="alert">
-						        <strong>Thông báo</strong> Đã thêm tài khoản thành công!!!
+						        <strong>Thông báo</strong> Đã cập nhật thành công!!!
 						        <button type="button" class="close" data-dismiss="alert">×</button>
 						    </div>
 						</c:if>
-						<c:if test="${not empty delete}">
-						   <div class="alert alert-success" role="alert">
-						        <strong>Thông báo</strong> Đã xóa tài khoản thành công!!!
-						        <button type="button" class="close" data-dismiss="alert">×</button>
-						    </div>
-						</c:if>
-                    <div class="row">
-                       <div style = "width: 95%;" class = "table-wrapper">
-        		<div class="theme-material-card">
-                            <p class="font-16 text-center">Danh sách tài khoản</p>
-                            <a href = "<%=request.getContextPath()%>/getToAddAccount"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm tài khoản mới</button></a>
-                            <table class="table">
-                                <thead>
-                                    <tr class="table-primary-head">
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Quyền</th>
-                                        <th class="text-center">Hành động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${account}" var="item">
-                                    <tr>
-                                        <td class="text-center">${item.email}</td>
-                                        <td class="text-center">${item.role }</td>
-                                         <td class="text-center">
-                                            <a href="<%=request.getContextPath()%>/adminShowAccountInfo?id= ${item.idAccount}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
-                                            <a onClick="confirmDelete(${item.idAccount })" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
-                                        </td>
-                                    </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+                <div class="row">
+                   	<div class="col-md-8">
+                   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-envelope-o"></i>
+                            <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email" >
+                            <label class="mdl-textfield__label" for="email">Email</label>
+                            <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                            <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
-                   	</div>
-					</div>
-				 <ul class="theme-pagination text-center">
-					    <c:choose>
-					        <c:when test="${currentPage > 1}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowAccount?page=${currentPage - 1}">&laquo; Previous</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>&laquo; Previous</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					
-					    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-					        <c:choose>
-					            <c:when test="${loop.index == currentPage}">
-					                <li class="active"><span>${loop.index}</span></li>
-					            </c:when>
-					            <c:otherwise>
-					                <li><a href="<%=request.getContextPath()%>/adminShowAccount?page=${loop.index}">${loop.index}</a></li>
-					            </c:otherwise>
-					        </c:choose>
-					    </c:forEach>
-					
-					    <c:choose>
-					        <c:when test="${currentPage < totalPages}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowAccount?page=${currentPage + 1}">Next &raquo;</a></li>
-					        </c:when>
-					        <c:otherwise>
-					            <li><span>Next &raquo;</span></li>
-					        </c:otherwise>
-					    </c:choose>
-					</ul>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-key"></i>
+                            <input class="mdl-textfield__input" type="password" id="pass" name = "pass">
+                            <label class="mdl-textfield__label" for="pass">Mật khẩu</label>
+                            <span id="pass-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            <i class="fa fa-user-circle-o"></i>
+                             <select class="mdl-selectfield__select" id="role" name = "role">
+                             <option class = "text-center" value = "" selected>--Chọn quyền tài khoản--</option>
+				            <option class = "text-center" value="user" >USER</option>
+				            <option class = "text-center" value="user" >ADMIN</option>
+				        </select>
+                            <span id="role-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
+                        </div>
+                        </div>
+                    </div>
+                <div class="form-submit">
+                    <button type = "submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Lưu</button>
                 </div>
-            </div>
+            </div>  
         </div>
-    </div><!-- End Doctor List Section -->
-        		
+    </div>
+ </form><!-- End My Profile Section -->
     </section>
 </body>
     <script src = '<c:url value="/resources/js/js-page-admin.js" />' ></script>
@@ -232,11 +199,30 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-<script>
-function confirmDelete(id) {
-	  if (confirm("Bạn có chắc muốn xóa tài khoản này không?")) {
-	    window.location.href = "adminDeleteAccount?id=" + id
-	  }
-	}
-</script>
+    
+     <script>
+    	function validate() {
+    		let check = true;
+			if( document.getElementById("email").value == "" ) {
+	            document.getElementById("email-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("email-invalid").style.display = "none";
+	         }
+			if( document.getElementById("pass").value == "" ) {
+	            document.getElementById("pass-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("pass-invalid").style.display = "none";
+	         }
+			if( document.getElementById("role").value == "" ) {
+	            document.getElementById("role-invalid").style.display = "block";
+	            check = false;
+	         } else {
+	        	 document.getElementById("role-invalid").style.display = "none";
+	         }
+			return check;
+    	}
+    </script>
+
 </html>
