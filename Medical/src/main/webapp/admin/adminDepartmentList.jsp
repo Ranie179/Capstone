@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>
@@ -143,7 +143,7 @@
 							        <button type="button" class="close" data-dismiss="alert">×</button>
 							    </div>
 							</c:if>
-                            <a href = "admin/adminAddDepartment.jsp"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm khoa mới</button></a>
+                            <a href = "<%=request.getContextPath()%>/getToAddDepartment"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm khoa mới</button></a>
                             <a href ="<%=request.getContextPath()%>/adminShowDeletedDepartment"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Xem những khoa không còn hoạt động</button></a>
                             <table class="table">
                                 <thead>
@@ -209,7 +209,7 @@
             <div class="modal-content">
             <h1 style=" text-align: center;text-transform: uppercase;">Xác nhận!</h1>
                      <div class="paragraph-medium paragraph-black text-center">Bạn có chắc muốn xóa khoa này không?</div>
-                     <div class="paragraph-medium paragraph-black text-center">Những bác sĩ trong khoa này sẽ được đưa về trạng thái không làm việc nữa</div>
+                     <div class="paragraph-medium paragraph-black text-center">Những bác sĩ trong khoa này sẽ được đưa về trạng thái không làm việc nữa và những dịch vụ liên quan đến khoa này đều bị xóa</div>
              <div class="schedule-col col-xl-12">
                                 <div style = "padding-top: 30px; "class="form-submit text-center">
                                 <a><button id="confirmButton" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-danger m-1">Xác nhận</button></a>

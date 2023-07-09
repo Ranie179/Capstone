@@ -323,6 +323,21 @@ public class ServiceRepository {
 	}
 
 
+	public int getTotalServiceCount(Integer idDepartment) {
+		 String sql = "SELECT COUNT(*) FROM service WHERE ID_Department = ?";
+		 Object[] params = new Object[] {idDepartment};
+		 return jdbcTemplate.queryForObject(sql, params, Integer.class);
+	}
+
+
+	public List<Services> showAllService(int page, int pageSize, Integer idDepartment) {
+		int offset = (page - 1) * pageSize;
+		String sql = "SELECT * FROM service WHERE ID_Department = ? LIMIT ? OFFSET ?";
+	    Object[] params = new Object[]{idDepartment, pageSize, offset};
+	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+
+
 
 
 

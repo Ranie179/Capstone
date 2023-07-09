@@ -42,7 +42,8 @@ public class DepartmentRepository {
 	public List<Departments> showDepartmentAndDoctor() {
 		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
 				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
-				+ "ON departments.ID_Department = doctors.ID_Department where departments.isWorking = \"Vẫn còn hoạt động\" GROUP BY departments.Department_Name;";
+				+ "ON departments.ID_Department = doctors.ID_Department where departments.isWorking = \"Vẫn còn hoạt động\" "
+				+ "AND doctors.isWorking = \"Vẫn còn làm việc\" GROUP BY departments.Department_Name;";
 		return jdbcTemplate.query(sql, new DepartmentRowMapper());
 	}
 	public int getTotalDepartmentCount() {
@@ -78,11 +79,16 @@ public class DepartmentRepository {
 		String sql2 ="UPDATE doctors\r\n"
 				+ "SET isWorking = 'Không còn làm việc nữa'\r\n"
 				+ "WHERE ID_Department IN (\r\n"
-				+ "    SELECT ID_Department FROM departments WHERE isWorking = 'Không còn hoạt động nữa'\r\n"
+				+ "SELECT ID_Department FROM departments WHERE isWorking = 'Không còn hoạt động nữa'\r\n"
+				+ ");";
+		String sql3 = "DELETE FROM service "
+				+ "WHERE ID_Department IN (\r\n"
+				+ "SELECT ID_Department FROM departments WHERE isWorking = 'Không còn hoạt động nữa'\r\n"
 				+ ");";
 		Object[] params = new Object[] {idDepartment};
 		jdbcTemplate.update(sql, params);
-		jdbcTemplate.update(sql2);		
+		jdbcTemplate.update(sql2);	
+		jdbcTemplate.update(sql3);
 	}
 	public List<Departments> adminShowDeletedDepartment(int page, int pageSize) {
 		int offset = (page - 1) * pageSize;

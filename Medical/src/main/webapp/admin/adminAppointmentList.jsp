@@ -45,7 +45,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Inventory.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAccount">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>

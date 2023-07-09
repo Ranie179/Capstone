@@ -29,18 +29,22 @@ public class ServiceService {
 		return serviceRepository.showServiceInfo(id);
 	}
 	
-	public int getTotalServiceCount(String search) {
-	    if (!StringUtils.isEmpty(search)) {
+	public int getTotalServiceCount(String search, Integer idDepartment) {
+	    if (!StringUtils.isEmpty(search) && idDepartment == null) {
 	        return serviceRepository.getTotalServiceCount(search);
+	    } else if (idDepartment != null && StringUtils.isEmpty(search)) { 
+	    	return serviceRepository.getTotalServiceCount(idDepartment);
 	    } else {
 	        return serviceRepository.getTotalServiceCount();
 	    }
 	}
 
 
-	public List<Services> showAllService(int page, int pageSize, String search) {
-	    if (!StringUtils.isEmpty(search)) {
+	public List<Services> showAllService(int page, int pageSize, String search, Integer idDepartment) {
+	    if (!StringUtils.isEmpty(search) && idDepartment == null) {
 	        return serviceRepository.showAllService(page, pageSize, search);
+	    } else if (idDepartment != null && StringUtils.isEmpty(search)) {
+	    	return serviceRepository.showAllService(page, pageSize, idDepartment);
 	    } else {
 	        return serviceRepository.showAllService(page, pageSize);
 	    }
@@ -55,7 +59,7 @@ public class ServiceService {
 		return serviceRepository.showServiceByIdDepartment(id);
 	}
 
-	public List<Services> adminShowService(int page, int pageSize, String search) {
+	public List<Services> adminShowService(int page, int pageSize, String search, Integer idDepartment) {
 		if (!StringUtils.isEmpty(search)) {
 	        return serviceRepository.adminShowService(page, pageSize, search);
 	    } else {

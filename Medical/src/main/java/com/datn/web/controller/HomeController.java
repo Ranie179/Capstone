@@ -36,6 +36,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.datn.web.bean.Blogs;
@@ -88,10 +89,11 @@ public class HomeController {
     }
     
     @RequestMapping(value = "getToRegister")
-    public String getToRegister(Model model)
+    public String getToRegister(@RequestParam(required = false) String failed, Model model)
     {
     	List<Departments> departments = departmentService.showDepartmentAndDoctor();
     	model.addAttribute("department", departments);
+    	model.addAttribute("failed", failed);
     	return "customer/register";
     }
     

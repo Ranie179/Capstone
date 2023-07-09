@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Inventory.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAccount">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
@@ -176,9 +176,12 @@
 					</div>
 				<ul class="theme-pagination text-center">
 					    <c:choose>
-					        <c:when test="${currentPage > 1}">
+					        <c:when test="${currentPage > 1 && (empty idDepartment and not empty search)}">
 					            <li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
 					        </c:when>
+					        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search)}">
+				            	<li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
+				        	</c:when>
 					        <c:otherwise>
 					            <li><span>&laquo; Previous</span></li>
 					        </c:otherwise>
@@ -190,14 +193,34 @@
 					                <li class="active"><span>${loop.index}</span></li>
 					            </c:when>
 					            <c:otherwise>
-					                <li><a href="<%=request.getContextPath()%>/adminShowService?page=${loop.index}&search=${search}">${loop.index}</a></li>
+					            	<c:choose>
+						            	<c:when test="${empty idDepartment and not empty search}">
+					                        <li><a href="<%=request.getContextPath()%>/adminShowService?page=${loop.index}&search=${search}">${loop.index}</a></li>
+					                    </c:when>
+					                    <c:when test="${not empty idDepartment and empty search}">
+					                        <li><a href="<%=request.getContextPath()%>/adminShowService?page=${loop.index}&idDepartment=${idDepartment}">${loop.index}</a></li>
+					                    </c:when>
+				                    <c:otherwise>
+					                		<li><a href="<%=request.getContextPath()%>/adminShowService?page=${loop.index}">${loop.index}</a></li>
+					                	</c:otherwise>
+					                </c:choose>
 					            </c:otherwise>
 					        </c:choose>
 					    </c:forEach>
 					
 					    <c:choose>
 					        <c:when test="${currentPage < totalPages}">
-					            <li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+					        	<c:choose>
+					        		<c:when test="${empty idDepartment and not empty search}">
+					        			<li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+				                    </c:when>
+				                    <c:when test="${not empty idDepartment and empty search}">
+					        			<li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage + 1}&idDepartment=${idDepartment}">Next &raquo;</a></li>
+				                    </c:when>
+				                <c:otherwise>
+					            		<li><a href="<%=request.getContextPath()%>/adminShowService?page=${currentPage + 1}">Next &raquo;</a></li>
+					            	</c:otherwise>
+					            </c:choose>
 					        </c:when>
 					        <c:otherwise>
 					            <li><span>Next &raquo;</span></li>
@@ -218,6 +241,14 @@
 						    </div>
 						</form>
                         </div>
+                    </div>
+                    <div class="theme-material-card text-center" style = "margin-top: 50px; height: 400px; overflow-y: auto;">
+                        <div class="sub-ttl">Tìm dịch vụ theo khoa</div>
+                        <ul class="category-list">
+                        	<c:forEach items="${department}" var="item">
+                            <li><a href="<%=request.getContextPath()%>/adminShowService?idDepartment=${item.idDepartment }"><i class="fa fa-newspaper-o"></i>${item.departmentName }</a><span>(Số D.Vụ:${item.numOfServices })</span></li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -157,10 +157,10 @@ public class AccountController {
 				return "customer/registerSuccess";
 			}
 			else {
-				model.addAttribute("failed", "failed");
+				String failed = "failed";
 				List<Departments> departments = departmentService.showDepartmentAndDoctor();
 		    	model.addAttribute("department", departments);
-				return "customer/register";
+				return "redirect:getToRegister?failed=" + failed;
 			}
 			
 		}

@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="Inventory.jsp">
+                        <a href="<%=request.getContextPath()%>/adminShowAccount">
                             <i class='bx bxs-user-account icon'></i>
                             <span class="text nav-text">Quản lý tài khoản</span>
                         </a>
@@ -124,7 +124,7 @@
     <section style = "height: auto;" class="home">
         		    <!-- Start Doctor List Section -->
     <!-- Start My Profile Section -->
-    <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data">
+    <form method="POST" action="<%=request.getContextPath()%>/adminEditService" enctype="multipart/form-data" onsubmit = "return(validate());">
     <div id="profile-page" class="layer-stretch">
         <div style = "width: 95%;" class="layer-wrapper text-center">
             <div class="theme-material-card">
@@ -144,8 +144,9 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-heart"></i>
                             <input style = "display:none;" id = "id" name = "id" value = " ${serviceInfo.id }">
-                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "name" id="profile-about">${serviceInfo.name}</textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Tên dịch vụ</label>               
+                            <textarea class="mdl-textfield__input" rows="1" maxLength = "200" name = "name" id="name">${serviceInfo.name}</textarea>
+                            <label class="mdl-textfield__label" for="name">Tên dịch vụ</label>    
+                            <span id="name-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>            
                         </div>
                         </div>
                         <div style = "margin-left: 150px; margin-top:20px;" class = "col-md-4"><input type = "file" id = "img1" name = "img1">
@@ -156,8 +157,9 @@
                             <div class="col-md-8">
                    		<div style = "margin-left: 14px;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-sticky-note-o"></i>
-                            <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="profile-about">${serviceInfo.intro }</textarea>
-                            <label class="mdl-textfield__label" for="profile-about">Giới thiệu</label>
+                            <textarea class="mdl-textfield__input" rows="4" maxLength = "200" name = "intro" id="intro">${serviceInfo.intro }</textarea>
+                            <label class="mdl-textfield__label" for="intro">Giới thiệu</label>
+                            <span id="intro-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span> 
                         </div>
                         </div>
                         <div class="col-md-4">
@@ -267,5 +269,24 @@
     <script src='<c:url value="/resources/js/smoothscroll.min.js" />'></script>
     <!--Custom JavaScript for Klinik Template-->
     <script src='<c:url value="/resources/js/custom.js" />'></script>
-
+	<script>
+    function validate() {
+		let check = true;
+		if( document.getElementById("name").value == "" ) {
+            document.getElementById("name-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("name-invalid").style.display = "none";
+         }
+		
+		if( document.getElementById("intro").value == "" ) {
+            document.getElementById("intro-invalid").style.display = "block";
+            check = false;
+         } else {
+        	 document.getElementById("intro-invalid").style.display = "none";
+         }
+		
+		return check;
+	}
+    </script>
 </html>

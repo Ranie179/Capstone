@@ -17,8 +17,6 @@ public class DoctorService {
 	public List<Doctors> showAllDoctor(int page, int pageSize, String search, Integer idDepartment, Integer experience) {
 		if (!StringUtils.isEmpty(search) && experience == null && idDepartment == null) {
 			return doctorRepository.showAllDoctor(page, pageSize, search);
-		} else if (experience == null && idDepartment == null) {
-			return doctorRepository.showAllDoctor(page, pageSize);
 		} else if (experience != null && search == null && idDepartment == null) {
 			return doctorRepository.showDoctorByExp(page, pageSize, experience);
 		} else if (idDepartment != null && search == null && experience == null) {

@@ -75,6 +75,10 @@ public class DepartmentService {
 		return departmentRepository.getDepartment(idDepartment);
 	}
 
+	public List<Departments> showDepartmentAndService() {
+		return departmentRepository.showDepartmentAndService();
+	}
+
 
 
 }

@@ -166,4 +166,9 @@ public class DepartmentController {
 		String add = "add";
 		return "redirect:adminShowDepartment?add="+ add;
 	}
+	
+	@RequestMapping(value = "getToAddDepartment")
+	public String getToAddDepartment() {
+		return "admin/adminAddDepartment";
+	}
 }

@@ -42,18 +42,19 @@ public class ServiceController {
 	@RequestMapping(value = "showAllService", method = RequestMethod.GET)
 	public String showAllService(@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, Model model) {
-	    int pageSize = 5;
-	    int totalCount = serviceService.getTotalServiceCount(search);
+	    int pageSize = 7;
+	    int totalCount = serviceService.getTotalServiceCount(search, idDepartment);
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-	    List<Services> services = serviceService.showAllService(page, pageSize, search);
+	    List<Services> services = serviceService.showAllService(page, pageSize, search, idDepartment);
 	    model.addAttribute("service", services);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 		List<Doctors> doctors = doctorService.showExpDoctor();
 	    model.addAttribute("doctor", doctors);
 	    model.addAttribute("search", search);
-	    List<Departments> departments = departmentService.showDepartmentAndDoctor();
+	    List<Departments> departments = departmentService.showDepartmentAndService();
     	model.addAttribute("department", departments);
+    	model.addAttribute("idDepartment", idDepartment);
 	    return "customer/servicelist";
 	}
 
@@ -82,18 +83,21 @@ public class ServiceController {
 
 	@RequestMapping(value = "adminShowService")
 	public String adminShowService(@RequestParam(required = false) String add, @RequestParam(required = false) String delete, 
-			@RequestParam(defaultValue = "1") int page, 
+			@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer idDepartment,
 			@RequestParam(required = false) String search, Model model) {
 	    int pageSize = 10;
-	    int totalCount = serviceService.getTotalServiceCount(search);
+	    int totalCount = serviceService.getTotalServiceCount(search, idDepartment);
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-	    List<Services> services = serviceService.adminShowService(page, pageSize, search);
+	    List<Services> services = serviceService.showAllService(page, pageSize, search, idDepartment);
+	    List<Departments> departments = departmentService.showDepartmentAndService();
+    	model.addAttribute("department", departments);
 	    model.addAttribute("service", services);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("search", search);
 	    model.addAttribute("add", add);
 	    model.addAttribute("delete", delete);
+	    model.addAttribute("idDepartment", idDepartment);
 	    return "admin/adminServiceList";
 	}
 	

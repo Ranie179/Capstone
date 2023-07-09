@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>

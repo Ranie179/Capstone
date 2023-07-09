@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Rainie</span>
+                    <span class="name">${cookie.adminEmail.value}</span>
                     <span class="profession">Admin Site</span>
                 </div>
             </div>
@@ -215,8 +215,9 @@
                     <div class="col-md-4">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-calendar-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="profile-exp" name="experience" pattern="[0-9]+" required value = "${doctorInfo.expYear }">
+                            <input class="mdl-textfield__input" type="number" id="profile-exp" name="experience" min="0" max="50" required value="${doctorInfo.expYear}">
                             <label class="mdl-textfield__label" for="profile-exp">Năm kinh nghiệm</label>
+                            <span class="mdl-textfield__error">Làm ơn nhập số năm kinh nghiệm hợp lệ!</span>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -224,6 +225,7 @@
                             <i class="fa fa-mobile"></i>
                             <input class="mdl-textfield__input" type="text" id="profile-exp" name="phone" pattern="[0-9]{10}" required value = "${doctorInfo.phone }">
                             <label class="mdl-textfield__label" for="profile-exp">Số điện thoại</label>
+                            <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
                         </div>
                     </div>
                 </div>

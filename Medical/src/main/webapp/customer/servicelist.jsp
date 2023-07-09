@@ -153,7 +153,7 @@
 				        <div class="theme-accordion-container">
 				        <c:if test="${empty service}">
 						    <div style = "width:100%; color: #d30b0b;" class="alert alert-danger" role="alert">
-                                <strong>Xin lỗi!</strong> Không tìm thấy kết quả phù hợp với từ khóa "${search}"
+                                <strong>Xin lỗi!</strong> Không tìm thấy kết quả phù hợp với thông tin bạn tìm
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                             </div>
 						</c:if>
@@ -189,9 +189,12 @@
 				
 				   <ul class="theme-pagination">
 					    <c:choose>
-					        <c:when test="${currentPage > 1}">
+					        <c:when test="${currentPage > 1 && (empty idDepartment and not empty search)}">
 					            <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage - 1}&search=${search}">&laquo; Previous</a></li>
 					        </c:when>
+					        <c:when test="${currentPage > 1 && (not empty idDepartment and empty search)}">
+				            	<li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage - 1}&idDepartment=${idDepartment}">&laquo; Previous</a></li>
+				        	</c:when>
 					        <c:otherwise>
 					            <li><span>&laquo; Previous</span></li>
 					        </c:otherwise>
@@ -203,14 +206,34 @@
 					                <li class="active"><span>${loop.index}</span></li>
 					            </c:when>
 					            <c:otherwise>
-					                <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}&search=${search}">${loop.index}</a></li>
+					            	<c:choose>
+						            	<c:when test="${empty idDepartment and not empty search}">
+					                        <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}&search=${search}">${loop.index}</a></li>
+					                    </c:when>
+					                    <c:when test="${not empty idDepartment and empty search}">
+					                        <li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}&idDepartment=${idDepartment}">${loop.index}</a></li>
+					                    </c:when>
+				                    <c:otherwise>
+					                		<li><a href="<%=request.getContextPath()%>/showAllService?page=${loop.index}">${loop.index}</a></li>
+					                	</c:otherwise>
+					                </c:choose>
 					            </c:otherwise>
 					        </c:choose>
 					    </c:forEach>
 					
 					    <c:choose>
 					        <c:when test="${currentPage < totalPages}">
-					            <li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+					        	<c:choose>
+					        		<c:when test="${empty idDepartment and not empty search}">
+					        			<li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}&search=${search}">Next &raquo;</a></li>
+				                    </c:when>
+				                    <c:when test="${not empty idDepartment and empty search}">
+					        			<li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}&idDepartment=${idDepartment}">Next &raquo;</a></li>
+				                    </c:when>
+				                <c:otherwise>
+					            		<li><a href="<%=request.getContextPath()%>/showAllService?page=${currentPage + 1}">Next &raquo;</a></li>
+					            	</c:otherwise>
+					            </c:choose>
 					        </c:when>
 					        <c:otherwise>
 					            <li><span>Next &raquo;</span></li>
@@ -232,6 +255,14 @@
 						    </div>
 						</form>
                         </div>
+                    </div>
+                    <div class="sidebar" style = "height: 400px; overflow-y: auto;">
+                        <div class="sub-ttl">Tìm dịch vụ theo khoa</div>
+                        <ul class="category-list">
+                        	<c:forEach items="${department}" var="item">
+                            <li><a href="<%=request.getContextPath()%>/showAllService?idDepartment=${item.idDepartment }"><i class="fa fa-newspaper-o"></i>${item.departmentName }</a><span>(Số D.Vụ:${item.numOfServices })</span></li>
+                            </c:forEach>
+                        </ul>
                     </div>
                     <div class="theme-material-card">
                         <div class="sub-ttl">Đội ngũ của chúng tôi</div>
@@ -378,7 +409,7 @@
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <i class="fa fa-envelope-o"></i>
-                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email">
+                                <input class="mdl-textfield__input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name = "email" value = "${email }">
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                                 <span id="email-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng nhập email</span>
