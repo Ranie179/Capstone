@@ -152,7 +152,7 @@
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">${item.departmentName }</h4>
-                            <p class="text-muted">${item.intro }</p>
+                            <p class="text-muted text-justify">${item.intro }</p>
                             <a href="<%=request.getContextPath()%>/showDepartmentInfo?id=${item.idDepartment}" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button button-primary">Tìm hiểu thêm</a>
                         </div>
                     </div>

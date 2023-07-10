@@ -18,6 +18,10 @@ public class DepartmentService {
 	public List<Departments> showDepartmentAndDoctor() {
 		return departmentRepository.showDepartmentAndDoctor();
 	}
+	
+	public List<Departments> getAllDepartment(){
+		return departmentRepository.getAllDepartment();
+	}
 
 	public int getTotalDepartmentCount() {
 		return departmentRepository.getTotalDepartmentCount();

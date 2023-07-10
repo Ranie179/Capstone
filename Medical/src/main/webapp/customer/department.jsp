@@ -151,7 +151,7 @@
                     <div class="sub-ttl font-28">${departmentInfo.departmentName}</div>
                         <div class="theme-img theme-img-scalerotate"><img class="" src="<c:url value="${departmentInfo.image }" />" alt=""></div>
                         <div class="service-post">
-                            <p class="paragraph-medium paragraph-black text-left"><c:out value="${departmentInfo.information}" /></p>
+                            <p style="white-space: pre-line;" class="paragraph-medium paragraph-black text-justify"><c:out value="${departmentInfo.information}" /></p>
                             <p class="paragraph-medium paragraph-black text-left">Dịch vụ nổi bật của khoa:</p>
                             <c:forEach items="${service}" var="item">
                             <ul class="theme-list text-left">

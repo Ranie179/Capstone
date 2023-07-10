@@ -60,7 +60,7 @@ public class ContractController {
 	
 	@RequestMapping(value = "getToAddDoctor")
 	public String getToAddDoctor(Model model) {
-		List<Departments> department = departmentService.showDepartmentAndDoctor();
+		List<Departments> department = departmentService.getAllDepartment();
 		model.addAttribute("department", department);
 		List<Positions> position = positionService.showAllPosition();
 		model.addAttribute("position", position);

@@ -83,7 +83,7 @@ public class DoctorController {
 		model.addAttribute("degree", degrees);
 		List<Doctors> doctorInfo = doctorService.showDoctorInfo(idDoctor);
 		model.addAttribute("doctorInfo", doctorInfo.get(0));
-		List<Doctors> doctorBonus = doctorService.doctorBonus(idDepartment);
+		List<Doctors> doctorBonus = doctorService.doctorBonus(idDepartment, idDoctor);
 		model.addAttribute("doctorBonus", doctorBonus);
 		List<Services> services = serviceService.showMoreService();
 		model.addAttribute("serviceBonus", services);
@@ -130,7 +130,7 @@ public class DoctorController {
 			@RequestParam(required = false) String deleteDegree, @RequestParam("id") int id, Model model) {
 		List<Doctors> doctorInfo = doctorService.showDoctorInfo(id);
 		model.addAttribute("doctorInfo", doctorInfo.get(0));
-		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+		List<Departments> departments = departmentService.getAllDepartment();
 		model.addAttribute("department", departments);
 		List<Positions> position = positionService.showAllPosition();
 		model.addAttribute("position", position);

@@ -186,7 +186,7 @@ public class ServiceController {
 	}
 	@RequestMapping(value = "getToAddService")
 	public String getToAddService(Model model) {
-		List<Departments> departments = departmentService.showDepartmentAndDoctor();
+		List<Departments> departments = departmentService.getAllDepartment();
 		model.addAttribute("department", departments);
 		return "admin/adminAddService";
 	}

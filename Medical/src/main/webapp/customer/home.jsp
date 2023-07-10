@@ -394,7 +394,7 @@
                         <div class="testimonial-block">  
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                ${item.comment }
+                                <p class = "font-16" style="white-space: pre-line;">${item.comment }</p>
                             </div>
                             <a>${item.email }</a>
                         </div>

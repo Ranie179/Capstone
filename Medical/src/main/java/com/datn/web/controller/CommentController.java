@@ -21,6 +21,7 @@ public class CommentController {
 	
 	@RequestMapping(value = "comment")
 	public String comment(@RequestParam(required = false) String email, @RequestParam("idService") int idService,
+			@RequestParam("rating") int rating,
 			@RequestParam("comment") String comment, Model model) {
 		if (email == "") {
 			String failed = "failed";
@@ -29,7 +30,7 @@ public class CommentController {
 			return "redirect:showServiceInfo?id=" + idService + "&failed=" + failed;
 		}
 		else {
-		commentService.comment(email, comment, idService);
+		commentService.comment(email, comment, rating, idService);
 		List<Departments> departments = departmentService.showDepartmentAndDoctor();
     	model.addAttribute("department", departments);
 		return "redirect:showServiceInfo?id=" +idService;

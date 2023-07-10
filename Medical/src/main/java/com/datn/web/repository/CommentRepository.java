@@ -20,17 +20,19 @@ public class CommentRepository {
 	private class CommentRowMapper implements RowMapper<Comment> {
         public Comment mapRow(ResultSet rs, int rowNum) throws SQLException {
         	Comment comment = new Comment();
+        	comment.setId(rs.getInt("id"));
         	comment.setEmail(rs.getString("Email"));
+        	comment.setRating(rs.getInt("rating"));
         	comment.setComment(rs.getString("Comment"));
         	comment.setCreateDate(rs.getDate("Create_Date"));
         	return comment;
         }
     }
 	Date currentDate = new Date();
-	public void comment(String email, String comment, int id) {
-		String sql = "INSERT INTO Comment (Email, Comment, ID_Service, Create_Date)\r\n"
-				+ "VALUES (?, ?, ?, ?)";
-		Object[] params = new Object[] {email, comment, id, currentDate};
+	public void comment(String email, String comment, int rating, int id) {
+		String sql = "INSERT INTO comment (Email, Comment, rating, ID_Service, Create_Date)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {email, comment, rating, id, currentDate};
 		jdbcTemplate.update(sql, params);
 	}
 	
@@ -42,8 +44,10 @@ public class CommentRepository {
 	}
 
 	public List<Comment> showRecentComment() {
-		String sql = "SELECT * from comment\r\n"
-				+ "ORDER BY Create_Date DESC LIMIT 5";
+		String sql = "SELECT *\n"
+				+ "FROM comment\n"
+				+ "ORDER BY rating DESC\n"
+				+ "LIMIT 10;";
 		return jdbcTemplate.query(sql, new CommentRowMapper());
 	}
 

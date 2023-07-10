@@ -34,6 +34,8 @@
     <link href='<c:url value="/resources/css/flexslider.css" />' rel="stylesheet" type="text/css">
     <!-- Custom Main Stylesheet CSS -->
     <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet" type="text/css">
+    <!-- Custom Rating Stylesheet CSS -->
+    <link href='<c:url value="/resources/css/rating.css" />' rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Start Header -->
@@ -187,19 +189,32 @@
                                 Chưa có bình luận nào
 						</c:if>
                         <ul class="comment-list">
-                        <c:forEach items="${comment}" var="item">
-                            <li>
-                                    <div class="col-10 comment-detail text-left">
-									    <div class="comment-meta">
-									        <span>${item.email}</span>
-									        <span>${item.createDate}</span>
-									    </div>
-									    <div class="comment-post">
-									        ${item.comment}
-									    </div>                      
-									</div>
-                            </li>
-                            </c:forEach>
+                       <c:forEach items="${comment}" var="item">
+						    <li>
+						        <div class="col-8 comment-detail text-left">
+						            <div class="comment-meta">
+						                <span>${item.email}</span>
+						                <div class="rate">
+						                    <input disabled type="radio" id="star5-${item.id}" name="rate-${item.id}" value="5" ${item.rating == 5 ? 'checked' : ''} />
+						                    <label for="star5-${item.id}" title="5 stars">5 sao</label>
+						                    <input disabled type="radio" id="star4-${item.id}" name="rate-${item.id}" value="5" ${item.rating == 4 ? 'checked' : ''} />
+						                    <label for="star4-${item.id}" title="4 stars">4 sao</label>
+						                    <input disabled type="radio" id="star3-${item.id}" name="rate-${item.id}" value="5" ${item.rating == 3 ? 'checked' : ''} />
+						                    <label for="star3-${item.id}" title="3 stars">3 sao</label>
+						                    <input disabled type="radio" id="star2-${item.id}" name="rate-${item.id}" value="5" ${item.rating == 2 ? 'checked' : ''} />
+						                    <label for="star2-${item.id}" title="2 stars">2 sao</label>
+						                    <input disabled type="radio" id="star1-${item.id}" name="rate-${item.id}" value="5" ${item.rating == 1 ? 'checked' : ''} />
+						                    <label for="star1-${item.id}" title="1 stars">1 sao</label>
+						                </div>
+						                <span>${item.createDate}</span>
+						                
+						            </div>
+						            <div style="white-space: pre-line; margin-left: 174px;" class="comment-post">
+						                ${item.comment}
+						            </div>                      
+						        </div>
+						    </li>
+						</c:forEach>
                         </ul>
                     </div>
                     <form action = "<%=request.getContextPath()%>/comment" method = "post" onsubmit = "return(validatecomment());">
@@ -219,6 +234,21 @@
                                 </div>
                                 <input style = "display:none;" type = "text" id = "id" name = "idService" value = "${serviceInfo.id }"> 
                             </div>
+                            <div class="col-sm-6">
+                                  <div class="rate">
+								    <input type="radio" id="star5" name="rating" value="5" />
+								    <label for="star5" title="text">5 sao</label>
+								    <input type="radio" id="star4" name="rating" value="4" />
+								    <label for="star4" title="text">4 sao</label>
+								    <input type="radio" id="star3" name="rating" value="3" />
+								    <label for="star3" title="text">3 sao</label>
+								    <input type="radio" id="star2" name="rating" value="2" />
+								    <label for="star2" title="text">2 sao</label>
+								    <input type="radio" id="star1" name="rating" value="1" />
+								    <label for="star1" title="text">1 sao</label>
+								  </div>
+								  <span id="rating-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Vui lòng chọn số sao</span>
+								  </div>
                             <div class="col-sm-12">
                                 <div class="mdl-textfield mdl-js-textfield form-input">
                                     <textarea class="mdl-textfield__input" rows="4" id="comment" name = "comment"></textarea>
@@ -504,6 +534,21 @@
          } else {
         	 document.getElementById("comment-invalid").style.display = "none";
          }
+    	 let radios = document.getElementsByName('rating');
+    	  let ratingChecked = false;
+    	  for (let i = 0; i < radios.length; i++) {
+    	    if (radios[i].checked) {
+    	      ratingChecked = true;
+    	      break;
+    	    }
+    	  }
+    	  if (!ratingChecked) {
+    	    // Hiển thị thông báo yêu cầu chọn số sao
+    	    document.getElementById("rating-invalid").style.display = "block";
+    	    check = false;
+    	  } else {
+    	    document.getElementById("rating-invalid").style.display = "none";
+    	  }
     	return check
     }
     </script>

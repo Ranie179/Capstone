@@ -218,7 +218,7 @@
                    <div class="sidebar">
                         <div class="sub-ttl">Bài viết gần đây</div>
                        <c:forEach items="${recent}" var="item">
-                        <a href="#" class="row blog-recent">
+                        <a href="<%=request.getContextPath()%>/showBlogInfo?idBlog=${item.idBlog}" class="row blog-recent">
                             <div class="col-4 blog-recent-img">
                                 <img class="img-responsive img-thumbnail" src="<c:url value="${item.image1 }" />" alt="">
                             </div>

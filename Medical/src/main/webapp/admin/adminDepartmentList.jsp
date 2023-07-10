@@ -149,7 +149,6 @@
                                 <thead>
                                     <tr class="table-primary-head">
                                         <th class="text-center">Tên</th>
-                                        <th class="text-center">Giới thiệu</th>
                                         <th class = "text-center">Hành động</th>
                                     </tr>
                                 </thead>
@@ -157,7 +156,6 @@
                                 <c:forEach items="${department}" var="item">
                                     <tr>
                                         <td class="text-center">${item.departmentName}</td>
-                                        <td style = "max-width:300px;" class="text-center">${item.intro }</td>
                                          <td class="text-center">
                                             <a  href="<%=request.getContextPath()%>/adminShowDepartmentInfo?id=${item.idDepartment}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-pencil color-dark"></i></a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="showConfirmationDialog(${item.idDepartment})"><i class="fa fa-close font-16 color-red m-l-10"></i></a>

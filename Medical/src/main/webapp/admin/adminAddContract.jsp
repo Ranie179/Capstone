@@ -272,7 +272,7 @@
                         <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-clock-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="worktime" name = "worktime">
+                            <input class="mdl-textfield__input" type="number" min = "0" max = "10" id="worktime" name = "worktime">
                             <label class="mdl-textfield__label" for="worktime">Giờ làm việc (trên 1 ngày)</label>
                             <span id="worktime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
@@ -291,7 +291,7 @@
                     <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-clock-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="resttime" name = "resttime">
+                            <input class="mdl-textfield__input" type="number" min = "0" max = "6" id="resttime" name = "resttime">
                             <label class="mdl-textfield__label" for="rest-time">Thời gian nghỉ (trên 1 ngày)</label>
                             <span id="resttime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>
@@ -299,6 +299,7 @@
 					        <i class="fa fa-user-md"></i>
 					        <label for="position">Vị trí làm việc</label>
 					        <select class="mdl-selectfield__select text-center" id="position" name = "idPosition">
+					        <option value = "" selected>--Chọn vị trí làm việc--</option>
 					             <c:forEach items="${position}" var="item">
 					            	<option value="${item.idPosition }">${item.positionName }</option>
 					            </c:forEach>
@@ -309,7 +310,7 @@
                     <div class = "col-md-4">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-calendar-times-o"></i>
-                            <input class="mdl-textfield__input" type="text" id="leavetime" name = "leavetime">
+                            <input class="mdl-textfield__input" type="number" min = "0" id="leavetime" name = "leavetime">
                             <label class="mdl-textfield__label" for="leave-time">Thời gian nghỉ phép (Trên 1 tháng)</label>
                             <span id="leavetime-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>

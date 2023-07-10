@@ -12,8 +12,8 @@ public class CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
 
-	public void comment(String email, String comment, int id) {
-		commentRepository.comment(email, comment, id);
+	public void comment(String email, String comment, int rating, int id) {
+		commentRepository.comment(email, comment, rating, id);
 	}
 	
 	public List<Comment> showComment(int id){

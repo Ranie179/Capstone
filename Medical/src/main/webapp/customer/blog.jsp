@@ -138,7 +138,7 @@
         <div class="layer-stretch">
             <div class="page-ttl-container">
                 <h1>${blogInfo.title }</h1>
-                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> <a href="<%=request.getContextPath()%>/showAllBlogs">Tin tức</a> &#8594; <span>${blogInfo.title }</span></p>
+                <p><a href="<%=request.getContextPath()%>/">Trang chủ</a> &#8594; <a href="<%=request.getContextPath()%>/showAllBlogs">Tin tức</a> &#8594; <span>${blogInfo.title }</span></p>
             </div>
         </div>
     </div><!-- End page Title Section -->
@@ -187,8 +187,8 @@
                             </div>
                             <div class="col-sm-5 text-right">
                                 <ul class="social-list social-list-sm">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-google"></i></a></li>
                                 </ul>
                             </div>
                         </div>

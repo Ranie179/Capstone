@@ -57,7 +57,12 @@ public class ServiceRepository {
     }
 	
 	public List<Services> showMoreService() {
-	    String sql = "SELECT * FROM service LIMIT 7";
+	    String sql = "SELECT s.*, IFNULL(AVG(c.rating), 0) AS average_rating\n"
+	    		+ "FROM service s\n"
+	    		+ "LEFT JOIN comment c ON s.id = c.id_service\n"
+	    		+ "GROUP BY s.id\n"
+	    		+ "ORDER BY average_rating DESC\n"
+	    		+ "LIMIT 7;";
 	    return jdbcTemplate.query(sql, new ServiceRowMapper());
 	}
 
@@ -100,7 +105,14 @@ public class ServiceRepository {
 	}
 	
 	public List<Services> showServiceByIdDepartment(int id){
-		String sql = "SELECT * FROM service WHERE ID_Department = ?";
+		String sql = "SELECT s.*, IFNULL(AVG(c.rating), 0) AS average_rating\n"
+				+ "FROM service s\n"
+				+ "LEFT JOIN comment c ON s.id = c.id_service\n"
+				+ "WHERE s.id_department = ?\n"
+				+ "GROUP BY s.id\n"
+				+ "ORDER BY average_rating DESC\n"
+				+ "LIMIT 10;\n"
+				+ "";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
 	}

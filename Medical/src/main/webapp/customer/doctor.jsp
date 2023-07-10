@@ -147,12 +147,12 @@
         <div class="layer-wrapper layer-bottom-10">
             <div class="theme-material-card">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="theme-img theme-img-scalerotate">
                             <img src="<c:url value="${doctorInfo.imageUrl}" />" alt="">
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                         <div class="doctorp-name">
                             <h3><c:out value="${doctorInfo.doctorName}" /></h3>
                             <span class="badge badge-primary"><c:out value="${doctorInfo.position.positionName}" /></span>
@@ -164,7 +164,7 @@
                         </div>
                        
                     </div>
-                    <div class = "col-md-12"><p class="text-muted p-2 text-justify"><c:out value="${doctorInfo.information}" /></p></div>
+                    <div class = "col-md-12"><p style="white-space: pre-line;" class="text-muted p-2 text-justify"><c:out value="${doctorInfo.information}" /></p></div>
                     <div class="col-sm-12">
                         <div class="sub-ttl pt-4 font-20">Bằng cấp</div>
                         <table class="table table-hover">

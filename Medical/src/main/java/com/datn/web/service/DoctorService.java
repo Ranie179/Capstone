@@ -31,8 +31,8 @@ public class DoctorService {
 		return doctorRepository.showDoctorInfo(idDoctor);
 	}
 
-	public List<Doctors> doctorBonus(int idDepartment) {
-		return doctorRepository.doctorBonus(idDepartment);
+	public List<Doctors> doctorBonus(int idDepartment, int idDoctor) {
+		return doctorRepository.doctorBonus(idDepartment, idDoctor);
 	}
 	public int getTotalDoctorCount(String search, Integer idDepartment,Integer experience) {
 		if (!StringUtils.isEmpty(search) && experience == null && idDepartment == null) {

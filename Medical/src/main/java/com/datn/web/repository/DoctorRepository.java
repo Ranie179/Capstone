@@ -86,15 +86,15 @@ public class DoctorRepository {
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 
-	public List<Doctors> doctorBonus(int idDepartment) {
+	public List<Doctors> doctorBonus(int idDepartment, int idDoctor) {
 		String sql = "select doc.*, gda.*, d.Department_Name, p.Position_Name\r\n"
 				+ "from doctors as doc \r\n"
 				+ "join positions as p ON doc.ID_Position = p.ID_Position\r\n"
 				+ "join departments as d ON doc.ID_Department = d.ID_Department\r\n"
 				+ "join graduate as gda ON doc.ID_Graduate = gda.ID_Graduate\r\n"
-				+ "where doc.isWorking = \"Vẫn còn làm việc\" and d.ID_Department = ?\r\n"
+				+ "where doc.isWorking = \"Vẫn còn làm việc\" and d.ID_Department = ? and ID_Doctor <> ?\r\n"
 				+ "LIMIT 3";
-		Object[] params = new Object[] {idDepartment};
+		Object[] params = new Object[] {idDepartment, idDoctor};
 		return jdbcTemplate.query(sql, params, new DoctorRowMapper());
 	}
 	

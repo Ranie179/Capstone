@@ -39,6 +39,15 @@ public class DepartmentRepository {
         	return department;
         }
     }
+	
+	private class AllDepartmentRowMapper implements RowMapper<Departments> {
+        public Departments mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	Departments department = new Departments();
+        	department.setDepartmentName(rs.getString("Department_Name"));
+        	department.setIdDepartment(rs.getInt("ID_Department"));
+        	return department;
+        }
+    }
 	public List<Departments> showDepartmentAndDoctor() {
 		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
 				+ "as NumOfDoctors FROM departments LEFT JOIN doctors\r\n"
@@ -115,6 +124,10 @@ public class DepartmentRepository {
 		Object[] params = new Object[] {name, intro, information, id};
 		jdbcTemplate.update(sql, params);
 		
+	}
+	public List<Departments> getAllDepartment() {
+		String sql = "SELECT * FROM departments where isWorking = \"Vẫn còn hoạt động\" ";
+		return jdbcTemplate.query(sql, new AllDepartmentRowMapper());
 	}
 	public List<Departments> adminShowDepartmentInfo(int id) {
 		String sql = "SELECT departments.*, COUNT(doctors.ID_Doctor)\r\n"
