@@ -212,15 +212,22 @@ public class AccountController {
 		}
 		
 		@RequestMapping(value = "getToAddAccount")
-		public String getToAddAccount() {
+		public String getToAddAccount(@RequestParam(required = false) String failed, Model model) {
+			model.addAttribute("failed", failed);
 			return "admin/adminAddAccount";
 		}
 		
 		@RequestMapping(value = "adminAddAccount")
 		public String adminAddAccount(@RequestParam("email") String email, @RequestParam("pass") String pass,
-				@RequestParam("role") String role) {
+				@RequestParam("role") String role, Model model) {
 			String hashpass = hashPassword(pass);
+			if (checkExistEmail(email)) {
 			accountService.adminAddAccount(email, hashpass, role);
+			}
+			else {
+				String failed = "failed";
+				return "redirect:getToAddAccount?failed=" + failed;
+			}
 			String add = "add";
 			return "redirect:adminShowAccount?add=" + add;
 		}

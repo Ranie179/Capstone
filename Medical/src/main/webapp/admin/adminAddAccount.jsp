@@ -135,6 +135,12 @@
 						        <button type="button" class="close" data-dismiss="alert">×</button>
 						    </div>
 						</c:if>
+						<c:if test="${not empty failed}">
+						   <div class="alert alert-danger" role="alert">
+						        <strong>Thông báo</strong> Email đã tồn tại trong hệ thống!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
                 <div class="row">
                    	<div class="col-md-8">
                    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">

@@ -100,7 +100,7 @@ public class AppointmentRepository {
 
 	public int getTotalAppointment(String email) {
 		String sql = "SELECT COUNT(*) FROM appointment\r\n"
-				+ "JOIN Account ON appointment.ID_Account = account.ID_Account\r\n"
+				+ "JOIN account ON appointment.ID_Account = account.ID_Account\r\n"
 				+ "WHERE account.email = ?";
 		Object[] params = new Object[] {email};
 		return jdbcTemplate.queryForObject(sql, params, Integer.class);

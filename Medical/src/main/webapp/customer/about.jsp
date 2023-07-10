@@ -256,7 +256,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
-                           <img src="<c:url value="/resources/images/test.jpg" />" alt="">
+                           <img src="<c:url value="${item.imageUrl }" />" alt="">
                             </div>
                             <div class="doctor-name doctor-name-2">
                                 <h4><a>${item.doctorName}</a></h4>
