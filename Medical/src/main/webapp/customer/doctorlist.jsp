@@ -338,7 +338,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-female"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Phụ khoa</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa phụ khoa</p>
+                                <p class="paragraph-small paragraph-white">Thăm khám, chẩn đoán, điều trị những bệnh liên quan đến phụ khoa</p>
                             </div>
                         </div>
                     </div>
@@ -347,7 +347,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-thermometer"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Y học nhiệt đới</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa y học nhiệt đới</p>
+                                <p class="paragraph-small paragraph-white">Chuyên thăm khám, điều trị những bệnh y học nhiệt đới</p>
                             </div>
                         </div>
                     </div>
@@ -356,7 +356,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-stethoscope"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Tim mạch</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa tim mạch</p>
+                                <p class="paragraph-small paragraph-white">Chuyên thăm khám và điều trị những vấn đề tim mạch</p>
                             </div>
                         </div>
                     </div>
@@ -365,7 +365,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-bed"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Đa khoa</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa đa khoa</p>
+                                <p class="paragraph-small paragraph-white">Thăm khám, chẩn đoán, điều trị những bệnh thường gặp</p>
                             </div>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-eye"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Mắt</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa mắt</p>
+                                <p class="paragraph-small paragraph-white">Chuyên thăm khám, chẩn đoán, điều trị những bệnh liên quan đến mắt</p>
                         </div>
                     </div>
                     </div>
@@ -383,7 +383,7 @@
                             <div class="tbl-cell department-icon"><i class="fa fa-glass"></i></div>
                             <div class="tbl-cell department-detail">
                                 <h5>Tiêu hóa</h5>
-                                <p class="paragraph-small paragraph-white">Thông tin khoa tiêu hóa</p>
+                                <p class="paragraph-small paragraph-white">Chuyên thăm khám, chẩn đoán, điều trị những bệnh liên quan đến hệ tiêu hóa</p>
                             </div>
                         </div>
                     </div>

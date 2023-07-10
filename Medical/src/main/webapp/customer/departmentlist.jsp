@@ -14,6 +14,8 @@
     <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
+    <!-- Font Awesoeme 6.4 Stylesheet CSS -->
+    <link href='<c:url value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
     <link href='<c:url value="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" />' rel="stylesheet" type="text/css">
     <!-- Bootstrap core CSS -->
@@ -43,9 +45,9 @@
                     <div id="hdr-social">
                         <ul class="social-list social-list-sm">
                             <li><a class="width-auto font-13">Theo dõi chúng tôi : </a></li>
-                            <li><a href="https://www.facebook.com/" target="_blank" id="hdr-facebook" ><i class="fa fa-facebook" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-facebook">Facebook</span></li>
-                            <li><a href="https://www.google.com.vn/?hl=vi" target="_blank" id="hdr-google" ><i class="fa fa-google" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-google">Google</span></li>
-                            <li><a href="https://www.youtube.com/" target="_blank" id="hdr-youtube" ><i class="fa fa-youtube" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-youtube">Youtube</span></li>
+                            <li><a href="https://www.facebook.com/" target="_blank" id="hdr-facebook" ><i class="fa-brands fa-facebook" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-facebook">Facebook</span></li>
+                            <li><a href="https://www.google.com.vn/?hl=vi" target="_blank" id="hdr-google" ><i class="fa-brands fa-google" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-google">Google</span></li>
+                            <li><a href="https://www.youtube.com/" target="_blank" id="hdr-youtube" ><i class="fa-brands fa-youtube" ></i></a><span class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="hdr-youtube">Youtube</span></li>
                         </ul>
                     </div>
                 </div>
@@ -378,12 +380,12 @@
                         <ul class="social-list social-list-colored footer-social">
                             <li>
                                 <label style = 'color: white'>Facebook:</label>
-                                <a href="https://www.facebook.com/" target="_blank" id="footer-facebook" class="fa fa-facebook"></a>
+                                <a href="https://www.facebook.com/" target="_blank" id="footer-facebook" class="fa-brands fa-facebook"></a>
                                 <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-facebook">Facebook</span>
                             </li>
                             <li>
                             	<label style = 'color: white'>Youtube:</label>
-                                <a href="https://www.youtube.com/" target="_blank" id="footer-youtube" class="fa fa-youtube"></a>
+                                <a href="https://www.youtube.com/" target="_blank" id="footer-youtube" class="fa-brands fa-youtube"></a>
                                 <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-youtube">Youtube</span>
                             </li>
                         </ul>
