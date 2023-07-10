@@ -33,13 +33,13 @@ public class ProfileRepository {
         }
     }
 	public List<Profile> showProfile(String email) {
-		String sql = "SELECT * From Profile WHERE EMAIL = ?";
+		String sql = "SELECT * From profile WHERE Email = ?";
 		Object[] params = new Object[] {email};
 		return jdbcTemplate.query(sql, params, new ProfileRowMapper());
 	}
 	public void editProfile(String name, String phone, String birthDay, String blood, String gender, String commune,
 			String district, String province, String email) {
-		String sql = "UPDATE Profile\r\n"
+		String sql = "UPDATE profile\r\n"
 				+ "SET Name = ?, Phone = ?, Birth_Day = ?, Blood = ?, Gender = ?, Commune = ?, District = ?, Province = ?\r\n"
 				+ "WHERE Email = ?";
 		Object[] params = new Object[] {name, phone, birthDay, blood, gender, commune, district, province, email};

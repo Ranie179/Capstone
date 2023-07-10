@@ -26,7 +26,7 @@ public class GraduateRepository {
 	}
     
 	public List<Graduate> showAllGraduate() {
-		String sql = "SELECT * FROM Graduate";
+		String sql = "SELECT * FROM graduate";
 		return jdbcTemplate.query(sql, new GraduateRowMapper());
 	}
 

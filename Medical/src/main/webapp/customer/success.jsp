@@ -11,7 +11,7 @@
     <!-- Meta Description Tag -->
     <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -94,7 +94,7 @@
                     <div class="tbl-row">
                         <!-- Start Header Logo Section -->
                         <div class="tbl-cell hdr-logo">
-                            <a href="index.html"><img src="<c:url value="/resources/images/eevee.png" />" alt=""></a>
+                            <a href="index.html"><img src="<c:url value="/resources/images/medical-support.png" />" alt=""></a>
                         </div><!-- End Header Logo Section -->
                         <div class="tbl-cell hdr-menu">
                             <!-- Start Menu Section -->
@@ -449,18 +449,18 @@
                     <div class="footer-ttl"><p>Truy cập nhanh</p></div>
                     <div class="footer-container footer-b">
                         <div class="tbl">
-                            <div class="tbl-row">
+                           <div class="tbl-row">
                                 <ul class="tbl-cell">
-                                    <li><a href="event-1.html">Về chúng tôi</a></li>
-                                    <li><a href="contact.html">Liên lạc</a></li>
-                                    <li><a href="gallery.html">Trang chủ</a></li>
-                                    <li><a href="terms-conditions.html">Điều kiện và điều khoản</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToAbout">Về chúng tôi</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToContact">Liên lạc</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToPolicy">Điều kiện và điều khoản khi đặt lịch</a></li>
                                 </ul>
                                 <ul class="tbl-cell">
-                                    <li><a href="login.html">Đăng nhập</a></li>
-                                    <li><a href="register.html">Đăng ký</a></li>
-                                    <li><a href="myappointment.jsp">Đặt lịch hẹn</a></li>
-                                    <li><a href="myprofile.html">Tài khoản</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/login">Đăng nhập</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToRegister">Đăng ký</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/showDepartmentForAppointment">Đặt lịch hẹn</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToChat">Tư vấn</a></li>
                                 </ul>
                             </div>
                         </div>

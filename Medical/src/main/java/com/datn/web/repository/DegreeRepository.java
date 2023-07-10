@@ -38,7 +38,7 @@ public class DegreeRepository {
 	}
 
 	public List<Degrees> adminShowDegreeInfo(int id) {
-		String sql = "SELECT * FROM DEGREES WHERE ID_Degree = ?";
+		String sql = "SELECT * FROM degrees WHERE ID_Degree = ?";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new DegreeRowMapper());
 	}
@@ -53,14 +53,14 @@ public class DegreeRepository {
 	}
 
 	public void adminDeleteDegree(int id) {
-		String sql = "DELETE FROM Degrees WHERE ID_Degree = ?";
+		String sql = "DELETE FROM degrees WHERE ID_Degree = ?";
 		Object[] params = new Object[] {id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 	public void adminAddDegree(String degreeName, String college, String year, int idDoctor) {
-		String sql = "INSERT INTO Degrees(Degree_Name, College, Years, ID_Doctor) "
+		String sql = "INSERT INTO degrees(Degree_Name, College, Years, ID_Doctor) "
 				+ "VALUES (?, ?, ?, ?);";
 		Object[] params = new Object[] {degreeName, college, year, idDoctor};
 		jdbcTemplate.update(sql, params);

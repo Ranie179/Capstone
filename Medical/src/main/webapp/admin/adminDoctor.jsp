@@ -11,7 +11,7 @@
         <!-- Meta Description Tag -->
     <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/favicon.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -38,7 +38,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                	<img src = '<c:url value="/resources/images/eevee.png"></c:url>'>
+                	<img src = '<c:url value="/resources/images/medical-support.png"></c:url>'>
                 </span>
 
                 <div class="text logo-text">
@@ -250,6 +250,12 @@
             <div class="modal-content">
              <div class="col-sm-12">
                         <div class="sub-ttl pt-4 font-20">Bằng cấp/chứng chỉ</div>
+                         <c:if test="${empty degree}">
+						   <div class="alert alert-danger" role="alert">
+						        <strong>Thông báo</strong> Hiện chưa có bằng/chứng chỉ nào được thêm vào!!!
+						        <button type="button" class="close" data-dismiss="alert">×</button>
+						    </div>
+						</c:if>
                         <a href = "<%=request.getContextPath()%>/getToAddDegree?idDoctor=${doctorInfo.idDoctor  }" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-primary button-sm m-1">Thêm bằng mới</a> 
                         <table class="table table-hover">
                             <thead>

@@ -10,7 +10,6 @@ public class test {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         ServletContext servletContext = attr.getRequest().getServletContext();
         String realPath = servletContext.getRealPath("/");
-
         return realPath;
     }
     

@@ -78,51 +78,51 @@ public class ServiceService {
 	}
 
 	public void adminEditService(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline) {
-		serviceRepository.adminEditService(id, name, intro, description1, description2, description3, advantage, endline);
+			String description3, String advantage, String endline, int idDepartment) {
+		serviceRepository.adminEditService(id, name, intro, description1, description2, description3, advantage, endline, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage1(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
-		serviceRepository.adminEditServiceImage1(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
+		serviceRepository.adminEditServiceImage1(id, name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage2(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
-		serviceRepository.adminEditServiceImage2(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
+		serviceRepository.adminEditServiceImage2(id, name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage3(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
-		serviceRepository.adminEditServiceImage3(id, name, intro, description1, description2, description3, advantage, endline, relativePath);
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
+		serviceRepository.adminEditServiceImage3(id, name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage12(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
-		serviceRepository.adminEditServiceImage12(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
+		serviceRepository.adminEditServiceImage12(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage23(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
-		serviceRepository.adminEditServiceImage23(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
+		serviceRepository.adminEditServiceImage23(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment);
 		
 	}
 
 	public void adminEditServiceImage13(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
-		serviceRepository.adminEditServiceImage13(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2);
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
+		serviceRepository.adminEditServiceImage13(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment);
 		
 	}
 
 	public void adminEditService3Image(int id, String name, String intro, String description1, String description2,
 			String description3, String advantage, String endline, String relativePath1, String relativePath2,
-			String relativePath3) {
-		serviceRepository.adminEditService3Image(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3);
+			String relativePath3, int idDepartment) {
+		serviceRepository.adminEditService3Image(id, name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3, idDepartment);
 		
 	}
 
@@ -173,6 +173,10 @@ public class ServiceService {
 			String description2, String description3, String advantage, String endline) {
 		serviceRepository.adminAddService(newID, name, idDepartment, intro, description1, description2, description3, advantage, endline);
 		
+	}
+
+	public List<Services> adminShowServiceInfo(int id) {
+		return serviceRepository.adminShowServiceInfo(id);
 	}
 
 	

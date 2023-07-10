@@ -27,9 +27,9 @@ public class TagRepository {
         
 	}
 	public List<Tags> showTags() {
-		String sql = "SELECT tags.ID_Tag, tags.Tag, COUNT(Blogs.ID_Blog) "
-				+ "as NumOfPosts FROM tags LEFT JOIN Blogs "
-				+ "ON tags.ID_Tag = Blogs.ID_Tag GROUP BY tags.Tag;";
+		String sql = "SELECT tags.ID_Tag, tags.Tag, COUNT(blogs.ID_Blog) "
+				+ "as NumOfPosts FROM tags LEFT JOIN blogs "
+				+ "ON tags.ID_Tag = blogs.ID_Tag GROUP BY tags.Tag;";
 		return jdbcTemplate.query(sql, new TagRowMapper());
 	}
 }

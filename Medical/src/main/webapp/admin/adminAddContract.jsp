@@ -11,7 +11,7 @@
         <!-- Meta Description Tag -->
     <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -38,7 +38,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                	<img src = '<c:url value="/resources/images/eevee.png"></c:url>'>
+                	<img src = '<c:url value="/resources/images/medical-support.png"></c:url>'>
                 </span>
 
                 <div class="text logo-text">
@@ -151,7 +151,7 @@
                         <div class="col-md-3">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             <i class="fa fa-phone"></i>
-                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" name = "phone">
+                            <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="phone" name = "phone">
                             <label class="mdl-textfield__label" for="phone">Số điện thoại</label>
                             <span id="phone-invalid" style="color: #eb1c26; margin-top: 10px; display:none">Trường này không được để trống</span>
                         </div>

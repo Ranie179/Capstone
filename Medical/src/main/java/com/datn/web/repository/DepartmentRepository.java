@@ -137,7 +137,7 @@ public class DepartmentRepository {
 		return jdbcTemplate.query(sql, params, new DepartmentRowMapper());
 	}
 	public int getNewID() {
-		String sql = "SELECT MAX(ID_Department) FROM Departments";
+		String sql = "SELECT MAX(ID_Department) FROM departments";
 		Integer newID = jdbcTemplate.queryForObject(sql, Integer.class);
 		if (newID == null) {
 			newID = 0;
@@ -145,13 +145,13 @@ public class DepartmentRepository {
 		return newID;
 	}
 	public void adminAddDepartment(int newID, String name, String intro, String information, String relativePath) {
-		String sql = "INSERT INTO Departments(ID_Department, Department_Name, Intro, Information, Image)\r\n"
+		String sql = "INSERT INTO departments(ID_Department, Department_Name, Intro, Information, Image)\r\n"
 				+ "VALUES (?, ?, ?, ?, ?);";
 		Object[] params = new Object[] {newID, name, intro, information, relativePath};
 		jdbcTemplate.update(sql, params);
 	}
 	public void adminAddDepartmentWithoutImage(int newID, String name, String intro, String information) {
-		String sql = "INSERT INTO Departments(ID_Department, Department_Name, Intro, Information)\r\n"
+		String sql = "INSERT INTO departments(ID_Department, Department_Name, Intro, Information)\r\n"
 				+ "VALUES (?, ?, ?, ?);";
 		Object[] params = new Object[] {newID, name, intro, information};
 		jdbcTemplate.update(sql, params);

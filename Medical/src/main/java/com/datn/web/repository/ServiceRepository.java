@@ -59,7 +59,7 @@ public class ServiceRepository {
 	public List<Services> showMoreService() {
 	    String sql = "SELECT s.*, IFNULL(AVG(c.rating), 0) AS average_rating\n"
 	    		+ "FROM service s\n"
-	    		+ "LEFT JOIN comment c ON s.id = c.id_service\n"
+	    		+ "LEFT JOIN comment c ON s.id = c.ID_Service\n"
 	    		+ "GROUP BY s.id\n"
 	    		+ "ORDER BY average_rating DESC\n"
 	    		+ "LIMIT 7;";
@@ -111,7 +111,7 @@ public class ServiceRepository {
 				+ "WHERE s.id_department = ?\n"
 				+ "GROUP BY s.id\n"
 				+ "ORDER BY average_rating DESC\n"
-				+ "LIMIT 10;\n"
+				+ "LIMIT 5;\n"
 				+ "";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new ServiceRowMapper());
@@ -151,83 +151,83 @@ public class ServiceRepository {
 
 
 	public void adminEditService(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline) {
+			String description3, String advantage, String endline, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?\r\n"
+				+ "advantage = ?, endline = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 
 	public void adminEditServiceImage1(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image1 = ?\r\n"
+				+ "advantage = ?, endline = ?, image1 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 	}
 
 
 	public void adminEditServiceImage2(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image2 = ?\r\n"
+				+ "advantage = ?, endline = ?, image2 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 
 	public void adminEditServiceImage3(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath) {
+			String description3, String advantage, String endline, String relativePath, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image3 = ?\r\n"
+				+ "advantage = ?, endline = ?, image3 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 
 	public void adminEditServiceImage12(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image1 = ?, image2 = ?\r\n"
+				+ "advantage = ?, endline = ?, image1 = ?, image2 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 
 	public void adminEditServiceImage23(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image2 = ?, image3 = ?\r\n"
+				+ "advantage = ?, endline = ?, image2 = ?, image3 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
 
 
 	public void adminEditServiceImage13(int id, String name, String intro, String description1, String description2,
-			String description3, String advantage, String endline, String relativePath1, String relativePath2) {
+			String description3, String advantage, String endline, String relativePath1, String relativePath2, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image1 = ?, image3 = ?\r\n"
+				+ "advantage = ?, endline = ?, image1 = ?, image3 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
@@ -235,12 +235,12 @@ public class ServiceRepository {
 
 	public void adminEditService3Image(int id, String name, String intro, String description1, String description2,
 			String description3, String advantage, String endline, String relativePath1, String relativePath2,
-			String relativePath3) {
+			String relativePath3, int idDepartment) {
 		String sql = "UPDATE service\r\n"
 				+ "SET name = ?, intro = ?, description1 = ?, description2 = ?, description3 = ?, "
-				+ "advantage = ?, endline = ?, image1 = ?, image2 = ?, image3 = ?\r\n"
+				+ "advantage = ?, endline = ?, image1 = ?, image2 = ?, image3 = ?, ID_Department = ?\r\n"
 				+ "where id = ?";
-		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3, id};
+		Object[] params = new Object[] {name, intro, description1, description2, description3, advantage, endline, relativePath1, relativePath2, relativePath3, idDepartment, id};
 		jdbcTemplate.update(sql, params);
 		
 	}
@@ -347,6 +347,14 @@ public class ServiceRepository {
 		String sql = "SELECT * FROM service WHERE ID_Department = ? LIMIT ? OFFSET ?";
 	    Object[] params = new Object[]{idDepartment, pageSize, offset};
 	    return jdbcTemplate.query(sql, params, new ServiceRowMapper());
+	}
+
+
+	public List<Services> adminShowServiceInfo(int id) {
+		String sql = "SELECT service.*, departments.Department_Name "
+				+ "FROM service JOIN departments on service.ID_Department = departments.ID_Department where service.id = ?";
+		Object[] params = new Object[] {id};
+		return jdbcTemplate.query(sql, params, new ServiceDepartmentRowMapper());
 	}
 
 

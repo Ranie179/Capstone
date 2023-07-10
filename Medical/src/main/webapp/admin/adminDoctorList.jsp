@@ -11,7 +11,7 @@
         <!-- Meta Description Tag -->
     <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Google web Font -->
@@ -38,7 +38,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                	<img src = '<c:url value="/resources/images/eevee.png"></c:url>'>
+                	<img src = '<c:url value="/resources/images/medical-support.png"></c:url>'>
                 </span>
 
                 <div class="text logo-text">

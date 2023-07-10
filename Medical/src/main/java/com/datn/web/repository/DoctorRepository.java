@@ -222,7 +222,7 @@ public class DoctorRepository {
 
 	public void addDoctor(String name, String gender, String phone, String birthDay, int idPosition, int idDepartment,
 			int salary, int idGraduate, int newID) {
-		String sql = "INSERT INTO Doctors(Doctor_Name, Gender, phone, BirthDay, ID_Position, ID_Department, salary, ID_Graduate, ID_Contract)\r\n"
+		String sql = "INSERT INTO doctors(Doctor_Name, Gender, phone, BirthDay, ID_Position, ID_Department, salary, ID_Graduate, ID_Contract)\r\n"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		Object[] params = new Object[] {name, gender, phone, birthDay, idPosition, idDepartment, salary, idGraduate, newID};
 		jdbcTemplate.update(sql, params);

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.bean.Blogs;
@@ -21,6 +23,8 @@ import com.datn.web.bean.Tags;
 import com.datn.web.service.BlogService;
 import com.datn.web.service.DepartmentService;
 import com.datn.web.service.TagService;
+
+import jakarta.servlet.ServletContext;
 
 @Controller
 public class BlogController {
@@ -41,7 +45,10 @@ public class BlogController {
 		return blogService.getNewID() +1;
 	}
 	public void getUrl(MultipartFile file, String relativePath) throws IOException {
-		 String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+		 ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+         ServletContext servletContext = attr.getRequest().getServletContext();
+         String realPath = servletContext.getRealPath("/");
+		 String destinationPath = realPath + relativePath;
 		 File destinationFile = new File(destinationPath);
 		 Path destination = destinationFile.toPath();
 		 InputStream inputStream = file.getInputStream();

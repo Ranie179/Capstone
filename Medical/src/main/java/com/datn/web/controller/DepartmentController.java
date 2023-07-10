@@ -41,13 +41,6 @@ public class DepartmentController {
 	public int getNewID() {
 		return departmentService.getNewID();
 	}
-	public static String getPath() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        ServletContext servletContext = attr.getRequest().getServletContext();
-        String realPath = servletContext.getRealPath("/");
-        String rootFolderPath = realPath.replace("\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps", "");
-        return realPath;
-    }
 	
 	@RequestMapping(value = "showAllDepartment")
 	public String showAllDepartment(@RequestParam(defaultValue = "1") int page,  Model model) {
@@ -124,21 +117,16 @@ public class DepartmentController {
 			@RequestParam("intro") String intro, @RequestParam("information") String information, Model model) throws IOException {
 		
 		if (!file.isEmpty()) {
-			System.out.print(getPath());
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+	        ServletContext servletContext = attr.getRequest().getServletContext();
+	        String realPath = servletContext.getRealPath("/");
 		    String relativePath = "/resources/images/department" + String.valueOf(id) + ".png";
-		    String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+		    String destinationPath = realPath + relativePath;
 		    File destinationFile = new File(destinationPath);
 		    Path destination = destinationFile.toPath();
 		    InputStream inputStream = file.getInputStream();
 		    Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
 		    departmentService.adminEditDepartment(id, name, intro, information, relativePath);
-		    File directory = new File("C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\resources\\images");
-		    String[] files = directory.list();
-		    for (String file1 : files) {
-		        File currentFile = new File(directory.getPath(), file1);
-		        if (currentFile.isDirectory()) {
-		        }
-		    }
 
 
 		} else {
@@ -153,8 +141,11 @@ public class DepartmentController {
 			@RequestParam("intro") String intro, @RequestParam("information") String information) throws IOException {
 		int newID = getNewID() + 1;
 		if (!file.isEmpty()) {
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+	        ServletContext servletContext = attr.getRequest().getServletContext();
+	        String realPath = servletContext.getRealPath("/");
 		    String relativePath = "/resources/images/department" + String.valueOf(newID) + ".png";
-		    String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+		    String destinationPath = realPath + relativePath;
 		    File destinationFile = new File(destinationPath);
 		    Path destination = destinationFile.toPath();
 		    InputStream inputStream = file.getInputStream();

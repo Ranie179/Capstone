@@ -61,7 +61,7 @@ public class ContractRepository {
         }
 	}
 	public int getNewID() {
-		String sql = "SELECT MAX(ID_Contract) FROM Contract";
+		String sql = "SELECT MAX(ID_Contract) FROM contract";
 		Integer newID = jdbcTemplate.queryForObject(sql, Integer.class);
 		if (newID == null) {
 			newID = 0;
@@ -72,7 +72,7 @@ public class ContractRepository {
 			String gender, int idGraduate, String birthDay, String iDate, String address1, String address2, String createDate,
 			String endDate, int salary, String bankNumber, String bank, int workTime, int restTime, int leaveTime,
 			int idDepartment, int idPosition, int idPayment) {
-		String sql = "INSERT INTO Contract (ID_Contract, Doctor_Name, Nationality, Phone, Identity_Place, Identity_Number, Gender, "
+		String sql = "INSERT INTO contract (ID_Contract, Doctor_Name, Nationality, Phone, Identity_Place, Identity_Number, Gender, "
 				+ "ID_Graduate, Birth_Day, Identity_Day, Address1, Address2, Create_Date, End_Date, Salary, Bank_Number, Bank, Work_Time, "
 				+ "Rest_Time, Leave_Time, ID_Department, ID_Position, ID_Payment)\r\n"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?, ?, ?);";

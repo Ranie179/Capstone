@@ -25,7 +25,7 @@ public class PaymentRepository {
         }
     }
 	public List<Payment> showAllPayment() {
-		String sql = "SELECT * FROM Payment";
+		String sql = "SELECT * FROM payment";
 		return jdbcTemplate.query(sql, new PaymentRowMapper());
 	}
 

@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.datn.web.service.BlogService;
@@ -22,6 +24,9 @@ import com.datn.web.service.DepartmentService;
 import com.datn.web.service.DoctorService;
 import com.datn.web.service.PositionService;
 import com.datn.web.service.ServiceService;
+
+import jakarta.servlet.ServletContext;
+
 import com.datn.web.bean.Doctors;
 import com.datn.web.bean.Positions;
 import com.datn.web.bean.Services;
@@ -150,8 +155,11 @@ public class DoctorController {
 			@RequestParam(required = false) MultipartFile file, Model model) throws IOException {
 
 		if (!file.isEmpty()) {
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+	        ServletContext servletContext = attr.getRequest().getServletContext();
+	        String realPath = servletContext.getRealPath("/");
 		    String relativePath = "/resources/images/avatar" + String.valueOf(id) + ".png";
-		    String destinationPath = "C:\\Users\\Admin\\Documents\\GitHub\\Capstone\\Medical\\src\\main\\webapp\\" + relativePath;
+		    String destinationPath = realPath + relativePath;
 		    File destinationFile = new File(destinationPath);
 		    Path destination = destinationFile.toPath();
 		    InputStream inputStream = file.getInputStream();

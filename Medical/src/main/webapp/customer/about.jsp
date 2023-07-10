@@ -11,7 +11,7 @@
     <!-- Meta Description Tag -->
     <meta name="Description" content="Hỗ trợ y tế">
     <!-- Favicon Icon -->
-    <link href='<c:url value="/resources/images/eevee.png" />' rel="icon" type="image/x-icon">
+    <link href='<c:url value="/resources/images/medical-support.png" />' rel="icon" type="image/x-icon">
     <!-- Font Awesoeme Stylesheet CSS -->
     <link href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
     <!-- Font Awesoeme 6.4 Stylesheet CSS -->
@@ -96,7 +96,7 @@
                     <div class="tbl-row">
                         <!-- Start Header Logo Section -->
                         <div class="tbl-cell hdr-logo">
-                            <a href="index.html"><img src="<c:url value="/resources/images/eevee.png" />" alt=""></a>
+                            <a href="index.html"><img src="<c:url value="/resources/images/medical-support.png" />" alt=""></a>
                         </div><!-- End Header Logo Section -->
                         <div class="tbl-cell hdr-menu">
                             <!-- Start Menu Section -->
@@ -202,7 +202,7 @@
                         <div class="hm-about-block">
                             <div class="tbl-cell hm-about-icon"><i class="fa fa-user-md"></i></div>
                             <div class="tbl-cell hm-about-number">
-                                <span class="counter">54</span>
+                                <span class="counter">${count }</span>
                                 <p>Bác sĩ</p>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <img class="img-thumbnail" src="<c:url value="/resources/images/test.jpg" />" alt="">
+                        <img class="img-thumbnail" src="<c:url value="/resources/images/khoa-hinh-anh.jpg" />" alt="">
                     </div>
                     <div class="row about-mission-vission text-center">
                         <div class="col-md-6 about-mission">
@@ -252,106 +252,32 @@
                 <h3>Đội ngũ của chúng tôi</h3>
             </div>
             <div class="row">
+            <c:forEach items="${doctor}" var="item">
                 <div class="col-md-6 col-lg-4">
                     <div class="theme-block theme-block-hover">
                         <div class="theme-block-picture">
                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
                             </div>
                             <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 1</a></h4>
+                                <h4><a>${item.doctorName}</a></h4>
                             </div>
                             <div class="theme-block-hidden">
                                 <div class="doctor-name">
-                                    <h4><a>Bác sĩ 1</a></h4>
+                                    <h4><a href = "<%=request.getContextPath()%>/showDoctorInfo?idDoctor=${item.idDoctor}&idDepartment=${item.department.idDepartment}" >${item.doctorName}</a></h4>
                                 </div>
                                 <div class="doctor-details">
                                     <div class="doctor-specility">
-                                        <p>Khoa 1</p>
+                                        <p>${item.department.departmentName }</p>
                                     </div>
                                     <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>CEO &amp; Founder</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 8</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 17 năm</p>
+                                    <p><i class="fa fa-shield"></i>${item.position.positionName }</p>
+                            		   <p><i class="fa fa-star"></i>Số năm kinh nghiệm: ${item.expYear }</p>
                                     </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-instagram"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-linkedin"></a></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="theme-block theme-block-hover">
-                        <div class="theme-block-picture">
-                            <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            </div>
-                            <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 2</a></h4>
-                            </div>
-                            <div class="theme-block-hidden">
-                                <div class="doctor-name">
-                                    <h4><a>Bác sĩ 2</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Khoa 2</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>C00s</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 5</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 9 năm</p>
-                                    </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="theme-block theme-block-hover">
-                        <div class="theme-block-picture">
-                           <img src="<c:url value="/resources/images/test.jpg" />" alt="">
-                            </div>
-                            <div class="doctor-name doctor-name-2">
-                                <h4><a>Bác sĩ 3</a></h4>
-                            </div>
-                            <div class="theme-block-hidden">
-                                <div class="doctor-name">
-                                    <h4><a>Bác sĩ 3</a></h4>
-                                </div>
-                                <div class="doctor-details">
-                                    <div class="doctor-specility">
-                                        <p>Khoa 3</p>
-                                    </div>
-                                    <div class="doctor-details-extra">
-                                        <p><i class="fa fa-shield"></i>Intern</p>
-                                        <p><i class="fa fa-mortar-board"></i>MBBS, MD</p>
-                                        <p><i class="fa fa-trophy"></i>Giải thưởng: 12</p>
-                                        <p><i class="fa fa-star"></i>Kinh nghiệm: 6 năm</p>
-                                    </div>
-                                </div>
-                                <div class="doctor-social">
-                                    <ul class="social-list social-list-bordered social-list-rounded">
-                                        <li><a href="#" target="_blank" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" target="_blank" class="fa fa-google"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div><!-- End Doctor List Section -->
@@ -364,41 +290,15 @@
                 </div>
                 <div class="layer-container">
                     <div id="testimonial-slider" class="owl-carousel owl-theme theme-owl-dot">
+                    <c:forEach items = "${comment }" var = "item">
                         <div class="testimonial-block">  
                             <div class="paragraph-medium paragraph-white">
                                 <i class="fa fa-quote-left"></i>
-                                Bình luận 1
+                                <p class = "font-16" style="white-space: pre-line;">${item.comment }</p>
                             </div>
-                            <a>Tác giả 1</a>
+                            <a>${item.email }</a>
                         </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 2
-                            </div>
-                            <a>Tác giả 2</a>
-                        </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 3
-                            </div>
-                            <a>Tác giả 3</a>
-                        </div>
-                        <div class="testimonial-block">
-                             <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 4
-                            </div>
-                            <a>Tác giả 4</a>
-                        </div>
-                        <div class="testimonial-block">
-                            <div class="paragraph-medium paragraph-white">
-                                <i class="fa fa-quote-left"></i>
-                                Bình luận 5
-                            </div>
-                            <a>Tác giả 5</a>
-                        </div>
+                         </c:forEach>
                     </div>
                 </div>
             </div>
@@ -566,18 +466,18 @@
                     <div class="footer-ttl"><p>Truy cập nhanh</p></div>
                     <div class="footer-container footer-b">
                         <div class="tbl">
-                            <div class="tbl-row">
+                           <div class="tbl-row">
                                 <ul class="tbl-cell">
-                                    <li><a href="event-1.html">Về chúng tôi</a></li>
-                                    <li><a href="contact.html">Liên lạc</a></li>
-                                    <li><a href="gallery.html">Trang chủ</a></li>
-                                    <li><a href="terms-conditions.html">Điều kiện và điều khoản</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToAbout">Về chúng tôi</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToContact">Liên lạc</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToPolicy">Điều kiện và điều khoản khi đặt lịch</a></li>
                                 </ul>
                                 <ul class="tbl-cell">
-                                    <li><a href="login.html">Đăng nhập</a></li>
-                                    <li><a href="register.html">Đăng ký</a></li>
-                                    <li><a href="myappointment.jsp">Đặt lịch hẹn</a></li>
-                                    <li><a href="myprofile.html">Tài khoản</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/login">Đăng nhập</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToRegister">Đăng ký</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/showDepartmentForAppointment">Đặt lịch hẹn</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/getToChat">Tư vấn</a></li>
                                 </ul>
                             </div>
                         </div>

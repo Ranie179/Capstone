@@ -51,18 +51,18 @@ public class AppointmentRepository {
 	}
 
 	public List<Appointment> searchAppointment(String token) {
-		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where token = ?";
+		String sql = "SELECT * FROM appointment join departments on appointment.ID_Department = departments.ID_Department where token = ?";
 		Object[] params = new Object[] {token};
 		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
 	}
 
 	public List<Appointment> adminShowAllAppointment() {
-		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department";
+		String sql = "SELECT * FROM appointment join departments on appointment.ID_Department = departments.ID_Department";
 		return jdbcTemplate.query(sql, new AppointmentRowMapper());
 	}
 
 	public List<Appointment> adminShowAppointmentInfo(int id) {
-		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where id = ?";
+		String sql = "SELECT * FROM appointment join departments on appointment.ID_Department = departments.ID_Department where id = ?";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
 	}
@@ -107,7 +107,7 @@ public class AppointmentRepository {
 	}
 
 	public List<Appointment> showAppointmentByID(int id) {
-		String sql = "SELECT * FROM `appointment` join departments on appointment.ID_Department = departments.ID_Department where id = ?";
+		String sql = "SELECT * FROM appointment join departments on appointment.ID_Department = departments.ID_Department where id = ?";
 		Object[] params = new Object[] {id};
 		return jdbcTemplate.query(sql, params, new AppointmentRowMapper());
 	}

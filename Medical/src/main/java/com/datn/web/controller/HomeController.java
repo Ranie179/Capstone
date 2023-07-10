@@ -124,8 +124,15 @@ public class HomeController {
     @RequestMapping(value = "getToAbout")
     public String getToAbout(Model model)
     {
+    	List<Doctors> doctors = doctorService.showExpDoctor();
     	List<Departments> departments = departmentService.showDepartmentAndDoctor();
+    	int doctorCount = doctorService.getTotalDoctorCount(null, null, null);
+    	List<Comment> comment = commentService.showRecentComment();
+    	doctors.remove(9); doctors.remove(8); doctors.remove(7); doctors.remove(6); doctors.remove(5); doctors.remove(4); doctors.remove(3);
+    	model.addAttribute("comment", comment);
     	model.addAttribute("department", departments);
+    	model.addAttribute("doctor", doctors);
+    	model.addAttribute("count", doctorCount);
     	return "customer/about";
     }
 
