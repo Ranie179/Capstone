@@ -116,7 +116,7 @@ public class AppointmentRepository {
 			int idDepartment, String note, String token, String emailAccount) {
 		String sql = "INSERT INTO appointment (name, phone, appointment_date, email, gender, id_department, note, token, information, ID_Account)\n"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ "(SELECT ID_Account FROM Account WHERE Email = ?));";
+				+ "(SELECT ID_Account FROM account WHERE Email = ?));";
 		Object[] params = new Object[] {name, phone, date, email, gender, idDepartment, note, token, "Không có thông báo", emailAccount};
 		jdbcTemplate.update(sql, params);
 	}
